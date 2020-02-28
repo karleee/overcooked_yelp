@@ -35,15 +35,11 @@ if (process.env.NODE_ENV === "production") {
   uri = "http://localhost:5000/graphql";
 }
 
-const httpLink = createHttpLink({
-  uri,
-  headers: {
-    authorization: localStorage.getItem("auth-token")
-  }
-});
+// const httpLink = createHttpLink({
+//   uri,
+//   headers: {
+//     authorization: localStorage.getItem("auth-token")
+//   }
+// });
 
 module.exports = app;
-
-// sudo lsof -i :5000
-
-// sudo kill -9 <PID> 
