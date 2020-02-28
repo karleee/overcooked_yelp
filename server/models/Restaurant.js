@@ -140,10 +140,21 @@ const RestaurantSchema = new Schema({
       required: true
     }
   },
-  reviews: {
-    type: Schema.Types.ObjectId,
-    ref: 'review'
-  }
+  reviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'review'
+    }
+  ]
 });
+
+// Static function to find all reviews for a restaurant
+CategorySchema.statics.findReviews = (restaurantId) => {
+  const Restaurant = mongoose.model('restaurant');
+
+  return Restaurant.findById(restaurantId)
+    .populate('reviews')
+    .then(restaurant => restaurant.reviews);
+}
 
 module.exports = mongoose.model('restaurant', RestaurantSchema);
