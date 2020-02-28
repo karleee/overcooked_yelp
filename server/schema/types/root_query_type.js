@@ -1,0 +1,27 @@
+const mongoose = require("mongoose");
+const graphql = require("graphql");
+const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull } = graphql;
+
+const User = mongoose.model("user");
+const UserType = require("./user_type");
+
+const RootQueryType = new GraphQLObjectType({
+    name: "RootQueryType",
+    fields: () => ({
+        users: {
+            type: new GraphQLList(UserType),
+            resolve() {
+                return User.find({});
+            }
+        },
+        user: {
+            type: UserType,
+            args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
+            resolve(_, { _id }) {
+                return User.findById(_id);
+            }
+        },
+    })
+});
+
+module.exports = RootQueryType;

@@ -1,4 +1,5 @@
 const express = require('express');
+const expressGraphQL = require("express-graphql");
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -10,6 +11,11 @@ const app = express();
 if (!db) {
   throw new Error('You must provide a string to connect to MongoDB Atlas');
 }
+
+
+// load up the model connections
+require("./models/index");
+const schema = require('./schema/schema');
 
 // Connecting mongoose to db
 mongoose
@@ -27,6 +33,15 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
+
+// set up graphql
+app.use(
+  "/graphql",
+  expressGraphQL({
+    schema,
+    graphiql: true
+  })
+);
 
 // Setting up Apollo
 let uri;
