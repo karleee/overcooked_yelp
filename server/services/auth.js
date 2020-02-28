@@ -70,7 +70,7 @@ const login = async data => {
     const user = await User.findOne({ email: data.email });
     // console.log(user);
     if (!user) {
-      throw new Error("omfg");
+      throw new Error("No user found");
     }
     let password_matches = await bcrypt.compareSync(
       data.password,
