@@ -12,64 +12,132 @@ const RestaurantSchema = new Schema({
     required: true,
     unique: true
   },
-  location: {
-    streetAddress: { 
-      type: String,
-      required: true,
-      unqiue: true
-    },
-    city: {
-      type: String,
-      required: true
-    },
-    state: {
-      type: String,
-      required: true
-    },
-    zipCode: {
-      type: Number,
-      required: true
-    },
-    coordinates: {
-      latitude: {
-        type: Number,
+  streetAddress: { 
+    type: String,
+    required: true,
+    unqiue: true
+  },
+  city: {
+    type: String,
+    required: true
+  },
+  state: {
+    type: String,
+    required: true
+  },
+  zipCode: {
+    type: Number,
+    required: true
+  },
+  latitude: {
+    type: Number,
+    required: true
+  },
+  longitude: {
+    type: Number,
+    required: true
+  },
+  hours: {
+    monday: {
+      open: {
+        type: String,
         required: true
       },
-      longitude: {
-        type: Number,
+      close: {
+        type: String,
         required: true
       }
     },
-    hours: {
-      monday: {
+    tuesday: {
+      open: {
         type: String,
         required: true
       },
-      tuesday: {
+      close: {
+        type: String,
+        required: true
+      }
+    },
+    wednesday: {
+      open: {
         type: String,
         required: true
       },
-      wednesday: {
+      close: {
+        type: String,
+        required: true
+      }
+    },
+    thursday: {
+      open: {
         type: String,
         required: true
       },
-      thursday: {
+      close: {
+        type: String,
+        required: true
+      }
+    },
+    friday: {
+      open: {
         type: String,
         required: true
       },
-      friday: {
+      close: {
+        type: String,
+        required: true
+      }
+    },
+    saturday: {
+      open: {
         type: String,
         required: true
       },
-      saturday: {
+      close: {
+        type: String,
+        required: true
+      }
+    },
+    sunday: {
+      open: {
         type: String,
         required: true
       },
-      sunday: {
+      close: {
         type: String,
         required: true
       }
     }
+  },
+  amenities: {
+    healthScore: {
+      type: Number,
+      required: true
+    },
+    reservations: {
+      type: Boolean,
+      required: true
+    },
+    happyHourSpecials: {
+      type: Boolean,
+      required: true
+    },
+    delivery: {
+      type: Boolean,
+      required: true
+    },
+    vegetarian: {
+      type: Boolean,
+      required: true
+    },
+    takeOut: {
+      type: Boolean,
+      required: true
+    }
+  },
+  reviews: {
+    type: Schema.Types.ObjectId,
+    ref: 'review'
   }
 });
 
