@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    image: store
+    ports:
+      - "5000:5000"
