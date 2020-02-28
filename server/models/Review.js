@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// Schema for reviews
 const ReviewSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
