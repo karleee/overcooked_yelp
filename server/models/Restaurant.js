@@ -13,30 +13,34 @@ const RestaurantSchema = new Schema({
     required: true,
     unique: true
   },
-  streetAddress: { 
-    type: String,
-    required: true,
-    unqiue: true
+  location: {
+    streetAddress: { 
+      type: String,
+      required: true,
+      unqiue: true
+    },
+    city: {
+      type: String,
+      required: true
+    },
+    state: {
+      type: String,
+      required: true
+    },
+    zipCode: {
+      type: Number,
+      required: true
+    }
   },
-  city: {
-    type: String,
-    required: true
-  },
-  state: {
-    type: String,
-    required: true
-  },
-  zipCode: {
-    type: Number,
-    required: true
-  },
-  latitude: {
-    type: Number,
-    required: true
-  },
-  longitude: {
-    type: Number,
-    required: true
+  coordinates: {
+    latitude: {
+      type: Number,
+      required: true
+    },
+    longitude: {
+      type: Number,
+      required: true
+    }
   },
   hours: {
     monday: {
