@@ -1,8 +1,10 @@
 const express = require('express');
+const expressGraphQL = require('express-graphql');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('../config/keys.js').mongoURI;
+const schema = require('./schema/schema');
 
 const app = express();
 
@@ -16,6 +18,15 @@ mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB successfully'))
   .catch(err => console.log(err));
+
+// Configuring server with express-graphql using local schema file
+app.use(
+  '/graphql',
+  expressGraphQL({
+    schema,
+    graphiql: true
+  })
+);
 
 // Parsing requests into JSON
 app.use(bodyParser.json());

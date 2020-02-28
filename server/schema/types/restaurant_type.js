@@ -1,21 +1,25 @@
-const mongoose = require('mongoose');
 const graphql = require('graphql');
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLBoolean } = graphql;
-const Restaurant = mongoose.model('restaurant');
+const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLBoolean, GraphQLList } = graphql;
+const Restaurant = require('../../models/Restaurant');
 
 // Creating GraphQL object type for restaurant
 const RestaurantType = new GraphQLObjectType({
   name: 'RestaurantType',
   fields: () => ({
+    id: { type: GraphQLID },
     name: { type: GraphQLString },
     id: {type: GraphQLID},
     phoneNum: { type: GraphQLString },
-    streetAddress: { type: GraphQLString },
-    city: { type: GraphQLString },
-    state: { type: GraphQLString },
-    zipCode: { type: GraphQLInt },
-    latitude: { type: GraphQLInt },
-    longitude: { type: GraphQLInt },
+    location: {
+      streetAddress: { type: GraphQLString },
+      city: { type: GraphQLString },
+      state: { type: GraphQLString },
+      zipCode: { type: GraphQLInt }
+    },
+    coordinates: {
+      latitude: { type: GraphQLInt },
+      longitude: { type: GraphQLInt }
+    },
     hours: {
       monday: { 
         open: { type: GraphQLString },
@@ -55,7 +59,7 @@ const RestaurantType = new GraphQLObjectType({
       takeOut: { type: GraphQLBoolean },
     },
     reviews: {
-      type: new GraphQLList(ReviewType),
+      type: new GraphQLList(require('./review_type')),
       resolve(parentValue) {
         return Restaurant.findProducts(parentValue._id);
       }

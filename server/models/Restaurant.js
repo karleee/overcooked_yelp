@@ -149,7 +149,7 @@ const RestaurantSchema = new Schema({
 });
 
 // Static function to find all reviews for a restaurant
-CategorySchema.statics.findReviews = (restaurantId) => {
+RestaurantSchema.statics.findReviews = (restaurantId) => {
   const Restaurant = mongoose.model('restaurant');
 
   return Restaurant.findById(restaurantId)
