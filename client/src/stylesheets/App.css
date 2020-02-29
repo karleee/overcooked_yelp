@@ -1,0 +1,87 @@
+@import 'variables.css';
+
+.app-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.app-wrapper h1 {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.banner-wrapper {
+  width: 100%;
+  height: 90%;
+  background: orange;
+}
+
+.search-input-wrapper {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  height: 7%;
+  background: white;
+  border-radius: 5px;
+}
+
+.search-input-wrapper .find-input-wrapper {
+  width: 53%;
+}
+
+.search-input-wrapper .near-input-wrapper {
+  width: 47%;
+}
+
+.search-input-wrapper .find-input-wrapper label,
+.search-input-wrapper .near-input-wrapper label {
+  font-family: Arial;
+  font-weight: bolder;
+  font-size: 18px;
+  color: var(--mid-text);
+  width: 100%;
+}
+
+.search-input-wrapper .find-input-wrapper label input,
+.search-input-wrapper .near-input-wrapper label input {
+  font-size: 18px;
+  border: none;
+  margin-left: 10px;
+  width: 300px;
+}
+
+.search-input-wrapper .find-input-wrapper,
+.search-input-wrapper .near-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+
+.app-wrapper .separator-wrapper {
+  width: 1px;
+  height: 60%;
+  border-right: 1px solid var(--border-color);
+}
+
+.search-button-wrapper {
+  width: 70px;
+  height: 100%;
+  background: lightblue;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
