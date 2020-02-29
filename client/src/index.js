@@ -45,9 +45,7 @@ const token = localStorage.getItem("auth-token");
 
 // we'll check localStorage to see if a token exists
 cache.writeData({
-  data: {
-    isLoggedIn: Boolean(token)
-  }
+  data: { isLoggedIn: Boolean(token) }
 });
 
 // then if we do have a token we'll go through with our mutation

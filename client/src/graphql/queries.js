@@ -11,5 +11,10 @@ export default {
         zipCode
       }
     }
+  `,
+  IS_LOGGED_IN: gql`
+    query IsUserLoggedIn {
+      isLoggedIn @client
+    }
   `
 };

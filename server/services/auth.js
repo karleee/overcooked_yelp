@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
 const keys = require("../../config/keys");
 const validateRegisterInput = require("../validation/register");
 const validateLoginInput = require("../validation/login");
-
 const User = mongoose.model('user');
 
 const register = async data => {
@@ -61,47 +61,47 @@ const logout = async data => {
 
 const login = async data => {
   try {
-    // use our other validator we wrote to validate this data
+    // validate the data
     const { message, isValid } = validateLoginInput(data);
 
     if (!isValid) {
-      throw new Error(message);
+      return { loggedIn: false, errors: [message] };
     }
 
+    // see if we can find the user
     const user = await User.findOne({ email: data.email });
-    // console.log(user);
     if (!user) {
-      throw new Error("No user found");
+      return { loggedIn: false, errors: ["Invalid Credentials"] };
     }
+
+    // do the passwords match?
     let password_matches = await bcrypt.compareSync(
       data.password,
       user.password
     );
-
     if (password_matches) {
       const token = jwt.sign({ id: user._id }, keys.secretOrKey);
       return { token, loggedIn: true, ...user._doc, password: null };
+    } else {
+      return { loggedIn: false, errors: ["Invalid Credentials"] };
     }
   } catch (err) {
-    throw new Error(err);
+    return { loggedIn: false, errors: [err] }
   }
 };
 
 const verifyUser = async data => {
   try {
-    // we take in the token from our mutation
     const { token } = data;
-    // we decode the token using our secret password to get the
-    // user's id
+
+    // get the id of the encrypted user
     const decoded = jwt.verify(token, keys.secretOrKey);
     const { id } = decoded;
 
-    // then we try to use the User with the id we just decoded
-    // making sure we await the response
+    // return true if the id exists in the database
     const loggedIn = await User.findById(id).then(user => {
       return user ? true : false;
     });
-
     return { loggedIn };
   } catch (err) {
     return { loggedIn: false };
