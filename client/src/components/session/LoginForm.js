@@ -24,6 +24,7 @@ class Login extends React.Component {
   }
 
   componentWillUnmount() {
+    this.setState({ errors: [] });
     // prevent setState when unmounted
     this._isMounted = false;
   }

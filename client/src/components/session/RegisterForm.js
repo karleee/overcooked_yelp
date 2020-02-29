@@ -25,6 +25,7 @@ class RegisterForm extends React.Component {
   }
 
   componentWillUnmount() {
+    this.setState({ errors: [] });
     this._isMounted = false;
   }
 
