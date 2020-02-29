@@ -11,9 +11,12 @@ const Home = () => {
         <div className="overlay-wrapper"></div>
       </div>
 
-      <svg className="logo-wrapper">
-        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">Overcooked</text>
-      </svg>
+      <div className="logo-wrapper">
+        <svg>
+          <text x="50%" y="50%">morsel</text>
+        </svg>
+        <img src="/images/homepage/logo.png" alt="Logo image" />
+      </div>
 
       <div className="search-input-wrapper">
         <div className="find-input-wrapper">
@@ -38,7 +41,10 @@ const Home = () => {
           </label>
         </div>
 
-        <div className="search-button-wrapper"></div>
+        <div className="search-button-wrapper">
+          {/* <img src="/images/homepage/search_icon.png" alt="Magnifying glass icon" /> */}
+          <i className="search-icon"></i>
+        </div>
       </div>
     </div>
   );

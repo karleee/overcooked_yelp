@@ -56,6 +56,7 @@ src: url('../fonts/CerealMedium.woff') format('woff');
   --black: #333333;
   --blue: #0073bb;
   --red: #d32323;
+  --dark-red: #bd2226;
 
   /* Background colors */
   --background-color: #f5f5f5;
