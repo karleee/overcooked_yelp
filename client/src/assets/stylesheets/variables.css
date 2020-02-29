@@ -44,6 +44,13 @@ src: url('../fonts/CerealMedium.woff') format('woff');
   src: url('../fonts/CerealBlack.woff') format('woff');  
 } */
 
+@font-face {
+  font-family: 'rockoBold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/RockoFLF-Bold.ttf') format('ttf');
+}
+
 :root {
   /* Primary colors */
   --black: #333333;

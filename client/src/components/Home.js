@@ -7,11 +7,13 @@ const Home = () => {
   return (
     <div className="home-wrapper">
       <div className="banner-wrapper">
-        <img src="/images/homepage/banner.png" id="Homepage banner" />
+        <img src="/images/homepage/banner.png" alt="Homepage banner" />
         <div className="overlay-wrapper"></div>
       </div>
 
-      <h1>Overcooked</h1>
+      <svg className="logo-wrapper">
+        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">Overcooked</text>
+      </svg>
 
       <div className="search-input-wrapper">
         <div className="find-input-wrapper">
