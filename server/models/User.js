@@ -21,7 +21,7 @@ const UserSchema = new Schema({
     max: 32
   },
   zipCode: {
-    type: Number,
+    type: String,
     required: true
   },
   date: {

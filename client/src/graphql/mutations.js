@@ -16,5 +16,14 @@ export default {
         errors
       }
     }
+  `,
+  REGISTER_USER: gql`
+    mutation RegisterUser($firstName: String!, $lastName: String!, $email: String!, $password: String!, $zipCode: String!) {
+      register(firstName: $firstName, lastName: $lastName, email: $email, password: $password, zipCode: $zipCode) {
+        token
+        loggedIn
+        errors
+      }
+    }
   `
 };

@@ -2,29 +2,29 @@ import React from "react";
 import { Mutation } from "react-apollo";
 
 import Mutations from "../../graphql/mutations";
-const { LOGIN_USER } = Mutations;
+const { REGISTER_USER } = Mutations;
 
-class Login extends React.Component {
-  // is there a better way to handle this?
+class RegisterForm extends React.Component {
   _isMounted = false;
 
   constructor(props) {
     super(props);
     this.state = {
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
+      zipCode: "",
       errors: []
     };
     this.performMutation.bind(this);
   }
 
   componentDidMount() {
-    // allow for errors to be set on state
     this._isMounted = true;
   }
 
   componentWillUnmount() {
-    // prevent setState when unmounted
     this._isMounted = false;
   }
 
@@ -33,18 +33,17 @@ class Login extends React.Component {
   }
 
   updateCache(client, { data }) {
-    client.writeData({ data: { isLoggedIn: data.login.loggedIn } });
+    client.writeData({ data: { isLoggedIn: data.register.loggedIn } });
   }
 
-  loginAndRedirectTo(url, data) {
-    if (data.login.isLoggedIn) {
-      const { token } = data.login;
+  registerAndRedirectTo(url, data) {
+    if (data.register.isLoggedIn) {
+      const { token } = data.register;
       localStorage.setItem("auth-token", token);
       this.props.history.push(url);
     } else {
-      // check with TA if there is a better solution
       if (this._isMounted) {
-        this.setState({ errors: data.login.errors });
+        this.setState({ errors: data.register.errors });
       }
     }
   }
@@ -64,17 +63,29 @@ class Login extends React.Component {
   }
 
   render() {
-    const { email, password } = this.state;
+    const { firstName, lastName, email, password, zipCode } = this.state;
     return (
       <Mutation
-        mutation={LOGIN_USER}
-        onCompleted={data => this.loginAndRedirectTo("/", data)}
+        mutation={REGISTER_USER}
+        onCompleted={data => this.registerAndRedirectTo("/", data)}
         update={(client, data) => this.updateCache(client, data)}
       >
-        {LoginUser => (
+        {RegisterUser => (
           <div>
             <ul>{this.renderErrors()}</ul>
-            <form onSubmit={this.performMutation(LoginUser, {email, password})}>
+            <form
+              onSubmit={this.performMutation(RegisterUser, { firstName, lastName, email, password, zipCode })}
+            >
+              <input
+                value={firstName}
+                onChange={this.update("firstName")}
+                placeholder="First Name"
+              />
+              <input
+                value={lastName}
+                onChange={this.update("lastName")}
+                placeholder="Last Name"
+              />
               <input
                 value={email}
                 onChange={this.update("email")}
@@ -86,7 +97,13 @@ class Login extends React.Component {
                 type="password"
                 placeholder="Password"
               />
-              <button type="submit">Log In</button>
+              <input
+                value={zipCode}
+                onChange={this.update("zipCode")}
+                type="number"
+                placeholder="Zip Code"
+              />
+              <button type="submit">Sign Up</button>
             </form>
           </div>
         )}
@@ -94,4 +111,4 @@ class Login extends React.Component {
     );
   }
 }
-export default Login;
+export default RegisterForm;

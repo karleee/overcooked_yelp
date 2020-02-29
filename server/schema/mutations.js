@@ -3,8 +3,7 @@ const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLNonNull,
-  GraphQLID,
-  GraphQLInt
+  GraphQLID
 } = graphql;
 
 const AuthService = require("../services/auth");
@@ -21,7 +20,7 @@ const mutation = new GraphQLObjectType({
         lastName: { type: new GraphQLNonNull(GraphQLString) },
         email: { type: new GraphQLNonNull(GraphQLString) },
         password: { type: new GraphQLNonNull(GraphQLString) },
-        zipCode: { type: new GraphQLNonNull(GraphQLInt) },
+        zipCode: { type: new GraphQLNonNull(GraphQLString) },
       },
       resolve(_, args) {
         return AuthService.register(args);

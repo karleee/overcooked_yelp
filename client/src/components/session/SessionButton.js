@@ -19,7 +19,9 @@ const SessionButton = props => {
     return isLoggedIn ? (
       <button onClick={logOutAndRedirect(client)}>Logout</button>
     ) : (
-      <Link to="/login">Login</Link>
+      <div>
+        <Link to="/login">Login</Link> or <Link to="/signup">Sign Up</Link>
+      </div>
     );
   }
 

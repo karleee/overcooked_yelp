@@ -6,6 +6,15 @@ module.exports = function validateLoginInput(data) {
   data.lastName = validText(data.lastName) ? data.lastName : "";
   data.email = validText(data.email) ? data.email : "";
   data.password = validText(data.password) ? data.password : "";
+  data.zipCode = validText(data.zipCode) ? data.zipCode : "";
+
+  if (Validator.isEmpty(data.firstName)) {
+    return { message: "First name field is required", isValid: false };
+  }
+
+  if (Validator.isEmpty(data.lastName)) {
+    return { message: "Last name field is required", isValid: false };
+  }
 
   if (!Validator.isEmail(data.email)) {
     return { message: "Email is invalid", isValid: false };
@@ -19,12 +28,8 @@ module.exports = function validateLoginInput(data) {
     return { message: "Password field is required", isValid: false };
   }
 
-  if (Validator.isEmpty(data.firstName)) {
-    return { message: "First name field is required", isValid: false };
-  }
-
-  if (Validator.isEmpty(data.lastName)) {
-    return { message: "Last name field is required", isValid: false };
+  if (Validator.isEmpty(data.zipCode)) {
+    return { message: "Zip code field is required", isValid: false };
   }
   
   return {

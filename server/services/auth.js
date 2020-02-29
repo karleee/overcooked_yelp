@@ -12,7 +12,7 @@ const register = async data => {
     const { message, isValid } = validateRegisterInput(data);
 
     if (!isValid) {
-      throw new Error(message);
+      return { loggedIn: false, errors: [message] };
     }
 
     const { firstName, lastName, email, password, zipCode } = data;
@@ -20,7 +20,7 @@ const register = async data => {
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
-      throw new Error("This user already exists");
+      return { loggedIn: false, errors: ["User already exists"] };
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -45,7 +45,7 @@ const register = async data => {
     // then return our created token, set loggedIn to be true, null their password, and send the rest of the user
     return { token, loggedIn: true, ...user._doc, password: null };
   } catch (err) {
-    throw err;
+    return { loggedIn: false, errors: [err] };
   }
 };
 
