@@ -1,15 +1,14 @@
-const mongoose = require("mongoose");
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLBoolean } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLBoolean, GraphQLInt } = graphql;
 
 const UserType = new GraphQLObjectType({
   name: "UserType",
-  // remember we wrap the fields in a thunk to avoid circular dependency issues
   fields: () => ({
     _id: { type: GraphQLID },
     firstName: { type: GraphQLString },
     lastName: { type: GraphQLString },
     email: { type: GraphQLString },
+    zipCode: { type: GraphQLInt },
     token: { type: GraphQLString },
     loggedIn: { type: GraphQLBoolean }
   })

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLFloat, GraphQLNonNull, GraphQLID } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLNonNull, GraphQLID, GraphQLInt } = graphql;
 
 const AuthService = require("../services/auth");
 
@@ -13,10 +13,11 @@ const mutation = new GraphQLObjectType({
     register: {
       type: UserType,
       args: {
-        firstName: { type: GraphQLString },
-        lastName: { type: GraphQLString },
-        email: { type: GraphQLString },
-        password: { type: GraphQLString }
+        firstName: { type: new GraphQLNonNull(GraphQLString) },
+        lastName: { type: new GraphQLNonNull(GraphQLString) },
+        email: { type: new GraphQLNonNull(GraphQLString) },
+        password: { type: new GraphQLNonNull(GraphQLString) },
+        zipCode: { type: new GraphQLNonNull(GraphQLInt) },
       },
       resolve(_, args) {
         return AuthService.register(args);
