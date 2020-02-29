@@ -1,10 +1,14 @@
-const mongoose = require("mongoose");
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLNonNull, GraphQLID, GraphQLInt } = graphql;
+const {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLNonNull,
+  GraphQLID,
+  GraphQLInt
+} = graphql;
 
 const AuthService = require("../services/auth");
-
-const User = mongoose.model("user");
+const UserService = require("../services/user");
 const UserType = require("./types/user_type");
 
 const mutation = new GraphQLObjectType({
@@ -49,6 +53,13 @@ const mutation = new GraphQLObjectType({
       },
       resolve(_, args) {
         return AuthService.verifyUser(args);
+      }
+    },
+    seedDb: {
+      type: UserType,
+      args: {},
+      resolve() {
+        return UserService.seedDb();
       }
     }
   }

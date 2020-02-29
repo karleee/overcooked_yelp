@@ -15,7 +15,7 @@ const register = async data => {
       throw new Error(message);
     }
 
-    const { firstName, lastName, email, password } = data;
+    const { firstName, lastName, email, password, zipCode } = data;
 
     const existingUser = await User.findOne({ email });
 
@@ -30,14 +30,15 @@ const register = async data => {
         firstName,
         lastName,
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        zipCode
       },
       err => {
         if (err) throw err;
       }
     );
 
-    user.save();
+    await user.save();
     // we'll create a token for the user
     const token = jwt.sign({ id: user._id }, keys.secretOrKey);
 

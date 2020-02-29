@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('../config/keys.js').mongoURI;
+const cors = require("cors");
 
 const app = express();
 
@@ -26,6 +27,9 @@ mongoose
 // Parsing requests into JSON
 app.use(bodyParser.json());
 
+// use cors protection
+app.use(cors());
+
 // Setting up Heroku deploy 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -44,8 +48,8 @@ app.use(
 );
 
 // Setting up Apollo
+// todo: make DRY in .env
 let uri;
-
 if (process.env.NODE_ENV === "production") {
   uri = `/graphql`;
 } else {
