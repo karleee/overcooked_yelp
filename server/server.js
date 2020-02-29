@@ -13,7 +13,6 @@ if (!db) {
   throw new Error('You must provide a string to connect to MongoDB Atlas');
 }
 
-
 // load up the model connections
 require("./models/index");
 const schema = require('./schema/schema');
@@ -46,21 +45,5 @@ app.use(
     graphiql: true
   })
 );
-
-// Setting up Apollo
-// todo: make DRY in .env
-let uri;
-if (process.env.NODE_ENV === "production") {
-  uri = `/graphql`;
-} else {
-  uri = "http://localhost:5000/graphql";
-}
-
-// const httpLink = createHttpLink({
-//   uri,
-//   headers: {
-//     authorization: localStorage.getItem("auth-token")
-//   }
-// });
 
 module.exports = app;

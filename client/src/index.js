@@ -15,17 +15,16 @@ const cache = new InMemoryCache({
   dataIdFromObject: object => object._id || null
 });
 
-// todo: make DRY in .env
-let uri;
+let graphqlURI;
 if (process.env.NODE_ENV === "production") {
-  uri = `/graphql`;
+  graphqlURI = "/graphql";
 } else {
-  uri = "http://localhost:5000/graphql";
+  graphqlURI = "http://localhost:5000/graphql";
 }
 
 const client = new ApolloClient({
   cache,
-  uri: uri,
+  uri: graphqlURI,
   onError: ({ networkError, graphQLErrors }) => {
     console.log("graphQLErrors", graphQLErrors);
     console.log("networkError", networkError);
