@@ -144,14 +144,45 @@
   height: 20px;
 }
 
-.app-wrapper .home-wrapper .best-businesses-wrapper {
+.app-wrapper .home-wrapper .best-restaurants-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  font-family: 'helveticaBold';
-  font-size: 12px;
-  color: var(--elite-text);
-  font-weight: bolder;
-  margin-top: 30px;
+  width: 100%;
 }
+
+.app-wrapper .home-wrapper .best-restaurants-wrapper .find-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 30px 200px;
+  box-sizing: border-box;
+  background: var(--background-color);
+}
+
+.app-wrapper .home-wrapper .best-restaurants-wrapper .find-section-wrapper h1 {
+  font-family: 'helveticaBold';
+  font-size: 23px;
+  color: var(--red);
+}
+
+.app-wrapper .home-wrapper .best-restaurants-wrapper .find-section-wrapper .restaurants-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* .app-wrapper .home-wrapper .best-restaurants-wrapper .categories-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 30px 200px;
+  background: var(--background-color);
+  margin-top: 20px;
+} */

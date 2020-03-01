@@ -46,8 +46,36 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="best-businesses-wrapper">
-        <h1>Find the Best Businesses in Town</h1>
+      <div className="best-restaurants-wrapper">
+        <div className="find-section-wrapper">
+          <h1>Find the Best Restaurants in Town</h1>
+
+          <div className="restaurants-wrapper">
+            <div className="surf-and-turf-wrapper">
+              <div className="thumbnail-wrapper"></div>
+              <p>Surf 'N' Turf</p>
+            </div>
+
+            <div className="holiday-desserts-wrapper">
+              <div className="thumbnail-wrapper"></div>
+              <p>Holiday Desserts</p>
+            </div>
+
+            <div className="chinese-wrapper">
+              <div className="thumbnail-wrapper"></div>
+              <p>Chinese</p>
+            </div>
+
+            <div className="burgers-wrapper">
+              <div className="thumbnail-wrapper"></div>
+              <p>Burgers</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="cities-wrapper">
+          <h1>Morsel (put user's location here)</h1>
+        </div>
       </div>
     </div>
   );
