@@ -34,7 +34,7 @@
 
 .app-wrapper .home-wrapper .logo-wrapper img {
   width: 45px;
-  margin: -3% 0 0 -5%;
+  margin: -3% 0 0 -5.6%;
 }
 
 .banner-wrapper {
@@ -131,11 +131,11 @@
   cursor: pointer;
 }
 
-.search-button-wrapper .search-wrapper:hover .search-icon {
+/* .search-button-wrapper .search-wrapper:hover .search-icon {
   content: url('/images/homepage/search_hover_icon.png');
   width: 20px;
   height: 20px;
-}
+} */
 
 .search-button-wrapper .search-icon {
   content: url('/images/homepage/search_icon.png');
