@@ -10,7 +10,7 @@
 
 .app-wrapper .home-wrapper .logo-wrapper {
   position: absolute;
-  top: 19%;
+  top: 18%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -19,7 +19,7 @@
 }
 
 .app-wrapper .home-wrapper .logo-wrapper svg text {
-  font-family: Arial;
+  font-family: 'helveticaRounded';
   font-size: 45px;
   font-weight: bold;
   fill: black;
@@ -33,8 +33,8 @@
 }
 
 .app-wrapper .home-wrapper .logo-wrapper img {
-  width: 45px;
-  margin: -3% 0 0 -5.6%;
+  width: 50px;
+  margin: -3% 0 0 -5.5%;
 }
 
 .banner-wrapper {
@@ -84,8 +84,7 @@
 
 .search-input-wrapper .find-input-wrapper label,
 .search-input-wrapper .near-input-wrapper label {
-  font-family: Arial;
-  font-weight: bolder;
+  font-family: 'helveticaBold';
   font-size: 18px;
   color: var(--mid-text);
   width: 100%;
@@ -93,7 +92,9 @@
 
 .search-input-wrapper .find-input-wrapper label input,
 .search-input-wrapper .near-input-wrapper label input {
+  font-family: Helvetica;
   font-size: 18px;
+  color: var(--black);
   border: none;
   margin-left: 10px;
   width: 300px;
@@ -127,18 +128,30 @@
 
 .search-button-wrapper:hover {
   background: var(--dark-red);
-  transition: all 0.5s;
+  transition: all 0.25s;
   cursor: pointer;
 }
 
-/* .search-button-wrapper .search-wrapper:hover .search-icon {
+.search-button-wrapper:hover > .search-icon {
   content: url('/images/homepage/search_hover_icon.png');
   width: 20px;
   height: 20px;
-} */
+}
 
 .search-button-wrapper .search-icon {
   content: url('/images/homepage/search_icon.png');
   width: 20px;
   height: 20px;
+}
+
+.app-wrapper .home-wrapper .best-businesses-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica;
+  font-size: 12px;
+  color: var(--red);
+  font-weight: bolder;
+  margin-top: 30px;
 }

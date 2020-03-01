@@ -42,9 +42,12 @@ const Home = () => {
         </div>
 
         <div className="search-button-wrapper">
-          {/* <img src="/images/homepage/search_icon.png" alt="Magnifying glass icon" /> */}
           <i className="search-icon"></i>
         </div>
+      </div>
+
+      <div className="best-businesses-wrapper">
+        <h1>Find the Best Businesses in Town</h1>
       </div>
     </div>
   );
