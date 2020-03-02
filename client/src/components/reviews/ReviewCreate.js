@@ -13,6 +13,26 @@ class ReviewCreate extends Component {
             // ratingdiff: 5
         }
     }
+    handleSubmit(e, newReview) {
+        e.preventDefault();
+
+        newReview({
+            variables: {
+                rating: this.state.rating,
+                body: this.state.body,
+                restaurantId: this.props.restaurantId,
+                userId: this.props.userId,
+            }
+        })
+        .then(data => {
+            this.setState({
+                rating: 0,
+                body: "",
+            })
+        })
+        
+
+    }
 
     updateRating(rating) {
         return e=> {
@@ -90,9 +110,31 @@ class ReviewCreate extends Component {
         }
     }
 
-    renderHeartstwo(){
-        
+    renderHeartsTwo(){
+
     }
+
+    // updateCache(cache, { data: { newReview} }) {
+    //     let reviews;
+    //     try {
+    //         // we'll try to read from our cache but if the query isn't in there no sweat!
+    //         // We only want to update the data if it's in the cache already - totally fine if the data will
+    //         // be fetched fresh later
+    //         reviews = cache.readQuery({ query: FETCH_REVIEWS });
+    //     } catch (err) {
+    //         return;
+    //     }
+
+    //     // then our writeQuery will only run IF the cache already has data in it
+    //     if (reviews) {
+    //         let reviewArray = reviews.reviews;
+
+    //         cache.writeQuery({
+    //             query: FETCH_REVIEWS,
+    //             data: { reviews: reviewArray.concat(newReview) }
+    //         });
+    //     }
+    // }
 
     render() {
         return (

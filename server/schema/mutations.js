@@ -12,8 +12,8 @@ const mutation = new GraphQLObjectType({
                 userId: { type: new GraphQLNonNull(GraphQLID) },
                 restaurantId: { type: new GraphQLNonNull(GraphQLID) }
             },
-            resolve(parent, { rating, body }) {
-                return new Review({ rating, body }).save();
+            resolve(parent, { rating, body, userId, restaurantId }) {
+                return new Review({ rating, body, userId, restaurantId }).save();
             }
         },
         updateReview: {
@@ -23,6 +23,23 @@ const mutation = new GraphQLObjectType({
                 rating: { type: GraphQLInt },
                 date: { type: GraphQLString },
                 body: { type: GraphQLString },
+            },
+            resolve(parent, { id, rating, date, body }) {
+                const updtObj = {};
+
+                if(id) updtObj.id = id;
+                if(date) updtObj.date = date;
+                if(body) updtObj.body = body;
+                if(rating) updtObj.rating = rating;
+
+                return Review.findOneAndUpdate(
+                    { id: id },
+                    { $set: updtObj },
+                    { new: true },
+                    ( err, review ) => {
+                        return review;
+                    }
+                )
             }
         },
         deleteReview: {
