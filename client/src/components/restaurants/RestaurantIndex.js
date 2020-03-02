@@ -15,7 +15,7 @@ const RestaurantIndex = () => {
         if (error) return `Error! ${error.message}`;
 
         return (
-          <div className="list-wrapper">
+          <div className="new-restaurant-thumbnails-wrapper">
             <ul>
               {data.restaurants.map(restaurant => {
                 // Converting price for each restaurant into dollar sign equivalents

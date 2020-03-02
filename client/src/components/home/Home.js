@@ -97,9 +97,7 @@ const Home = () => {
           <div className="new-restaurants-wrapper">
             <h2>Hot & New Businesses</h2>
 
-            <div className="restaurants-wrapper">
-              <RestaurantIndex />
-            </div>
+            <RestaurantIndex />
           </div>
         </div>
       </div>

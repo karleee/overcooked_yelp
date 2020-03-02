@@ -1,17 +1,18 @@
-.list-wrapper {
+.new-restaurant-thumbnails-wrapper {
   width: 100%;
 }
 
-.list-wrapper ul {
+.new-restaurant-thumbnails-wrapper ul {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   list-style: none;
   width: 100%;
+  margin-top: 15px;
 }
 
-.list-wrapper ul li {
-  width: 285px;
+.new-restaurant-thumbnails-wrapper ul li {
+  width: 280px;
   height: 250px;
   background: orange;
 }
