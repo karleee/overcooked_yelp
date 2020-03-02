@@ -1,6 +1,7 @@
 import React from "react";
 import { Mutation } from "react-apollo";
 
+import * as SessionUtil from "../../util/session_util";
 import Mutations from "../../graphql/mutations";
 const { REGISTER_USER } = Mutations;
 
@@ -15,7 +16,7 @@ class RegisterForm extends React.Component {
       email: "",
       password: "",
       zipCode: "",
-      errors: []
+      errorMessage: ""
     };
     this.performMutation.bind(this);
   }
@@ -25,7 +26,7 @@ class RegisterForm extends React.Component {
   }
 
   componentWillUnmount() {
-    this.setState({ errors: [] });
+    this.setState({ errorMessage: "" });
     this._isMounted = false;
   }
 
@@ -34,19 +35,12 @@ class RegisterForm extends React.Component {
   }
 
   updateCache(client, { data }) {
-    client.writeData({ data: { isLoggedIn: data.register.loggedIn } });
+    SessionUtil.saveUserToCache(client, data.register);
   }
 
   registerAndRedirectTo(url, data) {
-    if (data.register.isLoggedIn) {
-      const { token } = data.register;
-      localStorage.setItem("auth-token", token);
-      this.props.history.push(url);
-    } else {
-      if (this._isMounted) {
-        this.setState({ errors: data.register.errors });
-      }
-    }
+    SessionUtil.saveUserToLocalStorage(data.register);
+    this.props.history.push(url);
   }
 
   performMutation(Mutation, variables) {
@@ -56,11 +50,13 @@ class RegisterForm extends React.Component {
     };
   }
 
-  renderErrors() {
-    const { errors } = this.state;
-    if (errors && errors.length > 0) {
-      return errors.map((msg, i) => <li key={i}>{msg}</li>);
-    }
+  renderErrorMessage() {
+    const { errorMessage } = this.state;
+    return (errorMessage) ? <p>{SessionUtil.stripGraphQLPrefix(errorMessage)}</p> : null;
+  }
+
+  handleGraphQLError(error) {
+    this.setState({ errorMessage: error.message });
   }
 
   render() {
@@ -68,14 +64,21 @@ class RegisterForm extends React.Component {
     return (
       <Mutation
         mutation={REGISTER_USER}
+        onError={error => this.handleGraphQLError(error)}
         onCompleted={data => this.registerAndRedirectTo("/", data)}
         update={(client, data) => this.updateCache(client, data)}
       >
         {RegisterUser => (
           <div>
-            <ul>{this.renderErrors()}</ul>
+            {this.renderErrorMessage()}
             <form
-              onSubmit={this.performMutation(RegisterUser, { firstName, lastName, email, password, zipCode })}
+              onSubmit={this.performMutation(RegisterUser, {
+                firstName,
+                lastName,
+                email,
+                password,
+                zipCode
+              })}
             >
               <input
                 value={firstName}

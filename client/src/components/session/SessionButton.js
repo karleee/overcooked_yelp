@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ApolloConsumer, Query } from "react-apollo";
 import { withRouter } from "react-router";
 
+import * as SessionUtil from "../../util/session_util";
 import Queries from "../../graphql/queries";
 const { IS_LOGGED_IN } = Queries;
 
@@ -10,8 +11,7 @@ const SessionButton = props => {
 
   const logOutAndRedirect = client => e => {
     e.preventDefault();
-    localStorage.removeItem("auth-token");
-    client.writeData({ data: { isLoggedIn: false } });
+    SessionUtil.logOutUser(client);
     props.history.push("/");
   };
 
@@ -29,7 +29,7 @@ const SessionButton = props => {
     <ApolloConsumer>
       {client => (
         <Query query={IS_LOGGED_IN}>
-          {({ data: { isLoggedIn} }) => renderSessionButton(client, isLoggedIn)}
+          {({ data: { isLoggedIn } }) => renderSessionButton(client, isLoggedIn)}
         </Query>
       )}
     </ApolloConsumer>

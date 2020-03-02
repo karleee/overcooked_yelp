@@ -1,11 +1,11 @@
 import React from "react";
 import { Mutation } from "react-apollo";
 
+import * as SessionUtil from "../../util/session_util";
 import Mutations from "../../graphql/mutations";
 const { LOGIN_USER } = Mutations;
 
-class Login extends React.Component {
-  // is there a better way to handle this?
+class LoginForm extends React.Component {
   _isMounted = false;
 
   constructor(props) {
@@ -13,19 +13,18 @@ class Login extends React.Component {
     this.state = {
       email: "",
       password: "",
-      errors: []
+      errorMessage: ""
     };
     this.performMutation.bind(this);
+    this.handleGraphQLError.bind(this);
   }
 
   componentDidMount() {
-    // allow for errors to be set on state
     this._isMounted = true;
   }
 
   componentWillUnmount() {
-    this.setState({ errors: [] });
-    // prevent setState when unmounted
+    this.setState({ errorMessage: "" });
     this._isMounted = false;
   }
 
@@ -34,20 +33,12 @@ class Login extends React.Component {
   }
 
   updateCache(client, { data }) {
-    client.writeData({ data: { isLoggedIn: data.login.loggedIn } });
+    SessionUtil.saveUserToCache(client, data.login);
   }
 
   loginAndRedirectTo(url, data) {
-    if (data.login.isLoggedIn) {
-      const { token } = data.login;
-      localStorage.setItem("auth-token", token);
-      this.props.history.push(url);
-    } else {
-      // check with TA if there is a better solution
-      if (this._isMounted) {
-        this.setState({ errors: data.login.errors });
-      }
-    }
+    SessionUtil.saveUserToLocalStorage(data.login);
+    this.props.history.push(url);
   }
 
   performMutation(Mutation, variables) {
@@ -57,11 +48,13 @@ class Login extends React.Component {
     };
   }
 
-  renderErrors() {
-    const { errors } = this.state;
-    if (errors && errors.length > 0) {
-      return errors.map((msg, i) => <li key={i}>{msg}</li>);
-    }
+  renderErrorMessage() {
+    const { errorMessage } = this.state;
+    return (errorMessage) ? <p>{SessionUtil.stripGraphQLPrefix(errorMessage)}</p> : null;
+  }
+
+  handleGraphQLError(error) {
+    if (this._isMounted) this.setState({ errorMessage: error.message })
   }
 
   render() {
@@ -69,12 +62,13 @@ class Login extends React.Component {
     return (
       <Mutation
         mutation={LOGIN_USER}
+        onError={error => this.handleGraphQLError(error)}
         onCompleted={data => this.loginAndRedirectTo("/", data)}
         update={(client, data) => this.updateCache(client, data)}
       >
         {LoginUser => (
           <div>
-            <ul>{this.renderErrors()}</ul>
+            {this.renderErrorMessage()}
             <form onSubmit={this.performMutation(LoginUser, {email, password})}>
               <input
                 value={email}
@@ -95,4 +89,4 @@ class Login extends React.Component {
     );
   }
 }
-export default Login;
+export default LoginForm;

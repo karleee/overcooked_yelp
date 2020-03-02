@@ -11,17 +11,13 @@ const register = async data => {
   try {
     const { message, isValid } = validateRegisterInput(data);
 
-    if (!isValid) {
-      return { loggedIn: false, errors: [message] };
-    }
+    if (!isValid) throw new Error(message);
 
     const { firstName, lastName, email, password, zipCode } = data;
 
     const existingUser = await User.findOne({ email });
 
-    if (existingUser) {
-      return { loggedIn: false, errors: ["User already exists"] };
-    }
+    if (existingUser) throw new Error("User already exists");
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -40,12 +36,12 @@ const register = async data => {
 
     await user.save();
     // we'll create a token for the user
-    const token = jwt.sign({ id: user._id }, keys.secretOrKey);
+    const token = jwt.sign({ _id: user._id }, keys.secretOrKey);
 
     // then return our created token, set loggedIn to be true, null their password, and send the rest of the user
     return { token, loggedIn: true, ...user._doc, password: null };
   } catch (err) {
-    return { loggedIn: false, errors: [err] };
+    throw new Error(err);
   }
 };
 
@@ -64,15 +60,12 @@ const login = async data => {
     // validate the data
     const { message, isValid } = validateLoginInput(data);
 
-    if (!isValid) {
-      return { loggedIn: false, errors: [message] };
-    }
+    if (!isValid) throw new Error(message);
 
     // see if we can find the user
     const user = await User.findOne({ email: data.email });
-    if (!user) {
-      return { loggedIn: false, errors: ["Invalid Credentials"] };
-    }
+
+    if (!user) throw new Error("Invalid Credentials");
 
     // do the passwords match?
     let password_matches = await bcrypt.compareSync(
@@ -80,13 +73,13 @@ const login = async data => {
       user.password
     );
     if (password_matches) {
-      const token = jwt.sign({ id: user._id }, keys.secretOrKey);
+      const token = jwt.sign({ _id: user._id }, keys.secretOrKey);
       return { token, loggedIn: true, ...user._doc, password: null };
     } else {
-      return { loggedIn: false, errors: ["Invalid Credentials"] };
+      throw new Error("Invalid Credentials");
     }
   } catch (err) {
-    return { loggedIn: false, errors: [err] }
+    throw new Error(err);
   }
 };
 
@@ -96,13 +89,17 @@ const verifyUser = async data => {
 
     // get the id of the encrypted user
     const decoded = jwt.verify(token, keys.secretOrKey);
-    const { id } = decoded;
+    const { _id } = decoded;
 
     // return true if the id exists in the database
-    const loggedIn = await User.findById(id).then(user => {
-      return user ? true : false;
-    });
-    return { loggedIn };
+    let sessionUser = await User.findById(_id);
+    if (sessionUser) {
+      let { _id, firstName, lastName } = sessionUser;
+      const loggedIn = !!sessionUser;
+      return { loggedIn, _id, firstName, lastName };
+    } else {
+      return { loggedIn: false, _id: null }
+    }
   } catch (err) {
     return { loggedIn: false };
   }

@@ -5,6 +5,9 @@ export default {
     mutation VerifyUser($token: String!) {
       verifyUser(token: $token) {
         loggedIn
+        _id
+        firstName
+        lastName
       }
     }
   `,
@@ -14,6 +17,9 @@ export default {
         token
         loggedIn
         errors
+        _id
+        firstName
+        lastName
       }
     }
   `,
@@ -23,6 +29,9 @@ export default {
         token
         loggedIn
         errors
+        _id
+        firstName
+        lastName
       }
     }
   `
