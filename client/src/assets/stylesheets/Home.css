@@ -1,14 +1,36 @@
 @import 'variables.css';
 
-.app-wrapper .home-wrapper {
+.home-wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 95%;
 }
 
-.app-wrapper .home-wrapper .logo-wrapper {
+.banner-wrapper {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+.banner-wrapper img {
+  position: absolute;
+  top: -28%;
+  left: -20%;
+  transform: scale(0.75);
+}
+
+.overlay-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.logo-wrapper {
   position: absolute;
   top: 18%;
   display: flex;
@@ -18,7 +40,7 @@
   width: 100%;
 }
 
-.app-wrapper .home-wrapper .logo-wrapper svg text {
+.app-wrapper .home-wrapper .banner-wrapper .logo-wrapper svg text {
   font-family: 'helveticaRounded';
   font-size: 45px;
   font-weight: bold;
@@ -32,30 +54,11 @@
   paint-order: stroke fill;
 }
 
-.app-wrapper .home-wrapper .logo-wrapper img {
-  width: 50px;
-  margin: -3% 0 0 -5.5%;
-}
-
-.banner-wrapper {
-  position: relative;
-  width: 100%;
-  height: 90%;
-  overflow: hidden;
-}
-
-.banner-wrapper img {
+.app-wrapper .home-wrapper .banner-wrapper .logo-wrapper img {
   position: absolute;
-  top: -27%;
-  left: -20%;
-  transform: scale(0.75);
-}
-
-.overlay-wrapper {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  width: 75px;
+  top: 9%;
+  left: 54.7%;
 }
 
 .search-input-wrapper {
@@ -69,21 +72,32 @@
   justify-content: space-between;
   align-items: center;
   width: 70%;
-  height: 7%;
+  height: 50px;
   background: white;
   border-radius: 5px;
 }
 
-.search-input-wrapper .find-input-wrapper {
+.find-input-wrapper,
+.near-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+
+.find-input-wrapper {
   width: 53%;
 }
 
-.search-input-wrapper .near-input-wrapper {
+.near-input-wrapper {
   width: 47%;
 }
 
 .search-input-wrapper .find-input-wrapper label,
 .search-input-wrapper .near-input-wrapper label {
+  display: flex;
+  flex-direction: row;
   font-family: 'helveticaBold';
   font-size: 18px;
   color: var(--mid-text);
@@ -97,21 +111,12 @@
   color: var(--black);
   border: none;
   margin-left: 10px;
-  width: 300px;
+  width: 100%;
 }
 
-.search-input-wrapper .find-input-wrapper,
-.search-input-wrapper .near-input-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-left: 15px;
-  box-sizing: border-box;
-}
-
-.app-wrapper .separator-wrapper {
+.separator-wrapper {
   width: 1px;
-  height: 60%;
+  height: 35px;
   border-right: 1px solid var(--border-color);
 }
 
@@ -120,7 +125,7 @@
   justify-content: center;
   align-items: center;
   width: 70px;
-  height: 100%;
+  height: 50px;
   background: var(--red);
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -128,7 +133,7 @@
 
 .search-button-wrapper:hover {
   background: var(--dark-red);
-  transition: all 0.25s;
+  transition: all 0.15s;
   cursor: pointer;
 }
 
@@ -138,51 +143,130 @@
   height: 20px;
 }
 
-.search-button-wrapper .search-icon {
+.search-icon {
   content: url('/images/homepage/search_icon.png');
   width: 20px;
   height: 20px;
 }
 
-.app-wrapper .home-wrapper .best-restaurants-wrapper {
+.best-restaurants-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-}
-
-.app-wrapper .home-wrapper .best-restaurants-wrapper .find-section-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 30px 200px;
+  padding: 30px 0 40px 0;
   box-sizing: border-box;
-  background: var(--background-color);
+  background-color: var(--background-color);
 }
 
-.app-wrapper .home-wrapper .best-restaurants-wrapper .find-section-wrapper h1 {
+.header-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.best-restaurants-wrapper .header-wrapper h1,
+.header-wrapper h1 {
   font-family: 'helveticaBold';
   font-size: 23px;
   color: var(--red);
 }
 
-.app-wrapper .home-wrapper .best-restaurants-wrapper .find-section-wrapper .restaurants-wrapper {
+.restaurants-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  margin-top: 20px;
+  width: 65%;
+  margin-top: 25px;
 }
 
-/* .app-wrapper .home-wrapper .best-restaurants-wrapper .categories-wrapper {
+.surf-and-turf-wrapper,
+.holiday-desserts-wrapper,
+.chinese-wrapper,
+.burgers-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 200px;
+  height: 190px;
+  border-radius: 5px;
+}
+
+.thumbnail-wrapper {
+  background: gray;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  width: 100%;
+  height: 150px;
+}
+
+.surf-and-turf-wrapper p,
+.holiday-desserts-wrapper p,
+.chinese-wrapper p,
+.burgers-wrapper p {
+  font-family: 'helveticaBold';
+  color: var(--black);
+  font-size: 15px;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  box-sizing: border-box;
+  padding: 10px 0;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.main-content-wrapper {
+  padding: 0 230px;
+}
+
+.header-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0 10px 0;
+  width: 100%;
+}
+
+.other-cities-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.cities-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  font-family: 'helveticaNormal';
+  font-size: 14px;
+  color: var(--mid-text);
+  margin-top: 10px;
+  width: 70%;
+}
+
+.cities-wrapper p {
+  padding: 0 3px 6px 3px;
+  border-bottom: 3px solid transparent;
+}
+
+.cities-wrapper p:hover {
+  cursor: pointer;
+  border-bottom: 3px solid var(--red);
+}
+
+.underline-wrapper {
+  position: absolute;
+  top: 98%;
   width: 100%;
-  padding: 30px 200px;
-  background: var(--background-color);
-  margin-top: 20px;
-} */
+  border-bottom: 1px solid var(--border-color);
+  z-index: -1;
+}
+
+.new-restaurants-wrapper h2 {
+  font-family: 'helveticaBold';
+  font-size: 16px;
+  color: var(--red);
+  margin-top: 40px;
+}
