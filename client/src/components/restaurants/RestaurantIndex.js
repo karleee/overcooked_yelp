@@ -2,11 +2,12 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import Queries from '../../graphql/queries';
 import { Link } from 'react-router-dom';
+import '../../assets/stylesheets/RestaurantIndex.css';
 
 const { FETCH_RESTAURANTS } = Queries; 
 
 // RestaurantIndex component returning information about all restaurants from backend
-const RestaurantIndex = () => {
+const RestaurantIndex = () => {  
   return (
     <Query query={FETCH_RESTAURANTS}>
       {({ loading, error, data }) => {
@@ -14,11 +15,48 @@ const RestaurantIndex = () => {
         if (error) return `Error! ${error.message}`;
 
         return (
-          <div>
+          <div className="list-wrapper">
             <ul>
-              {data.restaurants.map(restaurant => (
-                <li key={restaurant._id}><Link to={`/restaurants/${restaurant._id}`}>{restaurant.name}</Link></li>
-              ))}
+              {data.restaurants.map(restaurant => {
+                // Converting price for each restaurant into dollar sign equivalents
+                const price = restaurant.price;
+                let dollars = [];
+                const min = 1;
+                const max = 7;
+                let weeks;
+
+                for (let i = 0; i < price; i++) {
+                  dollars.push('$');
+                }
+
+                dollars.join('');
+
+                // Creating a random week indicator for newly opened restaurants
+                weeks = Math.floor(Math.random() * (max - min) + min);
+
+                return (
+                  <li key={restaurant._id}>
+                    <Link to={`/restaurants/${restaurant._id}`}>
+                      <div className="big-thumbnail-wrapper">
+                      
+                      </div>
+
+                      <h3>{restaurant.name}</h3>
+
+                      <div className="price-and-category">
+                        <p>{dollars}</p>
+                        <p>{restaurant.category}</p>
+                      </div>
+
+                      <p>{restaurant.location.city}, {restaurant.location.state}</p>
+
+                      <div className="opened-time-wrapper">
+                        <p><i className="fire-icon"></i>Opened {weeks} {weeks > 1 ? 'weeks' : 'week'} ago</p>
+                      </div>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul> 
           </div>
         );

@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('../config/keys.js').mongoURI;
 const schema = require('./schema/schema');
+const cors = require('cors');
 
 const app = express();
 
@@ -18,6 +19,9 @@ mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB successfully'))
   .catch(err => console.log(err));
+
+// Adding cors middleware to app to relax CORS error
+app.use(cors());
 
 // Configuring server with express-graphql using local schema file
 app.use(

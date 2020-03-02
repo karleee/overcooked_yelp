@@ -8,6 +8,14 @@ const RestaurantSchema = new Schema({
     required: true,
     unique: true
   },
+  price: {
+    type: Number,
+    required: true
+  },
+  category: {
+    type: String,
+    required: true
+  },
   phoneNum: {
     type: String,
     required: true,
@@ -30,7 +38,7 @@ const RestaurantSchema = new Schema({
     zipCode: {
       type: Number,
       required: true
-    }
+    } 
   },
   coordinates: {
     latitude: {

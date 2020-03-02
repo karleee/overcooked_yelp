@@ -1,0 +1,17 @@
+.list-wrapper {
+  width: 100%;
+}
+
+.list-wrapper ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  width: 100%;
+}
+
+.list-wrapper ul li {
+  width: 285px;
+  height: 250px;
+  background: orange;
+}

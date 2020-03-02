@@ -242,7 +242,7 @@
   font-family: 'helveticaNormal';
   font-size: 14px;
   color: var(--mid-text);
-  margin-top: 10px;
+  margin-top: 15px;
   width: 70%;
 }
 
@@ -262,6 +262,10 @@
   width: 100%;
   border-bottom: 1px solid var(--border-color);
   z-index: -1;
+}
+
+.new-restaurants-wrapper {
+  width: 100%;
 }
 
 .new-restaurants-wrapper h2 {

@@ -5,8 +5,10 @@ export default {
   FETCH_RESTAURANTS: gql`
     query FetchRestaurants {
       restaurants {
-        _id,
+        id,
         name,
+        price,
+        category,
         phoneNum,
         location {
           streetAddress,
