@@ -8,7 +8,9 @@ const mutation = new GraphQLObjectType({
             type: ReviewType,
             args: {
                 rating: { type: GraphQLInt },
-                body: { type: GraphQLString }
+                body: { type: GraphQLString },
+                userId: { type: new GraphQLNonNull(GraphQLID) },
+                restaurantId: { type: new GraphQLNonNull(GraphQLID) }
             },
             resolve(parent, { rating, body }) {
                 return new Review({ rating, body }).save();
