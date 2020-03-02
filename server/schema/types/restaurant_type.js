@@ -9,10 +9,12 @@ const RestaurantType = new GraphQLObjectType({
         name: { type: GraphQLString },
         id: {type: GraphQLID},
         phoneNum: { type: GraphQLString },
-        streetAddress: { type: GraphQLString },
-        city: { type: GraphQLString },
-        state: { type: GraphQLString },
-        zipCode: { type: GraphQLInt },
+        address: {
+            streetAddress: { type: GraphQLString },
+            city: { type: GraphQLString },
+            state: { type: GraphQLString },
+            zipCode: { type: GraphQLInt },
+        },
         latitude: { type: GraphQLInt },
         longitude: { type: GraphQLInt },
         hours: {
