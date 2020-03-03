@@ -162,115 +162,165 @@ class RestaurantDetail extends Component {
                     <p>{data.restaurant.category}</p>
                   </div>
 
-                  <div className="menu-buttons-wrapper">
-                    <div className="review-button-wrapper">
-                      <i className="star-icon"></i>
+                  <div className="restaurant-detail-menu-buttons-wrapper">
+                    <div className="restaurant-detail-review-button-wrapper">
+                      <i className="restaurant-detail-star-icon"></i>
                       <p>Write a Review</p>
                     </div>
 
-                    <div className="add-photo-button-wrapper">
-                      <i className="camera-icon"></i>
+                    <div className="restaurant-detail-add-photo-button-wrapper">
+                      <i className="restaurant-detail-camera-icon"></i>
                       <p>Add Photo</p>
                     </div>
 
-                    <div className="save-button-wrapper">
-                      <i className="bookmark-icon"></i>
+                    <div className="restaurant-detail-save-button-wrapper">
+                      <i className="restaurant-detail-bookmark-icon"></i>
                       <p>Save</p>
                     </div>
                   </div>
 
-                  <div className="popular-dishes-wrapper">
+                  <div className="restaurant-detail-popular-dishes-wrapper">
                     <h3>Popular Dishes</h3>
 
-                    <div className="dish-1-wrapper">
-                      <div className="dish-image-wrapper"></div>
-                      <p>Dish #1</p>
-                    </div>
+                    <div className="restaurant-detail-dishes-wrapper">
+                      <div className="restaurant-detail-dish-1-wrapper">
+                        <div className="dish-image-wrapper"></div>
+                        <p>Blueberry Pancakes</p>
+                      </div>
 
-                    <div className="dish-2-wrapper">
-                      <div className="dish-image-wrapper"></div>
-                      <p>Dish #2</p>
-                    </div>
+                      <div className="restaurant-detail-dish-2-wrapper">
+                        <div className="dish-image-wrapper"></div>
+                        <p>Toasted S'mores</p>
+                      </div>
 
-                    <div className="dish-3-wrapper">
-                      <div className="dish-image-wrapper"></div>
-                      <p>Dish #3</p>
-                    </div>
-                  </div>
-
-                  <div className="location-and-hours-wrapper">
-                    <h3>Location & Hours</h3>
-
-                    <div className="map-wrapper">
-                      <div className="map-image-wrapper"></div>
-
-                      <div className="map-text-info-wrapper">
-                        <p>{data.restaurant.location.streetAddress}</p> 
-                        <p>{data.restaurant.location.city}, {data.restaurant.location.state} {data.restaurant.location.zipCode}</p>
+                      <div className="restaurant-detail-dish-3-wrapper">
+                        <div className="dish-image-wrapper"></div>
+                        <p>Campfire Breakfast</p>
                       </div>
                     </div>
+                  </div>
 
-                    <div className="hours-wrapper">
-                      {weekdayHours.map((weekday, indx) => {
-                        // Conditionals for determining if a restaurant is open or closed based on time
-                        const isOpen = (currentHour < weekday[0] && ampm === 'am') ||
-                          (currentHour === weekday[0] && currentMinutes > 0 && ampm === 'am');
-                        
-                        const isClosed = (currentHour > weekday[1] && ampm === 'pm');
+                  <div className="restaurant-detail-location-and-hours-wrapper">
+                    <h3>Location & Hours</h3>
 
-                        return (
-                          <div className="weekday-wrapper" key={indx}>
-                            <p>{weekdayLabels[indx]}</p>
-                            <p>{hoursArray[indx].open} - {hoursArray[indx].close}</p>
-                            <p>{((isOpen && currentDay === indx + 1) || (isClosed && currentDay === indx + 1)) ? 'Closed' : ''}</p>
-                          </div>
-                        );
-                      })}
+                    <div className="restaurant-detail-location-and-hours-body-wrapper">
+                      <div className="restaurant-detail-map-wrapper">
+                        <div className="restaurant-detail-map-image-wrapper"></div>
+
+                        <div className="restaurant-detail-map-text-info-wrapper">
+                          <p>{data.restaurant.location.streetAddress}</p> 
+                          <p>{data.restaurant.location.city}, {data.restaurant.location.state} {data.restaurant.location.zipCode}</p>
+                          <p>{data.restaurant.location.city}</p>
+                        </div>
+                      </div>
+
+                      <div className="restaurant-detail-hours-wrapper">
+                        <div className="restaurant-detail-weekday-wrapper">
+                          {weekdayLabels.map(weekday => (
+                            <p>{weekday}</p>
+                          ))}
+                        </div>
+
+                        <div className="restaurant-detail-open-and-close-wrapper">
+                          {weekdayHours.map((weekday, indx) => {
+                            // Conditionals for determining if a restaurant is open or closed based on time
+                            const isOpen = (currentHour > weekday[0] && ampm === 'am') ||
+                              (currentHour === weekday[0] && currentMinutes > 0 && ampm === 'am');
+                            
+                            const isClosed = (currentHour > weekday[1] && ampm === 'pm');
+
+                            return (
+                              <section>
+                                <p>{hoursArray[indx].open} - {hoursArray[indx].close}</p>
+                                <p className="restaurant-detail-closed-wrapper">{((!isOpen && currentDay === indx + 1) || (isClosed && currentDay === indx + 1)) ? 'Closed now' : ''}</p>
+                                <p className="restaurant-detail-open-wrapper">{((isOpen && currentDay === indx + 1) || (!isClosed && currentDay === indx + 1)) ? 'Open now' : ''}</p>
+                              </section>
+                            );
+                          })}
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="amenities-wrapper">
+                  <div className="restaurant-detail-amenities-wrapper">
                     <h3>Amenities</h3>
 
                     <div className="amenities-list-wrapper">
                       <ul>
-                        {amenitiesArray.slice(0, 4).map((amenity, indx) => (
-                          <li key={indx}>
-                            <i className="amenity-icon"></i>
-                            <p>{amenity[0]}</p>
-                            <p>{amenity[1] ? 'Yes' : 'No'}</p>
-                          </li>
-                        ))}
+                        {amenitiesArray.slice(0, 4).map((amenity, indx) => {
+                          // Accounting for number value for health score amenity
+                          let amenityValue;
+                          if (amenity[0] === 'Health Score') {
+                            amenityValue = amenity[1];
+                          } else {
+                            if (amenity[1]) {
+                              amenityValue = 'Yes';
+                            } else {
+                              amenityValue = 'No';
+                            }
+                          }
+
+                          return (
+                            <li key={indx}>
+                              <i className="amenity-icon"></i>
+                              <p>{amenity[0]}</p>
+                              <p>{amenityValue}</p>
+                            </li>
+                          );
+                        })}
                       </ul> 
 
                       {this.state.viewMoreAmenities ? 
                       <ul>
-                        {amenitiesArray.slice(4, amenitiesArray.length).map((amenity, indx) => (
+                        {amenitiesArray.slice(4, amenitiesArray.length).map((amenity, indx) => {
+                          // Accounting for number value for health score amenity
+                          let amenityValue;
+                          if (amenity[0] === 'Health Score') {
+                            amenityValue = amenity[1];
+                          } else {
+                            if (amenity[1]) {
+                              amenityValue = 'Yes';
+                            } else {
+                              amenityValue = 'No';
+                            }
+                          }
+
+                          return (
                             <li key={indx}>
                               <i className="amenity-icon"></i>
                               <p>{amenity[0]}</p>
-                              <p>{amenity[1] ? 'Yes' : 'No'}</p>
+                              <p>{amenityValue}</p>
                             </li>
-                          ))
-                        }
+                          );
+                        })}
                       </ul> : ''}
                     </div>
 
                     <div 
-                      className="view-more-amenities-wrapper"
+                      className="restaurant-detail-view-more-amenities-wrapper"
                       onClick={this.toggleAmenities}
                     >
                       {this.state.viewMoreAmenities ? 'Show Less' : `${amenitiesArray.length - 4} more attributes`}
                     </div>
                   </div>
 
-                  <div className="recommended-reviews-wrapper">
+                  <div className="restaurant-detail-recommended-reviews-wrapper">
                     <h3>Recommended Reviews</h3>
                   </div>
                 </div>
 
                 <div className="restaurant-detail-sidebar-wrapper">
-                  <p>Put phone num here</p>
+                  <div className="restaurant-detail-phone-wrapper">
+                    <i className="restaurant-detail-phone-icon"></i>
+                    <p>{data.restaurant.phoneNum}</p>
+                  </div>
+
+                  <div className="sidebar-underline-wrapper"></div>
+
+                  <div className="restaurant-detail-directions-wrapper">
+                    <i className="restaurant-detail-directions-icon"></i>
+                    <p>Get Directions</p>
+                  </div>
                 </div>
               </div>
             </div>

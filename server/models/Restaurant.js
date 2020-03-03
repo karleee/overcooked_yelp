@@ -124,7 +124,7 @@ const RestaurantSchema = new Schema({
   },
   amenities: {
     healthScore: {
-      type: Number
+      type: String
     },
     takesReservations: {
       type: Boolean
