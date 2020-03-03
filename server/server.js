@@ -1,10 +1,10 @@
 const express = require('express');
-const expressGraphQL = require("express-graphql");
+const expressGraphQL = require('express-graphql');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('../config/keys.js').mongoURI;
-const cors = require("cors");
+const cors = require('cors');
 
 const app = express();
 
@@ -23,17 +23,17 @@ mongoose
   .then(() => console.log('Connected to MongoDB successfully'))
   .catch(err => console.log(err));
 
+// Adding cors middleware to app to relax CORS error
+app.use(cors());
+
 // Parsing requests into JSON
 app.use(bodyParser.json());
 
-// use cors protection
-app.use(cors());
-
 // Setting up Heroku deploy 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  app.get("/", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 

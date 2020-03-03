@@ -1,27 +1,64 @@
-const mongoose = require("mongoose");
-const graphql = require("graphql");
+const mongoose = require('mongoose');
+const graphql = require('graphql');
 const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull } = graphql;
 
-const User = mongoose.model("user");
+const RestaurantType = require('./restaurant_type');
+const ReviewType = require('./review_type');
 const UserType = require("./user_type");
 
-const RootQueryType = new GraphQLObjectType({
-    name: "RootQueryType",
-    fields: () => ({
-        users: {
-            type: new GraphQLList(UserType),
-            resolve() {
-                return User.find({});
-            }
-        },
-        user: {
-            type: UserType,
-            args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
-            resolve(_, { _id }) {
-                return User.findById(_id);
-            }
-        },
-    })
+const Restaurant = mongoose.model('restaurant');
+const Review = mongoose.model('review');
+const User = mongoose.model("user");
+
+const RootQueryType = new GraphQLObjectType({ 
+  name: 'RootQueryType',
+  fields: () => ({
+    // Querires database for all restaurants
+    restaurants: {
+      type: new GraphQLList(RestaurantType),
+      resolve() {
+        return Restaurant.find({});
+      }
+    },
+    // Queries database for one specific restaurant
+    restaurant: {
+      type: RestaurantType,
+      args: { id: { type: new GraphQLNonNull(GraphQLID) }},
+      resolve(_, { id } ) {
+        return Restaurant.findById(id);
+      }
+    },
+    // Queries database for all reviews
+    reviews: {
+      type: ReviewType,
+      resolve() {
+        return Review.find({});
+      }
+    },
+    // Queries database for one specific review
+    review: {
+      type: ReviewType,
+      args: { id: { type: new GraphQLNonNull(GraphQLID) }},
+      resolve(_, { id }) {
+        return Review.findById(id);
+      }
+    },
+    // Queries for all users
+    users: {
+      type: new GraphQLList(UserType),
+      resolve() {
+        return User.find({});
+      }
+    },
+    // Queries for a user
+    user: {
+      type: UserType,
+      args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
+      resolve(_, { _id }) {
+        return User.findById(_id);
+      }
+    }
+  })
 });
 
 module.exports = RootQueryType;
