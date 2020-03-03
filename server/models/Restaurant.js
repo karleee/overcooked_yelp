@@ -124,34 +124,41 @@ const RestaurantSchema = new Schema({
   },
   amenities: {
     healthScore: {
-      type: Number,
-      required: true
+      type: Number
     },
-    reservations: {
-      type: Boolean,
-      required: true
+    takesReservations: {
+      type: Boolean
     },
     happyHourSpecials: {
-      type: Boolean,
-      required: true
+      type: Boolean
     },
     delivery: {
-      type: Boolean,
-      required: true
+      type: Boolean
     },
-    vegetarian: {
-      type: Boolean,
-      required: true
+    vegetarianOptions: {
+      type: Boolean
     },
     takeOut: {
-      type: Boolean,
-      required: true
+      type: Boolean
+    },
+    acceptsCreditCards: {
+      type: Boolean
+    },
+    wifi: {
+      type: Boolean
     }
   },
   reviews: [
     {
       type: Schema.Types.ObjectId,
       ref: 'review'
+    }
+  ],
+  photos: [
+    {
+      url: {
+        type: String
+      }
     }
   ]
 });

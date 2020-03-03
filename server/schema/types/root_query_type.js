@@ -23,7 +23,7 @@ const RootQueryType = new GraphQLObjectType({
       type: RestaurantType,
       args: { id: { type: new GraphQLNonNull(GraphQLID) }},
       resolve(_, { id } ) {
-        return Restaurant.findbyId(id);
+        return Restaurant.findById(id);
       }
     },
     // Queries database for all reviews

@@ -12,7 +12,89 @@
 }
 
 .new-restaurant-thumbnails-wrapper ul li {
-  width: 280px;
-  height: 250px;
-  background: orange;
+  width: 285px;
+  height: 295px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  box-sizing: border-box;
+}
+
+.new-restaurant-thumbnails-wrapper ul li a {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+}
+
+.big-thumbnail-wrapper {
+  width: 100%;
+  height: 170px;
+  background: gray;
+}
+
+.text-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 15px;
+}
+
+.text-info-wrapper h3 {
+  font-family: 'helveticaBold';
+  font-size: 17px;
+  color: var(--blue);
+}
+
+.text-info-wrapper h3:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.price-and-category-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.price-and-category-wrapper p:first-of-type {
+  font-size: 15px;
+  color: var(--black);
+}
+
+.price-and-category-wrapper .dot-wrapper {
+  padding: 0 5px;
+  font-size: 12px;
+  color: var(--subtle-text);
+}
+
+.price-and-category-wrapper p:last-of-type {
+  font-family: 'helveticaNormal';
+  font-size: 14px;
+  color: var(--black);
+}
+
+.location-wrapper {
+  font-family: 'helveticaNormal';
+  font-size: 14px;
+  color: var(--black);
+}
+
+.opened-time-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.fire-icon {
+  content: url('/images/homepage/fire_icon.png');
+  width: 14px;
+  margin-right: 5px;
+}
+
+.opened-time-wrapper p {
+  font-family: 'helveticaMedium';
+  font-size: 14px;
+  color: var(--orange);
 }

@@ -9,6 +9,27 @@ export default {
         name,
         price,
         category,
+        location {
+          streetAddress,
+          city,
+          state,
+          zipCode
+        },
+        coordinates {
+          latitude,
+          longitude
+        }
+      }
+    }
+  `,
+  // Query to fetch one specific restaurant
+  FETCH_RESTAURANT: gql`
+    query FetchRestaurant($id: ID!) {
+      restaurant(id: $id) {
+        id,
+        name,
+        price,
+        category,
         phoneNum,
         location {
           streetAddress,
@@ -52,11 +73,21 @@ export default {
         },
         amenities {
           healthScore,
-          reservations,
+          takesReservations,
           happyHourSpecials,
           delivery,
-          vegetarian,
-          takeOut
+          vegetarianOptions,
+          takeOut,
+          acceptsCreditCards,
+          wifi
+        },
+        reviews {
+          rating,
+          body,
+          date
+        },
+        photos {
+          url
         }
       }
     }

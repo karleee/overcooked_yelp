@@ -35,23 +35,25 @@ const RestaurantIndex = () => {
                 weeks = Math.floor(Math.random() * (max - min) + min);
 
                 return (
-                  <li key={restaurant._id}>
-                    <Link to={`/restaurants/${restaurant._id}`}>
-                      <div className="big-thumbnail-wrapper">
-                      
-                      </div>
+                  <li key={restaurant.id}>
+                    <Link to={`/restaurants/${restaurant.id}`}>
+                      <div className="big-thumbnail-wrapper"></div>
 
-                      <h3>{restaurant.name}</h3>
+                      <div className="text-info-wrapper">
+                        <h3>{restaurant.name}</h3>
 
-                      <div className="price-and-category">
-                        <p>{dollars}</p>
-                        <p>{restaurant.category}</p>
-                      </div>
+                        <div className="price-and-category-wrapper">
+                          <p>{dollars}</p>
+                          <p className="dot-wrapper">•</p>
+                          <p>{restaurant.category}</p>
+                        </div>
 
-                      <p>{restaurant.location.city}, {restaurant.location.state}</p>
+                        <p className="location-wrapper">{restaurant.location.city}, {restaurant.location.state}</p>
 
-                      <div className="opened-time-wrapper">
-                        <p><i className="fire-icon"></i>Opened {weeks} {weeks > 1 ? 'weeks' : 'week'} ago</p>
+                        <div className="opened-time-wrapper">
+                          <i className="fire-icon"></i>
+                          <p>Opened {weeks} {weeks > 1 ? 'weeks' : 'week'} ago</p>
+                        </div>
                       </div>
                     </Link>
                   </li>

@@ -7,17 +7,21 @@ const ReviewSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'user'
   },
+  restaurant: {
+    type: Schema.Types.ObjectId,
+    ref: 'restaurant'
+  },
   rating: {
     type: Number,
     required: true
   },
-  date: {
-    type: Date,
-    default: Date.now
-  },
   body: {
     type: String,
     required: true
+  },
+  date: {
+    type: String,
+    default: true
   }
 });
 
