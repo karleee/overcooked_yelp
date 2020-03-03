@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Schema for restaurants
-const RestaurantSchema = new Schema({
+const RestaurantSchema = new Schema({  
   name: {
     type: String,
     required: true,
@@ -10,7 +10,7 @@ const RestaurantSchema = new Schema({
   },
   price: {
     type: Number,
-    required: true
+    required: true 
   },
   category: {
     type: String,

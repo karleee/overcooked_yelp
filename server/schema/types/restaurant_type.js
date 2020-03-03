@@ -67,7 +67,7 @@ const Photos = new GraphQLObjectType({
 const RestaurantType = new GraphQLObjectType({
   name: 'RestaurantType',
   fields: () => ({
-    id: { type: GraphQLID },
+    _id: { type: GraphQLID },
     name: { type: GraphQLString },
     price: { type: GraphQLInt },
     category: { type: GraphQLString },
@@ -80,13 +80,13 @@ const RestaurantType = new GraphQLObjectType({
     reviews: {
       type: new GraphQLList(require('./review_type')),
       resolve(parentValue) {
-        return Restaurant.findReviews(parentValue.id);
+        return Restaurant.findReviews(parentValue._id);
       }
     },
     photos: {
       type: new GraphQLList(Photos)
     }
   })
-})
+});
 
-module.exports = RestaurantType;
+module.exports = RestaurantType; 

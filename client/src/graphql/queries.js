@@ -5,7 +5,7 @@ export default {
   FETCH_RESTAURANTS: gql`
     query FetchRestaurants {
       restaurants {
-        id,
+        _id,
         name,
         price,
         category,
@@ -24,9 +24,9 @@ export default {
   `,
   // Query to fetch one specific restaurant
   FETCH_RESTAURANT: gql`
-    query FetchRestaurant($id: ID!) {
-      restaurant(id: $id) {
-        id,
+    query FetchRestaurant($_id: ID!) {
+      restaurant(_id: $_id) {
+        _id,
         name,
         price,
         category,

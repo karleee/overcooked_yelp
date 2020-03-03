@@ -1,8 +1,8 @@
-import React from "react";
-import { Mutation } from "react-apollo";
+import React from 'react';
+import { Mutation } from 'react-apollo';
 
-import * as SessionUtil from "../../util/session_util";
-import Mutations from "../../graphql/mutations";
+import * as SessionUtil from '../../util/session_util';
+import Mutations from '../../graphql/mutations';
 const { REGISTER_USER } = Mutations;
 
 class RegisterForm extends React.Component {
@@ -11,12 +11,12 @@ class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      zipCode: "",
-      errorMessage: ""
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      zipCode: '',
+      errorMessage: ''
     };
     this.performMutation.bind(this);
   }
@@ -26,7 +26,7 @@ class RegisterForm extends React.Component {
   }
 
   componentWillUnmount() {
-    this.setState({ errorMessage: "" });
+    this.setState({ errorMessage: '' });
     this._isMounted = false;
   }
 
@@ -65,7 +65,7 @@ class RegisterForm extends React.Component {
       <Mutation
         mutation={REGISTER_USER}
         onError={error => this.handleGraphQLError(error)}
-        onCompleted={data => this.registerAndRedirectTo("/", data)}
+        onCompleted={data => this.registerAndRedirectTo('/', data)}
         update={(client, data) => this.updateCache(client, data)}
       >
         {RegisterUser => (
@@ -82,28 +82,28 @@ class RegisterForm extends React.Component {
             >
               <input
                 value={firstName}
-                onChange={this.update("firstName")}
+                onChange={this.update('firstName')}
                 placeholder="First Name"
               />
               <input
                 value={lastName}
-                onChange={this.update("lastName")}
+                onChange={this.update('lastName')}
                 placeholder="Last Name"
               />
               <input
                 value={email}
-                onChange={this.update("email")}
+                onChange={this.update('email')}
                 placeholder="Email"
               />
               <input
                 value={password}
-                onChange={this.update("password")}
+                onChange={this.update('password')}
                 type="password"
                 placeholder="Password"
               />
               <input
                 value={zipCode}
-                onChange={this.update("zipCode")}
+                onChange={this.update('zipCode')}
                 type="number"
                 placeholder="Zip Code"
               />

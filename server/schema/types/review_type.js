@@ -18,14 +18,14 @@ const ReviewType = new GraphQLObjectType({
     restaurant: {
       type: require('./restaurant_type'),
       resolve(parentValue) {
-        return Review.findById(parentValue.id)
+        return Review.findById(parentValue._id)
           .populate('restaurant')
           .then(review => {
             return review.restaurant;
           });
       }
     },
-    id: { type: GraphQLID },
+    _id: { type: GraphQLID },
     rating: { type: GraphQLInt },
     body: { type: GraphQLString },
     date: { type: GraphQLString }

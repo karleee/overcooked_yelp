@@ -35,8 +35,8 @@ const RestaurantIndex = () => {
                 weeks = Math.floor(Math.random() * (max - min) + min);
 
                 return (
-                  <li key={restaurant.id}>
-                    <Link to={`/restaurants/${restaurant.id}`}>
+                  <li key={restaurant._id}>
+                    <Link to={`/restaurants/${restaurant._id}`}>
                       <div className="big-thumbnail-wrapper"></div>
 
                       <div className="text-info-wrapper">

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import Queries from '../../graphql/queries';
-import { Link } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
-// import '../../assets/stylesheets/RestaurantIndex.css';
 
 const { FETCH_RESTAURANT } = Queries;
 
 // RestaurantIndex component returning information about all restaurants from backend
+// Scrolls automatically to top of the page
 class RestaurantDetail extends Component {
   constructor(props) {
     super(props);
+    window.scrollTo(0, 0);
     this.state = {
       viewMoreAmenities: false
     }
@@ -23,7 +23,7 @@ class RestaurantDetail extends Component {
 
   render() {
     return (
-      <Query query={FETCH_RESTAURANT} variables={{ id: this.props.match.params.id }}>
+      <Query query={FETCH_RESTAURANT} variables={{ _id: this.props.match.params.id }}> 
         {({ loading, error, data }) => {
           if (loading) return 'Loading...';
           if (error) return `Error! ${error.message}`;
