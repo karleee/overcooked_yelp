@@ -148,7 +148,7 @@ class RestaurantDetail extends Component {
                     </div>
                   </div>
 
-                  <div className="ratings-and-reviews-wrapper">
+                  <div className="restaurant-detail-ratings-and-reviews-wrapper">
                     <div className="stars-icon-wrapper">
                       <img src={`/images/restaurant_detail/${stars}.png`} />
                     </div>
@@ -156,9 +156,9 @@ class RestaurantDetail extends Component {
                     <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
                   </div>
 
-                  <div className="detail-price-and-category-wrapper">
+                  <div className="restaurant-detail-price-and-category-wrapper">
                     <p>{dollars}</p>
-                    <p>•</p>
+                    <p className="restaurant-detail-price-and-category-dot-wrapper">•</p>
                     <p>{data.restaurant.category}</p>
                   </div>
 

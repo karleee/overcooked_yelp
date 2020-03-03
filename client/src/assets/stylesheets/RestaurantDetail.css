@@ -60,7 +60,7 @@
   margin-left: 3px;
 }
 
-.ratings-and-reviews-wrapper {
+.restaurant-detail-ratings-and-reviews-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -70,15 +70,40 @@
   height: 25px;
 }
 
-.ratings-and-reviews-wrapper p {
+.restaurant-detail-ratings-and-reviews-wrapper p {
   font-family: 'helveticaNormal';
   color: var(--mid-text);
   font-size: 16px;
   margin-left: 8px;
   line-height: 25px;
 }
-
-.detail-price-and-category-wrapper {
+ 
+.restaurant-detail-price-and-category-wrapper {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.restaurant-detail-price-and-category-wrapper p:first-of-type {
+  font-family: sans-serif;
+  font-size: 16px;
+  color: var(--black);
+}
+
+.restaurant-detail-price-and-category-dot-wrapper {
+  color: var(--subtle-text);
+  font-size: 10px;
+  padding: 0 10px;
+}
+
+.restaurant-detail-price-and-category-wrapper p:last-of-type {
+  font-family: sans-serif;
+  font-size: 16px;
+  color: var(--blue);
+}
+
+.restaurant-detail-price-and-category-wrapper p:last-of-type:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }

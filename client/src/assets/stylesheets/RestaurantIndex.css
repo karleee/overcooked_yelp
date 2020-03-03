@@ -58,6 +58,7 @@
 }
 
 .price-and-category-wrapper p:first-of-type {
+  font-family: sans-serif;
   font-size: 15px;
   color: var(--black);
 }
