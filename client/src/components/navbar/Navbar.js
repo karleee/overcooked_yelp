@@ -39,14 +39,6 @@ const Navbar = () => {
           </div> 
 
           <SessionButton />
-
-          {/* <div className="navbar-login-link-wrapper">
-            <p>Log In</p>
-          </div> 
-
-          <div className="navbar-signup-link-wrapper">
-            <p>Sign Up</p>
-          </div> */}
         </div>
       </div>
     </div>

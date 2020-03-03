@@ -1,0 +1,84 @@
+.restaurant-detail-photos-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.restaurant-detail-main-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 25px 230px;
+  box-sizing: border-box;
+}
+
+.restaurant-detail-body-wrapper {
+  width: 60%;
+  /* background: yellow; */
+}
+
+.restaurant-detail-sidebar-wrapper {
+  width: 35%;
+  /* background: yellowgreen; */
+}
+
+.restaurant-detail-photos-wrapper p {
+  width: 24.85%;
+  height: 240px;
+  background: orange;
+}
+
+.restaurant-detail-header-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.restaurant-detail-header-wrapper h1 {
+  font-family: 'helveticaBold';
+  font-size: 30px;
+  color: var(--black);
+}
+
+.restaurant-detail-claimed-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px 0 0 10px;
+}
+
+.restaurant-detail-claimed-wrapper img {
+  width: 15px;
+}
+
+.restaurant-detail-claimed-wrapper p {
+  font-family: 'helveticaNormal';
+  font-size: 14px;
+  color: var(--black);
+  margin-left: 3px;
+}
+
+.ratings-and-reviews-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.stars-icon-wrapper img {
+  height: 25px;
+}
+
+.ratings-and-reviews-wrapper p {
+  font-family: 'helveticaNormal';
+  color: var(--mid-text);
+  font-size: 16px;
+  margin-left: 8px;
+  line-height: 25px;
+}
+
+.detail-price-and-category-wrapper {
+  display: flex;
+  flex-direction: row;
+}

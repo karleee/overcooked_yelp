@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import Queries from '../../graphql/queries';
 import Navbar from '../navbar/Navbar';
+import '../../assets/stylesheets/reset.css';
+import '../../assets/stylesheets/App.css';
+import '../../assets/stylesheets/RestaurantDetail.css';
 
 const { FETCH_RESTAURANT } = Queries;
 
@@ -127,133 +130,148 @@ class RestaurantDetail extends Component {
             <div className="restaurant-detail-wrapper">
               <Navbar />
 
-              <div className="photo-banner-wrapper">
+              <div className="restaurant-detail-photos-wrapper">
                 <p>Image 1</p>
                 <p>Image 2</p>
                 <p>Image 3</p>
                 <p>Image 4</p>
               </div>
 
-              <h1>{data.restaurant.name}</h1>
+              <div className="restaurant-detail-main-content-wrapper">
+                <div className="restaurant-detail-body-wrapper">
+                  <div className="restaurant-detail-header-wrapper">
+                    <h1>{data.restaurant.name}</h1>
 
-              <div className="ratings-and-reviews-wrapper">
-                <div className="stars-icon-wrapper">
-                  <img src={`/images/restaurant_detail/${stars}.png`} />
-                </div>
+                    <div className="restaurant-detail-claimed-wrapper">
+                      <img src="/images/restaurant_detail/claimed.png" alt="Claimed icon image" />
+                      <p>Claimed</p>
+                    </div>
+                  </div>
 
-                <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
-              </div>
+                  <div className="ratings-and-reviews-wrapper">
+                    <div className="stars-icon-wrapper">
+                      <img src={`/images/restaurant_detail/${stars}.png`} />
+                    </div>
 
-              <div className="detail-price-and-category-wrapper">
-                <p>{dollars}</p>
-                <p>•</p>
-                <p>{data.restaurant.category}</p>
-              </div>
+                    <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
+                  </div>
 
-              <div className="menu-buttons-wrapper">
-                <div className="review-button-wrapper">
-                  <i className="star-icon"></i>
-                  <p>Write a Review</p>
-                </div>
+                  <div className="detail-price-and-category-wrapper">
+                    <p>{dollars}</p>
+                    <p>•</p>
+                    <p>{data.restaurant.category}</p>
+                  </div>
 
-                <div className="add-photo-button-wrapper">
-                  <i className="camera-icon"></i>
-                  <p>Add Photo</p>
-                </div>
+                  <div className="menu-buttons-wrapper">
+                    <div className="review-button-wrapper">
+                      <i className="star-icon"></i>
+                      <p>Write a Review</p>
+                    </div>
 
-                <div className="save-button-wrapper">
-                  <i className="bookmark-icon"></i>
-                  <p>Save</p>
-                </div>
-              </div>
+                    <div className="add-photo-button-wrapper">
+                      <i className="camera-icon"></i>
+                      <p>Add Photo</p>
+                    </div>
 
-              <div className="popular-dishes-wrapper">
-                <h3>Popular Dishes</h3>
+                    <div className="save-button-wrapper">
+                      <i className="bookmark-icon"></i>
+                      <p>Save</p>
+                    </div>
+                  </div>
 
-                <div className="dish-1-wrapper">
-                  <div className="dish-image-wrapper"></div>
-                  <p>Dish #1</p>
-                </div>
+                  <div className="popular-dishes-wrapper">
+                    <h3>Popular Dishes</h3>
 
-                <div className="dish-2-wrapper">
-                  <div className="dish-image-wrapper"></div>
-                  <p>Dish #2</p>
-                </div>
+                    <div className="dish-1-wrapper">
+                      <div className="dish-image-wrapper"></div>
+                      <p>Dish #1</p>
+                    </div>
 
-                <div className="dish-3-wrapper">
-                  <div className="dish-image-wrapper"></div>
-                  <p>Dish #3</p>
-                </div>
-              </div>
+                    <div className="dish-2-wrapper">
+                      <div className="dish-image-wrapper"></div>
+                      <p>Dish #2</p>
+                    </div>
 
-              <div className="location-and-hours-wrapper">
-                <h3>Location & Hours</h3>
+                    <div className="dish-3-wrapper">
+                      <div className="dish-image-wrapper"></div>
+                      <p>Dish #3</p>
+                    </div>
+                  </div>
 
-                <div className="map-wrapper">
-                  <div className="map-image-wrapper"></div>
+                  <div className="location-and-hours-wrapper">
+                    <h3>Location & Hours</h3>
 
-                  <div className="map-text-info-wrapper">
-                    <p>{data.restaurant.location.streetAddress}</p> 
-                    <p>{data.restaurant.location.city}, {data.restaurant.location.state} {data.restaurant.location.zipCode}</p>
+                    <div className="map-wrapper">
+                      <div className="map-image-wrapper"></div>
+
+                      <div className="map-text-info-wrapper">
+                        <p>{data.restaurant.location.streetAddress}</p> 
+                        <p>{data.restaurant.location.city}, {data.restaurant.location.state} {data.restaurant.location.zipCode}</p>
+                      </div>
+                    </div>
+
+                    <div className="hours-wrapper">
+                      {weekdayHours.map((weekday, indx) => {
+                        // Conditionals for determining if a restaurant is open or closed based on time
+                        const isOpen = (currentHour < weekday[0] && ampm === 'am') ||
+                          (currentHour === weekday[0] && currentMinutes > 0 && ampm === 'am');
+                        
+                        const isClosed = (currentHour > weekday[1] && ampm === 'pm');
+
+                        return (
+                          <div className="weekday-wrapper" key={indx}>
+                            <p>{weekdayLabels[indx]}</p>
+                            <p>{hoursArray[indx].open} - {hoursArray[indx].close}</p>
+                            <p>{((isOpen && currentDay === indx + 1) || (isClosed && currentDay === indx + 1)) ? 'Closed' : ''}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="amenities-wrapper">
+                    <h3>Amenities</h3>
+
+                    <div className="amenities-list-wrapper">
+                      <ul>
+                        {amenitiesArray.slice(0, 4).map((amenity, indx) => (
+                          <li key={indx}>
+                            <i className="amenity-icon"></i>
+                            <p>{amenity[0]}</p>
+                            <p>{amenity[1] ? 'Yes' : 'No'}</p>
+                          </li>
+                        ))}
+                      </ul> 
+
+                      {this.state.viewMoreAmenities ? 
+                      <ul>
+                        {amenitiesArray.slice(4, amenitiesArray.length).map((amenity, indx) => (
+                            <li key={indx}>
+                              <i className="amenity-icon"></i>
+                              <p>{amenity[0]}</p>
+                              <p>{amenity[1] ? 'Yes' : 'No'}</p>
+                            </li>
+                          ))
+                        }
+                      </ul> : ''}
+                    </div>
+
+                    <div 
+                      className="view-more-amenities-wrapper"
+                      onClick={this.toggleAmenities}
+                    >
+                      {this.state.viewMoreAmenities ? 'Show Less' : `${amenitiesArray.length - 4} more attributes`}
+                    </div>
+                  </div>
+
+                  <div className="recommended-reviews-wrapper">
+                    <h3>Recommended Reviews</h3>
                   </div>
                 </div>
 
-                <div className="hours-wrapper">
-                  {weekdayHours.map((weekday, indx) => {
-                    // Conditionals for determining if a restaurant is open or closed based on time
-                    const isOpen = (currentHour < weekday[0] && ampm === 'am') ||
-                      (currentHour === weekday[0] && currentMinutes > 0 && ampm === 'am');
-                    
-                    const isClosed = (currentHour > weekday[1] && ampm === 'pm');
-
-                    return (
-                      <div className="weekday-wrapper" key={indx}>
-                        <p>{weekdayLabels[indx]}</p>
-                        <p>{hoursArray[indx].open} - {hoursArray[indx].close}</p>
-                        <p>{((isOpen && currentDay === indx + 1) || (isClosed && currentDay === indx + 1)) ? 'Closed' : ''}</p>
-                      </div>
-                    );
-                  })}
+                <div className="restaurant-detail-sidebar-wrapper">
+                  <p>Put phone num here</p>
                 </div>
-              </div>
-
-              <div className="amenities-wrapper">
-                <h3>Amenities</h3>
-
-                <div className="amenities-list-wrapper">
-                  <ul>
-                    {amenitiesArray.slice(0, 4).map((amenity, indx) => (
-                      <li key={indx}>
-                        <i className="amenity-icon"></i>
-                        <p>{amenity[0]}</p>
-                        <p>{amenity[1] ? 'Yes' : 'No'}</p>
-                      </li>
-                    ))}
-                  </ul> 
-
-                  {this.state.viewMoreAmenities ? 
-                  <ul>
-                    {amenitiesArray.slice(4, amenitiesArray.length).map((amenity, indx) => (
-                        <li key={indx}>
-                          <i className="amenity-icon"></i>
-                          <p>{amenity[0]}</p>
-                          <p>{amenity[1] ? 'Yes' : 'No'}</p>
-                        </li>
-                      ))
-                    }
-                  </ul> : ''}
-                </div>
-
-                <div 
-                  className="view-more-amenities-wrapper"
-                  onClick={this.toggleAmenities}
-                >
-                  {this.state.viewMoreAmenities ? 'Show Less' : `${amenitiesArray.length - 4} more attributes`}
-                </div>
-              </div>
-
-              <div className="recommended-reviews-wrapper">
-                <h3>Recommended Reviews</h3>
               </div>
             </div>
           );
