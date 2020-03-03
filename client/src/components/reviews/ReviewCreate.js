@@ -1,8 +1,20 @@
 import React, { Component } from "react";
-import { Mutation } from "react-apollo";
+import { Mutation, Query } from "react-apollo";
 
 import Mutations from "../../graphql/mutations";
+import Queries from "../../graphql/queries";
+
 const { NEW_REVIEW } = Mutations;
+const { CURRENT_USER } = Queries;
+
+const currentUserId = () => (
+    <Query query={CURRENT_USER}>
+    {({ data }) => { 
+        return (data.currentUserId) ? (data.currentUserId) : null 
+    }}
+    </Query>
+);
+
 
 class ReviewCreate extends Component {
     constructor(props) {
@@ -10,6 +22,7 @@ class ReviewCreate extends Component {
         this.state = {
             rating: 0,
             body: "",
+            userId: currentUserId,
             // ratingdiff: 5
         }
     }
@@ -21,7 +34,7 @@ class ReviewCreate extends Component {
                 rating: this.state.rating,
                 body: this.state.body,
                 restaurantId: this.props.restaurantId,
-                userId: this.props.userId,
+                userId: currentUserId,
             }
         })
         .then(data => {
@@ -31,7 +44,6 @@ class ReviewCreate extends Component {
             })
         })
         
-
     }
 
     updateRating(rating) {
@@ -110,9 +122,9 @@ class ReviewCreate extends Component {
         }
     }
 
-    renderHeartsTwo(){
+    // renderHeartsTwo(){
 
-    }
+    // }
 
     // updateCache(cache, { data: { newReview} }) {
     //     let reviews;
@@ -135,6 +147,7 @@ class ReviewCreate extends Component {
     //         });
     //     }
     // }
+
 
     render() {
         return (
