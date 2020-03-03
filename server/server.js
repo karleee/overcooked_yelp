@@ -1,19 +1,10 @@
 const express = require('express');
-<<<<<<< HEAD
 const expressGraphQL = require('express-graphql');
-=======
-const expressGraphQL = require("express-graphql");
->>>>>>> master
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const db = require('../config/keys.js').mongoURI;
-<<<<<<< HEAD
-const schema = require('./schema/schema');
 const cors = require('cors');
-=======
-const cors = require("cors");
->>>>>>> master
 
 const app = express();
 
@@ -35,20 +26,8 @@ mongoose
 // Adding cors middleware to app to relax CORS error
 app.use(cors());
 
-// Configuring server with express-graphql using local schema file
-app.use(
-  '/graphql',
-  expressGraphQL({
-    schema,
-    graphiql: true
-  })
-);
-
 // Parsing requests into JSON
 app.use(bodyParser.json());
-
-// use cors protection
-app.use(cors());
 
 // Setting up Heroku deploy 
 if (process.env.NODE_ENV === 'production') {
@@ -58,23 +37,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-<<<<<<< HEAD
-// Setting up Apollo
-let uri;
-
-if (process.env.NODE_ENV === 'production') {
-  uri = `/graphql`;
-} else {
-  uri = 'http://localhost:5000/graphql';
-}
-
-// const httpLink = createHttpLink({
-//   uri,
-//   headers: {
-//     authorization: localStorage.getItem("auth-token")
-//   }
-// });
-=======
 // set up graphql
 app.use(
   "/graphql",
@@ -88,6 +50,5 @@ app.use(
     };
   })
 );
->>>>>>> master
 
 module.exports = app;

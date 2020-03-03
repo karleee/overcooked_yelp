@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const graphql = require('graphql');
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLBoolean, GraphQLList } = graphql;
 
@@ -16,37 +15,16 @@ const Birthday = new GraphQLObjectType({
 const UserType = new GraphQLObjectType({
   name: 'UserType',
   fields: () => ({
-    id: { type: GraphQLID },
-    firstName: { type: GraphQLString },
-    lastName: { type: GraphQLString },
-    email: { type: GraphQLString },
-    zipCode: { type: GraphQLInt },
-    birthday: { type: Birthday }
-  })
-})
-=======
-const graphql = require("graphql");
-const {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLID,
-  GraphQLBoolean,
-  GraphQLList
-} = graphql;
-
-const UserType = new GraphQLObjectType({
-  name: "UserType",
-  fields: () => ({
     _id: { type: GraphQLID },
     firstName: { type: GraphQLString },
     lastName: { type: GraphQLString },
     email: { type: GraphQLString },
-    zipCode: { type: GraphQLString },
+    zipCode: { type: GraphQLInt },
+    birthday: { type: Birthday },
     token: { type: GraphQLString },
     loggedIn: { type: GraphQLBoolean },
     errors: { type: new GraphQLList(GraphQLString) }
   })
-});
->>>>>>> master
+})
 
 module.exports = UserType;

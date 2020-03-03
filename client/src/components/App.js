@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AuthRoute } from '../util/route_util';
+import ExampleGreeting from '../components/session/ExampleGreeting';
+import SessionButton from '../components/session/SessionButton';
 import LoginPage from '../components/session/LoginForm';
 import RegisterPage from '../components/session/RegisterForm';
 import RestaurantDetail from './restaurants/RestaurantDetail';
@@ -23,9 +25,9 @@ const App = () => {
           <Route exact path='/' component={Home} />
         </Switch>
       </main>
-      <footer>
+      {/* <footer>
         <p>Footer</p>
-      </footer>
+      </footer> */}
     </div>
   );
 }
