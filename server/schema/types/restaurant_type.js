@@ -1,4 +1,5 @@
 const graphql = require('graphql');
+const mongoose = require('mongoose')
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLFloat, GraphQLBoolean, GraphQLList } = graphql;
 const Restaurant = require('../../models/Restaurant');
 

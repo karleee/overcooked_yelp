@@ -1,9 +1,13 @@
 const graphql = require("graphql");
+const mongoose = require("mongoose")
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID, GraphQLNonNull} = graphql;
 
 const AuthService = require("../services/auth");
 const UserService = require("../services/user");
 const UserType = require("./types/user_type");
+const ReviewType = require("./types/review_type");
+
+const Review = mongoose.model("review")
 
 const mutation = new GraphQLObjectType({
     name: "Mutation",
@@ -61,11 +65,11 @@ const mutation = new GraphQLObjectType({
           args: {
               rating: { type: GraphQLInt },
               body: { type: GraphQLString },
-              userId: { type: new GraphQLNonNull(GraphQLID) },
               restaurantId: { type: new GraphQLNonNull(GraphQLID) }
           },
-          resolve(parent, { rating, body, userId, restaurantId }) {
-              return new Review({ rating, body, userId, restaurantId }).save();
+          async resolve(parent, { rating, body, restaurantId }, context) {
+            const user = await AuthService.verifyUser(context)
+            return new Review({ rating, body, user: user._id, restaurant: restaurantId }).save();
           }
       },
       updateReview: {

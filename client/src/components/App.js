@@ -7,6 +7,8 @@ import LoginPage from '../components/session/LoginForm';
 import RegisterPage from '../components/session/RegisterForm';
 import RestaurantDetail from './restaurants/RestaurantDetail';
 import Home from './home/Home';
+import ReviewCreate from './reviews/ReviewCreate';
+import ReviewDetail from './reviews/ReviewDetail';
 
 const App = () => {
   return (
@@ -23,8 +25,8 @@ const App = () => {
           <AuthRoute path="/signup" component={RegisterPage} routeType="auth" />
           <Route exact path='/restaurants/:id' component={RestaurantDetail} />
           <Route exact path='/' component={Home} />
-          <Route exact path="reviews/create" component={ReviewCreate} />
-          <Route exact path="reviews/details/:id" component={ReviewDetail} />
+          <AuthRoute exact path='/restaurants/:id/reviews/create' component={ReviewCreate} routeType="protected" />
+          <Route exact path='/reviews/details/:id' component={ReviewDetail} />
         </Switch>
       </main>
       {/* <footer>

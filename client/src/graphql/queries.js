@@ -2,34 +2,46 @@ import gql from "graphql-tag";
 
 export default {
   FETCH_REVIEW: gql`
-      query FetchReview($id: ID!) {
-          review(id: $id) {
-              id
-              date
-              body
-              rating
-              user {
-                  id
-                  name
-              }
-          }
+    query FetchReview($userId: ID!, $restaurantId:ID!) {
+      review(userId: $userId, restaurantId: $restaurantId) {
+        id
+        date
+        body
+        rating
+        user {
+            id
+            name
+        }
       }
-      `,
+    }
+  `,
+  FETCH_REVIEWS_OF_RESTAURANT: gql`
+    query FetchReviewsOfRestaurant($restaurantId: ID!) {
+      restaurant(id: $restaurantId) {
+        reviews {
+            id
+            body
+            user {
+                id
+                firstName
+            }
+            date
+            rating
+        }
+      }
+    }     
+  `,
   FETCH_REVIEWS: gql`
-      query FetchReviews($restaurantId: ID!) {
-          restaurant(id: $restaurantId) {
-              reviews {
-                  id
-                  body
-                  user {
-                      id
-                      name
-                  }
-                  date
-                  rating
-              }
-          }
-      }     
+    query FetchReviews {
+      reviews {
+        id
+        user{
+          firstName
+        }
+        body
+        date
+      }
+    }
   `,
   // Query to fetch all restaurants
   FETCH_RESTAURANTS: gql`

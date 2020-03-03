@@ -3,8 +3,11 @@ const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLBoolean} = graphql;
 const Restaurant = mongoose.model("restaurant");
 const User = mongoose.model("user")
-const UserType = require('./user_type');
 const Review = mongoose.model("review")
+
+const UserType = require('./user_type');
+const RestaurantType = require("./restaurant_type");
+
 
 const ReviewType = new GraphQLObjectType({
     name: "ReviewType",
@@ -13,7 +16,7 @@ const ReviewType = new GraphQLObjectType({
         user: {
             type: UserType,
             resolve(parent) {
-                return User.findbyId(parent.user)
+                return User.findById(parent.user)
                     .then(user => user)
                     .catch(err => null);
             }
@@ -21,7 +24,7 @@ const ReviewType = new GraphQLObjectType({
         restaurant: { 
             type: RestaurantType,
             resolve(parentVal) {
-                return Restaurant.findbyId(parentVal.restaurant)
+                return Restaurant.findById(parentVal.restaurant)
                     .then(restaurant => restaurant)
                     .catch(err => null);
             }

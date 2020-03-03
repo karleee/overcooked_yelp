@@ -2,9 +2,17 @@ import React, { Component } from "react";
 import { Query } from "react-apollo";
 import Queries from "../../graphql/queries";
 import ReviewCreate from "./ReviewCreate";
+import { Redirect } from "react-router-dom";
 
+const { FETCH_REVIEW, CURRENT_USER } = Queries;
 
-const { FETCH_REVIEW } = Queries;
+const currentUserId = () => (
+    <Query query={CURRENT_USER}>
+    {({ data }) => { 
+        return (data.currentUserId) ? (data.currentUserId) : null 
+    }}
+    </Query>
+);
 
 class ReviewDetail extends Component {
     constructor(props) {
@@ -23,14 +31,45 @@ class ReviewDetail extends Component {
     }
 
     render() {
-        return (
-            <div>
+      return (
+        <div>
+          <Query query={CURRENT_USER}>
+          {({ data }) => { 
+            if (data.currentUserId) {
+              return (
+              <Query query={FETCH_REVIEW} variables={{userId: currentUserId, restaurantId: this.props.restaurantId}}>
+                {({ loading, error, data }) => {
+                  if(error) { 
+                    debugger;
+                    return (
+                      <Redirect to={{ 
+                        pathname: 'reviews/create', 
+                        state: {userId: currentUserId, restaurantId: this.props.restaurantId}
+                        }} 
+                      />
+                    )
+                  }
+                  return (
+                    <div>
+                      <p>Rating: {data.review.rating} </p>
+                      <p>Created By: {data.review.user.firstName} </p>
+                      <p>Body: {data.review.body} </p>
+                    </div>
+                  )
 
-            </div>
-        )
+                }}
+              </Query>
+              )
+            } else {
+              
+            } 
+          }}
+          </Query>
+        </div>
+      )
         // if (this.state.editing) {
         //     return (
-        //       <Mutation mutation={UPDATE_GOD_NAME}>
+        //       <Mutation mutation={UPDATE_REVIEW}>
         //         {(updateGodName, data) => (
         //           <div>
         //             <form

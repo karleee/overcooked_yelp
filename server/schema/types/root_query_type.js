@@ -30,7 +30,7 @@ const RootQueryType = new GraphQLObjectType({
     },
     // Queries database for all reviews
     reviews: {
-      type: ReviewType,
+      type: new GraphQLList(ReviewType),
       resolve() {
         return Review.find({});
       }

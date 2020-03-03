@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import Queries from '../../graphql/queries';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
+import ReviewDetail from '../reviews/ReviewDetail';
+import ReviewCreate from '../reviews/ReviewCreate';
 // import '../../assets/stylesheets/RestaurantIndex.css';
 
 const { FETCH_RESTAURANT } = Queries;
+
 
 // RestaurantIndex component returning information about all restaurants from backend
 class RestaurantDetail extends Component {
@@ -19,6 +22,10 @@ class RestaurantDetail extends Component {
 
   toggleAmenities() {
     this.setState({ viewMoreAmenities: !this.state.viewMoreAmenities });
+  }
+
+  renderReview(restaurantId) {
+    this.props.history.push(`/restaurants/${restaurantId}/reviews/create`)
   }
 
   render() {
@@ -153,7 +160,7 @@ class RestaurantDetail extends Component {
               <div className="menu-buttons-wrapper">
                 <div className="review-button-wrapper">
                   <i className="star-icon"></i>
-                  <p>Write a Review</p>
+                  <p><button onClick={() => this.renderReview(data.restaurant.id)}>Write a Review</button></p>
                 </div>
 
                 <div className="add-photo-button-wrapper">
