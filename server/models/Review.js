@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// Schema for reviews
 const ReviewSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
@@ -21,7 +22,7 @@ const ReviewSchema = new Schema({
   body: {
     type: String,
     required: true
-  }
+  },
 });
 
 module.exports = mongoose.model('review', ReviewSchema);

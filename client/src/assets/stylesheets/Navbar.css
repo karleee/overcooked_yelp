@@ -1,0 +1,115 @@
+.navbar-wrapper {
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 135px;
+  background: var(--background-color);
+  padding: 20px 40px 40px 40px;
+  box-sizing: border-box;
+}
+
+.main-navbar-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.navbar-home-logo-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 12%;
+}
+
+.navbar-home-logo-wrapper p {
+  font-family: 'helveticaRounded';
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+}
+
+.navbar-home-logo-wrapper img {
+  width: 25px;
+  margin: -22px 0 0 2px;
+}
+
+.navbar-search-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 45%;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.05);
+  margin-left: 5px;
+}
+
+.navbar-search-input-wrapper input[type="text"] {
+  font-family: 'helveticaNormal';
+  font-size: 16px;
+  width: 50%;
+  padding: 0 15px;
+  border: none;
+}
+
+.navbar-search-input-wrapper input[type="text"]::placeholder {
+  color: var(--subtle-text);
+}
+
+.navbar-search-separator-wrapper {
+  width: 1px;
+  height: 25px;
+  border-right: 2px solid var(--light-border-color);
+}
+
+.navbar-search-icon-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 11%;
+  height: 100%;
+  background: var(--light-red);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.navbar-search-icon {
+  content: url('/images/navbar/search_icon.png');
+  width: 22px;
+  height: 22px;
+}
+
+.navbar-search-icon-wrapper:hover {
+  width: 11%;
+  height: 100%;
+  background: var(--button-hover-red);
+  transition: all 0.25s;
+  cursor: pointer;
+}
+
+.navbar-search-icon-wrapper:hover > .navbar-search-icon{
+  content: url('/images/navbar/search_hover_icon.png');
+  width: 22px;
+  height: 22px;
+}
+
+.navbar-links-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 20%;
+  margin-left: 60px;
+}
+
+.navbar-review-link-wrapper {
+  font-family: 'helveticaMedium';
+  font-size: 16px;
+}

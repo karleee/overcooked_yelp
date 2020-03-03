@@ -1,0 +1,7 @@
+// Babel configuration to use React presets
+
+{
+  "presets": [
+    "@babel/preset-react"
+  ]
+}

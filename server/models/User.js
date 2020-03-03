@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// Schema for users
 const UserSchema = new Schema({
   firstName: {
     type: String,
@@ -21,22 +22,8 @@ const UserSchema = new Schema({
     max: 32
   },
   zipCode: {
-    type: Number,
+    type: String,
     required: true
-  },
-  birthday: {
-    month: {
-      type: String,
-      required: true
-    },
-    day: {
-      type: Number,
-      required: true
-    },
-    yr: {
-      type: Number,
-      required: true
-    }
   },
   date: {
     type: Date,
