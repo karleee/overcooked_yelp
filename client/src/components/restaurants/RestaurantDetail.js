@@ -3,11 +3,9 @@ import { Query } from 'react-apollo';
 import Queries from '../../graphql/queries';
 import { Link, Redirect } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
-import ReviewDetail from '../reviews/ReviewDetail';
-import ReviewCreate from '../reviews/ReviewCreate';
 // import '../../assets/stylesheets/RestaurantIndex.css';
 
-const { FETCH_RESTAURANT } = Queries;
+const { FETCH_RESTAURANT, FETCH_REVIEW } = Queries;
 
 
 // RestaurantIndex component returning information about all restaurants from backend
@@ -24,8 +22,12 @@ class RestaurantDetail extends Component {
     this.setState({ viewMoreAmenities: !this.state.viewMoreAmenities });
   }
 
-  renderReview(restaurantId) {
-    this.props.history.push(`/restaurants/${restaurantId}/reviews/create`)
+  renderReview(restaurantId, reviewData) {
+    if(reviewData.data) {
+      this.props.history.push({pathname: `/restaurants/${restaurantId}/reviews/edit`, state: reviewData.data.review})
+    } else {
+      this.props.history.push(`/restaurants/${restaurantId}/reviews/create`)
+    }
   }
 
   render() {
@@ -160,7 +162,17 @@ class RestaurantDetail extends Component {
               <div className="menu-buttons-wrapper">
                 <div className="review-button-wrapper">
                   <i className="star-icon"></i>
-                  <p><button onClick={() => this.renderReview(data.restaurant.id)}>Write a Review</button></p>
+                  <Query query={FETCH_REVIEW} variables={{restaurantId: this.props.match.params.id, userId: "5e5ec80085e9103f20ada4d3"}} >
+                    {(reviewData) => {
+                      if (reviewData.error) {
+                        return null
+                      } else {
+                        return (
+                          <p><button onClick={() => this.renderReview(data.restaurant.id, reviewData)}>Write a Review</button></p>
+                        )
+                      }
+                    }}
+                  </Query>
                 </div>
 
                 <div className="add-photo-button-wrapper">

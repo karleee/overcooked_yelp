@@ -83,19 +83,16 @@ const mutation = new GraphQLObjectType({
           resolve(parent, { id, rating, date, body }) {
               const updtObj = {};
 
-              if(id) updtObj.id = id;
+              // if(id) updtObj.id = id;
               if(date) updtObj.date = date;
               if(body) updtObj.body = body;
               if(rating) updtObj.rating = rating;
-
-              return Review.findOneAndUpdate(
-                  { id: id },
-                  { $set: updtObj },
-                  { new: true },
-                  ( err, review ) => {
-                      return review;
-                  }
-              )
+              console.log(updtObj)
+              return Review.findByIdAndUpdate(
+                  id,
+                  updtObj,
+                  { new: true }
+              ).then(review => review)
           }
       },
       deleteReview: {

@@ -9,8 +9,8 @@ export default {
         body
         rating
         user {
-            id
-            name
+            _id
+            firstName
         }
       }
     }
@@ -22,7 +22,7 @@ export default {
             id
             body
             user {
-                id
+                _id
                 firstName
             }
             date

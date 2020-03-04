@@ -22,14 +22,17 @@ export default {
           }
       }
   `,
-  UPDATE_REVIEW_BODY: gql`
-      mutation updateReview($id: ID!, $body: String) {
-          updateReview(id: $id, body: $body) {
+  UPDATE_REVIEW: gql`
+      mutation updateReview($id: ID!, $body: String, $rating: Int, $date: String) {
+          updateReview(id: $id, body: $body, rating: $rating, date: $date) {
               id
               body
+              rating
+              date
           }
       }
   `,
+  
   VERIFY_USER: gql`
     mutation VerifyUser($token: String!) {
       verifyUser(token: $token) {

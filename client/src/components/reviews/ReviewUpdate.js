@@ -5,31 +5,36 @@ import Mutations from "../../graphql/mutations";
 import Queries from "../../graphql/queries";
 import { Redirect } from "react-router-dom";
 
-const { NEW_REVIEW } = Mutations;
+const { UPDATE_REVIEW } = Mutations;
 const { FETCH_REVIEWS } = Queries;
 
-class ReviewCreate extends Component {
+class ReviewUpdate extends Component {
   constructor(props) {
       super(props);
+      const review = this.props.location.state
       this.state = {
-          rating: 0,
-          body: "",
+          id: review.id,
+          rating: review.rating || 0,
+          body: review.body || "",
           restaurantId: this.props.match.params.id,
       }
   }
 
-  handleSubmit(e, newReview) {
+  handleSubmit(e, updateReview) {
       e.preventDefault();
-      newReview({
+      updateReview({
           variables: {
+              id: this.state.id,
               rating: this.state.rating,
               body: this.state.body,
               restaurantId: this.state.restaurantId,
+              date: `Edited ${new Date().toString()}`
           }
       })
-      .then(() => {
-        this.props.history.push(`/restaurants/${this.state.restaurantId}`)
-    })
+      .then(data => {
+          this.props.history.push(`/restaurants/${this.state.restaurantId}`)
+      })
+      
   }
 
   updateRating(rating) {
@@ -108,6 +113,10 @@ class ReviewCreate extends Component {
       }
   }
 
+  // renderHeartsTwo(){
+
+  // }
+
   updateCache(cache, { data: { newReview} }) {
       let reviews;
       try {
@@ -140,13 +149,13 @@ class ReviewCreate extends Component {
   render() {
     return (
       <Mutation
-        mutation={NEW_REVIEW}
-        update={(cache, data) => this.updateCache(cache, data)}
+        mutation={UPDATE_REVIEW}
+        // update={(cache, data) => this.updateCache(cache, data)}
       >
-        {(newReview, {data}) => (
+        {(updateReview, {data}) => (
           <div>
             {this.renderHearts()}
-            <form onSubmit={e=> this.handleSubmit(e, newReview)}>
+            <form onSubmit={e=> this.handleSubmit(e, updateReview)}>
               <textarea
                 onChange={this.updateBody()} 
                 value={this.state.body}                               
@@ -161,4 +170,4 @@ class ReviewCreate extends Component {
   }
 }
 
-export default ReviewCreate;
+export default ReviewUpdate;

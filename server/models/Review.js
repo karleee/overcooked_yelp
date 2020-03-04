@@ -17,7 +17,7 @@ const ReviewSchema = new Schema({
   },
   date: {
     type: String,
-    default: new Date().toString()
+    default: `Created ${new Date().toString()}`
   },
   body: {
     type: String,
