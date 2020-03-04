@@ -4,6 +4,7 @@ import Queries from '../../graphql/queries';
 import { Link } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
 // import '../../assets/stylesheets/RestaurantIndex.css';
+import RestaurantMap from '../map/RestaurantMap';
 
 const { FETCH_RESTAURANT } = Queries;
 
@@ -190,7 +191,9 @@ class RestaurantDetail extends Component {
                 <h3>Location & Hours</h3>
 
                 <div className="map-wrapper">
-                  <div className="map-image-wrapper"></div>
+                  <div className="map-image-wrapper">
+                    <RestaurantMap restaurants={[data.restaurant]} />
+                  </div>
 
                   <div className="map-text-info-wrapper">
                     <p>{data.restaurant.location.streetAddress}</p> 

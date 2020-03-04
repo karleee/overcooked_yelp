@@ -16,12 +16,15 @@ class App extends React.Component {
   }
   
   addScriptToPage(scriptUrl) {
+    // render a script tag for scriptUrl in the head of the HTML page
     const script = document.createElement("script");
     script.src = scriptUrl;
-    document.body.appendChild(script);
+    document.head.appendChild(script);
   }
 
   componentDidMount() {
+    // place the google maps api as a script tag in the head
+    // this script places a google object on window.google
     let mapsApiUrl = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}`;
     this.addScriptToPage(mapsApiUrl);
   }
