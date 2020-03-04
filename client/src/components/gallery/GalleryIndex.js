@@ -82,16 +82,24 @@ const GalleryIndex = props => {
                 </div>
 
                 <div className="photo-gallery-filter-options-wrapper">
-                  <p>All</p>
-                  <p>Food</p>
-                  <p>Inside</p>
-                  <p>Drink</p>
-                  <p>Menu</p>
-                  <p>Outside</p>
+                  <div className="photo-gallery-filter-links-wrapper">
+                    <p>All</p>
+                    <p>Food</p>
+                    <p>Inside</p>
+                    <p>Drink</p>
+                    <p>Menu</p>
+                    <p>Outside</p>
+                  </div>
+                  
+                  <div className="photo-gallery-underline-wrapper"></div>
                 </div>
 
-                <div className="photo-gallery-main-content">
-                  {data.restaurant.photos.map(photo => <img src={photo} alt="Restaurant photo thumbnail" />)}
+                <div className="photo-gallery-main-gallery-wrapper">
+                  {data.restaurant.photos.map(photo => 
+                    <div className="gallery-thumbnail-photo-wrapper">
+                      <img src={photo} alt="Restaurant photo thumbnail" />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
