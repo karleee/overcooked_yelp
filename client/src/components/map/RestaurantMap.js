@@ -1,6 +1,17 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import { withRouter } from 'react-router-dom';
 import '../../assets/stylesheets/RestaurantMap.css';
 
+
+const RestaurantInfoContent = ({ restaurant }) => (
+  <div className="restaurant-info-content">
+    <img src="https://via.placeholder.com/150x75" />
+    <h3>{restaurant.name}</h3>
+    <p>need avg reviews here</p>
+    <p>{restaurant.category}</p>
+  </div>
+);
 
 class RestaurantMap extends React.Component {
   
@@ -8,41 +19,20 @@ class RestaurantMap extends React.Component {
     super(props);
     // move all this to render?
     this.singleRestaurant = (this.props.restaurants.length === 1);
+    this.redirectToRestaurant = this.redirectToRestaurant.bind(this);
   }
 
-  getAveragedCenter(restaurants) {
-    // holder variables to be returned
-    let lat, lng;
-    // let minLat, maxLat, minLng, maxLng;
-
-    // set initial mins and maxs to the first restaurant
-    let { coordinates } = restaurants[0];
-    let minLat = coordinates.latitude;
-    let maxLat = coordinates.latitude;
-    let minLng = coordinates.longitude;
-    let maxLng = coordinates.longitude;
-    // calculate mins and maxes
-    restaurants.forEach(restaurant => {
-      let rLat = restaurant.coordinates.latitude;
-      let rLng = restaurant.coordinates.longitude;
-      if (rLat < minLat) minLat = rLat;
-      if (rLat > maxLat) maxLat = rLat;
-      if (rLng < maxLng) minLng = rLng;
-      if (rLng > maxLng) maxLng = rLng;
-    });
-
-    lat = (minLat + maxLat)/2;
-    lng = (minLng + maxLng)/2;
-    return { lat, lng };
+  redirectToRestaurant(restaurant) {
+    this.props.history.push(`/restaurants/${restaurant.id}`);
   }
 
   componentDidMount() {
+    // problem: might not rerender if props change without reload
     // move all this to render?
-    // problem: will not rerender if props change without reload
-    // might be ok for now
+    // works ok for now
 
     // window.google is defined in App.js
-    // need to ensure this is loaded
+    // sometimes fails if not reloaded
     const google = window.google;
 
     // render the map
@@ -54,26 +44,62 @@ class RestaurantMap extends React.Component {
 
     // place the marker(s) on the map
     this.props.restaurants.forEach(restaurant => {
-      // get restaurant coords
+      // create a position object from restaurant coords
       const { latitude, longitude } = restaurant.coordinates;
-      // create a position object
       const position = new google.maps.LatLng(latitude, longitude);
+
       // place it on the map
       const marker = new google.maps.Marker({
         position,
         map: this.map
       });
+
+      // only show info window and click redirect if showing a list
+      if (!this.singleRestaurant) {
+
+        // redirect to the restaurant_show page on click
+        marker.addListener('click', () => this.redirectToRestaurant(restaurant));
+
+        // create a DOM element to render info to
+        let restaurantInfoNode = document.createElement("div");
+
+        // render the info to the DOM element
+        ReactDOM.render(<RestaurantInfoContent restaurant={restaurant} />, restaurantInfoNode);
+
+        // create an info window out of the DOM element
+        let restaurantInfoWindow = new google.maps.InfoWindow({
+          content: restaurantInfoNode,
+          map: this.map,
+          position
+        });
+
+        // close the info window once created
+        restaurantInfoWindow.close();
+
+        // register mouseover events for info window stuff
+        marker.addListener('mouseover', function () {
+          restaurantInfoWindow.open(this.map, this);
+        });
+        marker.addListener('mouseout', function () {
+          restaurantInfoWindow.close();
+        });
+      } 
+
       // extend the bounds to fit this position
       bounds.extend(position);
     })
 
-    // auto-zoom & auto-center
+    // auto-zoom
     this.map.fitBounds(bounds);
+    
+    // zoom out a bit if we're too zoomed in
     let theMap = this.map;
     var listener = google.maps.event.addListener(theMap, "idle", function () {
       if (theMap.getZoom() > 16) theMap.setZoom(16);
       google.maps.event.removeListener(listener);
     });
+
+    // auto-center
     this.map.panToBounds(bounds);
   }
 
@@ -87,4 +113,5 @@ class RestaurantMap extends React.Component {
   }
 }
 
-export default RestaurantMap;
+// add withRouter to give access to history/redirect
+export default withRouter(RestaurantMap);
