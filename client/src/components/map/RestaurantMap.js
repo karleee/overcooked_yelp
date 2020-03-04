@@ -48,10 +48,23 @@ class RestaurantMap extends React.Component {
       const { latitude, longitude } = restaurant.coordinates;
       const position = new google.maps.LatLng(latitude, longitude);
 
+
+      // different icons for hover states
+      var iconOff = {
+        url: "https://icons.iconarchive.com/icons/paomedia/small-n-flat/256/map-marker-icon.png",
+        scaledSize: new google.maps.Size(40, 40),
+      };
+      var iconOn = {
+        url: "https://bonnicilawgroup.com/wp-content/uploads/2015/08/map-marker-icon.png",
+        scaledSize: new google.maps.Size(40, 40),
+      };
+      
+
       // place it on the map
       const marker = new google.maps.Marker({
         position,
-        map: this.map
+        map: this.map,
+        icon: iconOff
       });
 
       // only show info window and click redirect if showing a list
@@ -76,12 +89,16 @@ class RestaurantMap extends React.Component {
         // close the info window once created
         restaurantInfoWindow.close();
 
-        // register mouseover events for info window stuff
+        // open window and change icon on hover
         marker.addListener('mouseover', function () {
           restaurantInfoWindow.open(this.map, this);
+          marker.setIcon(iconOn);
         });
+
+        // close window and revert icon on mouseoff
         marker.addListener('mouseout', function () {
           restaurantInfoWindow.close();
+          marker.setIcon(iconOff);
         });
       } 
 
