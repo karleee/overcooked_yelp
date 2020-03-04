@@ -71,23 +71,23 @@ const GalleryIndex = props => {
                   <div className="photo-gallery-text-wrapper">
                     <Link to={`/restaurants/${data.restaurant._id}`}>{data.restaurant.name}</Link>
 
-                    <div className="stars-icon-wrapper">
+                    <div className="photo-gallery-stars-icon-wrapper">
                       <img src={`/images/restaurant_detail/${stars}.png`} />
                     </div>
-                  </div>
-
-                  <div className="photo-gallery-filter-options-wrapper">
-                    <p>All</p>
-                    <p>Food</p>
-                    <p>Inside</p>
-                    <p>Drink</p>
-                    <p>Menu</p>
-                    <p>Outside</p>
                   </div>
 
                   <div className="photo-gallery-reviews-wrapper">
                     <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
                   </div>
+                </div>
+
+                <div className="photo-gallery-filter-options-wrapper">
+                  <p>All</p>
+                  <p>Food</p>
+                  <p>Inside</p>
+                  <p>Drink</p>
+                  <p>Menu</p>
+                  <p>Outside</p>
                 </div>
 
                 <div className="photo-gallery-main-content">

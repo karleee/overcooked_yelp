@@ -16,9 +16,16 @@ class RestaurantDetail extends Component {
     super(props);
     window.scrollTo(0, 0);
     this.state = {
+      currentTime: new Date(),
       viewMoreAmenities: false
     }
     this.toggleAmenities = this.toggleAmenities.bind(this);
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({ currentTime: new Date() })
+    }, 1000);
   }
 
   toggleAmenities() {
@@ -43,10 +50,9 @@ class RestaurantDetail extends Component {
           dollars.join('');
 
           // Getting current time
-          const currentDate = new Date();
-          const currentHour = currentDate.getHours();
-          const currentMinutes = currentDate.getMinutes();
-          const currentDay = currentDate.getDay();
+          const currentHour = this.state.currentTime.getHours();
+          const currentMinutes = this.state.currentTime.getMinutes();
+          const currentDay = this.state.currentTime.getDay();
           const ampm = (currentHour >= 12) ? 'pm' : 'am';
           let adjustedHour;
 
