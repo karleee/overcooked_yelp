@@ -125,8 +125,8 @@ class GalleryIndex extends Component {
                 </div>
               </div>
 
-              <div className="photo-gallery-modal-wrapper" onClick={this.toggleModal}>
-                {this.state.showModal ? <Modal restaurant={data.restaurant} imageNum={this.state.currentImage} /> : ''}
+              <div className="photo-gallery-modal-wrapper">
+                {this.state.showModal ? <Modal restaurant={data.restaurant} imageNum={this.state.currentImage} toggleModal={this.toggleModal} /> : ''}
               </div>
             </div>
           );

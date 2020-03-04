@@ -7,7 +7,8 @@ class Modal extends React.Component {
     super(props);
     this.state = { 
       currentImage: this.props.imageNum,
-      allImages: this.props.restaurant.photos
+      allImages: this.props.restaurant.photos,
+      showModal: true
     };
     this.previous = this.previous.bind(this);
     this.next = this.next.bind(this);
@@ -44,6 +45,8 @@ class Modal extends React.Component {
   render() {
     return (
       <div className="modal-wrapper">  
+        <div className="modal-background-wrapper" onClick={this.props.toggleModal}></div>
+
         <div className="modal-main-content-wrapper">    
           <div className="main-image-wrapper">
             <div className="previous-arrow-wrapper" onClick={this.previous}>
