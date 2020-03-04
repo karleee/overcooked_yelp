@@ -125,3 +125,9 @@
 .gallery-thumbnail-photo-wrapper img {
   height: 100%;
 }
+
+.gallery-thumbnail-photo-wrapper:hover {
+  opacity: 0.8;
+  transition: opacity 0.25s;
+  cursor: pointer;
+}
