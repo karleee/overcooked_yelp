@@ -1,8 +1,49 @@
+.restaurant-detail-banner-wrapper {
+  position: relative;
+}
+
 .restaurant-detail-photos-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+}
+
+.restaurant-detail-body-wrapper {
+  width: 63%;
+}
+
+.restaurant-detail-thumbnail-wrapper {
+  width: 24.85%;
+  height: 240px;
+  overflow: hidden;
+}
+
+.restaurant-detail-thumbnail-wrapper img {
+  width: 100%;
+}
+
+.restaurant-detail-gallery-button-wrapper {
+  position: absolute;
+  top: 78%;
+  left: 92%;
+}
+
+.restaurant-detail-gallery-button-wrapper a {
+  font-family: 'helveticaBold';
+  font-size: 14px;
+  color: var(--mid-text);
+  background: white;
+  padding: 6px 18px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.restaurant-detail-gallery-button-wrapper:hover {
+  background: var(--light-border-color);
+  transition: background 0.5s;
+  cursor: pointer;
 }
 
 .restaurant-detail-main-content-wrapper {
@@ -12,16 +53,6 @@
   width: 100%;
   padding: 25px 230px;
   box-sizing: border-box;
-}
-
-.restaurant-detail-body-wrapper {
-  width: 63%;
-}
-
-.restaurant-detail-photos-wrapper p {
-  width: 24.85%;
-  height: 240px;
-  background: orange;
 }
 
 .restaurant-detail-header-wrapper {
@@ -288,7 +319,7 @@
   font-family: 'helveticaBold';
   font-size: 12.5px;
   color: var(--red);
-  letter-spacing: -0.15px;
+  letter-spacing: -0.15px; 
   margin-left: 5px;
 }
 

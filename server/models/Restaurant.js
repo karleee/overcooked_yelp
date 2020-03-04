@@ -156,9 +156,7 @@ const RestaurantSchema = new Schema({
   ],
   photos: [
     {
-      url: {
-        type: String
-      }
+      type: String
     }
   ]
 });

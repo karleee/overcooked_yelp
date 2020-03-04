@@ -1,0 +1,14 @@
+.restaurant-photo-gallery-main-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.restaurant-photo-gallery-main-content-wrapper .main-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* width: 60%; */
+  background: yellow;
+}

@@ -37,7 +37,9 @@ const RestaurantIndex = () => {
                 return (
                   <li key={restaurant._id}>
                     <Link to={`/restaurants/${restaurant._id}`}>
-                      <div className="big-thumbnail-wrapper"></div>
+                      <div className="big-thumbnail-wrapper">
+                        <img src={restaurant.photos[0]} alt="Restaurant thumbnail image" />
+                      </div>
 
                       <div className="text-info-wrapper">
                         <h3>{restaurant.name}</h3>

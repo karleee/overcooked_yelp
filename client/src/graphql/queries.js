@@ -18,7 +18,8 @@ export default {
         coordinates {
           latitude,
           longitude
-        }
+        },
+        photos
       }
     }
   `,
@@ -86,9 +87,7 @@ export default {
           body,
           date
         },
-        photos {
-          url
-        }
+        photos
       }
     }
   `,

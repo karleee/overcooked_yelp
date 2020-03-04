@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
+import { Link } from 'react-router-dom';
 import Queries from '../../graphql/queries';
 import Navbar from '../navbar/Navbar';
 import '../../assets/stylesheets/reset.css';
@@ -47,6 +48,14 @@ class RestaurantDetail extends Component {
           const currentMinutes = currentDate.getMinutes();
           const currentDay = currentDate.getDay();
           const ampm = (currentHour >= 12) ? 'pm' : 'am';
+          let adjustedHour;
+
+          // Adjusting time for 12 hour format
+          if (currentHour > 12) {
+            adjustedHour = currentHour - 12;
+          } else {
+            adjustedHour = currentHour;
+          }
 
           // Getting restaurant open and close hours
           const hours = data.restaurant.hours;
@@ -130,12 +139,19 @@ class RestaurantDetail extends Component {
             <div className="restaurant-detail-wrapper">
               <Navbar />
 
+            <div className="restaurant-detail-banner-wrapper">
               <div className="restaurant-detail-photos-wrapper">
-                <p>Image 1</p>
-                <p>Image 2</p>
-                <p>Image 3</p>
-                <p>Image 4</p>
+                {data.restaurant.photos.slice(0, 4).map(photo => (
+                  <div className="restaurant-detail-thumbnail-wrapper">
+                    <img src={photo} alt="Restaurant photo" />
+                  </div>
+                ))}
               </div>
+
+              <div className="restaurant-detail-gallery-button-wrapper">
+                <Link to={`/restaurants/${data.restaurant._id}/photos`}>See All {data.restaurant.photos.length}</Link>
+              </div>
+            </div>
 
               <div className="restaurant-detail-main-content-wrapper">
                 <div className="restaurant-detail-body-wrapper">
@@ -223,17 +239,16 @@ class RestaurantDetail extends Component {
 
                         <div className="restaurant-detail-open-and-close-wrapper">
                           {weekdayHours.map((weekday, indx) => {
-                            // Conditionals for determining if a restaurant is open or closed based on time
-                            const isOpen = (currentHour > weekday[0] && ampm === 'am') ||
-                              (currentHour === weekday[0] && currentMinutes > 0 && ampm === 'am');
-                            
-                            const isClosed = (currentHour > weekday[1] && ampm === 'pm');
-
+                            // Conditional for determining if a restaurant is open based on time
+                            const isOpen = (adjustedHour > weekday[0] && ampm === 'am') ||
+                              (adjustedHour === weekday[0] && currentMinutes > 0 && ampm === 'am') ||
+                              (adjustedHour < weekday[0] && adjustedHour < weekday[1] && ampm === 'pm');
+                                                        
                             return (
                               <section>
                                 <p>{hoursArray[indx].open} - {hoursArray[indx].close}</p>
-                                <p className="restaurant-detail-closed-wrapper">{((!isOpen && currentDay === indx + 1) || (isClosed && currentDay === indx + 1)) ? 'Closed now' : ''}</p>
-                                <p className="restaurant-detail-open-wrapper">{((isOpen && currentDay === indx + 1) || (!isClosed && currentDay === indx + 1)) ? 'Open now' : ''}</p>
+                                <p className="restaurant-detail-closed-wrapper">{!isOpen && currentDay === indx + 1 ? 'Closed now' : ''}</p>
+                                <p className="restaurant-detail-open-wrapper">{isOpen && currentDay === indx + 1 ? 'Open now' : ''}</p>
                               </section>
                             );
                           })}
