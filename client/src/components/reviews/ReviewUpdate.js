@@ -1,9 +1,13 @@
-import React, { Component } from "react";
-import { Mutation, Query } from "react-apollo";
+import React, { Component } from 'react';
+import { Mutation, Query } from 'react-apollo';
 
-import Mutations from "../../graphql/mutations";
-import Queries from "../../graphql/queries";
-import { Redirect } from "react-router-dom";
+import Mutations from '../../graphql/mutations';
+import Queries from '../../graphql/queries';
+import { Redirect } from 'react-router-dom';
+import '../../assets/stylesheets/reset.css';
+import '../../assets/stylesheets/App.css';
+import '../../assets/stylesheets/ReviewCreateUpdate.css';
+
 
 const { UPDATE_REVIEW } = Mutations;
 const { FETCH_REVIEW } = Queries;
@@ -16,9 +20,10 @@ class ReviewUpdate extends Component {
       this.state = {
           _id: review._id,
           rating: review.rating || 0,
-          body: review.body || "",
+          body: review.body || '',
           restaurantId: this.props.match.params.id,
           userId,
+          restaurantName: this.props.location.state.restaurantName
       }
   }
 
@@ -54,62 +59,70 @@ class ReviewUpdate extends Component {
       //not dry, make dry
       if(this.state.rating === 0) {
           return (
-              <div>
-                  <i className="far fa-heart" onClick={this.updateRating(1)}></i>
-                  <i className="far fa-heart" onClick={this.updateRating(2)}></i>
-                  <i className="far fa-heart" onClick={this.updateRating(3)}></i>
-                  <i className="far fa-heart" onClick={this.updateRating(4)}></i>
-                  <i className="far fa-heart" onClick={this.updateRating(5)}></i>
+              <div className='edit-review-hearts'>
+                  <i className='far fa-heart' onClick={this.updateRating(1)}></i>
+                  <i className='far fa-heart' onClick={this.updateRating(2)}></i>
+                  <i className='far fa-heart' onClick={this.updateRating(3)}></i>
+                  <i className='far fa-heart' onClick={this.updateRating(4)}></i>
+                  <i className='far fa-heart' onClick={this.updateRating(5)}></i>
+                  <p className='rating-message'>Select rating</p>
               </div>
           )
       } else if (this.state.rating === 1) {
           return (
-              <div>
-                  <i className="fas fa-heart" onClick={this.updateRating(1)}></i>
-                  <i className="far fa-heart" onClick={this.updateRating(2)}></i>
-                  <i className="far fa-heart" onClick={this.updateRating(3)}></i>
-                  <i className="far fa-heart" onClick={this.updateRating(4)}></i>
-                  <i className="far fa-heart" onClick={this.updateRating(5)}></i>
+              <div className='edit-review-hearts'>
+                  <i className='fas fa-heart' onClick={this.updateRating(1)}></i>
+                  <i className='far fa-heart' onClick={this.updateRating(2)}></i>
+                  <i className='far fa-heart' onClick={this.updateRating(3)}></i>
+                  <i className='far fa-heart' onClick={this.updateRating(4)}></i>
+                  <i className='far fa-heart' onClick={this.updateRating(5)}></i>
+                  <p className='rating-message'>Eek! Methinks not.</p>
+
               </div>
           )
       } else if (this.state.rating === 2) {
           return (
-              <div>
-                  <i className="fas fa-heart" onClick={this.updateRating(1)}></i>
-                  <i className="fas fa-heart" onClick={this.updateRating(2)}></i>
-                  <i className="far fa-heart" onClick={this.updateRating(3)}></i>
-                  <i className="far fa-heart" onClick={this.updateRating(4)}></i>
-                  <i className="far fa-heart" onClick={this.updateRating(5)}></i>
+              <div className='edit-review-hearts'>
+                  <i className='fas fa-heart' onClick={this.updateRating(1)}></i>
+                  <i className='fas fa-heart' onClick={this.updateRating(2)}></i>
+                  <i className='far fa-heart' onClick={this.updateRating(3)}></i>
+                  <i className='far fa-heart' onClick={this.updateRating(4)}></i>
+                  <i className='far fa-heart' onClick={this.updateRating(5)}></i>
+                  <p className='rating-message'>Meh, I've experience better.</p>
               </div>
           )
       } else if (this.state.rating === 3) {
           return (
-              <div>
-                  <i className="fas fa-heart" onClick={this.updateRating(1)}></i>
-                  <i className="fas fa-heart" onClick={this.updateRating(2)}></i>
-                  <i className="fas fa-heart" onClick={this.updateRating(3)}></i>
-                  <i className="far fa-heart" onClick={this.updateRating(4)}></i>
-                  <i className="far fa-heart" onClick={this.updateRating(5)}></i>
+              <div className='edit-review-hearts'>
+                  <i className='fas fa-heart' onClick={this.updateRating(1)}></i>
+                  <i className='fas fa-heart' onClick={this.updateRating(2)}></i>
+                  <i className='fas fa-heart' onClick={this.updateRating(3)}></i>
+                  <i className='far fa-heart' onClick={this.updateRating(4)}></i>
+                  <i className='far fa-heart' onClick={this.updateRating(5)}></i>
+                  <p className='rating-message'>A-OK.</p>
               </div>
           )
       } else if (this.state.rating === 4) {
           return (
-              <div>
-                  <i className="fas fa-heart" onClick={this.updateRating(1)}></i>
-                  <i className="fas fa-heart" onClick={this.updateRating(2)}></i>
-                  <i className="fas fa-heart" onClick={this.updateRating(3)}></i>
-                  <i className="fas fa-heart" onClick={this.updateRating(4)}></i>
-                  <i className="far fa-heart" onClick={this.updateRating(5)}></i>
+              <div className='edit-review-hearts'>
+                  <i className='fas fa-heart' onClick={this.updateRating(1)}></i>
+                  <i className='fas fa-heart' onClick={this.updateRating(2)}></i>
+                  <i className='fas fa-heart' onClick={this.updateRating(3)}></i>
+                  <i className='fas fa-heart' onClick={this.updateRating(4)}></i>
+                  <i className='far fa-heart' onClick={this.updateRating(5)}></i>
+                  <p className='rating-message'>Yay! I'm a fan.</p>
               </div>
           )
       } else if (this.state.rating === 5) {
           return (
-              <div>
-                  <i className="fas fa-heart" onClick={this.updateRating(1)}></i>
-                  <i className="fas fa-heart" onClick={this.updateRating(2)}></i>
-                  <i className="fas fa-heart" onClick={this.updateRating(3)}></i>
-                  <i className="fas fa-heart" onClick={this.updateRating(4)}></i>
-                  <i className="fas fa-heart" onClick={this.updateRating(5)}></i>
+              <div className='edit-review-hearts'>
+                  <i className='fas fa-heart' onClick={this.updateRating(1)}></i>
+                  <i className='fas fa-heart' onClick={this.updateRating(2)}></i>
+                  <i className='fas fa-heart' onClick={this.updateRating(3)}></i>
+                  <i className='fas fa-heart' onClick={this.updateRating(4)}></i>
+                  <i className='fas fa-heart' onClick={this.updateRating(5)}></i>
+                  <p className='rating-message'>Woohoo! As good as it gets!</p>
+
               </div>
           )
       }
@@ -122,17 +135,11 @@ class ReviewUpdate extends Component {
   updateCache(cache, {data: {updateReview}} ) {
       let review;
       try {
-          // we'll try to read from our cache but if the query isn't in there no sweat!
-          // We only want to update the data if it's in the cache already - totally fine if the data will
-          // be fetched fresh later
           review = cache.readQuery({ query: FETCH_REVIEW , variables: {userId: this.state.userId, restaurantId: this.state.restaurantId}});
       } catch (err) {
           return;
       }
-
-      // then our writeQuery will only run IF the cache already has data in it
       if (review) {
-        //   let reviewArray = reviews.reviews;
           cache.writeQuery({
               query: FETCH_REVIEW,
               variables: {userId: this.state.userId, restaurantId: this.state.restaurantId},
@@ -155,15 +162,21 @@ class ReviewUpdate extends Component {
         update={(cache, data) => this.updateCache(cache, data)}
       >
         {(updateReview, {data}) => (
-          <div>
+          <div className='review-edit-container'>
+            <h1 className='restaurant-name-heading' >{this.state.restaurantName}</h1>
             {this.renderHearts()}
             <form onSubmit={e=> this.handleSubmit(e, updateReview)}>
               <textarea
                 onChange={this.updateBody()} 
                 value={this.state.body}                               
-                placeholder="Body of Review"
+                placeholder='Body of Review'
+                className='review-body-edit'
               />
-              <button type="submit">Publish Review</button>
+              <button 
+                id='submit-review' 
+                className='submit-review-button' 
+                type='submit'>Publish Review
+              </button>
             </form>
           </div>
         )}

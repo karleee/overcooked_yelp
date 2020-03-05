@@ -34,11 +34,11 @@ class RestaurantDetail extends Component {
     this.setState({ viewMoreAmenities: !this.state.viewMoreAmenities });
   }
 
-  renderReview(restaurantId, reviewData, userId) {
+  renderReview(restaurantId, reviewData, userId, restaurantName) {
     if(reviewData.data.review) {
-      this.props.history.push({pathname: `/restaurants/${restaurantId}/reviews/edit`, state: {review: reviewData.data.review, userId: userId }})
+      this.props.history.push({pathname: `/restaurants/${restaurantId}/reviews/edit`, state: {review: reviewData.data.review, userId, restaurantName }})
     } else {
-      this.props.history.push(`/restaurants/${restaurantId}/reviews/create`)
+      this.props.history.push({pathname: `/restaurants/${restaurantId}/reviews/create`, state: {userId, restaurantName}})
     }
   }
 
@@ -218,7 +218,7 @@ class RestaurantDetail extends Component {
                               {(reviewData) => {
                                 // console.log(reviewData)
                                   return (
-                                    <p><button onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId)}>Write a Review</button></p>
+                                    <p><button onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>Write a Review</button></p>
                                   )
                               }}
                             </Query>
