@@ -17,6 +17,10 @@ const ReviewSchema = new Schema({
     type: Number,
     required: true
   },
+  date: {
+    type: String,
+    default: `Created ${new Date().toString()}`
+  },
   body: {
     type: String,
     required: true
@@ -27,10 +31,6 @@ const ReviewSchema = new Schema({
       ref: 'photo'
     }
   ],
-  date: {
-    type: String,
-    default: true
-  }
 });
 
 // Static function to find all photos for a review

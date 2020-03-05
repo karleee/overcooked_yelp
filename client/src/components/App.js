@@ -6,6 +6,8 @@ import RegisterPage from '../components/session/RegisterForm';
 import GalleryIndex from './gallery/GalleryIndex';
 import RestaurantDetail from './restaurants/RestaurantDetail';
 import Home from './home/Home';
+import ReviewCreate from './reviews/ReviewCreate';
+import ReviewUpdate from './reviews/ReviewUpdate';
 
 class App extends React.Component {
   constructor(props){
@@ -37,6 +39,8 @@ class App extends React.Component {
           <Route exact path='/restaurants/:id/photos' component={GalleryIndex} />
           <Route exact path='/restaurants/:id' component={RestaurantDetail} />
           <Route exact path='/' component={Home} />
+          <AuthRoute exact path='/restaurants/:id/reviews/create' component={ReviewCreate} routeType="protected" />
+          <AuthRoute exact path='/restaurants/:id/reviews/edit' component={ReviewUpdate} routeType="protected" />
         </Switch>
       </div>
     );

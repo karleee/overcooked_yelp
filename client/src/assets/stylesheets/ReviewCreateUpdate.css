@@ -1,0 +1,52 @@
+
+.edit-review-hearts {
+    /* padding: 5px; */
+    width: inherit;
+    margin: auto;
+    border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.edit-review-hearts > .fa-heart {
+    color: red;
+    padding: 2px;
+    font-size: 40px;
+}
+
+.review-edit-container {
+    width: 500px;
+    margin: auto;
+    padding-top: 30px;
+}
+
+.review-edit-container .review-body-edit {
+    width: calc(100% - 10px);
+    height: 400px;
+    font-size: 20px;
+    border: 2px solid red;
+    border-top: none;
+    padding: 5px;
+}
+
+.edit-review-hearts > p {
+    padding-left: 30px;
+    width: 200px;
+}
+
+.review-edit-container > h1 {
+    color: rgb(37, 37, 172);
+    padding: 10px;
+}
+
+.review-edit-container button {
+    background-color: red;
+    color: white;
+    padding: 3px;
+    width: 200px;
+    height: 40px;
+    font-size: 17px;
+    font-weight: bold;
+}
