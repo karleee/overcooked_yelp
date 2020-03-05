@@ -168,7 +168,7 @@ class GalleryIndex extends Component {
                   </div>
 
                   <div className="photo-gallery-main-gallery-wrapper">
-                    {this.state.photos.length === 0 ? 
+                    {this.state.photos.length === 0 && this.state.viewingTab === 'viewAll' ? 
                       allPhotos.map((photo, indx) =>
                         <div key={indx} className="gallery-thumbnail-photo-wrapper" onClick={() => this.toggleModal(indx)}>
                           <img src={photo.url} alt="Restaurant photo thumbnail" />
