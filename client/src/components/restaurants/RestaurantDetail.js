@@ -243,7 +243,7 @@ class RestaurantDetail extends Component {
 
                     <div className="restaurant-detail-location-and-hours-body-wrapper">
                       <div className="restaurant-detail-map-wrapper">
-                        <div className="restaurant-detail-map-image-wrapper">
+                        <div className="restaurant-detail-map-image-wrapper"> 
                           <RestaurantMap restaurants={[data.restaurant]} />
                         </div>
 
