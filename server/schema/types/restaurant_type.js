@@ -45,7 +45,7 @@ const Hours = new GraphQLObjectType({
 const Amenities = new GraphQLObjectType({
   name: 'Amenities',
   fields: () => ({
-    healthScore: { type: GraphQLInt },
+    healthScore: { type: GraphQLString },
     takesReservations: { type: GraphQLBoolean },
     happyHourSpecials: { type: GraphQLBoolean },
     delivery: { type: GraphQLBoolean },
@@ -56,18 +56,11 @@ const Amenities = new GraphQLObjectType({
   }),
 });
 
-const Photos = new GraphQLObjectType({
-  name: 'Photos',
-  fields: () => ({
-    url: { type: GraphQLString }
-  })
-})
-
 // Creating GraphQL object type for restaurant
 const RestaurantType = new GraphQLObjectType({
   name: 'RestaurantType',
   fields: () => ({
-    id: { type: GraphQLID },
+    _id: { type: GraphQLID },
     name: { type: GraphQLString },
     price: { type: GraphQLInt },
     category: { type: GraphQLString },
@@ -80,13 +73,16 @@ const RestaurantType = new GraphQLObjectType({
     reviews: {
       type: new GraphQLList(require('./review_type')),
       resolve(parentValue) {
-        return Restaurant.findReviews(parentValue.id);
+        return Restaurant.findReviews(parentValue._id);
       }
     },
     photos: {
-      type: new GraphQLList(Photos)
+      type: new GraphQLList(require('./photo_type')),
+      resolve(parentValue) {
+        return Restaurant.findPhotos(parentValue._id);
+      }
     }
   })
-})
+});
 
-module.exports = RestaurantType;
+module.exports = RestaurantType; 

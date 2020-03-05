@@ -36,9 +36,11 @@ const RestaurantIndex = () => {
                 weeks = Math.floor(Math.random() * (max - min) + min);
 
                 return (
-                  <li key={restaurant.id}>
-                    <Link to={`/restaurants/${restaurant.id}`}>
-                      <div className="big-thumbnail-wrapper"></div>
+                  <li key={restaurant._id}>
+                    <Link to={`/restaurants/${restaurant._id}`}>
+                      <div className="big-thumbnail-wrapper">
+                        <img src={restaurant.photos[0] ? restaurant.photos[0].url : ''} alt="Restaurant thumbnail image" />
+                      </div>
 
                       <div className="text-info-wrapper">
                         <h3>{restaurant.name}</h3>
@@ -61,6 +63,7 @@ const RestaurantIndex = () => {
                 );
               })}
             </ul>
+            
             <RestaurantMap restaurants={data.restaurants} />
           </div>
         );

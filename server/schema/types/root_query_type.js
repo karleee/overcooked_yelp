@@ -23,9 +23,9 @@ const RootQueryType = new GraphQLObjectType({
     // Queries database for one specific restaurant
     restaurant: {
       type: RestaurantType,
-      args: { id: { type: new GraphQLNonNull(GraphQLID) }},
-      resolve(_, { id } ) {
-        return Restaurant.findById(id);
+      args: { _id: { type: new GraphQLNonNull(GraphQLID) }},
+      resolve(_, { _id } ) {
+        return Restaurant.findById(_id);
       }
     },
     // Queries database for all reviews
@@ -38,9 +38,9 @@ const RootQueryType = new GraphQLObjectType({
     // Queries database for one specific review
     review: {
       type: ReviewType,
-      args: { id: { type: new GraphQLNonNull(GraphQLID) }},
-      resolve(_, { id }) {
-        return Review.findById(id);
+      args: { _id: { type: new GraphQLNonNull(GraphQLID) }},
+      resolve(_, { _id }) {
+        return Review.findById(_id);
       }
     },
     // Queries for all users

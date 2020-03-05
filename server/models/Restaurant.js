@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Schema for restaurants
-const RestaurantSchema = new Schema({
+const RestaurantSchema = new Schema({  
   name: {
     type: String,
     required: true,
@@ -10,7 +10,7 @@ const RestaurantSchema = new Schema({
   },
   price: {
     type: Number,
-    required: true
+    required: true 
   },
   category: {
     type: String,
@@ -124,7 +124,7 @@ const RestaurantSchema = new Schema({
   },
   amenities: {
     healthScore: {
-      type: Number
+      type: String
     },
     takesReservations: {
       type: Boolean
@@ -156,9 +156,8 @@ const RestaurantSchema = new Schema({
   ],
   photos: [
     {
-      url: {
-        type: String
-      }
+      type: Schema.Types.ObjectId,
+      ref: 'photo'
     }
   ]
 });
@@ -170,6 +169,15 @@ RestaurantSchema.statics.findReviews = (restaurantId) => {
   return Restaurant.findById(restaurantId)
     .populate('reviews')
     .then(restaurant => restaurant.reviews);
+}
+
+// Static function to find all photos for a restaurant
+RestaurantSchema.statics.findPhotos = (restaurantId) => {
+  const Restaurant = mongoose.model('restaurant');
+
+  return Restaurant.findById(restaurantId)
+    .populate('photos')
+    .then(restaurant => restaurant.photos);
 }
 
 module.exports = mongoose.model('restaurant', RestaurantSchema);

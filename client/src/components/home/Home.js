@@ -4,11 +4,17 @@ import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/Home.css';
 
 import RestaurantIndex from '../restaurants/RestaurantIndex';
+import SessionButton from '../session/SessionButton';
 
 const Home = () => {
   return (
     <div className="home-wrapper">
       <div className="banner-wrapper">
+        <div className="home-nav-bar-wrapper">
+          <p>Write a Review</p>
+          <SessionButton />
+        </div>
+
         <img src="/images/homepage/banner.png" alt="Homepage banner" />
         <div className="overlay-wrapper"></div>
 

@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-const keys = require("../../config/keys");
-const validateRegisterInput = require("../validation/register");
-const validateLoginInput = require("../validation/login");
+const keys = require('../../config/keys');
+const validateRegisterInput = require('../validation/register');
+const validateLoginInput = require('../validation/login');
 const User = mongoose.model('user');
 
 const register = async data => {
@@ -17,7 +17,7 @@ const register = async data => {
 
     const existingUser = await User.findOne({ email });
 
-    if (existingUser) throw new Error("User already exists");
+    if (existingUser) throw new Error('User already exists');
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -76,7 +76,7 @@ const login = async data => {
       const token = jwt.sign({ _id: user._id }, keys.secretOrKey);
       return { token, loggedIn: true, ...user._doc, password: null };
     } else {
-      throw new Error("Invalid Credentials");
+      throw new Error('Invalid Credentials');
     }
   } catch (err) {
     throw new Error(err);

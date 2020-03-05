@@ -1,8 +1,8 @@
-import React from "react";
-import { Mutation } from "react-apollo";
+import React from 'react';
+import { Mutation } from 'react-apollo';
 
-import * as SessionUtil from "../../util/session_util";
-import Mutations from "../../graphql/mutations";
+import * as SessionUtil from '../../util/session_util';
+import Mutations from '../../graphql/mutations';
 const { LOGIN_USER } = Mutations;
 
 class LoginForm extends React.Component {
@@ -11,9 +11,9 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
-      errorMessage: ""
+      email: '',
+      password: '',
+      errorMessage: ''
     };
     this.performMutation.bind(this);
     this.handleGraphQLError.bind(this);
@@ -24,7 +24,7 @@ class LoginForm extends React.Component {
   }
 
   componentWillUnmount() {
-    this.setState({ errorMessage: "" });
+    this.setState({ errorMessage: '' });
     this._isMounted = false;
   }
 
@@ -63,7 +63,7 @@ class LoginForm extends React.Component {
       <Mutation
         mutation={LOGIN_USER}
         onError={error => this.handleGraphQLError(error)}
-        onCompleted={data => this.loginAndRedirectTo("/", data)}
+        onCompleted={data => this.loginAndRedirectTo('/', data)}
         update={(client, data) => this.updateCache(client, data)}
       >
         {LoginUser => (

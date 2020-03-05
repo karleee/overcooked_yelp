@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/stylesheets/Navbar.css';
+import SessionButton from '../session/SessionButton';
 
 // Navbar component returning information about all restaurants from backend
 const Navbar = () => {
@@ -8,8 +9,10 @@ const Navbar = () => {
     <div className="navbar-wrapper">
       <div className="main-navbar-wrapper">
         <div className="navbar-home-logo-wrapper">
-          <p>morsel</p>
-          <img src="/images/navbar/plain_logo.png" alt="Logo image" />
+          <Link to='/'>
+            <p>morsel</p>
+            <img src="/images/navbar/plain_logo.png" alt="Logo image" />
+          </Link>
         </div>
 
         <div className="navbar-search-input-wrapper">
@@ -35,13 +38,7 @@ const Navbar = () => {
             <p>Write a Review</p>
           </div> 
 
-          <div className="navbar-login-link-wrapper">
-            <p>Log In</p>
-          </div> 
-
-          <div className="navbar-signup-link-wrapper">
-            <p>Sign Up</p>
-          </div>
+          <SessionButton />
         </div>
       </div>
     </div>
