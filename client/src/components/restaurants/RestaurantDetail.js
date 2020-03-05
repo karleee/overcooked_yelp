@@ -3,14 +3,10 @@ import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import Queries from '../../graphql/queries';
 import Navbar from '../navbar/Navbar';
-<<<<<<< HEAD
+import RestaurantMap from '../map/RestaurantMap';
 import '../../assets/stylesheets/reset.css';
 import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/RestaurantDetail.css';
-=======
-// import '../../assets/stylesheets/RestaurantIndex.css';
-import RestaurantMap from '../map/RestaurantMap';
->>>>>>> master
 
 const { FETCH_RESTAURANT } = Queries;
 
@@ -245,16 +241,11 @@ class RestaurantDetail extends Component {
                   <div className="restaurant-detail-location-and-hours-wrapper">
                     <h3>Location & Hours</h3>
 
-<<<<<<< HEAD
                     <div className="restaurant-detail-location-and-hours-body-wrapper">
                       <div className="restaurant-detail-map-wrapper">
-                        <div className="restaurant-detail-map-image-wrapper"></div>
-=======
-                <div className="map-wrapper">
-                  <div className="map-image-wrapper">
-                    <RestaurantMap restaurants={[data.restaurant]} />
-                  </div>
->>>>>>> master
+                        <div className="restaurant-detail-map-image-wrapper">
+                          <RestaurantMap restaurants={[data.restaurant]} />
+                        </div>
 
                         <div className="restaurant-detail-map-text-info-wrapper">
                           <p>{data.restaurant.location.streetAddress}</p> 
