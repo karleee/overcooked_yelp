@@ -5,11 +5,13 @@ const Schema = mongoose.Schema;
 const ReviewSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'user'
+    ref: 'user',
+    required: true
   },
   restaurant: {
     type: Schema.Types.ObjectId,
-    ref: 'restaurant'
+    ref: 'restaurant',
+    required: true
   },
   rating: {
     type: Number,
@@ -23,6 +25,21 @@ const ReviewSchema = new Schema({
     type: String,
     required: true
   },
+  photos: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'photo'
+    }
+  ],
 });
+
+// Static function to find all photos for a review
+ReviewSchema.statics.findPhotos = (reviewId) => {
+  const Review = mongoose.model('review');
+
+  return Review.findById(reviewId)
+    .populate('photos')
+    .then(review => review.photos);
+}
 
 module.exports = mongoose.model('review', ReviewSchema);

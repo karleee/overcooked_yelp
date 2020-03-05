@@ -47,7 +47,7 @@ export default {
   FETCH_RESTAURANTS: gql`
     query FetchRestaurants {
       restaurants {
-        id,
+        _id,
         name,
         price,
         category,
@@ -60,15 +60,22 @@ export default {
         coordinates {
           latitude,
           longitude
+        },
+        photos {
+          user {
+            firstName,
+            lastName
+          },
+          url
         }
       }
     }
   `,
   // Query to fetch one specific restaurant
   FETCH_RESTAURANT: gql`
-    query FetchRestaurant($id: ID!) {
-      restaurant(id: $id) {
-        id,
+    query FetchRestaurant($_id: ID!) {
+      restaurant(_id: $_id) {
+        _id,
         name,
         price,
         category,
@@ -129,7 +136,21 @@ export default {
           date
         },
         photos {
-          url
+          user {
+            firstName,
+            lastName,
+            profilePhoto,
+            friends,
+            reviews {
+              _id
+            }
+          },
+          review {
+            date
+          },
+          url,
+          description,
+          categories
         }
       }
     }

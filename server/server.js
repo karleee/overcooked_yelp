@@ -37,9 +37,9 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// set up graphql
+// Setting up graphql
 app.use(
-  "/graphql",
+  '/graphql',
   expressGraphQL(req => {
     return {
       schema,
