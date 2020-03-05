@@ -156,7 +156,8 @@ const RestaurantSchema = new Schema({
   ],
   photos: [
     {
-      type: String
+      type: Schema.Types.ObjectId,
+      ref: 'photo'
     }
   ]
 });
@@ -168,6 +169,15 @@ RestaurantSchema.statics.findReviews = (restaurantId) => {
   return Restaurant.findById(restaurantId)
     .populate('reviews')
     .then(restaurant => restaurant.reviews);
+}
+
+// Static function to find all photos for a restaurant
+RestaurantSchema.statics.findPhotos = (restaurantId) => {
+  const Restaurant = mongoose.model('restaurant');
+
+  return Restaurant.findById(restaurantId)
+    .populate('photos')
+    .then(restaurant => restaurant.photos);
 }
 
 module.exports = mongoose.model('restaurant', RestaurantSchema);

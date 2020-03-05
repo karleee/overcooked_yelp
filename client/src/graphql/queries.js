@@ -19,7 +19,13 @@ export default {
           latitude,
           longitude
         },
-        photos
+        photos {
+          user {
+            firstName,
+            lastName
+          },
+          url
+        }
       }
     }
   `,
@@ -87,7 +93,23 @@ export default {
           body,
           date
         },
-        photos
+        photos {
+          user {
+            firstName,
+            lastName,
+            profilePhoto,
+            friends,
+            reviews {
+              _id
+            }
+          },
+          review {
+            date
+          },
+          url,
+          description,
+          categories
+        }
       }
     }
   `,

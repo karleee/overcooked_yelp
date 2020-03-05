@@ -56,13 +56,6 @@ const Amenities = new GraphQLObjectType({
   }),
 });
 
-// const Photos = new GraphQLObjectType({
-//   name: 'Photos',
-//   fields: () => ({
-//     url: { type: GraphQLString }
-//   })
-// })
-
 // Creating GraphQL object type for restaurant
 const RestaurantType = new GraphQLObjectType({
   name: 'RestaurantType',
@@ -84,7 +77,10 @@ const RestaurantType = new GraphQLObjectType({
       }
     },
     photos: {
-      type: new GraphQLList(GraphQLString)
+      type: new GraphQLList(require('./photo_type')),
+      resolve(parentValue) {
+        return Restaurant.findPhotos(parentValue._id);
+      }
     }
   })
 });

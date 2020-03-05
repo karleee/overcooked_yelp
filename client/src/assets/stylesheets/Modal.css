@@ -1,60 +1,209 @@
 .photo-gallery-modal-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   width: 100%;
   height: 100%;
 }
 
 .modal-wrapper {
   width: 100%;
-  height: 100%;
 }
 
 .modal-background-wrapper {
   position: fixed;
   top: 0;
+  bottom: 0;
+  right: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 3;
 }
 
 .modal-main-content-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  width: 100%;
+  position: fixed;
+  width: 90%;
+  height: 650px;
+  top: 50%;
+  left: 50%;
+  margin-top: -325px;
+  margin-left: -45%;
+  z-index: 4;
 }
 
 .main-image-wrapper {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  width: 80%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   background: black;
-  box-sizing: border-box;
-  padding: 0 20px;
+  box-sizing: border-box; 
+  padding: 0 15px;
 }
 
-.previous-arrow-wrapper,
-.next-arrow-wrapper {
-  width: 30px;
-  height: 30px;
-  background: orange;
+.previous-arrow-icon {
+  content: url('/images/gallery/previous_arrow.png');
+  width: 19px;
 }
 
-.previous-arrow-wrapper {
-  box-sizing: border-box;
-  margin-right: 100px;
+.next-arrow-icon {
+  content: url('/images/gallery/next_arrow.png');
+  width: 19px;
 }
 
-.next-arrow-wrapper {
-  box-sizing: border-box;
-  margin-left: 100px;
+.previous-arrow-icon:hover,
+.next-arrow-icon:hover {
+  cursor: pointer;
+}
+
+.previous-arrow-icon:hover {
+  content: url('/images/gallery/previous_arrow_hover.png');
+  width: 19px;
+}
+
+.next-arrow-icon:hover {
+  content: url('/images/gallery/next_arrow_hover.png');
+  width: 19px;
 }
 
 .selected-image-wrapper {
-  height: 600px;
+  width: 900px;
+  height: 100%;
+  overflow: hidden;
 }
 
 .selected-image-wrapper img {
+  width: 100%;
+  transform: scale(1.6);
+}
+
+.modal-sidebar-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: white;
+  box-sizing: border-box;
+  padding: 15px 13px;
+  width: 20%;
   height: 100%;
+}
+
+.modal-user-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.modal-user-thumbnail-wrapper {
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.modal-user-thumbnail-wrapper img {
+  width: 100%;
+}
+
+.modal-user-info-header {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.modal-user-info-header h4 {
+  font-family: 'helveticaBold';
+  font-size: 14px;
+  color: var(--blue);
+}
+
+.modal-user-info-header h4:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.modal-user-badges-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-family: 'helveticaBold';
+  font-size: 12px;
+  color: var(--mid-text);
+}
+
+.modal-user-total-reviews-wrapper {
+  margin-left: 20px;
+}
+
+.modal-user-friends-wrapper,
+.modal-user-total-reviews-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.friends-icon-wrapper,
+.total-reviews-icon-wrapper {
+  width: 15px;
+  height: 15px;
+  background: blue;
+  margin-right: 5px;
+}
+
+.modal-photo-description-wrapper {
+  font-family: 'helveticaNormal';
+  font-size: 14px;
+  color: var(--black);
+  line-height: 1.25;
+  padding: 10px 0;
+}
+
+.modal-photo-date-wrapper {
+  font-family: 'helveticaNormal';
+  font-size: 12px;
+  color: var(--subtle-text);
+}
+
+.modal-was-this-photo-wrapper {
+  padding: 15px 0;
+}
+
+.modal-was-this-photo-wrapper > p {
+  font-family: 'helveticaMedium';
+  font-size: 13px;
+  color: var(--mid-text);
+}
+
+.modal-helpful-not-helpful-wrapper {
+  display: flex;
+  flex-direction: row;
+  font-family: 'helveticaBold';
+  font-size: 12px;
+  color: var(--mid-text);
+  margin-top: 5px;
+}
+
+.modal-helpful-button,
+.modal-not-helpful-button {
+  border: 1px solid var(--border-color);
+  padding: 7px 15px;
+  border-radius: 3px;
+}
+
+.modal-helpful-button:hover,
+.modal-not-helpful-button:hover {
+  background: var(--background-color);
+  transition: background 0.5s;
+  cursor: pointer;
+}
+
+.modal-not-helpful-button {
+  margin-left: 5px;
 }

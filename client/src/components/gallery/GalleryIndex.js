@@ -16,9 +16,22 @@ class GalleryIndex extends Component {
     super(props);
     this.state = { 
       showModal: false,
-      currentImage: 0 
+      currentImage: 0,
+      photos: [],
+      viewingTab: 'viewAll'
     }
     this.toggleModal = this.toggleModal.bind(this);
+    this.togglePhotos = this.togglePhotos.bind(this);
+  }
+
+  // Hides scrolling when modal is mounted
+  componentDidMount() {
+    if (this.state.showModal) document.body.style.overflow = 'hidden';
+  }
+
+  // Reactiviates scrolling when modal is unmounted
+  componentWillUnmount() {
+    document.body.style.overflow = 'unset';
   }
 
   // Toggles the gallery modal on and off
@@ -27,6 +40,12 @@ class GalleryIndex extends Component {
       showModal: !this.state.showModal,
       currentImage: indx
     });
+  }
+
+  // Toggles which set of photos user is currently viewing
+  togglePhotos(photos, type) {
+    this.setState({ viewingTab: type });
+    this.setState({ photos });
   }
   
   // Renders the component
@@ -74,7 +93,40 @@ class GalleryIndex extends Component {
           } else {
             stars = 'five';
           }
-          // console.log(this.state.showModal);
+
+          // Finding all, food, inside, drink, menu, and outside photos
+          const allPhotos = data.restaurant.photos;
+          let foodPhotos = [];
+          let insidePhotos = [];
+          let drinkPhotos = [];
+          let menuPhotos = [];
+          let outsidePhotos = [];
+
+          allPhotos.forEach(photo => {
+            photo.categories.forEach(category => {
+              if (category === 'food') {
+                foodPhotos.push(photo);
+              }
+              
+              if (category === 'inside') {
+                insidePhotos.push(photo);
+              }
+
+              if (category === 'drink') {
+                drinkPhotos.push(photo);
+              }
+
+              if (category === 'menu') {
+                menuPhotos.push(photo);
+              }
+
+              if (category === 'outside') {
+                outsidePhotos.push(photo);
+              }
+            });
+          });
+
+          console.log(foodPhotos);
 
           return (
             <div className="restaurant-photo-gallery-wrapper">      
@@ -86,7 +138,7 @@ class GalleryIndex extends Component {
 
                   <div className="photo-gallery-header">
                     <div className="photo-gallery-thumbnail-wrapper">
-                      <img src={data.restaurant.photos[0]} alt="Restaurant thumbnail image" />
+                      <img src={data.restaurant.photos[0].url} alt="Restaurant thumbnail image" />
                     </div>
 
                     <div className="photo-gallery-text-wrapper">
@@ -104,23 +156,30 @@ class GalleryIndex extends Component {
 
                   <div className="photo-gallery-filter-options-wrapper">
                     <div className="photo-gallery-filter-links-wrapper">
-                      <p>All</p>
-                      <p>Food</p>
-                      <p>Inside</p>
-                      <p>Drink</p>
-                      <p>Menu</p>
-                      <p>Outside</p>
+                      <p onClick={() => this.togglePhotos(allPhotos, 'viewAll')} className={this.state.viewingTab === 'viewAll' ? 'active-filter-link' : ''}>All ({allPhotos.length})</p>
+                      <p onClick={() => this.togglePhotos(foodPhotos, 'viewFood')} className={this.state.viewingTab === 'viewFood' ? 'active-filter-link' : ''}>Food ({foodPhotos.length})</p>
+                      <p onClick={() => this.togglePhotos(insidePhotos, 'viewInside')} className={this.state.viewingTab === 'viewInside' ? 'active-filter-link' : ''}>Inside ({insidePhotos.length})</p>
+                      <p onClick={() => this.togglePhotos(drinkPhotos, 'viewDrink')} className={this.state.viewingTab === 'viewDrink' ? 'active-filter-link' : ''}>Drink ({drinkPhotos.length})</p>
+                      <p onClick={() => this.togglePhotos(menuPhotos, 'viewMenu')} className={this.state.viewingTab === 'viewMenu' ? 'active-filter-link' : ''}>Menu ({menuPhotos.length})</p>
+                      <p onClick={() => this.togglePhotos(outsidePhotos, 'viewOutside')} className={this.state.viewingTab === 'viewOutside' ? 'active-filter-link' : ''}>Outside ({outsidePhotos.length})</p>
                     </div>
                     
                     <div className="photo-gallery-underline-wrapper"></div>
                   </div>
 
                   <div className="photo-gallery-main-gallery-wrapper">
-                    {data.restaurant.photos.map((photo, indx) => 
-                      <div key={indx} className="gallery-thumbnail-photo-wrapper" onClick={() => this.toggleModal(indx)}>
-                        <img src={photo} alt="Restaurant photo thumbnail" />
-                      </div>
-                    )}
+                    {this.state.photos.length === 0 ? 
+                      allPhotos.map((photo, indx) =>
+                        <div key={indx} className="gallery-thumbnail-photo-wrapper" onClick={() => this.toggleModal(indx)}>
+                          <img src={photo.url} alt="Restaurant photo thumbnail" />
+                        </div>
+                      ) : 
+                      this.state.photos.map((photo, indx) => 
+                        <div key={indx} className="gallery-thumbnail-photo-wrapper" onClick={() => this.toggleModal(indx)}>
+                          <img src={photo.url} alt="Restaurant photo thumbnail" />
+                        </div>
+                      )
+                    }
                   </div>
                 </div>
               </div>

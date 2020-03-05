@@ -69,12 +69,27 @@ class RestaurantDetail extends Component {
           const weekdayHours = [];
 
           hoursArray.map(day => {
+            let openTime;
+            let openAmPm;
+            let closeTime;
+            let closeAmPm;
+            let open = [];
+            let close = [];
             let openAndClose = [];
-            const open = parseInt(day.open.split(':')[0]);
-            const close = parseInt(day.close.split(':')[0]);
+
+            openTime = parseInt(day.open.split(':')[0]);
+            closeTime = parseInt(day.close.split(':')[0]);
+            openAmPm = day.open.split(' ')[1];
+            closeAmPm = day.close.split(' ')[1];
+
+            open.push(openTime, openAmPm);
+            close.push(closeTime, closeAmPm);
+
             openAndClose.push(open, close);
             weekdayHours.push(openAndClose);
           });
+
+          // console.log(weekdayHours);
 
           // Creating an array for weekday labels
           const weekdayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -140,16 +155,16 @@ class RestaurantDetail extends Component {
           } else {
             stars = 'five';
           }
-
+          
           return (
             <div className="restaurant-detail-wrapper">
               <Navbar />
 
             <div className="restaurant-detail-banner-wrapper">
               <div className="restaurant-detail-photos-wrapper">
-                {data.restaurant.photos.slice(0, 4).map(photo => (
-                  <div className="restaurant-detail-thumbnail-wrapper">
-                    <img src={photo} alt="Restaurant photo" />
+                {data.restaurant.photos.slice(0, 4).map((photo, indx) => (
+                  <div key={photo._id} className="restaurant-detail-thumbnail-wrapper">
+                    <img src={photo.url} alt="Restaurant photo" />
                   </div>
                 ))}
               </div>
@@ -245,10 +260,9 @@ class RestaurantDetail extends Component {
 
                         <div className="restaurant-detail-open-and-close-wrapper">
                           {weekdayHours.map((weekday, indx) => {
-                            // Conditional for determining if a restaurant is open based on time
-                            const isOpen = (adjustedHour > weekday[0] && ampm === 'am') ||
-                              (adjustedHour === weekday[0] && currentMinutes > 0 && ampm === 'am') ||
-                              (adjustedHour < weekday[0] && adjustedHour < weekday[1] && ampm === 'pm');
+                            // Conditional for determining if a restaurant is open based on time                            
+                            const isOpen = ((adjustedHour >= weekday[0][0] && ampm === 'am') || (adjustedHour < weekday[1][0] && ampm === 'pm')) ||
+                              (adjustedHour === 12 && ampm === 'pm' && (weekday[0][0] === 12 && weekday[0][1] === 'pm') && (weekday[1][0] !== 12 && weekday[1][1] !== 'pm'));
                                                         
                             return (
                               <section>
