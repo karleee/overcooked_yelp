@@ -118,7 +118,7 @@ class ReviewCreate extends Component {
       } catch (err) {
           return;
       }
-
+      console.log(reviews);
       // then our writeQuery will only run IF the cache already has data in it
       if (reviews) {
           let reviewArray = reviews.reviews;

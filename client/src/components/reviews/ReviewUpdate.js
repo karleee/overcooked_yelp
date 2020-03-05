@@ -6,17 +6,19 @@ import Queries from "../../graphql/queries";
 import { Redirect } from "react-router-dom";
 
 const { UPDATE_REVIEW } = Mutations;
-const { FETCH_REVIEWS } = Queries;
+const { FETCH_REVIEW } = Queries;
 
 class ReviewUpdate extends Component {
   constructor(props) {
       super(props);
-      const review = this.props.location.state
+      const review = this.props.location.state.review
+      const userId = this.props.location.state.userId
       this.state = {
           id: review.id,
           rating: review.rating || 0,
           body: review.body || "",
           restaurantId: this.props.match.params.id,
+          userId,
       }
   }
 
@@ -117,24 +119,24 @@ class ReviewUpdate extends Component {
 
   // }
 
-  updateCache(cache, { data: { newReview} }) {
-      let reviews;
+  updateCache(cache, {data: {updateReview}} ) {
+      let review;
       try {
           // we'll try to read from our cache but if the query isn't in there no sweat!
           // We only want to update the data if it's in the cache already - totally fine if the data will
           // be fetched fresh later
-          reviews = cache.readQuery({ query: FETCH_REVIEWS });
+          review = cache.readQuery({ query: FETCH_REVIEW , variables: {userId: this.state.userId, restaurantId: this.state.restaurantId}});
       } catch (err) {
           return;
       }
 
       // then our writeQuery will only run IF the cache already has data in it
-      if (reviews) {
-          let reviewArray = reviews.reviews;
-
+      if (review) {
+        //   let reviewArray = reviews.reviews;
           cache.writeQuery({
-              query: FETCH_REVIEWS,
-              data: { reviews: reviewArray.concat(newReview) }
+              query: FETCH_REVIEW,
+              variables: {userId: this.state.userId, restaurantId: this.state.restaurantId},
+              data: { review: updateReview }
           });
       }
   }
@@ -150,7 +152,7 @@ class ReviewUpdate extends Component {
     return (
       <Mutation
         mutation={UPDATE_REVIEW}
-        // update={(cache, data) => this.updateCache(cache, data)}
+        update={(cache, data) => this.updateCache(cache, data)}
       >
         {(updateReview, {data}) => (
           <div>

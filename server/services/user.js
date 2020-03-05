@@ -22,5 +22,4 @@ const seedDb = async () => {
 }
 
 
-
 module.exports = { seedDb }

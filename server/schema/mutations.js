@@ -1,16 +1,17 @@
-const graphql = require("graphql");
-const mongoose = require("mongoose")
+const graphql = require('graphql');
+const mongoose = require('mongoose')
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID, GraphQLNonNull} = graphql;
 
-const AuthService = require("../services/auth");
-const UserService = require("../services/user");
-const UserType = require("./types/user_type");
-const ReviewType = require("./types/review_type");
+const AuthService = require('../services/auth');
+const UserService = require('../services/user');
+const ReviewService = require('../services/review')
+const UserType = require('./types/user_type');
+const ReviewType = require('./types/review_type');
 
-const Review = mongoose.model("review")
+const Review = mongoose.model('review')
 
 const mutation = new GraphQLObjectType({
-    name: "Mutation",
+    name: 'Mutation',
     fields: {
       register: {
         type: UserType,
@@ -69,7 +70,7 @@ const mutation = new GraphQLObjectType({
           },
           async resolve(parent, { rating, body, restaurantId }, context) {
             const user = await AuthService.verifyUser(context)
-            return new Review({ rating, body, user: user._id, restaurant: restaurantId }).save();
+            return ReviewService.newReview(rating, body, user, restaurantId)
           }
       },
       updateReview: {
@@ -81,18 +82,7 @@ const mutation = new GraphQLObjectType({
               body: { type: GraphQLString },
           },
           resolve(parent, { id, rating, date, body }) {
-              const updtObj = {};
-
-              // if(id) updtObj.id = id;
-              if(date) updtObj.date = date;
-              if(body) updtObj.body = body;
-              if(rating) updtObj.rating = rating;
-              console.log(updtObj)
-              return Review.findByIdAndUpdate(
-                  id,
-                  updtObj,
-                  { new: true }
-              ).then(review => review)
+              return ReviewService.updateReview(id, rating, date, body);
           }
       },
       deleteReview: {
