@@ -90,12 +90,12 @@ class Modal extends React.Component {
                 
                 <div className="modal-user-badges-wrapper">
                   <div className="modal-user-friends-wrapper">
-                    <div className="friends-icon-wrapper"></div>
+                    <img src="/images/gallery/friends_icon.png" alt="Friends icon image" />
                     <p>{currentImage.user.friends}</p>
                   </div>
 
                   <div className="modal-user-total-reviews-wrapper">
-                    <div className="total-reviews-icon-wrapper"></div>
+                    <img src="/images/gallery/total_reviews_icon.png" alt="Friends icon image" />
                     <p>{currentImage.user.reviews.length}</p>
                   </div>
                 </div>
