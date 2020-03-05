@@ -90,8 +90,6 @@ class RestaurantDetail extends Component {
             weekdayHours.push(openAndClose);
           });
 
-          // console.log(weekdayHours);
-
           // Creating an array for weekday labels
           const weekdayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
@@ -200,20 +198,35 @@ class RestaurantDetail extends Component {
                     <p>{data.restaurant.category}</p>
                   </div>
 
-                  <div className="restaurant-detail-menu-buttons-wrapper">
-                    <div className="restaurant-detail-review-button-wrapper">
-                      <i className="restaurant-detail-star-icon"></i>
-                      <p>Write a Review</p>
+                  <div className="restaurant-detail-menu-buttons-container">
+                    <div className="review-button-container">
+                      <div className="review-button-wrapper">
+                        <div className="review-button-icon-wrapper">
+                          <img src="/images/restaurant_detail/star_icon.png" alt="Write review icon image" />
+                        </div>
+
+                        <p>Write a Review</p>
+                      </div>
                     </div>
 
-                    <div className="restaurant-detail-add-photo-button-wrapper">
-                      <i className="restaurant-detail-camera-icon"></i>
-                      <p>Add Photo</p>
+                    <div className="photo-button-container">
+                      <div className="photo-button-wrapper">
+                        <div className="photo-button-icon-wrapper">
+                          <img src="/images/restaurant_detail/camera_icon.png" alt="Add photo icon image" />
+                        </div>
+
+                        <p>Add Photo</p>
+                      </div>
                     </div>
 
-                    <div className="restaurant-detail-save-button-wrapper">
-                      <i className="restaurant-detail-bookmark-icon"></i>
-                      <p>Save</p>
+                    <div className="save-button-container">
+                      <div className="save-button-wrapper">
+                        <div className="save-button-icon-wrapper">
+                          <img src="/images/restaurant_detail/bookmark_icon.png" alt="Bookmark icon image" />
+                        </div>
+
+                        <p>Save</p>
+                      </div>
                     </div>
                   </div>
 

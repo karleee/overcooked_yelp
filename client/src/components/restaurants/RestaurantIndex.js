@@ -63,8 +63,6 @@ const RestaurantIndex = () => {
                 );
               })}
             </ul>
-            
-            {/* <RestaurantMap restaurants={data.restaurants} /> */}
           </div>
         );
       }}

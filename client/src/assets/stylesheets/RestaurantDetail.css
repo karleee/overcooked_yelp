@@ -135,7 +135,7 @@
   cursor: pointer;
 }
 
-.restaurant-detail-menu-buttons-wrapper {
+.restaurant-detail-menu-buttons-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -145,35 +145,78 @@
   border-bottom: 1px solid var(--light-border-color);
 }
 
-.restaurant-detail-review-button-wrapper,
-.restaurant-detail-add-photo-button-wrapper,
-.restaurant-detail-save-button-wrapper {
+.review-button-container,
+.photo-button-container,
+.save-button-container {
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  width: 128px;
+  height: 33px;
+}
+
+.photo-button-container {
+  width: 110px;
+  margin: 0 15px;
+}
+
+.save-button-container {
+  width: 70px;
+}
+
+.review-button-container:hover {
+  background: var(--button-hover-light-red);
+  border: 1px solid var(--button-border-hover-red);
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.photo-button-container:hover,
+.save-button-container:hover {
+  background: var(--background-color);
+  transition: background 0.5s;
+  cursor: pointer;
+}
+
+.review-button-wrapper,
+.photo-button-wrapper,
+.save-button-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: center;
-}
-
-.restaurant-detail-review-button-wrapper p {
-  font-family: 'helveticaMedium';
+  align-items: center;
+  font-family: 'helveticaBold';
   font-size: 13px;
   color: var(--red);
-  border-radius: 3px;
-  border: 1px solid var(--border-color);
-  padding: 5px 10px;
+  width: 100%;
+  height: 100%;
 }
 
-.restaurant-detail-add-photo-button-wrapper {
-  padding: 0 12px;
-}
-
-.restaurant-detail-add-photo-button-wrapper p,
-.restaurant-detail-save-button-wrapper p {
-  font-family: 'helveticaMedium';
-  font-size: 13px;
+.photo-button-wrapper,
+.save-button-wrapper {
   color: var(--mid-text);
-  border-radius: 3px;
-  border: 1px solid var(--light-border-color);
-  padding: 5px 10px;
+}
+
+.review-button-icon-wrapper {
+  width: 15px;
+  margin-right: 5px;
+}
+
+.photo-button-icon-wrapper {
+  width: 16px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.save-button-icon-wrapper {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.review-button-wrapper img,
+.photo-button-wrapper img,
+.save-button-wrapper img {
+  width: 100%;
 }
 
 .restaurant-detail-popular-dishes-wrapper,
@@ -212,7 +255,7 @@
 .dish-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   width: 32%;
   height: 190px;
   margin-right: 15px;
@@ -220,7 +263,7 @@
 
 .dish-image-wrapper {
   width: 100%;
-  height: 120px;
+  height: 117px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   overflow: hidden;
@@ -238,7 +281,9 @@
   box-sizing: border-box;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  border: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   padding: 15px 0 0 15px;
 }
 
