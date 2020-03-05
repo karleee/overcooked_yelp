@@ -136,7 +136,7 @@ class RestaurantDetail extends Component {
           reviews.forEach(review => {
             total += review.rating;
           });
-
+          
           average = total / reviews.length;
 
           // Determining star ratings indicator
@@ -218,9 +218,8 @@ class RestaurantDetail extends Component {
                             return (
                               <Query query={FETCH_REVIEW} variables={{ restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId }} >
                                 {(reviewData) => {
-                                  // console.log(reviewData)
                                   return (
-                                    <p><button onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>Write a Review</button></p>
+                                    <p onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>Write a Review</p>
                                   )
                                 }}
                               </Query>
@@ -264,21 +263,6 @@ class RestaurantDetail extends Component {
                           <p>{dish.name}</p>
                         </div>
                       ))}
-
-                      {/* <div className="restaurant-detail-dish-1-wrapper">
-                        <div className="dish-image-wrapper"></div>
-                        <p>Blueberry Pancakes</p>
-                      </div>
-
-                      <div className="restaurant-detail-dish-2-wrapper">
-                        <div className="dish-image-wrapper"></div>
-                        <p>Toasted S'mores</p>
-                      </div> */}
-
-                      {/* <div className="restaurant-detail-dish-3-wrapper">
-                        <div className="dish-image-wrapper"></div>
-                        <p>Campfire Breakfast</p>
-                      </div> */}
                     </div>
                   </div>
 
