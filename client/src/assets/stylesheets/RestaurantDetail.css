@@ -14,13 +14,15 @@
 }
 
 .restaurant-detail-thumbnail-wrapper {
+  position: relative;
   width: 24.85%;
   height: 240px;
   overflow: hidden;
 }
 
 .restaurant-detail-thumbnail-wrapper img {
-  width: 100%;
+  height: 100%;
+  transform: scale(1.21);
 }
 
 .restaurant-detail-gallery-button-wrapper {
