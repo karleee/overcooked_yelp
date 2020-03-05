@@ -213,13 +213,12 @@ class RestaurantDetail extends Component {
                       <i className="restaurant-detail-star-icon"></i>
                       <Query query={CURRENT_USER} >
                         {(currentUser) => {
-                          // console.log(currentUser.data.currentUserId)
-                          // console.log(this.props.match.params.id)
                           return (
                             <Query query={FETCH_REVIEW} variables={{restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId}} >
                               {(reviewData) => {
+                                // console.log(reviewData)
                                   return (
-                                    <p><button onClick={() => this.renderReview(data.restaurant.id, reviewData, currentUser.data.currentUserId)}>Write a Review</button></p>
+                                    <p><button onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId)}>Write a Review</button></p>
                                   )
                               }}
                             </Query>

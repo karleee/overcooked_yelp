@@ -4,7 +4,7 @@ export default {
   NEW_REVIEW: gql`
       mutation newReview($rating: Int, $body: String, $restaurantId: ID!) {
           newReview(rating: $rating, body: $body, restaurantId: $restaurantId) {
-              id
+              _id
               rating
               date
               body
@@ -17,15 +17,15 @@ export default {
   `,
   DELETE_REVIEW: gql`
       mutation deleteReview($id: ID!) {
-          deleteReview(id: $id) {
-              id
+          deleteReview(_id: $id) {
+              _id
           }
       }
   `,
   UPDATE_REVIEW: gql`
-      mutation updateReview($id: ID!, $body: String, $rating: Int, $date: String) {
-          updateReview(id: $id, body: $body, rating: $rating, date: $date) {
-              id
+      mutation updateReview($_id: ID!, $body: String, $rating: Int, $date: String) {
+          updateReview(_id: $_id, body: $body, rating: $rating, date: $date) {
+              _id
               body
               rating
               date

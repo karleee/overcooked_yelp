@@ -4,7 +4,7 @@ export default {
   FETCH_REVIEW: gql`
     query FetchReview($userId: ID!, $restaurantId:ID!) {
       review(userId: $userId, restaurantId: $restaurantId) {
-        id
+        _id
         date
         body
         rating
@@ -19,7 +19,7 @@ export default {
     query FetchReviewsOfRestaurant($restaurantId: ID!) {
       restaurant(id: $restaurantId) {
         reviews {
-            id
+            _id
             body
             user {
                 _id
@@ -34,7 +34,7 @@ export default {
   FETCH_REVIEWS: gql`
     query FetchReviews {
       reviews {
-        id
+        _id
         user{
           firstName
         }

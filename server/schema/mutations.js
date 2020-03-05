@@ -76,20 +76,20 @@ const mutation = new GraphQLObjectType({
       updateReview: {
           type: ReviewType,
           args: { 
-              id: { type: new GraphQLNonNull(GraphQLID) },
+              _id: { type: new GraphQLNonNull(GraphQLID) },
               rating: { type: GraphQLInt },
               date: { type: GraphQLString },
               body: { type: GraphQLString },
           },
-          resolve(parent, { id, rating, date, body }) {
-              return ReviewService.updateReview(id, rating, date, body);
+          resolve(parent, { _id, rating, date, body }) {
+              return ReviewService.updateReview(_id, rating, date, body);
           }
       },
       deleteReview: {
           type: ReviewType,
-          args: { id: { type: new GraphQLNonNull(GraphQLID)}},
-          resolve(parent, {id}) {
-              return Review.remove({ id: id });
+          args: { _id: { type: new GraphQLNonNull(GraphQLID)}},
+          resolve(parent, {_id}) {
+              return Review.remove({ _id: _id });
           }
       }
   }

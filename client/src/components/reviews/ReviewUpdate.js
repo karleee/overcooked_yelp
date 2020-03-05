@@ -14,7 +14,7 @@ class ReviewUpdate extends Component {
       const review = this.props.location.state.review
       const userId = this.props.location.state.userId
       this.state = {
-          id: review.id,
+          _id: review._id,
           rating: review.rating || 0,
           body: review.body || "",
           restaurantId: this.props.match.params.id,
@@ -26,7 +26,7 @@ class ReviewUpdate extends Component {
       e.preventDefault();
       updateReview({
           variables: {
-              id: this.state.id,
+              _id: this.state._id,
               rating: this.state.rating,
               body: this.state.body,
               restaurantId: this.state.restaurantId,

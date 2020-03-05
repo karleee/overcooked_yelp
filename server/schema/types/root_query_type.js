@@ -43,7 +43,6 @@ const RootQueryType = new GraphQLObjectType({
           userId: { type:  new GraphQLNonNull(GraphQLID)}
       },
       resolve(parentValue, {restaurantId, userId} ) {
-        // console.log(restaurantId, userId)
         return Review.findOne({restaurant: restaurantId, user: userId})
       }
   },
