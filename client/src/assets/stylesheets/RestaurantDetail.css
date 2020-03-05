@@ -20,7 +20,7 @@
   overflow: hidden;
 }
 
-.restaurant-detail-thumbnail-wrapper img {
+.restaurant-detail-thumbnail-wrapper img { 
   height: 100%;
   transform: scale(1.25);
 }
@@ -262,6 +262,7 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   background: gray;
+  overflow: hidden;
 }
 
 .restaurant-detail-map-text-info-wrapper {
