@@ -7,8 +7,6 @@ import LoginPage from '../components/session/LoginForm';
 import RegisterPage from '../components/session/RegisterForm';
 import RestaurantDetail from './restaurants/RestaurantDetail';
 import Home from './home/Home';
-import { MAPS_API_KEY } from '../config/keys';
-
 
 class App extends React.Component {
   constructor(props){
@@ -23,6 +21,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    // CreateReactApp requires the REACT_APP_ prefix for env vars
+    let MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY;
     // place the google maps api as a script tag in the head
     // this script places a google object on window.google
     let mapsApiUrl = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}`;
