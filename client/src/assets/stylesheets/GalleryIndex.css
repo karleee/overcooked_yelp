@@ -123,7 +123,6 @@
 }
 
 .gallery-thumbnail-photo-wrapper {
-  position: relative;
   width: 150px;
   height: 150px;
   border-radius: 5px;
@@ -137,9 +136,6 @@
 }
 
 .gallery-thumbnail-photo-wrapper img {
-  position: absolute;
-  top: 0;
-  left: -40px;
   height: 100%;
 }
 
