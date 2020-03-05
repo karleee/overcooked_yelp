@@ -151,6 +151,10 @@ export default {
           url,
           description,
           categories
+        },
+        popularDishes {
+          name,
+          url
         }
       }
     }

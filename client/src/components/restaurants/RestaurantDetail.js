@@ -242,7 +242,17 @@ class RestaurantDetail extends Component {
                     <h3>Popular Dishes</h3>
 
                     <div className="restaurant-detail-dishes-wrapper">
-                      <div className="restaurant-detail-dish-1-wrapper">
+                      {data.restaurant.popularDishes.map((dish, indx) => (
+                        <div key={indx} className="dish-wrapper">
+                          <div className="dish-image-wrapper">
+                            <img src={dish.url} alt="Popular dish thumbnail image" />
+                          </div>
+
+                          <p>{dish.name}</p>
+                        </div>
+                      ))}
+
+                      {/* <div className="restaurant-detail-dish-1-wrapper">
                         <div className="dish-image-wrapper"></div>
                         <p>Blueberry Pancakes</p>
                       </div>
@@ -250,12 +260,12 @@ class RestaurantDetail extends Component {
                       <div className="restaurant-detail-dish-2-wrapper">
                         <div className="dish-image-wrapper"></div>
                         <p>Toasted S'mores</p>
-                      </div>
+                      </div> */}
 
-                      <div className="restaurant-detail-dish-3-wrapper">
+                      {/* <div className="restaurant-detail-dish-3-wrapper">
                         <div className="dish-image-wrapper"></div>
                         <p>Campfire Breakfast</p>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 
@@ -264,7 +274,7 @@ class RestaurantDetail extends Component {
 
                     <div className="restaurant-detail-location-and-hours-body-wrapper">
                       <div className="restaurant-detail-map-wrapper">
-                        <div className="restaurant-detail-map-image-wrapper">
+                        <div className="restaurant-detail-map-image-wrapper"> 
                           <RestaurantMap restaurants={[data.restaurant]} />
                         </div>
 

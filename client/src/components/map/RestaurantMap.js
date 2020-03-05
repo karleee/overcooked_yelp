@@ -23,7 +23,7 @@ class RestaurantMap extends React.Component {
   }
 
   redirectToRestaurant(restaurant) {
-    this.props.history.push(`/restaurants/${restaurant.id}`);
+    this.props.history.push(`/restaurants/${restaurant._id}`);
   }
 
   componentDidMount() {

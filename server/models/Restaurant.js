@@ -152,12 +152,22 @@ const RestaurantSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: 'review'
-    }
+    } 
   ],
   photos: [
     {
       type: Schema.Types.ObjectId,
       ref: 'photo'
+    }
+  ],
+  popularDishes: [
+    {
+      name: {
+        type: String
+      },
+      url: {
+        type: String
+      }
     }
   ]
 });

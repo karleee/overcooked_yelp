@@ -3,14 +3,14 @@ const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLBoolean,
 const User = require('../../models/User');
 
 // Creating GraphQL object type for sub fields of data
-const Birthday = new GraphQLObjectType({
-  name: 'Birthday',
-  fields: () => ({
-    month: { type: GraphQLString },
-    day: { type: GraphQLInt },
-    yr: { type: GraphQLInt }
-  }),
-});
+// const Birthday = new GraphQLObjectType({
+//   name: 'Birthday',
+//   fields: () => ({
+//     month: { type: GraphQLString },
+//     day: { type: GraphQLInt },
+//     yr: { type: GraphQLInt }
+//   }),
+// });
 
 // Creating GraphQL object type for user
 const UserType = new GraphQLObjectType({
@@ -29,7 +29,6 @@ const UserType = new GraphQLObjectType({
         return User.findReviews(parentValue._id);
       }
     },
-    birthday: { type: Birthday },
     token: { type: GraphQLString }, 
     loggedIn: { type: GraphQLBoolean },
     errors: { type: new GraphQLList(GraphQLString) }
