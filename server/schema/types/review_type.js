@@ -1,9 +1,13 @@
+
 const graphql = require('graphql');
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLList } = graphql;
 const User = require('../../models/User');
 const Review = require('../../models/Review');
+const Restaurant = require('../../models/Restaurant')
 
-// Creating GraphQL object type for review
+const UserType = require('./user_type');
+const RestaurantType = require("./restaurant_type");
+
 const ReviewType = new GraphQLObjectType({
   name: 'ReviewType',
   fields: () => ({

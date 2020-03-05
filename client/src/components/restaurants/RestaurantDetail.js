@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
-import { Link } from 'react-router-dom';
 import Queries from '../../graphql/queries';
+import { Link } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
 import RestaurantMap from '../map/RestaurantMap';
 import '../../assets/stylesheets/reset.css';
 import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/RestaurantDetail.css';
 
-const { FETCH_RESTAURANT } = Queries;
+const { FETCH_RESTAURANT, FETCH_REVIEW, CURRENT_USER } = Queries;
+
 
 // RestaurantIndex component returning information about all restaurants from backend
 // Scrolls automatically to top of the page
@@ -31,6 +32,14 @@ class RestaurantDetail extends Component {
 
   toggleAmenities() {
     this.setState({ viewMoreAmenities: !this.state.viewMoreAmenities });
+  }
+
+  renderReview(restaurantId, reviewData, userId, restaurantName) {
+    if(reviewData.data.review) {
+      this.props.history.push({pathname: `/restaurants/${restaurantId}/reviews/edit`, state: {review: reviewData.data.review, userId, restaurantName }})
+    } else {
+      this.props.history.push({pathname: `/restaurants/${restaurantId}/reviews/create`, state: {userId, restaurantName}})
+    }
   }
 
   render() {
@@ -188,7 +197,6 @@ class RestaurantDetail extends Component {
                     <div className="stars-icon-wrapper">
                       <img src={`/images/restaurant_detail/${stars}.png`} />
                     </div>
-
                     <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
                   </div>
 
@@ -205,7 +213,20 @@ class RestaurantDetail extends Component {
                           <img src="/images/restaurant_detail/star_icon.png" alt="Write review icon image" />
                         </div>
 
-                        <p>Write a Review</p>
+                        <Query query={CURRENT_USER} >
+                          {(currentUser) => {
+                            return (
+                              <Query query={FETCH_REVIEW} variables={{ restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId }} >
+                                {(reviewData) => {
+                                  // console.log(reviewData)
+                                  return (
+                                    <p><button onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>Write a Review</button></p>
+                                  )
+                                }}
+                              </Query>
+                            )
+                          }}
+                        </Query>
                       </div>
                     </div>
 

@@ -30,7 +30,7 @@ const RootQueryType = new GraphQLObjectType({
     },
     // Queries database for all reviews
     reviews: {
-      type: ReviewType,
+      type: new GraphQLList(ReviewType),
       resolve() {
         return Review.find({});
       }
@@ -38,11 +38,14 @@ const RootQueryType = new GraphQLObjectType({
     // Queries database for one specific review
     review: {
       type: ReviewType,
-      args: { _id: { type: new GraphQLNonNull(GraphQLID) }},
-      resolve(_, { _id }) {
-        return Review.findById(_id);
+      args: { 
+          restaurantId: { type: new GraphQLNonNull(GraphQLID)}, 
+          userId: { type:  new GraphQLNonNull(GraphQLID)}
+      },
+      resolve(parentValue, {restaurantId, userId} ) {
+        return Review.findOne({restaurant: restaurantId, user: userId})
       }
-    },
+  },
     // Queries for all users
     users: {
       type: new GraphQLList(UserType),
