@@ -64,7 +64,7 @@ const RestaurantIndex = () => {
               })}
             </ul>
             
-            <RestaurantMap restaurants={data.restaurants} />
+            {/* <RestaurantMap restaurants={data.restaurants} /> */}
           </div>
         );
       }}
