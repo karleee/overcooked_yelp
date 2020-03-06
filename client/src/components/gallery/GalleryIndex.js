@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Queries from '../../graphql/queries';
 import Navbar from '../navbar/Navbar';
 import Modal from '../modal/Modal';
+import { getAverageRating, getStarImage } from '../../util/restaurant_util';
 import '../../assets/stylesheets/reset.css';
 import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/GalleryIndex.css';
@@ -60,39 +61,10 @@ class GalleryIndex extends Component {
           const reviews = data.restaurant.reviews;
 
           // Getting average rating from all reviews
-          let total = 0;
-          let average;
-
-          reviews.forEach(review => {
-            total += review.rating;
-          });
-
-          average = total / reviews.length;
+          const average = getAverageRating(reviews);
 
           // Determining star ratings indicator
-          let stars;
-
-          if (average === 0) {
-            stars = 'zero';
-          } else if (average > 0 && average <= 1) {
-            stars = 'one';
-          } else if (average > 1 && average < 1.6) {
-            stars = 'one_and_half';
-          } else if (average >= 1.6 && average <= 2) {
-            stars = 'two';
-          } else if (average > 2 && average < 2.6) {
-            stars = 'two_and_half';
-          } else if (average >= 2.6 && average <= 3) {
-            stars = 'three';
-          } else if (average > 3 && average < 3.6) {
-            stars = 'three_and_half';
-          } else if (average >= 3.6 && average <= 4) {
-            stars = 'four';
-          } else if (average > 4 && average < 4.6) {
-            stars = 'four_and_half';
-          } else {
-            stars = 'five';
-          }
+          const stars = getStarImage(average);
 
           // Finding all, food, inside, drink, menu, and outside photos
           const allPhotos = data.restaurant.photos;

@@ -218,15 +218,18 @@ class RestaurantDetail extends Component {
                     <h3>Popular Dishes</h3>
 
                     <div className="restaurant-detail-dishes-wrapper">
-                      {data.restaurant.popularDishes.map((dish, indx) => (
-                        <div key={indx} className="dish-wrapper">
-                          <div className="dish-image-wrapper">
-                            <img src={dish.url} alt="Popular dish thumbnail image" />
-                          </div>
+                      {data.restaurant.popularDishes.map((dish, indx) => {
 
-                          <p>{dish.name}</p>
-                        </div>
-                      ))}
+                        return (
+                          <div key={indx} className="dish-wrapper">
+                            <div className="dish-image-wrapper">
+                              <img src={dish.url} alt="Popular dish thumbnail image" />
+                            </div>
+
+                            <p>{dish.name}</p>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
 
