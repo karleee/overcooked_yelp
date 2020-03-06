@@ -219,7 +219,8 @@ class RestaurantDetail extends Component {
 
                     <div className="restaurant-detail-dishes-wrapper">
                       {data.restaurant.popularDishes.map((dish, indx) => {
-
+                        // Filtering all reviews with the popular dish word in them
+                        
                         return (
                           <div key={indx} className="dish-wrapper">
                             <div className="dish-image-wrapper">
