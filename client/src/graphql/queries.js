@@ -2,15 +2,15 @@ import gql from "graphql-tag";
 
 export default {
   FETCH_REVIEW: gql`
-    query FetchReview($userId: ID!, $restaurantId:ID!) {
+    query FetchReview($userId: ID!, $restaurantId: ID!) {
       review(userId: $userId, restaurantId: $restaurantId) {
         _id
         date
         body
         rating
         user {
-            _id
-            firstName
+          _id
+          firstName
         }
       }
     }
@@ -19,23 +19,23 @@ export default {
     query FetchReviewsOfRestaurant($restaurantId: ID!) {
       restaurant(id: $restaurantId) {
         reviews {
+          _id
+          body
+          user {
             _id
-            body
-            user {
-                _id
-                firstName
-            }
-            date
-            rating
+            firstName
+          }
+          date
+          rating
         }
       }
-    }     
+    }
   `,
   FETCH_REVIEWS: gql`
     query FetchReviews {
       reviews {
         _id
-        user{
+        user {
           firstName
         }
         body
@@ -47,25 +47,25 @@ export default {
   FETCH_RESTAURANTS: gql`
     query FetchRestaurants {
       restaurants {
-        _id,
-        name,
-        price,
-        category,
+        _id
+        name
+        price
+        category
         location {
-          streetAddress,
-          city,
-          state,
+          streetAddress
+          city
+          state
           zipCode
-        },
+        }
         coordinates {
-          latitude,
+          latitude
           longitude
-        },
+        }
         photos {
           user {
-            firstName,
+            firstName
             lastName
-          },
+          }
           url
         }
       }
@@ -75,85 +75,85 @@ export default {
   FETCH_RESTAURANT: gql`
     query FetchRestaurant($_id: ID!) {
       restaurant(_id: $_id) {
-        _id,
-        name,
-        price,
-        category,
-        phoneNum,
+        _id
+        name
+        price
+        category
+        phoneNum
         location {
-          streetAddress,
-          city,
-          state,
+          streetAddress
+          city
+          state
           zipCode
-        },
+        }
         coordinates {
-          latitude,
+          latitude
           longitude
-        },
+        }
         hours {
           monday {
-            open,
-            close
-          },
-          tuesday {
-            open,
-            close
-          },
-          wednesday {
-            open,
-            close
-          },
-          thursday {
-            open,
-            close
-          },
-          friday {
-            open,
-            close
-          },
-          saturday {
-            open,
-            close
-          },
-          sunday {
-            open,
+            open
             close
           }
-        },
+          tuesday {
+            open
+            close
+          }
+          wednesday {
+            open
+            close
+          }
+          thursday {
+            open
+            close
+          }
+          friday {
+            open
+            close
+          }
+          saturday {
+            open
+            close
+          }
+          sunday {
+            open
+            close
+          }
+        }
         amenities {
-          healthScore,
-          takesReservations,
-          happyHourSpecials,
-          delivery,
-          vegetarianOptions,
-          takeOut,
-          acceptsCreditCards,
+          healthScore
+          takesReservations
+          happyHourSpecials
+          delivery
+          vegetarianOptions
+          takeOut
+          acceptsCreditCards
           wifi
-        },
+        }
         reviews {
-          rating,
-          body,
+          rating
+          body
           date
-        },
+        }
         photos {
           user {
-            firstName,
-            lastName,
-            profilePhoto,
-            friends,
+            firstName
+            lastName
+            profilePhoto
+            friends
             reviews {
               _id
             }
-          },
+          }
           review {
             date
-          },
-          url,
-          description,
+          }
+          url
+          description
           categories
-        },
+        }
         popularDishes {
-          name,
+          name
           url
         }
       }
@@ -191,6 +191,94 @@ export default {
       currentUserId @client
       currentUserFirstName @client
       currentUserLastName @client
+    }
+  `,
+  // see if we can DRY this code up
+  SEARCH: gql`
+    query Search($find_desc: String) {
+      search(find_desc: $find_desc) {
+        _id
+        name
+        price
+        category
+        phoneNum
+        location {
+          streetAddress
+          city
+          state
+          zipCode
+        }
+        coordinates {
+          latitude
+          longitude
+        }
+        hours {
+          monday {
+            open
+            close
+          }
+          tuesday {
+            open
+            close
+          }
+          wednesday {
+            open
+            close
+          }
+          thursday {
+            open
+            close
+          }
+          friday {
+            open
+            close
+          }
+          saturday {
+            open
+            close
+          }
+          sunday {
+            open
+            close
+          }
+        }
+        amenities {
+          healthScore
+          takesReservations
+          happyHourSpecials
+          delivery
+          vegetarianOptions
+          takeOut
+          acceptsCreditCards
+          wifi
+        }
+        reviews {
+          rating
+          body
+          date
+        }
+        photos {
+          user {
+            firstName
+            lastName
+            profilePhoto
+            friends
+            reviews {
+              _id
+            }
+          }
+          review {
+            date
+          }
+          url
+          description
+          categories
+        }
+        popularDishes {
+          name
+          url
+        }
+      }
     }
   `
 };

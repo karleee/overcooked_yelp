@@ -68,7 +68,7 @@ class RestaurantMap extends React.Component {
       });
 
       // only show info window and click redirect if showing a list
-      if (!this.singleRestaurant) {
+      if (this.props.mode === "search" || !this.singleRestaurant) {
 
         // redirect to the restaurant_show page on click
         marker.addListener('click', () => this.redirectToRestaurant(restaurant));
@@ -121,7 +121,7 @@ class RestaurantMap extends React.Component {
   }
 
   render() {
-    const mapClass = this.singleRestaurant ? "single" : "list";
+    const mapClass = (this.props.mode === "search" || !this.singleRestaurant) ? "list" : "single";
     return (
       <div id="restaurant-map" className={mapClass}>
         Restaurant Single Map

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const graphql = require('graphql');
-const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull } = graphql;
+const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull, GraphQLString } = graphql;
 
 const RestaurantType = require('./restaurant_type');
 const ReviewType = require('./review_type');
@@ -9,6 +9,8 @@ const UserType = require("./user_type");
 const Restaurant = mongoose.model('restaurant');
 const Review = mongoose.model('review');
 const User = mongoose.model("user");
+
+const SearchService = require("../../services/search");
 
 const RootQueryType = new GraphQLObjectType({ 
   name: 'RootQueryType',
@@ -59,6 +61,14 @@ const RootQueryType = new GraphQLObjectType({
       args: { _id: { type: new GraphQLNonNull(GraphQLID) } },
       resolve(_, { _id }) {
         return User.findById(_id);
+      }
+    },
+    search: {
+      type: new GraphQLList(RestaurantType),
+      // find_desc === searchTerm
+      args: { find_desc: { type: GraphQLString }},
+      resolve(_, { find_desc }) {
+        return SearchService.search(find_desc);
       }
     }
   })
