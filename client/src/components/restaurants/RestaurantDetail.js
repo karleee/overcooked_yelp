@@ -4,7 +4,7 @@ import Queries from '../../graphql/queries';
 import { Link } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
 import RestaurantMap from '../map/RestaurantMap';
-import { setAmenityValue, getAverageRating, getStarImage } from '../../util/restaurant_util';
+import { setAmenityValue, getAverageRating, getStarImage, getCapitalizedKey } from '../../util/restaurant_util';
 import '../../assets/stylesheets/reset.css';
 import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/RestaurantDetail.css';
@@ -106,41 +106,17 @@ class RestaurantDetail extends Component {
           // Getting an array of amenities
           const amenities = data.restaurant.amenities;
           const amenitiesRawKeys = Object.keys(amenities);
-          const extraAmenitiesRawKeys = amenitiesRawKeys.slice(4, amenitiesRawKeys.length);
 
-          const amenitiesKeys = Object.keys(amenities).slice(0, Object.keys(amenities).length - 1);
-          const amenitiesValues = Object.values(amenities).slice(0, Object.keys(amenities).length - 1);
-          let amenitiesArray = [];
-          let indx = 0;
+          // Put extra amenities into pairs
+          const extraAmenitiesRawKeys = amenitiesRawKeys.slice(4, amenitiesRawKeys.length - 1);
+          let pairedExtraAmenities = [];
 
-          while (indx < amenitiesKeys.length) {
-            let keyAndValue = [];
-            let spacedKey = '';
-            let spacedKeyArray = [];
-            let capitalizedKeyArray = [];
-
-            // Capitalizing spaced out key
-            spacedKey = amenitiesKeys[indx].replace(/([a-z](?=[A-Z]))/g, '$1 ');
-            spacedKeyArray = spacedKey.split(' ');
-            spacedKeyArray.map(word => capitalizedKeyArray.push(word[0].toUpperCase() + word.slice(1)));
-
-            keyAndValue.push(capitalizedKeyArray.join(' '), amenitiesValues[indx]);
-            amenitiesArray.push(keyAndValue);
-            indx++;
-          };
-
-          // Putting extra amenities into pairs
-          let extraAmenities = amenitiesArray.slice(4, amenitiesArray.length);
-          let i = 0;
-          let pairedAmenities = [];
-
-          while (i < extraAmenities.length) {
+          for (let i = 0; i < extraAmenitiesRawKeys.length; i += 2) {
             let pair = [];
-            pair.push(extraAmenities[i], extraAmenities[i + 1]);
-            pairedAmenities.push(pair);
-            i += 2;
+            pair.push(extraAmenitiesRawKeys[i], extraAmenitiesRawKeys[i + 1]);
+            pairedExtraAmenities.push(pair);
           }
-
+          
           // Saving restaurant reviews to a variable for easier access
           const reviews = data.restaurant.reviews;
 
@@ -301,15 +277,17 @@ class RestaurantDetail extends Component {
 
                     <div className="amenities-list-container">
                       <ul>
-                        {amenitiesArray.slice(0, 4).map((amenity, indx) => {
+                        {amenitiesRawKeys.slice(0, 4).map((key, indx) => {
                           // Accounting for number value for health score amenity
-                          const amenityValue = setAmenityValue(amenity[0], amenity[1]);
+                          const amenityValue = setAmenityValue(key, amenities[key]);
 
                           return (
-                            <li key={indx} className={`${amenitiesRawKeys[indx]}-icon-wrapper`}>
-                              <img src={`/images/restaurant_detail/amenities/${amenitiesRawKeys[indx]}_icon.png`} alt="Amenity icon image" />
+                            <li key={indx}>
+                              <div className={`${key}-icon-wrapper`}>
+                                <img src={`/images/restaurant_detail/amenities/${key}_icon.png`} alt="Amenity icon image" />
+                              </div>
 
-                              <p>{amenity[0]}</p>
+                              <p>{getCapitalizedKey(key)}</p>
                               <p>{amenityValue}</p>
                             </li>
                           );
@@ -318,26 +296,31 @@ class RestaurantDetail extends Component {
 
                       {this.state.viewMoreAmenities ? 
                       <ul className="extra-amenities-container">
-                        {pairedAmenities.map((pair, indx) => {
-                          // Setting first and second pair of amenity keys and values
-                          const firstAmenityKey = pair[0][0];
-                          const firstAmenityValue = setAmenityValue(firstAmenityKey, pair[0][1]);
-                          const secondAmenityKey = pair[1][0];
-                          const secondAmenityValue = setAmenityValue(secondAmenityKey, pair[1][1]);
+                        {pairedExtraAmenities.map((pair, indx) => {
+                          // Setting first and second pair of amenity keys and values                          
+                          const firstAmenityKey = pair[0];
+                          const firstAmenityValue = setAmenityValue(firstAmenityKey, pair[1]);
+
+                          const secondAmenityKey = pair[1];
+                          const secondAmenityValue = setAmenityValue(secondAmenityKey, pair[1]);
                           
                           return (
                             <li key={indx}>
-                              <div className={`${extraAmenitiesRawKeys[indx]}-icon-wrapper`}>
-                                <img src={`/images/restaurant_detail/amenities/${amenitiesRawKeys[indx + 4]}_icon.png`} alt="Amenity icon image" />
+                              <div className="extra-amenity-pair-first">
+                                <div className={`${pair[0]}-icon-wrapper`}>
+                                  <img src={`/images/restaurant_detail/amenities/${firstAmenityKey}_icon.png`} alt="Amenity icon image" />
+                                </div>
 
-                                <p>{firstAmenityKey}</p>
+                                <p>{getCapitalizedKey(firstAmenityKey)}</p>
                                 <p>{firstAmenityValue}</p>
                               </div>
 
-                              <div className={`${extraAmenitiesRawKeys[indx + 1]}-icon-wrapper`}>
-                                <img src={`/images/restaurant_detail/amenities/${amenitiesRawKeys[(indx + 1) + 4]}_icon.png`} alt="Amenity icon image" />
+                              <div className="extra-amenity-pair-second">
+                                <div className={`${pair[1]}-icon-wrapper`}>
+                                  <img src={`/images/restaurant_detail/amenities/${secondAmenityKey}_icon.png`} alt="Amenity icon image" />
+                                </div>
 
-                                <p>{secondAmenityKey}</p>
+                                <p>{getCapitalizedKey(secondAmenityKey)}</p>
                                 <p>{secondAmenityValue}</p>
                               </div>
                             </li>
@@ -351,7 +334,7 @@ class RestaurantDetail extends Component {
                       className="restaurant-detail-view-more-amenities-wrapper"
                       onClick={this.toggleAmenities}
                     >
-                      {this.state.viewMoreAmenities ? 'Show Less' : `${amenitiesArray.length - 4} more attributes`}
+                      {this.state.viewMoreAmenities ? 'Show Less' : `${extraAmenitiesRawKeys.length} more attributes`}
                     </div>
                   </div>
 

@@ -1,7 +1,7 @@
 // Setting amenity values from boolean to string for display
 export const setAmenityValue = (key, value) => {
   let amenityValue;
-  if (key === 'Health Score') {
+  if (key === 'healthScore') {
     amenityValue = value;
   } else {
     if (value) {
@@ -13,10 +13,22 @@ export const setAmenityValue = (key, value) => {
   return amenityValue;
 };
 
+// Formatting camelcased string into correct capitalization
+export const getCapitalizedKey = key => {
+  let spacedKey;
+  let spacedKeyArray;
+  let capitalizedKeyArray = [];
+
+  spacedKey = key.replace(/([a-z](?=[A-Z]))/g, '$1 ');
+  spacedKeyArray = spacedKey.split(' ');
+  spacedKeyArray.map(word => capitalizedKeyArray.push(word[0].toUpperCase() + word.slice(1)));
+
+  return capitalizedKeyArray.join(' ');
+};
+
 // Calculates average rating of restaurant based on all reviews
 export const getAverageRating = reviews => {
   let total = 0;
-  // let average;
 
   reviews.forEach(review => {
     total += review.rating;

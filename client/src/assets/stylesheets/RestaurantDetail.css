@@ -408,19 +408,6 @@
   list-style: none;
 }
 
-.amenities-list-container ul li {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  box-sizing: border-box;
-  padding-bottom: 12px;
-}
-
-.amenities-list-container ul:first-of-type {
-  height: 75px;
-}
-
 .amenities-list-container .extra-amenities-container {
   padding-right: 83.5px;
 }
@@ -429,34 +416,44 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: -15px;
+  align-items: flex-start;
   width: 100%;
-  padding-bottom: 12px;
 }
 
-.vegetarianOptions-icon-wrapper,
-.takeOut-icon-wrapper {
+.amenities-list-container ul li,
+.amenities-list-container .extra-amenities-container li .extra-amenity-pair-first,
+.amenities-list-container .extra-amenities-container li .extra-amenity-pair-second  {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
+  box-sizing: border-box;
+  padding-bottom: 15px;
+}
+
+.amenities-list-container ul:first-of-type {
+  height: 75px;
+}
+
+.healthScore-icon-wrapper,
+.takesReservations-icon-wrapper,
+.delivery-icon-wrapper,
+.goodForHappyHour-icon-wrapper,
+.takeOut-icon-wrapper,
+.acceptsCreditCards-icon-wrapper,
+.wifi-icon-wrapper {
+  width: 30px;
 }
 
 .healthScore-icon-wrapper img,
 .takesReservations-icon-wrapper img,
+.delivery-icon-wrapper img,
 .goodForHappyHour-icon-wrapper img,
-.vegetarianOptions-icon-wrapper img {
+.vegetarianOptions-icon-wrapper img,
+.takeOut-icon-wrapper img,
+.acceptsCreditCards-icon-wrapper img,
+.wifi-icon-wrapper img {
   height: 18px;
-  margin-right: 12px;
-}
-
-.delivery-icon-wrapper img {
-  height: 18px;
-  margin-right: 7px;
-}
-
-.takeOut-icon-wrapper img {
-  height: 22px;
-  margin-right: 11px;
 }
 
 .amenities-list-container ul li p:first-of-type {
