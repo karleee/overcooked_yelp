@@ -70,6 +70,7 @@ const mutation = new GraphQLObjectType({
           },
           async resolve(parent, { rating, body, restaurantId }, context) {
             const user = await AuthService.verifyUser(context)
+            console.log(user)
             return ReviewService.newReview(rating, body, user, restaurantId)
           }
       },
