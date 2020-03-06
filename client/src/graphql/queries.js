@@ -131,12 +131,6 @@ export default {
           wifi
         }
         reviews {
-<<<<<<< HEAD
-          rating
-          body
-          date
-        }
-=======
           _id,
           rating,
           body,
@@ -152,7 +146,6 @@ export default {
             }
           }
         },
->>>>>>> master
         photos {
           user {
             firstName
@@ -209,6 +202,7 @@ export default {
       currentUserId @client
       currentUserFirstName @client
       currentUserLastName @client
+      currentUserZipCode @client
     }
   `,
   // see if we can DRY this code up

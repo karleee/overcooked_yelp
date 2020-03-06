@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
-import '../../assets/stylesheets/reset.css';
-import '../../assets/stylesheets/App.css';
 import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
@@ -10,6 +7,10 @@ import queryString from 'query-string';
 import Queries from '../../graphql/queries';
 import RestaurantMap from '../map/RestaurantMap';
 const { SEARCH } = Queries;
+
+import '../../assets/stylesheets/reset.css';
+import '../../assets/stylesheets/App.css';
+
 
 // SearchResultIndex component returning photo gallery of images from one restaurant from backend
 class SearchResultIndex extends Component {
@@ -19,25 +20,24 @@ class SearchResultIndex extends Component {
 
   // Renders the component
   render() {
-    let { find_desc } = queryString.parse(this.props.location.search);
+    // get search term and search location from the url
+    let { find_desc, find_loc } = queryString.parse(this.props.location.search);
     return (
       <div className="search-result-index-wrapper">
         <Navbar />
 
         <div className="search-result-restaurant-list-wrapper">
-          <h1>Best food in (put user's searched city/location here)</h1>
+          <h1>Best {find_desc || "restaurants"} in {find_loc}</h1>
 
           <div className="search-result-reservations-menu-wrapper">
             <p>(If we have extra time, make a reservations menu bar here)</p>
           </div>
 
-          <h2>All Results for "{find_desc}"</h2>
-
           <Query query={SEARCH} variables={{ find_desc }}>
             {({ loading, error, data }) => {
               if (loading) return <p>Loading</p>;
               if (error) return <p>Error</p>;
-              console.log("DATA", data.search);
+
               let restaurants = data.search;
               if (restaurants.length) {
                 return (

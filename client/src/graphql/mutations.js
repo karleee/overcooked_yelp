@@ -40,6 +40,7 @@ export default {
         _id
         firstName
         lastName
+        zipCode
       }
     }
   `,
@@ -52,6 +53,7 @@ export default {
         _id
         firstName
         lastName
+        zipCode
       }
     }
   `,
@@ -64,6 +66,7 @@ export default {
         _id
         firstName
         lastName
+        zipCode
       }
     }
   `
