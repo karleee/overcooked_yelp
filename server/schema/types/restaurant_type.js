@@ -73,7 +73,6 @@ const RestaurantType = new GraphQLObjectType({
     name: { type: GraphQLString },
     price: { type: GraphQLInt },
     category: { type: GraphQLString },
-    id: {type: GraphQLID},
     phoneNum: { type: GraphQLString },
     location: { type: Location },
     coordinates: { type: Coordinates },

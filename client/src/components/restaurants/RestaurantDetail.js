@@ -104,6 +104,7 @@ class RestaurantDetail extends Component {
 
           // Getting an array of amenities
           const amenities = data.restaurant.amenities;
+          const amenitiesRawKeys = Object.keys(amenities);
 
           const amenitiesKeys = Object.keys(amenities).slice(0, Object.keys(amenities).length - 1);
           const amenitiesValues = Object.values(amenities).slice(0, Object.keys(amenities).length - 1);
@@ -195,7 +196,7 @@ class RestaurantDetail extends Component {
 
                   <div className="restaurant-detail-ratings-and-reviews-wrapper">
                     <div className="stars-icon-wrapper">
-                      <img src={`/images/restaurant_detail/${stars}.png`} />
+                      <img src={`/images/restaurant_detail/ratings/${stars}.png`} />
                     </div>
                     <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
                   </div>
@@ -210,11 +211,13 @@ class RestaurantDetail extends Component {
                     <div className="review-button-container">
                       <div className="review-button-wrapper">
                         <div className="review-button-icon-wrapper">
-                          <img src="/images/restaurant_detail/star_icon.png" alt="Write review icon image" />
+                          <img src="/images/restaurant_detail/action_menu/star_icon.png" alt="Write review icon image" />
                         </div>
 
-                        <Query query={CURRENT_USER} >
-                          {(currentUser) => {
+                        <p>Write a Review</p>
+
+                        {/* <Query query={CURRENT_USER} >
+                          {currentUser => {
                             return (
                               <Query query={FETCH_REVIEW} variables={{ restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId }} >
                                 {(reviewData) => {
@@ -225,14 +228,14 @@ class RestaurantDetail extends Component {
                               </Query>
                             )
                           }}
-                        </Query>
+                        </Query> */}
                       </div>
                     </div>
 
                     <div className="photo-button-container">
                       <div className="photo-button-wrapper">
                         <div className="photo-button-icon-wrapper">
-                          <img src="/images/restaurant_detail/camera_icon.png" alt="Add photo icon image" />
+                          <img src="/images/restaurant_detail/action_menu/camera_icon.png" alt="Add photo icon image" />
                         </div>
 
                         <p>Add Photo</p>
@@ -242,7 +245,7 @@ class RestaurantDetail extends Component {
                     <div className="save-button-container">
                       <div className="save-button-wrapper">
                         <div className="save-button-icon-wrapper">
-                          <img src="/images/restaurant_detail/bookmark_icon.png" alt="Bookmark icon image" />
+                          <img src="/images/restaurant_detail/action_menu/bookmark_icon.png" alt="Bookmark icon image" />
                         </div>
 
                         <p>Save</p>
@@ -311,7 +314,7 @@ class RestaurantDetail extends Component {
                   <div className="restaurant-detail-amenities-wrapper">
                     <h3>Amenities</h3>
 
-                    <div className="amenities-list-wrapper">
+                    <div className="amenities-list-container">
                       <ul>
                         {amenitiesArray.slice(0, 4).map((amenity, indx) => {
                           // Accounting for number value for health score amenity
@@ -328,7 +331,10 @@ class RestaurantDetail extends Component {
 
                           return (
                             <li key={indx}>
-                              <i className="amenity-icon"></i>
+                              <div className="amenity-icon">
+                                <img src={`/images/restaurant_detail/amenities/${amenitiesRawKeys[indx]}_icon.png`} alt="Amenity icon image" />
+                              </div>
+
                               <p>{amenity[0]}</p>
                               <p>{amenityValue}</p>
                             </li>
@@ -377,14 +383,20 @@ class RestaurantDetail extends Component {
 
                 <div className="restaurant-detail-sidebar-wrapper">
                   <div className="restaurant-detail-phone-wrapper">
-                    <i className="restaurant-detail-phone-icon"></i>
+                    <div className="restaurant-detail-phone-icon">
+                      <img src="/images/restaurant_detail/sidebar/phoneNum_icon.png" alt="Phone number icon" />
+                    </div>
+
                     <p>{data.restaurant.phoneNum}</p>
                   </div>
 
                   <div className="sidebar-underline-wrapper"></div>
 
                   <div className="restaurant-detail-directions-wrapper">
-                    <i className="restaurant-detail-directions-icon"></i>
+                    <div className="restaurant-detail-directions-icon">
+                      <img src="/images/restaurant_detail/sidebar/directions_icon.png" alt="Phone number icon" />
+                    </div>
+
                     <p>Get Directions</p>
                   </div>
                 </div>

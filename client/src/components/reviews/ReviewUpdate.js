@@ -128,10 +128,6 @@ class ReviewUpdate extends Component {
       }
   }
 
-  // renderHeartsTwo(){
-
-  // }
-
   updateCache(cache, {data: {updateReview}} ) {
       let review;
       try {

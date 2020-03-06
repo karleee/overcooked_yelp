@@ -11,6 +11,7 @@ const RestaurantType = require("./restaurant_type");
 const ReviewType = new GraphQLObjectType({
   name: 'ReviewType',
   fields: () => ({
+    _id: { type: GraphQLID },
     user: {
       type: require('./user_type'),
       resolve(parentValue) {
@@ -29,7 +30,6 @@ const ReviewType = new GraphQLObjectType({
           });
       }
     },
-    _id: { type: GraphQLID },
     rating: { type: GraphQLInt },
     body: { type: GraphQLString },
     photos: {
