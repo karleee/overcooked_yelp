@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router-dom';
-import '../../assets/stylesheets/RestaurantMap.css';
-
 
 const RestaurantInfoContent = ({ restaurant }) => (
   <div className="restaurant-info-content">
@@ -13,8 +11,7 @@ const RestaurantInfoContent = ({ restaurant }) => (
   </div>
 );
 
-class RestaurantMap extends React.Component {
-  
+class Map extends React.Component {
   constructor(props) {
     super(props);
     // move all this to render?
@@ -121,9 +118,9 @@ class RestaurantMap extends React.Component {
   }
 
   render() {
-    const mapClass = this.singleRestaurant ? "single" : "list";
+    // const mapClass = this.singleRestaurant ? "single" : "list";
     return (
-      <div id="restaurant-map" className={mapClass}>
+      <div id="restaurant-map" className="map-wrapper">
         Restaurant Single Map
       </div>
     );
@@ -131,4 +128,4 @@ class RestaurantMap extends React.Component {
 }
 
 // add withRouter to give access to history/redirect
-export default withRouter(RestaurantMap);
+export default withRouter(Map);

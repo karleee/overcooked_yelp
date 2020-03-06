@@ -3,7 +3,6 @@ import { Query } from 'react-apollo';
 import Queries from '../../graphql/queries';
 import { Link } from 'react-router-dom';
 import '../../assets/stylesheets/RestaurantIndex.css';
-import RestaurantMap from '../map/RestaurantMap';
 
 const { FETCH_RESTAURANTS } = Queries; 
 

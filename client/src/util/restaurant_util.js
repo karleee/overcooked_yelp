@@ -65,3 +65,47 @@ export const getStarImage = average => {
 
   return stars;
 };
+
+// Gets the photos or reviews containing the keyword in the description
+export const getPopularDishOccurences = (collection, dish, type) => {
+  const dishArray = dish.split(' ');
+  const lowerCasedDish = [];
+  let foundOccurences = [];
+
+  dishArray.forEach(word => {
+    const letters = /&[a-zA-z]+$/;
+    const lastLetter = word.slice(-1);
+    let unpunctuatedWord;
+
+    if (!lastLetter.match(letters)) {
+      unpunctuatedWord = word.slice(0, word.length);
+    } else {
+      unpunctuatedWord = word;
+    }
+
+    lowerCasedDish.push(unpunctuatedWord.toLowerCase());
+  });
+
+  collection.forEach(item => {
+    const firstKeyword = lowerCasedDish[0];
+    const secondKeyword = lowerCasedDish[1];
+    let lowerCasedBody = [];
+    let body;
+
+    if (type === 'photos' && item.description) {
+      body = item.description.split(' ');
+    } else if (type === 'reviews' && item.body) {
+      body = item.body.split(' ');
+    } else {
+      return;
+    }
+
+    body.forEach(word => {
+      lowerCasedBody.push(word.toLowerCase());
+    });
+
+    if (lowerCasedBody.includes(firstKeyword) && lowerCasedBody[lowerCasedBody.indexOf(firstKeyword) + 1] === secondKeyword) foundOccurences.push(item);
+  });
+
+  return foundOccurences;
+}

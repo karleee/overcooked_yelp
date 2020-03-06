@@ -3,8 +3,14 @@ import { Query } from 'react-apollo';
 import Queries from '../../graphql/queries';
 import { Link } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
-import RestaurantMap from '../map/RestaurantMap';
-import { setAmenityValue, getAverageRating, getStarImage, getCapitalizedKey } from '../../util/restaurant_util';
+import Map from '../map/Map';
+import { 
+  setAmenityValue, 
+  getAverageRating, 
+  getStarImage, 
+  getCapitalizedKey, 
+  getPopularDishOccurences
+} from '../../util/restaurant_util';
 import '../../assets/stylesheets/reset.css';
 import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/RestaurantDetail.css';
@@ -117,8 +123,9 @@ class RestaurantDetail extends Component {
             pairedExtraAmenities.push(pair);
           }
           
-          // Saving restaurant reviews to a variable for easier access
+          // Saving restaurant reviews and photos to a variable for easier access
           const reviews = data.restaurant.reviews;
+          const photos = data.restaurant.photos;
 
           // Getting average rating from all reviews
           const average = getAverageRating(reviews);
@@ -214,12 +221,14 @@ class RestaurantDetail extends Component {
                     </div>
                   </div>
 
-                  <div className="restaurant-detail-popular-dishes-wrapper">
+                  <div className="restaurant-detail-popular-dishes-container">
                     <h3>Popular Dishes</h3>
 
-                    <div className="restaurant-detail-dishes-wrapper">
+                    <div className="popular-dishes-wrapper">
                       {data.restaurant.popularDishes.map((dish, indx) => {
-                        // Filtering all reviews with the popular dish word in them
+                        // Getting all reviews and photos associated with the popular dish
+                        const foundReviews = getPopularDishOccurences(reviews, dish.name, 'reviews');
+                        const foundPhotos = getPopularDishOccurences(photos, dish.name, 'photos');
                         
                         return (
                           <div key={indx} className="dish-wrapper">
@@ -227,7 +236,15 @@ class RestaurantDetail extends Component {
                               <img src={dish.url} alt="Popular dish thumbnail image" />
                             </div>
 
-                            <p>{dish.name}</p>
+                            <div className="dish-text-wrapper">
+                              <p>{dish.name}</p>
+
+                              <div className="dish-reviews-and-photos-wrapper">
+                                <p>{foundPhotos.length} {foundPhotos.length > 1 || foundPhotos.length === 0 ? 'Photos' : 'Photo'}</p>
+                                <p>•</p>
+                                <p>{foundReviews.length} {foundReviews.length > 1 || foundReviews.length === 0 ? 'Reviews' : 'Review'}</p>
+                              </div>
+                            </div>
                           </div>
                         );
                       })}
@@ -240,8 +257,8 @@ class RestaurantDetail extends Component {
                     <div className="restaurant-detail-location-and-hours-body-wrapper">
                       <div className="restaurant-detail-map-wrapper">
                         <div className="restaurant-detail-map-image-wrapper"> 
-                          <RestaurantMap restaurants={[data.restaurant]} />
-                        </div>
+                          <Map restaurants={[data.restaurant]} />
+                        </div>   
 
                         <div className="restaurant-detail-map-text-info-wrapper">
                           <p>{data.restaurant.location.streetAddress}</p> 
@@ -363,7 +380,7 @@ class RestaurantDetail extends Component {
                       <img src="/images/restaurant_detail/sidebar/directions_icon.png" alt="Phone number icon" />
                     </div>
 
-                    <p>Get Directions</p>
+                    <Link to={`/restaurants/${data.restaurant._id}/map`}>Get Directions</Link> 
                   </div>
                 </div>
               </div>

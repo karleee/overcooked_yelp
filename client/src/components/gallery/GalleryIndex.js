@@ -98,7 +98,7 @@ class GalleryIndex extends Component {
             });
           });
 
-          console.log(foodPhotos);
+          // console.log(data.restaurant);
 
           return (
             <div className="restaurant-photo-gallery-wrapper">      
@@ -157,7 +157,7 @@ class GalleryIndex extends Component {
               </div>
 
               <div className="photo-gallery-modal-wrapper">
-                {this.state.showModal ? <Modal restaurant={data.restaurant} imageNum={this.state.currentImage} toggleModal={this.toggleModal} /> : ''}
+                {this.state.showModal ? <Modal allPhotos={data.restaurant.photos} currentPhoto={this.state.currentImage} toggleModal={this.toggleModal} /> : ''}
               </div>
             </div>
           );

@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  min-width: 970px;
+  width: 100%;
 }
 
 .restaurant-detail-body-wrapper {
@@ -59,7 +59,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  min-width: 1100px;
+  width: 100%;
   padding: 25px 230px;
   box-sizing: border-box;
 }
@@ -226,7 +226,7 @@
   width: 100%;
 }
 
-.restaurant-detail-popular-dishes-wrapper,
+.restaurant-detail-popular-dishes-container,
 .restaurant-detail-location-and-hours-wrapper, 
 .restaurant-detail-amenities-wrapper,
 .restaurant-detail-recommended-reviews-wrapper {
@@ -241,7 +241,7 @@
   border-bottom: none;
 }
 
-.restaurant-detail-popular-dishes-wrapper h3,
+.restaurant-detail-popular-dishes-container h3,
 .restaurant-detail-location-and-hours-wrapper h3,
 .restaurant-detail-amenities-wrapper h3,
 .restaurant-detail-recommended-reviews-wrapper h3 {
@@ -250,7 +250,7 @@
   color: var(--black);
 }
 
-.restaurant-detail-dishes-wrapper {
+.popular-dishes-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -279,7 +279,7 @@
   width: 100%;
 }
 
-.dish-wrapper p {
+.dish-text-wrapper {
   font-family: 'helveticaMedium';
   font-size: 14px;
   width: 100%;
@@ -291,6 +291,21 @@
   border-right: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   padding: 15px 0 0 15px;
+}
+
+.dish-reviews-and-photos-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  font-family: 'helveticaNormal';
+  font-size: 12px;
+  color: var(--subtle-text);
+}
+
+.dish-reviews-and-photos-wrapper p:nth-of-type(2n) {
+  font-family: sans-serif;
+  padding: 0 3px;
 }
 
 .restaurant-detail-location-and-hours-body-wrapper {
@@ -305,7 +320,7 @@
 .restaurant-detail-map-wrapper {
   display: flex;
   flex-direction: column;
-  width: 47%;
+  width: 52%;
 }
 
 .restaurant-detail-map-image-wrapper {
@@ -352,6 +367,7 @@
   justify-content: flex-start;
   align-items: center;
   margin-left: 30px;
+  width: 48%;
 }
 
 .restaurant-detail-weekday-wrapper {
@@ -518,7 +534,8 @@
   margin-left: 15px;
 }
 
-.restaurant-detail-directions-wrapper {
+.restaurant-detail-directions-wrapper a {
+  text-decoration: none;
   color: var(--blue);
 }
 
@@ -538,11 +555,11 @@
 }
 
 .restaurant-detail-phone-wrapper p,
-.restaurant-detail-directions-wrapper p {
+.restaurant-detail-directions-wrapper a {
   margin-left: 15px;
 }
 
-.restaurant-detail-directions-wrapper p:hover {
+.restaurant-detail-directions-wrapper a:hover {
   text-decoration: underline;
   cursor: pointer;
 }
