@@ -12,7 +12,7 @@ const { FETCH_RESTAURANT } = Queries;
 
 // RestaurantIndex component returning information about all restaurants from backend
 // Scrolls automatically to top of the page
-class RestaurantMap extends Component {
+class RestaurantMap extends Component { 
   constructor(props) {
     super(props);
     window.scrollTo(0, 0);

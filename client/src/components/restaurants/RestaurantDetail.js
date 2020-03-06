@@ -17,7 +17,6 @@ import '../../assets/stylesheets/RestaurantDetail.css';
 
 const { FETCH_RESTAURANT, FETCH_REVIEW, CURRENT_USER, FETCH_REVIEWS_OF_RESTAURANT } = Queries;
 
-
 // RestaurantIndex component returning information about all restaurants from backend
 // Scrolls automatically to top of the page
 class RestaurantDetail extends Component {
@@ -31,12 +30,15 @@ class RestaurantDetail extends Component {
     this.toggleAmenities = this.toggleAmenities.bind(this);
   }
 
+  // Runs once component is mounted
+  // Continuously updaitng current time
   componentDidMount() {
     setInterval(() => {
       this.setState({ currentTime: new Date() })
     }, 1000);
   }
 
+  // Toggles amenities viewing state
   toggleAmenities() {
     this.setState({ viewMoreAmenities: !this.state.viewMoreAmenities });
   }
@@ -54,7 +56,6 @@ class RestaurantDetail extends Component {
   }
 
   renderAllReviews(reviews) {
-    // console.log(reviews)
     return reviews.map(review => {
       let stars;
       if(review.rating === 1) { 
@@ -69,34 +70,56 @@ class RestaurantDetail extends Component {
         stars = 'five';
       }
       return (
-        <li key={review._id} className='individual-review-info-container'>
-          <div className='review-user-info-container'>
-            <div className='review-user-profilephoto-container'>
+        <li key={review._id} className='review-container'> 
+          <div className='user-info-container'>
+            <div className='profile-photo-container'>
               <img src={review.user.profilePhoto} />
             </div>
-            <div className='review-user-info' >
-              <div className='review-user-name'>
 
+            <div className='stats-container'>
+              <div className='stats-user-name-container'>
                 <p>{review.user.firstName} {(review.user.lastName)[0]}.</p>
               </div>
-              <div  className='review-user-friends'>
-                <img src='/images/gallery/friends_icon.png'/>
-                <p>{review.user.friends} friends</p>
+
+              <div  className='stats-friends-container'>
+                <div className='friends-icon-container'>
+                  <img src='/images/gallery/friends_icon.png'/>
+                </div>
+
+                <p>{review.user.friends}</p>
+                <p>{review.user.friends > 1 || review.user.friends === 0 ? 'friends' : 'friend'}</p>
               </div>
-              <div className='review-user-num-reviews'>
-                <img src='/images/gallery/total_reviews_icon.png'/>
-                <p>{review.user.reviews.length} reviews </p>
+
+              <div className='stats-num-reviews-container'>
+                <div className='num-reviews-icon-container'>
+                  <img src='/images/gallery/total_reviews_icon.png'/>
+                </div>
+
+                <p>{review.user.reviews.length}</p>
+                <p>{review.user.reviews > 1 || review.user.reviews === 0 ? 'reviews' : 'review'}</p>
+              </div>
+
+              <div className='stats-num-photos-container'>
+                <div className='num-photos-icon-container'>
+                  <img src='/images/gallery/camera_icon.png' />
+                </div>
+
+                <p>{review.user.photos.length}</p>
+                <p>{review.user.photos.length > 1 || review.user.photos.length === 0 ? 'photos' : 'photo'}</p>
               </div>
             </div>
           </div>
-          <div className='review-info'>
-            <div className='review-stars-icon-and-date'>
+
+          <div className='user-review-container'>
+            <div className='stars-icon-and-date'>
               <div className='stars-icon-wrapper'>
-                  <img src={`/images/restaurant_detail/${stars}.png`} />
+                <img src={`/images/restaurant_detail/ratings/${stars}.png`} />
               </div>
-              <p className='individual-review-date'>{review.date}</p>
+
+              <p>{review.date}</p>
             </div>
-            <p className='individual-review-body'>{review.body}</p>
+
+            <p className='body-container'>{review.body}</p>
           </div>
         </li>
       )

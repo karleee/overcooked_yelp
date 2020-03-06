@@ -9,8 +9,8 @@ export default {
         body
         rating
         user {
-            _id
-            firstName
+          _id
+          firstName
         }
       }
     }
@@ -22,8 +22,8 @@ export default {
             _id
             body
             user {
-                _id
-                firstName
+              _id
+              firstName
             }
             date
             rating
@@ -136,12 +136,15 @@ export default {
           body,
           date,
           user {
+            _id,
             firstName,
             lastName
-            _id
-            profilePhoto
-            friends
+            profilePhoto,
+            friends,
             reviews {
+              _id
+            },
+            photos {
               _id
             }
           }
