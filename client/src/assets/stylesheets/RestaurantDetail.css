@@ -485,21 +485,19 @@
   padding: 5px 0;
 }
 
-.review-user-friends > .fa-star {
-  background-color: orange;
-  color: white;
-  padding: 2px;
-  font-size: 9px;
-  height: 10px;
+.review-user-friends > img {
+  height: 15px;
+  width: 15px;
+
 }
 
 .review-user-num-reviews {
   display: flex;
 }
 
-.review-user-num-reviews > .fa-poll-h {
-  background-color: white;
-  color: orange;
+.review-user-num-reviews > img {
+  height: 15px;
+  width: 15px;
 }
 
 .review-user-friends > p {

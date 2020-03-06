@@ -73,11 +73,11 @@ class RestaurantDetail extends Component {
                 <p>{review.user.firstName} {(review.user.lastName)[0]}.</p>
               </div>
               <div  className='review-user-friends'>
-                <i class="fas fa-star"></i>
+                <img src='/images/gallery/friends_icon.png'/>
                 <p>{review.user.friends} friends</p>
               </div>
               <div className='review-user-num-reviews'>
-                <i class="fas fa-poll-h"></i>
+                <img src='/images/gallery/total_reviews_icon.png'/>
                 <p>{review.user.reviews.length} reviews </p>
               </div>
             </div>
