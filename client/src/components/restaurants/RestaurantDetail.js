@@ -63,20 +63,33 @@ class RestaurantDetail extends Component {
       }
       return (
         <li key={review._id} className='individual-review-info-container'>
-          <div className='review-user-info'>
+          <div className='review-user-info-container'>
             <div className='review-user-profilephoto-container'>
               <img src={review.user.profilePhoto} />
             </div>
-            <p>{review.user.firstName} {(review.user.lastName)[0]}.</p>
-            <p> {review.user.friends} friends</p>
-            <p> {review.user.reviews.length} reviews </p>
+            <div className='review-user-info' >
+              <div className='review-user-name'>
+
+                <p>{review.user.firstName} {(review.user.lastName)[0]}.</p>
+              </div>
+              <div  className='review-user-friends'>
+                <i class="fas fa-star"></i>
+                <p>{review.user.friends} friends</p>
+              </div>
+              <div className='review-user-num-reviews'>
+                <i class="fas fa-poll-h"></i>
+                <p>{review.user.reviews.length} reviews </p>
+              </div>
+            </div>
           </div>
           <div className='review-info'>
-            <div className='stars-icon-wrapper'>
-                <img src={`/images/restaurant_detail/${stars}.png`} />
+            <div className='review-stars-icon-and-date'>
+              <div className='stars-icon-wrapper'>
+                  <img src={`/images/restaurant_detail/${stars}.png`} />
+              </div>
+              <p className='individual-review-date'>{review.date}</p>
             </div>
-            <p>{review.date}</p>
-            <p>{review.body}</p>
+            <p className='individual-review-body'>{review.body}</p>
           </div>
         </li>
       )
@@ -415,7 +428,7 @@ class RestaurantDetail extends Component {
 
                   <div className="restaurant-detail-recommended-reviews-wrapper">
                     <h3>Recommended Reviews</h3>
-                    <ul>
+                    <ul className='reviews-display-list'>
                         {this.renderAllReviews(data.restaurant.reviews)}
                     </ul>
                   </div>
