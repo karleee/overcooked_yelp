@@ -262,7 +262,6 @@
 .dish-wrapper {
   display: flex;
   flex-direction: column;
-  /* align-items: flex-start; */
   width: 32%;
   height: 190px;
   margin-right: 15px;
@@ -397,35 +396,67 @@
 .amenities-list-container {
   display: flex;
   flex-direction: column; 
-  padding-top: 10px;
+  box-sizing: border-box;
+  padding-top: 25px;
 }
 
 .amenities-list-container ul {
   display: flex;
   flex-direction: column;
+  align-content: space-between;
   flex-wrap: wrap;
   list-style: none;
-  height: 65px;
-  margin-top: -3px;
 }
 
 .amenities-list-container ul li {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
   box-sizing: border-box;
-  padding: 5px;
+  padding-bottom: 12px;
 }
 
-.amenity-icon {
-  width: 17px;
-  height: 17px;
-  overflow: hidden;
-  margin-right: 10px;
+.amenities-list-container ul:first-of-type {
+  height: 75px;
 }
 
-.amenity-icon img {
+.amenities-list-container .extra-amenities-container {
+  padding-right: 83.5px;
+}
+
+.amenities-list-container .extra-amenities-container li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: -15px;
   width: 100%;
+  padding-bottom: 12px;
+}
+
+.vegetarianOptions-icon-wrapper,
+.takeOut-icon-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.healthScore-icon-wrapper img,
+.takesReservations-icon-wrapper img,
+.goodForHappyHour-icon-wrapper img,
+.vegetarianOptions-icon-wrapper img {
+  height: 18px;
+  margin-right: 12px;
+}
+
+.delivery-icon-wrapper img {
+  height: 18px;
+  margin-right: 7px;
+}
+
+.takeOut-icon-wrapper img {
+  height: 22px;
+  margin-right: 11px;
 }
 
 .amenities-list-container ul li p:first-of-type {

@@ -145,7 +145,7 @@ class GalleryIndex extends Component {
                       <Link to={`/restaurants/${data.restaurant._id}`}>{data.restaurant.name}</Link>
 
                       <div className="photo-gallery-stars-icon-wrapper">
-                        <img src={`/images/restaurant_detail/${stars}.png`} />
+                        <img src={`/images/restaurant_detail/ratings/${stars}.png`} />
                       </div>
                     </div>
 

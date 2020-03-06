@@ -129,7 +129,7 @@ const RestaurantSchema = new Schema({
     takesReservations: {
       type: Boolean
     },
-    happyHourSpecials: {
+    goodForHappyHour: { 
       type: Boolean
     },
     delivery: {

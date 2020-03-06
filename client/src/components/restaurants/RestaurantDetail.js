@@ -4,6 +4,7 @@ import Queries from '../../graphql/queries';
 import { Link } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
 import RestaurantMap from '../map/RestaurantMap';
+import { setAmenityValue, getAverageRating, getStarImage } from '../../util/restaurant_util';
 import '../../assets/stylesheets/reset.css';
 import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/RestaurantDetail.css';
@@ -105,6 +106,7 @@ class RestaurantDetail extends Component {
           // Getting an array of amenities
           const amenities = data.restaurant.amenities;
           const amenitiesRawKeys = Object.keys(amenities);
+          const extraAmenitiesRawKeys = amenitiesRawKeys.slice(4, amenitiesRawKeys.length);
 
           const amenitiesKeys = Object.keys(amenities).slice(0, Object.keys(amenities).length - 1);
           const amenitiesValues = Object.values(amenities).slice(0, Object.keys(amenities).length - 1);
@@ -127,43 +129,26 @@ class RestaurantDetail extends Component {
             indx++;
           };
 
+          // Putting extra amenities into pairs
+          let extraAmenities = amenitiesArray.slice(4, amenitiesArray.length);
+          let i = 0;
+          let pairedAmenities = [];
+
+          while (i < extraAmenities.length) {
+            let pair = [];
+            pair.push(extraAmenities[i], extraAmenities[i + 1]);
+            pairedAmenities.push(pair);
+            i += 2;
+          }
+
           // Saving restaurant reviews to a variable for easier access
           const reviews = data.restaurant.reviews;
 
           // Getting average rating from all reviews
-          let total = 0;
-          let average;
-
-          reviews.forEach(review => {
-            total += review.rating;
-          });
-          
-          average = total / reviews.length;
+          const average = getAverageRating(reviews);
 
           // Determining star ratings indicator
-          let stars;
-
-          if (average === 0) {
-            stars = 'zero';
-          } else if (average > 0 && average <= 1) {
-            stars = 'one'; 
-          } else if (average > 1 && average < 1.6) {
-            stars = 'one_and_half';
-          } else if (average >= 1.6 && average <= 2) {
-            stars = 'two';
-          } else if (average > 2 && average < 2.6) {
-            stars = 'two_and_half';
-          } else if (average >= 2.6 && average <= 3) {
-            stars = 'three';
-          } else if (average > 3 && average < 3.6) {
-            stars = 'three_and_half';
-          } else if (average >= 3.6 && average <= 4) {
-            stars = 'four';
-          } else if (average > 4 && average < 4.6) {
-            stars = 'four_and_half';
-          } else {
-            stars = 'five';
-          }
+          const stars = getStarImage(average);
           
           return (
             <div className="restaurant-detail-wrapper">
@@ -318,22 +303,11 @@ class RestaurantDetail extends Component {
                       <ul>
                         {amenitiesArray.slice(0, 4).map((amenity, indx) => {
                           // Accounting for number value for health score amenity
-                          let amenityValue;
-                          if (amenity[0] === 'Health Score') {
-                            amenityValue = amenity[1];
-                          } else {
-                            if (amenity[1]) {
-                              amenityValue = 'Yes';
-                            } else {
-                              amenityValue = 'No';
-                            }
-                          }
+                          const amenityValue = setAmenityValue(amenity[0], amenity[1]);
 
                           return (
-                            <li key={indx}>
-                              <div className="amenity-icon">
-                                <img src={`/images/restaurant_detail/amenities/${amenitiesRawKeys[indx]}_icon.png`} alt="Amenity icon image" />
-                              </div>
+                            <li key={indx} className={`${amenitiesRawKeys[indx]}-icon-wrapper`}>
+                              <img src={`/images/restaurant_detail/amenities/${amenitiesRawKeys[indx]}_icon.png`} alt="Amenity icon image" />
 
                               <p>{amenity[0]}</p>
                               <p>{amenityValue}</p>
@@ -343,27 +317,32 @@ class RestaurantDetail extends Component {
                       </ul> 
 
                       {this.state.viewMoreAmenities ? 
-                      <ul>
-                        {amenitiesArray.slice(4, amenitiesArray.length).map((amenity, indx) => {
-                          // Accounting for number value for health score amenity
-                          let amenityValue;
-                          if (amenity[0] === 'Health Score') {
-                            amenityValue = amenity[1];
-                          } else {
-                            if (amenity[1]) {
-                              amenityValue = 'Yes';
-                            } else {
-                              amenityValue = 'No';
-                            }
-                          }
-
+                      <ul className="extra-amenities-container">
+                        {pairedAmenities.map((pair, indx) => {
+                          // Setting first and second pair of amenity keys and values
+                          const firstAmenityKey = pair[0][0];
+                          const firstAmenityValue = setAmenityValue(firstAmenityKey, pair[0][1]);
+                          const secondAmenityKey = pair[1][0];
+                          const secondAmenityValue = setAmenityValue(secondAmenityKey, pair[1][1]);
+                          
                           return (
                             <li key={indx}>
-                              <i className="amenity-icon"></i>
-                              <p>{amenity[0]}</p>
-                              <p>{amenityValue}</p>
+                              <div className={`${extraAmenitiesRawKeys[indx]}-icon-wrapper`}>
+                                <img src={`/images/restaurant_detail/amenities/${amenitiesRawKeys[indx + 4]}_icon.png`} alt="Amenity icon image" />
+
+                                <p>{firstAmenityKey}</p>
+                                <p>{firstAmenityValue}</p>
+                              </div>
+
+                              <div className={`${extraAmenitiesRawKeys[indx + 1]}-icon-wrapper`}>
+                                <img src={`/images/restaurant_detail/amenities/${amenitiesRawKeys[(indx + 1) + 4]}_icon.png`} alt="Amenity icon image" />
+
+                                <p>{secondAmenityKey}</p>
+                                <p>{secondAmenityValue}</p>
+                              </div>
                             </li>
                           );
+
                         })}
                       </ul> : ''}
                     </div>

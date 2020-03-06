@@ -48,7 +48,7 @@ const Amenities = new GraphQLObjectType({
   fields: () => ({
     healthScore: { type: GraphQLString },
     takesReservations: { type: GraphQLBoolean },
-    happyHourSpecials: { type: GraphQLBoolean },
+    goodForHappyHour: { type: GraphQLBoolean },
     delivery: { type: GraphQLBoolean },
     vegetarianOptions: { type: GraphQLBoolean },
     takeOut: { type: GraphQLBoolean },
