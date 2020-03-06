@@ -182,9 +182,7 @@ class RestaurantDetail extends Component {
                           <img src="/images/restaurant_detail/action_menu/star_icon.png" alt="Write review icon image" />
                         </div>
 
-                        <p>Write a Review</p>
-
-                        {/* <Query query={CURRENT_USER} >
+                        <Query query={CURRENT_USER} >
                           {currentUser => {
                             return (
                               <Query query={FETCH_REVIEW} variables={{ restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId }} >
@@ -196,7 +194,7 @@ class RestaurantDetail extends Component {
                               </Query>
                             )
                           }}
-                        </Query> */}
+                        </Query>
                       </div>
                     </div>
 
