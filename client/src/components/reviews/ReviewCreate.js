@@ -9,7 +9,7 @@ import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/ReviewCreateUpdate.css';
 
 const { NEW_REVIEW } = Mutations;
-const { FETCH_REVIEW } = Queries;
+const { FETCH_REVIEW, FETCH_RESTAURANT } = Queries;
 
 class ReviewCreate extends Component {
   constructor(props) {
@@ -136,6 +136,22 @@ class ReviewCreate extends Component {
             data: { review: newReview }
         });
     }
+		let restaurant;
+		try {
+			restaurant = cache.readQuery({ query: FETCH_RESTAURANT, variables: {_id: this.state.restaurantId} }).restaurant
+		} catch (err) {
+			return;
+		}
+		if (restaurant) {
+			// debugger;
+			restaurant.reviews.push(newReview);
+			console.log(restaurant);
+			cache.writeQuery({
+				query: FETCH_RESTAURANT,
+				variables: {_id: this.state.restaurantId},
+				data: { restaurant: restaurant }
+			});
+		}	
 }
 
   updateState(review) {

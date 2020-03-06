@@ -8,7 +8,7 @@ import '../../assets/stylesheets/reset.css';
 import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/RestaurantDetail.css';
 
-const { FETCH_RESTAURANT, FETCH_REVIEW, CURRENT_USER } = Queries;
+const { FETCH_RESTAURANT, FETCH_REVIEW, CURRENT_USER, FETCH_REVIEWS_OF_RESTAURANT } = Queries;
 
 
 // RestaurantIndex component returning information about all restaurants from backend
@@ -35,11 +35,52 @@ class RestaurantDetail extends Component {
   }
 
   renderReview(restaurantId, reviewData, userId, restaurantName) {
-    if(reviewData.data.review) {
-      this.props.history.push({pathname: `/restaurants/${restaurantId}/reviews/edit`, state: {review: reviewData.data.review, userId, restaurantName }})
+    if(userId) {
+      if(reviewData.data.review) {
+        this.props.history.push({pathname: `/restaurants/${restaurantId}/reviews/edit`, state: {review: reviewData.data.review, userId, restaurantName }});
+      } else {
+        this.props.history.push({pathname: `/restaurants/${restaurantId}/reviews/create`, state: {userId, restaurantName}});
+      }
     } else {
-      this.props.history.push({pathname: `/restaurants/${restaurantId}/reviews/create`, state: {userId, restaurantName}})
+      this.props.history.push('/login');
     }
+  }
+
+  renderAllReviews(reviews) {
+    // console.log(reviews)
+    return reviews.map(review => {
+      let stars;
+      if(review.rating === 1) { 
+        stars = 'one';
+      } else if(review.rating === 2) {
+         stars = 'two';
+      } else if(review.rating === 3) { 
+        stars = 'three';
+      } else if(review.rating === 4) { 
+        stars = 'four';
+      } else if(review.rating === 5){
+        stars = 'five';
+      }
+      return (
+        <li key={review._id} className='individual-review-info-container'>
+          <div className='review-user-info'>
+            <div className='review-user-profilephoto-container'>
+              <img src={review.user.profilePhoto} />
+            </div>
+            <p>{review.user.firstName} {(review.user.lastName)[0]}.</p>
+            <p> {review.user.friends} friends</p>
+            <p> {review.user.reviews.length} reviews </p>
+          </div>
+          <div className='review-info'>
+            <div className='stars-icon-wrapper'>
+                <img src={`/images/restaurant_detail/${stars}.png`} />
+            </div>
+            <p>{review.date}</p>
+            <p>{review.body}</p>
+          </div>
+        </li>
+      )
+    })
   }
 
   render() {
@@ -216,7 +257,6 @@ class RestaurantDetail extends Component {
                           return (
                             <Query query={FETCH_REVIEW} variables={{restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId}} >
                               {(reviewData) => {
-                                // console.log(reviewData)
                                   return (
                                     <p><button onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>Write a Review</button></p>
                                   )
@@ -375,6 +415,9 @@ class RestaurantDetail extends Component {
 
                   <div className="restaurant-detail-recommended-reviews-wrapper">
                     <h3>Recommended Reviews</h3>
+                    <ul>
+                        {this.renderAllReviews(data.restaurant.reviews)}
+                    </ul>
                   </div>
                 </div>
 

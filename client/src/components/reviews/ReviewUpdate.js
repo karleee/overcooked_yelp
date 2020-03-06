@@ -35,7 +35,7 @@ class ReviewUpdate extends Component {
               rating: this.state.rating,
               body: this.state.body,
               restaurantId: this.state.restaurantId,
-              date: `Edited ${new Date().toString()}`
+              date: `${new Date().toLocaleDateString()}`
           }
       })
       .then(data => {
