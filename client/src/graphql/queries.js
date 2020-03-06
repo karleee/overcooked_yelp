@@ -16,8 +16,8 @@ export default {
     }
   `,
   FETCH_REVIEWS_OF_RESTAURANT: gql`
-    query FetchReviewsOfRestaurant($restaurantId: ID!) {
-      restaurant(id: $restaurantId) {
+    query FetchReviewsOfRestaurant($_id: ID!) {
+      restaurant(_id: $_id) {
         reviews {
           _id
           body
@@ -67,7 +67,7 @@ export default {
             lastName
           }
           url
-        }
+        },
       }
     }
   `,
@@ -131,10 +131,28 @@ export default {
           wifi
         }
         reviews {
+<<<<<<< HEAD
           rating
           body
           date
         }
+=======
+          _id,
+          rating,
+          body,
+          date,
+          user {
+            firstName,
+            lastName
+            _id
+            profilePhoto
+            friends
+            reviews {
+              _id
+            }
+          }
+        },
+>>>>>>> master
         photos {
           user {
             firstName
