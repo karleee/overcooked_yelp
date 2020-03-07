@@ -1,3 +1,19 @@
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: #9FA4F5;
+}
+
+.loader-container p {
+  font-family: 'helveticaBold';
+  font-size: 24px;
+  color: var(--black);
+}
+
 .restaurant-detail-wrapper {
   display: flex;
   flex-direction: column;
