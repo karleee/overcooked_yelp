@@ -590,6 +590,8 @@
 
 .profile-photo-container img {
   width: 55px;
+  height: 55px;
+  background: lightblue;
   border-radius: 5px;
 }
 

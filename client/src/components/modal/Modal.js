@@ -36,10 +36,10 @@ class Modal extends React.Component {
     const date = currentPhoto.review.date;
 
     // Formatting numerical date into string format
-    const dateArray = date.split('/');
-    const month = dateArray[0];
-    const day = dateArray[1];
-    const yr = dateArray[2];
+    const dateArray = date.split('-');
+    const yr = dateArray[0];
+    const month = parseInt(dateArray[1]) - 1;
+    const day = parseInt(dateArray[2]);
     let fullDate = '';
 
     const wordMonths = [
@@ -70,7 +70,7 @@ class Modal extends React.Component {
             </div>
 
             <div className="selected-image-wrapper">
-              <img src={currentPhoto.url} alt="Gallery photo" />
+              <img src={currentPhoto.url} alt="Selected thumbnail" />
             </div>
 
             <div className="next-arrow-wrapper" onClick={this.next}>
@@ -81,7 +81,7 @@ class Modal extends React.Component {
           <div className="modal-sidebar-wrapper">
             <div className="modal-user-wrapper">
               <div className="modal-user-thumbnail-wrapper">
-                <img src={currentPhoto.user.profilePhoto} alt="User profile picture thumbnail" />
+                <img src={currentPhoto.user.profilePhoto} alt="User profile thumbnail" />
               </div>
 
               <div className="modal-user-info-header">
@@ -89,12 +89,12 @@ class Modal extends React.Component {
                 
                 <div className="modal-user-badges-wrapper">
                   <div className="modal-user-friends-wrapper">
-                    <img src="/images/gallery/friends_icon.png" alt="Friends icon image" />
+                    <img src="/images/gallery/friends_icon.png" alt="Friends icon" />
                     <p>{currentPhoto.user.friends}</p>
                   </div>
 
                   <div className="modal-user-total-reviews-wrapper">
-                    <img src="/images/gallery/total_reviews_icon.png" alt="Friends icon image" />
+                    <img src="/images/gallery/total_reviews_icon.png" alt="Reviews icon" />
                     <p>{currentPhoto.user.reviews.length}</p>
                   </div>
                 </div>

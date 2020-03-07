@@ -32,7 +32,7 @@ class RestaurantMap extends Component {
               <div className="map-restaurant-container">
                 <div className="map-restaurant-wrapper">
                   <div className="location-marker-container">
-                    <img src='/images/map/location_marker_icon.png' alt="Location marker icon image" />
+                    <img src='/images/map/location_marker_icon.png' alt="Location marker icon" />
                   </div>
 
                   <div className="text-container">

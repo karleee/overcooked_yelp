@@ -15,7 +15,7 @@ import '../../assets/stylesheets/reset.css';
 import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/RestaurantDetail.css';
 
-const { FETCH_RESTAURANT, FETCH_REVIEW, CURRENT_USER, FETCH_REVIEWS_OF_RESTAURANT } = Queries;
+const { FETCH_RESTAURANT, FETCH_REVIEW, CURRENT_USER } = Queries;
 
 // RestaurantIndex component returning information about all restaurants from backend
 // Scrolls automatically to top of the page
@@ -28,6 +28,7 @@ class RestaurantDetail extends Component {
       viewMoreAmenities: false
     }
     this.toggleAmenities = this.toggleAmenities.bind(this);
+    this.orderReviews = this.orderReviews.bind(this);
   }
 
   // Runs once component is mounted
@@ -43,6 +44,7 @@ class RestaurantDetail extends Component {
     this.setState({ viewMoreAmenities: !this.state.viewMoreAmenities });
   }
 
+  // Takes a user to create a new review or edit their existing one
   renderReview(restaurantId, reviewData, userId, restaurantName) {
     if(userId) {
       if(reviewData.data.review) {
@@ -55,43 +57,59 @@ class RestaurantDetail extends Component {
     }
   }
 
+  // Ordering reviews by date with most recent on top
+  orderReviews(reviews) {    
+    const reviewsCopy = reviews.slice();
+
+    reviewsCopy.sort(function (a, b) {
+      return new Date(a.date) - new Date(b.date)
+    })
+    
+    return reviewsCopy.reverse();
+  }
+
+  // Rendering all reviews on a restaurant
   renderAllReviews(reviews) {
     return reviews.map(review => {
+      const date = review.date.split('-');
+      const yr = date[0];
+      const month = date[1];
+      const dat = date[2];
       const stars = getStarImage(review.rating);
 
       return (
-        <li key={review._id} className='review-container'> 
-          <div className='user-info-container'>
-            <div className='profile-photo-container'>
-              <img src={review.user.profilePhoto} />
+        <li key={review._id} className="review-container"> 
+          <div className="user-info-container">
+            <div className="profile-photo-container">
+              <img src={review.user.profilePhoto} alt="Profile thumbnail" />
             </div>
 
-            <div className='stats-container'>
-              <div className='stats-user-name-container'>
+            <div className="stats-container">
+              <div className="stats-user-name-container">
                 <p>{review.user.firstName} {(review.user.lastName)[0]}.</p>
               </div>
 
-              <div  className='stats-friends-container'>
-                <div className='friends-icon-container'>
-                  <img src='/images/gallery/friends_icon.png'/>
+              <div  className="stats-friends-container">
+                <div className="friends-icon-container">
+                  <img src="/images/gallery/friends_icon.png" alt="Friends icon" />
                 </div>
 
                 <p>{review.user.friends}</p>
                 <p>{review.user.friends > 1 || review.user.friends === 0 ? 'friends' : 'friend'}</p>
               </div>
 
-              <div className='stats-num-reviews-container'>
-                <div className='num-reviews-icon-container'>
-                  <img src='/images/gallery/total_reviews_icon.png'/>
+              <div className="stats-num-reviews-container">
+                <div className="num-reviews-icon-container">
+                  <img src="/images/gallery/total_reviews_icon.png" alt="Reviews icon" />
                 </div>
 
                 <p>{review.user.reviews.length}</p>
                 <p>{review.user.reviews > 1 || review.user.reviews === 0 ? 'reviews' : 'review'}</p>
               </div>
 
-              <div className='stats-num-photos-container'>
-                <div className='num-photos-icon-container'>
-                  <img src='/images/gallery/camera_icon.png' />
+              <div className="stats-num-photos-container">
+                <div className="num-photos-icon-container">
+                  <img src="/images/gallery/camera_icon.png" alt="Camera icon" />
                 </div>
 
                 <p>{review.user.photos.length}</p>
@@ -100,16 +118,16 @@ class RestaurantDetail extends Component {
             </div>
           </div>
 
-          <div className='user-review-container'>
-            <div className='stars-icon-and-date'>
-              <div className='stars-icon-wrapper'>
-                <img src={`/images/restaurant_detail/ratings/${stars}.png`} />
+          <div className="user-review-container">
+            <div className="stars-icon-and-date">
+              <div className="stars-icon-wrapper">
+                <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt="Ratings icon" />
               </div>
 
-              <p>{review.date}</p>
+              <p>{`${month}/${dat}/${yr}`}</p>
             </div>
 
-            <p className='body-container'>{review.body}</p>
+            <p className="body-container">{review.body}</p>
           </div>
         </li>
       )
@@ -123,6 +141,10 @@ class RestaurantDetail extends Component {
           if (loading) return 'Loading...';
           if (error) return `Error! ${error.message}`;
 
+          //TEsting...
+          console.log(this.orderReviews(data.restaurant.reviews));
+          // console.log(data.restaurant);
+
           // Converting price into dollar sign equivalents
           const price = data.restaurant.price;
           let dollars = [];
@@ -135,7 +157,6 @@ class RestaurantDetail extends Component {
 
           // Getting current time
           const currentHour = this.state.currentTime.getHours();
-          const currentMinutes = this.state.currentTime.getMinutes();
           const currentDay = this.state.currentTime.getDay();
           const ampm = (currentHour >= 12) ? 'pm' : 'am';
           let adjustedHour;
@@ -208,7 +229,7 @@ class RestaurantDetail extends Component {
               <div className="restaurant-detail-photos-wrapper">
                 {data.restaurant.photos.slice(0, 4).map((photo, indx) => (
                   <div key={photo._id} className="restaurant-detail-thumbnail-wrapper">
-                    <img src={photo.url} alt="Restaurant photo" />
+                    <img src={photo.url} alt="Restaurant thumbnail" />
                   </div>
                 ))}
               </div>
@@ -224,14 +245,14 @@ class RestaurantDetail extends Component {
                     <h1>{data.restaurant.name}</h1>
 
                     <div className="restaurant-detail-claimed-wrapper">
-                      <img src="/images/restaurant_detail/claimed.png" alt="Claimed icon image" />
+                      <img src="/images/restaurant_detail/claimed.png" alt="Claimed icon" />
                       <p>Claimed</p>
                     </div>
                   </div>
 
                   <div className="restaurant-detail-ratings-and-reviews-wrapper">
                     <div className="stars-icon-wrapper">
-                      <img src={`/images/restaurant_detail/ratings/${stars}.png`} />
+                      <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt="Ratings icon" />
                     </div>
                     <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
                   </div>
@@ -246,7 +267,7 @@ class RestaurantDetail extends Component {
                     <div className="review-button-container">
                       <div className="review-button-wrapper">
                         <div className="review-button-icon-wrapper">
-                          <img src="/images/restaurant_detail/action_menu/star_icon.png" alt="Write review icon image" />
+                          <img src="/images/restaurant_detail/action_menu/star_icon.png" alt="Star icon" />
                         </div>
 
                         <Query query={CURRENT_USER} >
@@ -268,7 +289,7 @@ class RestaurantDetail extends Component {
                     <div className="photo-button-container">
                       <div className="photo-button-wrapper">
                         <div className="photo-button-icon-wrapper">
-                          <img src="/images/restaurant_detail/action_menu/camera_icon.png" alt="Add photo icon image" />
+                          <img src="/images/restaurant_detail/action_menu/camera_icon.png" alt="Camera icon" />
                         </div>
 
                         <p>Add Photo</p>
@@ -278,7 +299,7 @@ class RestaurantDetail extends Component {
                     <div className="save-button-container">
                       <div className="save-button-wrapper">
                         <div className="save-button-icon-wrapper">
-                          <img src="/images/restaurant_detail/action_menu/bookmark_icon.png" alt="Bookmark icon image" />
+                          <img src="/images/restaurant_detail/action_menu/bookmark_icon.png" alt="Bookmark icon" />
                         </div>
 
                         <p>Save</p>
@@ -298,7 +319,7 @@ class RestaurantDetail extends Component {
                         return (
                           <div key={indx} className="dish-wrapper">
                             <div className="dish-image-wrapper">
-                              <img src={dish.url} alt="Popular dish thumbnail image" />
+                              <img src={dish.url} alt="Popular dish thumbnail" />
                             </div>
 
                             <div className="dish-text-wrapper">
@@ -370,7 +391,7 @@ class RestaurantDetail extends Component {
                           return (
                             <li key={indx}>
                               <div className={`${key}-icon-wrapper`}>
-                                <img src={`/images/restaurant_detail/amenities/${key}_icon.png`} alt="Amenity icon image" />
+                                <img src={`/images/restaurant_detail/amenities/${key}_icon.png`} alt="Amenity icon" />
                               </div>
 
                               <p>{getCapitalizedKey(key)}</p>
@@ -394,7 +415,7 @@ class RestaurantDetail extends Component {
                             <li key={indx}>
                               <div className="extra-amenity-pair-first">
                                 <div className={`${pair[0]}-icon-wrapper`}>
-                                  <img src={`/images/restaurant_detail/amenities/${firstAmenityKey}_icon.png`} alt="Amenity icon image" />
+                                  <img src={`/images/restaurant_detail/amenities/${firstAmenityKey}_icon.png`} alt="Amenity icon" />
                                 </div>
 
                                 <p>{getCapitalizedKey(firstAmenityKey)}</p>
@@ -403,7 +424,7 @@ class RestaurantDetail extends Component {
 
                               <div className="extra-amenity-pair-second">
                                 <div className={`${pair[1]}-icon-wrapper`}>
-                                  <img src={`/images/restaurant_detail/amenities/${secondAmenityKey}_icon.png`} alt="Amenity icon image" />
+                                  <img src={`/images/restaurant_detail/amenities/${secondAmenityKey}_icon.png`} alt="Amenity icon" />
                                 </div>
 
                                 <p>{getCapitalizedKey(secondAmenityKey)}</p>
@@ -427,7 +448,7 @@ class RestaurantDetail extends Component {
                   <div className="restaurant-detail-recommended-reviews-wrapper">
                     <h3>Recommended Reviews</h3>
                     <ul className='reviews-display-list'>
-                        {this.renderAllReviews(data.restaurant.reviews)}
+                      {this.renderAllReviews(this.orderReviews(data.restaurant.reviews))}
                     </ul>
                   </div>
                 </div>

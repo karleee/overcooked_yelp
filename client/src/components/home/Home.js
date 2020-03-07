@@ -22,7 +22,7 @@ const Home = () => {
           <svg>
             <text x="50%" y="50%">morsel</text>
           </svg>
-          <img src="/images/homepage/logo.png" alt="Logo image" />
+          <img src="/images/homepage/logo.png" alt="Logo" />
         </div>
 
         <div className="search-input-wrapper">

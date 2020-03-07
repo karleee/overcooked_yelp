@@ -1,6 +1,8 @@
 
 const graphql = require('graphql');
+const graphqlDate = require('graphql-iso-date');
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLFloat, GraphQLList } = graphql;
+const { GraphQLDate } = graphqlDate;
 const User = require('../../models/User');
 const Review = require('../../models/Review');
 const Restaurant = require('../../models/Restaurant')
@@ -38,7 +40,7 @@ const ReviewType = new GraphQLObjectType({
         return Review.findPhotos(parentValue._id);
       }
     },
-    date: { type: GraphQLString }
+    date: { type: GraphQLDate } 
   })
 })
 

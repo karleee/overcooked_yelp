@@ -11,7 +11,7 @@ const Navbar = () => {
         <div className="navbar-home-logo-wrapper">
           <Link to='/'>
             <p>morsel</p>
-            <img src="/images/navbar/plain_logo.png" alt="Logo image" />
+            <img src="/images/navbar/plain_logo.png" alt="Logo" />
           </Link>
         </div>
 

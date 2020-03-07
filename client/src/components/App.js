@@ -11,10 +11,6 @@ import ReviewCreate from './reviews/ReviewCreate';
 import ReviewUpdate from './reviews/ReviewUpdate';
 
 class App extends React.Component {
-  constructor(props){
-    super(props);
-  }
-  
   addScriptToPage(scriptUrl) {
     // render a script tag for scriptUrl in the head of the HTML page
     const script = document.createElement("script");

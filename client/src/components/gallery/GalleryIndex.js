@@ -98,8 +98,6 @@ class GalleryIndex extends Component {
             });
           });
 
-          // console.log(data.restaurant);
-
           return (
             <div className="restaurant-photo-gallery-wrapper">      
               <Navbar />
@@ -110,14 +108,14 @@ class GalleryIndex extends Component {
 
                   <div className="photo-gallery-header">
                     <div className="photo-gallery-thumbnail-wrapper">
-                      <img src={data.restaurant.photos[0].url} alt="Restaurant thumbnail image" />
+                      <img src={data.restaurant.photos[0].url} alt="Restaurant thumbnail" />
                     </div>
 
                     <div className="photo-gallery-text-wrapper">
-                      <Link to={`/restaurants/${data.restaurant._id}`}>{data.restaurant.name}</Link>
+                      <Link to={`/restaurants/${data.restaurant._id}`}>{data.restaurant.name}</Link> 
 
                       <div className="photo-gallery-stars-icon-wrapper">
-                        <img src={`/images/restaurant_detail/ratings/${stars}.png`} />
+                        <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt='Rating icon'/>
                       </div>
                     </div>
 
@@ -143,12 +141,12 @@ class GalleryIndex extends Component {
                     {this.state.photos.length === 0 && this.state.viewingTab === 'viewAll' ? 
                       allPhotos.map((photo, indx) =>
                         <div key={indx} className="gallery-thumbnail-photo-wrapper" onClick={() => this.toggleModal(indx)}>
-                          <img src={photo.url} alt="Restaurant photo thumbnail" />
+                          <img src={photo.url} alt="Restaurant thumbnail" />
                         </div>
                       ) : 
                       this.state.photos.map((photo, indx) => 
                         <div key={indx} className="gallery-thumbnail-photo-wrapper" onClick={() => this.toggleModal(indx)}>
-                          <img src={photo.url} alt="Restaurant photo thumbnail" />
+                          <img src={photo.url} alt="Restaurant thumbnail" />
                         </div>
                       )
                     }

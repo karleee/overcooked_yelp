@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Mutation, Query } from 'react-apollo';
-
+import { Mutation } from 'react-apollo';
 import Mutations from '../../graphql/mutations';
 import Queries from '../../graphql/queries';
-import { Redirect } from 'react-router-dom';
 import '../../assets/stylesheets/reset.css';
 import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/ReviewCreateUpdate.css';
