@@ -171,7 +171,7 @@
   cursor: pointer;
 }
 
-.form-image-container {
+.signup-form-image-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -179,7 +179,7 @@
   width: 30%;
 }
 
-.form-image-container img {
+.signup-form-image-container img {
   width: 100%;
 }
 

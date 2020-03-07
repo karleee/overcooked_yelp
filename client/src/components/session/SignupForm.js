@@ -109,6 +109,7 @@ class RegisterForm extends React.Component {
                       onChange={this.update('firstName')}
                       placeholder="First Name"
                     />
+
                     <input
                       value={lastName}
                       onChange={this.update('lastName')}
@@ -121,19 +122,24 @@ class RegisterForm extends React.Component {
                     onChange={this.update('email')}
                     placeholder="Email"
                   />
+
                   <input
                     value={password}
                     onChange={this.update('password')}
                     type="password"
                     placeholder="Password"
                   />
+
                   <input
                     value={zipCode}
                     onChange={this.update('zipCode')}
                     type="number"
                     placeholder="Zip Code"
                   />
+
                   <button type="submit">Sign Up</button>
+
+                  <small>Already on Morsel? <Link to='/login'>Log In</Link></small>
                 </form>
               </div>
 
