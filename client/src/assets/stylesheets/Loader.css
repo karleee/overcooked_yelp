@@ -9,6 +9,10 @@
   background: #9FA4F5;
 }
 
+.pizza-loader-text {
+  text-align: center;
+}
+
 .pizza-loader-text p {
   font-family: 'helveticaBold';
   font-size: 24px;
