@@ -1,5 +1,31 @@
 import React from 'react';
 
+const ResultItem = ({ restaurant }) => (
+  <div className="search-result-item">
+    <div className="search-result-thumbnail-wrapper">
+      <img src="https://via.placeholder.com/200" />
+    </div>
+    <div className="search-result-restaurant-detail">
+      <div className="search-result-meta">
+        <div className="search-result-meta-primary">
+          <h2>{restaurant.name}</h2>
+          <p>5 stars!</p>
+          <p>$$ &bull; vietnamese</p>
+        </div>
+        <div className="search-result-meta-secondary">
+          <p>phone</p>
+          <p>Address</p>
+          <p>neighborhood</p>
+        </div>
+      </div>
+      <div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu rutrum velit. Suspendisse quam nisi, sagittis vel aliquet nec, interdum eu dolor.</p>
+      </div>
+      
+    </div>
+  </div>
+);
+
 const ResultList = ({ restaurants, find_desc, find_loc }) => {
   if (restaurants.length) {
     return (
@@ -8,7 +34,11 @@ const ResultList = ({ restaurants, find_desc, find_loc }) => {
 
         <div className="search-result-reservations-menu-wrapper"></div>
         <ul>
-          {restaurants.map((restaurant, i) => <li key={i}>{restaurant.name}</li>)}
+          {restaurants.map((restaurant, i) =>
+            <li key={i}>
+              <ResultItem restaurant={restaurant} />
+            </li>
+          )}
         </ul>
       </div>
     );

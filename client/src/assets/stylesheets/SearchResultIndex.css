@@ -1,9 +1,25 @@
 .search-result-wrapper {
   display: flex;
-  flex-direction: row;
 }
 
 .search-result-restaurant-list-wrapper,
 .search-result-map-wrapper {
   flex: 1;
+}
+
+.search-result-item {
+  display: flex;
+  justify-content: flex-start;
+}
+.search-result-restaurant-detail {
+  flex: 1;
+}
+
+.search-result-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-result-meta-secondary {
+  text-align: right;
 }
