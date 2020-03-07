@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AuthRoute } from '../util/route_util';
-import LoginPage from '../components/session/LoginForm';
-import RegisterPage from '../components/session/RegisterForm';
+import LoginForm from '../components/session/LoginForm';
+import SignupForm from '../components/session/SignupForm';
 import GalleryIndex from './gallery/GalleryIndex';
 import RestaurantMap from './restaurants/RestaurantMap';
 import RestaurantDetail from './restaurants/RestaurantDetail';
@@ -31,8 +31,8 @@ class App extends React.Component {
     return (
       <div className="app-wrapper">
         <Switch>
-          <AuthRoute exact path='/login' component={LoginPage} routeType='auth' />
-          <AuthRoute exact path='/signup' component={RegisterPage} routeType='auth' />
+          <AuthRoute exact path='/login' component={LoginForm} routeType='auth' />
+          <AuthRoute exact path='/signup' component={SignupForm} routeType='auth' />
           <Route exact path='/restaurants/:id/photos' component={GalleryIndex} />
           <Route exact path='/restaurants/:id/map' component={RestaurantMap} />
           <Route exact path='/restaurants/:id' component={RestaurantDetail} />

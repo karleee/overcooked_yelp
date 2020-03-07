@@ -72,7 +72,7 @@ class LoginForm extends React.Component {
       >
         {LoginUser => (
           <div className="login-form-container">
-              <div className="form-header">
+              <div className="login-form-header">
                 <Link to='/'>
                   <div className="logo-wrapper">
                     <svg>
@@ -86,8 +86,8 @@ class LoginForm extends React.Component {
 
             {this.renderErrorMessage()}
 
-            <div className="form-body-container">
-              <div className="form-container">
+            <div className="login-form-body-container">
+              <div className="login-main-form-container">
                 <h1>Log In to Morsel</h1>
 
                 <p>New to Morsel? <Link to='/signup'>Sign Up</Link></p>
@@ -114,7 +114,7 @@ class LoginForm extends React.Component {
                 </form>
               </div>
 
-              <div className="form-image-container">
+              <div className="login-form-image-container">
                 <img src="/images/session/login_image.png" alt="Log in splash thumbnail" />
               </div>
             </div>
