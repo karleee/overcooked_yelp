@@ -12,6 +12,7 @@
   font-family: 'helveticaBold';
   font-size: 24px;
   color: var(--black);
+  margin-top: 15px;
 }
 
 .restaurant-detail-wrapper {

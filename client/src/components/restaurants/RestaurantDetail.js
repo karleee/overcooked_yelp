@@ -142,7 +142,8 @@ class RestaurantDetail extends Component {
             const loadingPhrases = [
               'Preheating the oven...', 
               'Pouring the sugar...', 
-              'Pouring the milk...'
+              'Pouring the milk...',
+              'Mixing the eggs...'
             ];
 
             const randomPhrase = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
