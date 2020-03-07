@@ -25,8 +25,8 @@ const SearchResultIndex = props => {
         <Query query={SEARCH} variables={{ find_desc, find_loc }}>
           {({ loading, error, data }) => {
             if (loading) return <p>Loading...</p>;
-            if (error) return <p>{error.message}</p>;
-            let restaurants = data.search;
+            // if any errors, just dont return any restaurants
+            let restaurants = (error) ? [] : data.search;
             return (
               <div className="search-result-wrapper">
                 <ResultList

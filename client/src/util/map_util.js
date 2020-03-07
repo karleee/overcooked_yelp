@@ -13,26 +13,43 @@ const _getCoordsFromAddress = address => (
   .then(results => results)
 );
 
+// this function is used to set the map defaults on initialization
 export const setOptionsFromLocation = async find_loc => {
   let res = await _getCoordsFromAddress(find_loc);
 
-  // get coords + bounds as geometry
-  let { geometry } = res.data.results[0]
-  return {
-    center: {
-      lat: geometry.location.lat,
-      lng: geometry.location.lng,
-    },
-    zoom: 6
-  };
+  // if no results, default to CA (benchbnb default)
+  if (!res.data.results.length) {
+    return {
+      center: {
+        lat: 37.773972,
+        lng: -122.431297
+      }, // San Francisco coords
+      zoom: 13
+    };
+  } else {
+    // get coords + bounds as geometry
+    let { geometry } = res.data.results[0]
+    return {
+      center: {
+        lat: geometry.location.lat,
+        lng: geometry.location.lng,
+      },
+      zoom: 6
+    };
+  }
 }
 
+// return a string of the city based on a submitted zipCode
 export const getCityFromZip = async zipCode => {
-    // get results from api call
-    let res = await _getCoordsFromAddress(zipCode);
+  let city, state;
+
+  // get results from api call
+  let res = await _getCoordsFromAddress(zipCode);
+
+  // a city was found for the term
+  if (res.data.results.length) {
     let { address_components } = res.data.results[0];
     // pull out city and state from the results
-    let city, state;
     address_components.forEach(component => {
       component.types.forEach(type => {
         if (type === 'locality') {
@@ -47,7 +64,9 @@ export const getCityFromZip = async zipCode => {
     // return the result
     if (city && state) {
       return `${city}, ${state}`;
-    } else {
-      return zipCode;
     }
-  };
+  } else {
+    // if anything fails, just go to zipcode
+    return zipCode;
+  }
+};
