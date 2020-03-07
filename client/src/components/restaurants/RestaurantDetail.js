@@ -57,18 +57,8 @@ class RestaurantDetail extends Component {
 
   renderAllReviews(reviews) {
     return reviews.map(review => {
-      let stars;
-      if(review.rating === 1) { 
-        stars = 'one';
-      } else if(review.rating === 2) {
-         stars = 'two';
-      } else if(review.rating === 3) { 
-        stars = 'three';
-      } else if(review.rating === 4) { 
-        stars = 'four';
-      } else if(review.rating === 5){
-        stars = 'five';
-      }
+      const stars = getStarImage(review.rating);
+
       return (
         <li key={review._id} className='review-container'> 
           <div className='user-info-container'>
@@ -353,7 +343,7 @@ class RestaurantDetail extends Component {
                           {weekdayHours.map((weekday, indx) => {
                             // Conditional for determining if a restaurant is open based on time  
                             const isOpen = ((adjustedHour >= weekday[0][0] && ampm === 'am') || (adjustedHour < weekday[1][0] && ampm === 'pm')) ||
-                              (adjustedHour === 12 && ampm === 'pm');
+                              (adjustedHour === 12 && ampm === 'pm' && ((weekday[0][0] < 12 && ampm === 'am') || (weekday[0][0] === 12 && ampm === 'pm')));
                                                         
                             return (
                               <section>

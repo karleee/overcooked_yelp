@@ -204,6 +204,8 @@
 }
 
 .review-button-icon-wrapper {
+  display: flex;
+  flex-direction: row;
   width: 15px;
   margin-right: 5px;
 }
@@ -635,13 +637,13 @@
   height: 13px;
 }
 
-.stats-friends-container img {
+.stats-friends-container img,
+.stats-num-photos-container img {
   width: 13px;
   height: 11px;
 }
 
-.stats-num-reviews-container img,
-.stats-num-photos-container img {
+.stats-num-reviews-container img {
   height: 100%;
 }
 

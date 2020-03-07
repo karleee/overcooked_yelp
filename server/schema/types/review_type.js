@@ -1,6 +1,6 @@
 
 const graphql = require('graphql');
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLList } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLFloat, GraphQLList } = graphql;
 const User = require('../../models/User');
 const Review = require('../../models/Review');
 const Restaurant = require('../../models/Restaurant')
@@ -30,7 +30,7 @@ const ReviewType = new GraphQLObjectType({
           });
       }
     },
-    rating: { type: GraphQLInt },
+    rating: { type: GraphQLFloat },
     body: { type: GraphQLString },
     photos: {
       type: new GraphQLList(require('./photo_type')),
