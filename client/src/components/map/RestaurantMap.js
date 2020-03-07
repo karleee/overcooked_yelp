@@ -2,17 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router-dom';
 
+import RestaurantInfoContent from './RestaurantInfoContent';
 import * as MapUtil from '../../util/map_util';
 import '../../assets/stylesheets/RestaurantMap.css';
-
-const RestaurantInfoContent = ({ restaurant }) => (
-  <div className="restaurant-info-content">
-    <img src="https://via.placeholder.com/150x75" />
-    <h3>{restaurant.name}</h3>
-    <p>need avg reviews here</p>
-    <p>{restaurant.category}</p>
-  </div>
-);
 
 class RestaurantMap extends React.Component {
   
@@ -29,8 +21,6 @@ class RestaurantMap extends React.Component {
 
   componentDidMount() {
     // problem: might not rerender if props change without reload
-    // move all this to render?
-    // works ok for now
 
     // window.google is defined in App.js
     // sometimes fails if not reloaded
