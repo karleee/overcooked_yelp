@@ -1,0 +1,9 @@
+.search-result-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-result-restaurant-list-wrapper,
+.search-result-map-wrapper {
+  flex: 1;
+}
