@@ -1,8 +1,12 @@
 import React from 'react';
 import { Mutation } from 'react-apollo';
-
 import * as SessionUtil from '../../util/session_util';
 import Mutations from '../../graphql/mutations';
+import { Link } from 'react-router-dom';
+import '../../assets/stylesheets/reset.css';
+import '../../assets/stylesheets/App.css';
+import '../../assets/stylesheets/LoginForm.css';
+
 const { LOGIN_USER } = Mutations;
 
 class LoginForm extends React.Component {
@@ -67,22 +71,53 @@ class LoginForm extends React.Component {
         update={(client, data) => this.updateCache(client, data)}
       >
         {LoginUser => (
-          <div>
+          <div className="login-form-container">
+              <div className="form-header">
+                <Link to='/'>
+                  <div className="logo-wrapper">
+                    <svg>
+                      <text x="50%" y="50%">morsel</text>
+                    </svg>
+
+                    <img src="/images/homepage/logo.png" alt="Logo" />
+                  </div>
+                </Link>
+              </div>
+
             {this.renderErrorMessage()}
-            <form onSubmit={this.performMutation(LoginUser, {email, password})}>
-              <input
-                value={email}
-                onChange={this.update("email")}
-                placeholder="Email"
-              />
-              <input
-                value={password}
-                onChange={this.update("password")}
-                type="password"
-                placeholder="Password"
-              />
-              <button type="submit">Log In</button>
-            </form>
+
+            <div className="form-body-container">
+              <div className="form-container">
+                <h1>Log In to Morsel</h1>
+
+                <p>New to Morsel? <Link to='/signup'>Sign Up</Link></p>
+
+                <small>By logging in, you agree to Morsel's Terms of Service and Privacy Policy.</small>
+
+                <form onSubmit={this.performMutation(LoginUser, {email, password})}>
+                  <input
+                    value={email}
+                    onChange={this.update("email")}
+                    placeholder="Email"
+                  />
+
+                  <input
+                    value={password}
+                    onChange={this.update("password")}
+                    type="password"
+                    placeholder="Password"
+                  />
+
+                  <button type="submit">Log In</button>
+
+                  <small>New to Morsel? <Link to='/signup'>Sign Up</Link></small>
+                </form>
+              </div>
+
+              <div className="form-image-container">
+                <img src="/images/session/login_image.png" alt="Log in splash thumbnail" />
+              </div>
+            </div>
           </div>
         )}
       </Mutation>
