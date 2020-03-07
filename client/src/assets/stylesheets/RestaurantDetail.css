@@ -1,4 +1,4 @@
-.loader-container {
+.pizza-loader-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,7 +8,7 @@
   background: #9FA4F5;
 }
 
-.loader-container p {
+.pizza-loader-container p {
   font-family: 'helveticaBold';
   font-size: 24px;
   color: var(--black);

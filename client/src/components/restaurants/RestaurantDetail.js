@@ -104,7 +104,7 @@ class RestaurantDetail extends Component {
                 </div>
 
                 <p>{review.user.reviews.length}</p>
-                <p>{review.user.reviews > 1 || review.user.reviews === 0 ? 'reviews' : 'review'}</p>
+                <p>{review.user.reviews.length > 1 || review.user.reviews.length === 0 ? 'reviews' : 'review'}</p>
               </div>
 
               <div className="stats-num-photos-container">
@@ -148,21 +148,17 @@ class RestaurantDetail extends Component {
             const randomPhrase = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
 
             return (
-              <div className="loader-container">
-                <div className="loader-wrapper">
-                  <img src="/images/loader/loader.gif" alt="Loading spinner" />
+              <div className="pizza-loader-container">
+                <div className="pizza-loader-wrapper">
+                  <img src="/images/loader/pizza_loader.gif" alt="Loading spinner" />
                 </div> 
-                
+
                 <p>{randomPhrase}</p>
               </div>
             );
           };
 
           if (error) return `Error! ${error.message}`;
-
-          //TEsting...
-          console.log(this.orderReviews(data.restaurant.reviews));
-          // console.log(data.restaurant);
 
           // Converting price into dollar sign equivalents
           const price = data.restaurant.price;

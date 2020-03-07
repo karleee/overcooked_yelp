@@ -11,7 +11,25 @@ const RestaurantIndex = () => {
   return (
     <Query query={FETCH_RESTAURANTS}>
       {({ loading, error, data }) => {
-        if (loading) return 'Loading...';
+        if (loading) {
+          const loadingPhrases = [
+            'Preheating the oven...',
+            'Pouring the sugar...',
+            'Pouring the milk...'
+          ];
+
+          const randomPhrase = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
+
+          return (
+            <div className="loader-container">
+              {/* <div className="loader-wrapper">
+                <img src="/images/loader/loader.gif" alt="Loading spinner" />
+              </div>
+
+              <p>{randomPhrase}</p> */}
+            </div>
+          );
+        };
         if (error) return `Error! ${error.message}`;
 
         return (
