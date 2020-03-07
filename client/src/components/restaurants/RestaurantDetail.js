@@ -4,6 +4,7 @@ import Queries from '../../graphql/queries';
 import { Link } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
 import Map from '../map/Map';
+import ProgressLoader from '../loader/ProgressLoader';
 import { 
   setAmenityValue, 
   getAverageRating, 
@@ -11,8 +12,6 @@ import {
   getCapitalizedKey, 
   getPopularDishOccurences
 } from '../../util/restaurant_util';
-import '../../assets/stylesheets/reset.css';
-import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/RestaurantDetail.css';
 
 const { FETCH_RESTAURANT, FETCH_REVIEW, CURRENT_USER } = Queries;
@@ -138,28 +137,9 @@ class RestaurantDetail extends Component {
     return (
       <Query query={FETCH_RESTAURANT} variables={{ _id: this.props.match.params.id }}> 
         {({ loading, error, data }) => {
-          if (loading) {
-            const loadingPhrases = [
-              'Preheating the oven...', 
-              'Pouring the sugar...', 
-              'Pouring the milk...',
-              'Mixing the eggs...'
-            ];
+          if (loading) return <ProgressLoader type='loading'/>;
 
-            const randomPhrase = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
-
-            return (
-              <div className="pizza-loader-container">
-                <div className="pizza-loader-wrapper">
-                  <img src="/images/loader/pizza_loader.gif" alt="Loading spinner" />
-                </div> 
-
-                <p>{randomPhrase}</p>
-              </div>
-            );
-          };
-
-          if (error) return `Error! ${error.message}`;
+          if (error) return <ProgressLoader type='error' />;
 
           // Converting price into dollar sign equivalents
           const price = data.restaurant.price;
@@ -380,7 +360,7 @@ class RestaurantDetail extends Component {
                           {weekdayHours.map((weekday, indx) => {
                             // Conditional for determining if a restaurant is open based on time  
                             const isOpen = ((adjustedHour >= weekday[0][0] && ampm === 'am') || (adjustedHour < weekday[1][0] && ampm === 'pm')) ||
-                              (adjustedHour === 12 && ampm === 'pm' && ((weekday[0][0] < 12 && ampm === 'am') || (weekday[0][0] === 12 && ampm === 'pm')));
+                              (adjustedHour === 12 && ampm === 'pm');
                                                         
                             return (
                               <section>

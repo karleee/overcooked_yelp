@@ -9,6 +9,8 @@ import RestaurantDetail from './restaurants/RestaurantDetail';
 import Home from './home/Home';
 import ReviewCreate from './reviews/ReviewCreate';
 import ReviewUpdate from './reviews/ReviewUpdate';
+import '../assets/stylesheets/reset.css';
+import '../assets/stylesheets/App.css';
 
 class App extends React.Component {
   addScriptToPage(scriptUrl) {

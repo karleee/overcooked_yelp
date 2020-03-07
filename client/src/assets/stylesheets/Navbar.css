@@ -1,3 +1,5 @@
+@import 'variables.css';
+
 .navbar-wrapper {
   display: flex;
   flex-direction: column;

@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import Queries from '../../graphql/queries';
 import Navbar from '../navbar/Navbar';
 import Modal from '../modal/Modal';
+import ProgressLoader from '../loader/ProgressLoader';
 import { getAverageRating, getStarImage } from '../../util/restaurant_util';
-import '../../assets/stylesheets/reset.css';
-import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/GalleryIndex.css';
 
 const { FETCH_RESTAURANT } = Queries; 
@@ -54,8 +53,8 @@ class GalleryIndex extends Component {
     return (
       <Query query={FETCH_RESTAURANT} variables={{ _id: this.props.match.params.id }}>
         {({ loading, error, data }) => {
-          if (loading) return 'Loading...';
-          if (error) return `Error! ${error.message}`;
+          if (loading) return <ProgressLoader type='loading' />;
+          if (error) return <ProgressLoader type='error' />;;
 
           // Saving restaurant reviews to a variable for easier access
           const reviews = data.restaurant.reviews;

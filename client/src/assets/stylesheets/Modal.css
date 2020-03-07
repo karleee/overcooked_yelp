@@ -1,3 +1,5 @@
+@import 'variables.css';
+
 .photo-gallery-modal-wrapper {
   display: flex;
   flex-direction: row;

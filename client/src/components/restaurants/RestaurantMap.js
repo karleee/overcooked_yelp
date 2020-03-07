@@ -4,8 +4,7 @@ import Queries from '../../graphql/queries';
 import { Link } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
 import Map from '../map/Map';
-import '../../assets/stylesheets/reset.css';
-import '../../assets/stylesheets/App.css';
+import ProgressLoader from '../loader/ProgressLoader';
 import '../../assets/stylesheets/RestaurantMap.css';
 
 const { FETCH_RESTAURANT } = Queries;
@@ -22,26 +21,8 @@ class RestaurantMap extends Component {
     return (
       <Query query={FETCH_RESTAURANT} variables={{ _id: this.props.match.params.id }}> 
         {({ loading, error, data }) => {
-          if (loading) {
-            const loadingPhrases = [
-              'Preheating the oven...',
-              'Pouring the sugar...',
-              'Pouring the milk...'
-            ];
-
-            const randomPhrase = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
-
-            return (
-              <div className="loader-container">
-                <div className="loader-wrapper">
-                  <img src="/images/loader/loader.gif" alt="Loading spinner" />
-                </div>
-
-                <p>{randomPhrase}</p>
-              </div>
-            );
-          };
-          if (error) return `Error! ${error.message}`;
+          if (loading) return <ProgressLoader type='loading' />;
+          if (error) return <ProgressLoader type='error' />;
           
           return (
             <div className="full-map-container">

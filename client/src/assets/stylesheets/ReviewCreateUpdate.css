@@ -1,4 +1,6 @@
 
+@import 'variables.css';
+
 .edit-review-hearts {
     /* padding: 5px; */
     width: inherit;

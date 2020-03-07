@@ -1,6 +1,4 @@
 import React from 'react';
-import '../../assets/stylesheets/reset.css';
-import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/Home.css';
 
 import RestaurantIndex from '../restaurants/RestaurantIndex';
