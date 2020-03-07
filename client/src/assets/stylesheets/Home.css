@@ -72,6 +72,21 @@
   cursor: default;
 }
 
+.banner-wrapper .home-nav-bar-wrapper .login-logout-wrapper button {
+  font-family: 'helveticaBold';
+  font-size: 15px;
+  color: white; 
+  background: transparent;
+  border-radius: 5px;
+  padding: 5px 20px; 
+  border: 2px solid white;
+  margin-left: 84px;
+}
+
+.banner-wrapper .home-nav-bar-wrapper .login-logout-wrapper button:hover {
+  cursor: pointer;
+}
+
 .banner-wrapper img {
   position: absolute;
   top: -28%;
