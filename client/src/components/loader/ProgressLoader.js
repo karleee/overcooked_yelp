@@ -17,7 +17,7 @@ const ProgressLoader = props => {
         <img src="/images/loader/pizza_loader.gif" alt="Loading spinner" />
       </div>
 
-      <p>{props.type === 'loading' ? randomPhrase : 'Oops, looks like something went wrong! \n Please try again later.'}</p>
+      <div className="pizza-loader-text">{props.type === 'loading' ? <p>{randomPhrase}</p> : <p>Oops, something went wrong! Please try again later.</p>}</div>
     </div>
   );
 };
