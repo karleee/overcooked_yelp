@@ -25,7 +25,7 @@ class SearchForm extends React.Component {
       let searchTerm = this.state.find_desc;
 
       // set default location if not provided
-      let defaultLocation = (currentUserZipCode) ? currentUserZipCode : "San Francisco";
+      let defaultLocation = (currentUserZipCode) ? currentUserZipCode : MapUtil.DEFAULT_LOCATION;
       let searchLoc = this.state.find_loc || defaultLocation;
 
       // perform the search
@@ -57,7 +57,7 @@ class SearchForm extends React.Component {
           if (!this.state.locationFieldDirty && zipCode) {
             this.setFindLocation(zipCode);
           }
-          
+
           return (
             <form onSubmit={this.submitSearch(data.currentUserZipCode)}>
               <div className="search-input-wrapper">
@@ -84,7 +84,7 @@ class SearchForm extends React.Component {
                       type="text"
                       value={this.state.find_loc}
                       onChange={this.update('find_loc')}
-                      placeholder={(data.currentUserZipCode) ? data.currentUserZipCode : "San Francisco"}
+                      placeholder={(data.currentUserZipCode) ? data.currentUserZipCode : MapUtil.DEFAULT_LOCATION}
                     />
                   </label>
                 </div>

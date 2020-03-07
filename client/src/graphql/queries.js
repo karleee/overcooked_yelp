@@ -207,8 +207,8 @@ export default {
   `,
   // see if we can DRY this code up
   SEARCH: gql`
-    query Search($find_desc: String) {
-      search(find_desc: $find_desc) {
+    query Search($find_desc: String, $find_loc: String) {
+      search(find_desc: $find_desc, find_loc: $find_loc) {
         _id
         name
         price

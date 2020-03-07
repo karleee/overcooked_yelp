@@ -66,9 +66,9 @@ const RootQueryType = new GraphQLObjectType({
     search: {
       type: new GraphQLList(RestaurantType),
       // find_desc === searchTerm
-      args: { find_desc: { type: GraphQLString }},
-      resolve(_, { find_desc }) {
-        return SearchService.search(find_desc);
+      args: { find_desc: { type: GraphQLString }, find_loc: { type:GraphQLString }},
+      resolve(_, { find_desc, find_loc }) {
+        return SearchService.search(find_desc, find_loc);
       }
     }
   })

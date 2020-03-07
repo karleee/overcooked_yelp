@@ -6,11 +6,12 @@ import queryString from 'query-string';
 
 import Queries from '../../graphql/queries';
 import RestaurantMap from '../map/RestaurantMap';
-const { SEARCH } = Queries;
+import { DEFAULT_LOCATION } from '../../util/map_util';
 
 import '../../assets/stylesheets/reset.css';
 import '../../assets/stylesheets/App.css';
 
+const { SEARCH } = Queries;
 
 // SearchResultIndex component returning photo gallery of images from one restaurant from backend
 class SearchResultIndex extends Component {
@@ -22,6 +23,7 @@ class SearchResultIndex extends Component {
   render() {
     // get search term and search location from the url
     let { find_desc, find_loc } = queryString.parse(this.props.location.search);
+    find_loc = find_loc || DEFAULT_LOCATION;
     return (
       <div className="search-result-index-wrapper">
         <Navbar />
@@ -33,10 +35,10 @@ class SearchResultIndex extends Component {
             <p>(If we have extra time, make a reservations menu bar here)</p>
           </div>
 
-          <Query query={SEARCH} variables={{ find_desc }}>
+          <Query query={SEARCH} variables={{ find_desc, find_loc }}>
             {({ loading, error, data }) => {
               if (loading) return <p>Loading</p>;
-              if (error) return <p>Error</p>;
+              if (error) return <p>{error.message}</p>;
 
               let restaurants = data.search;
               if (restaurants.length) {
