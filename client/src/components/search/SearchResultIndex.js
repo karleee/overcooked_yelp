@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Navbar from '../navbar/Navbar';
 import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
@@ -17,9 +17,19 @@ import '../../assets/stylesheets/SearchResultIndex.css';
 
 const { SEARCH } = Queries;
 
-const SearchResultIndex = props => {
+class SearchResultIndex extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  // Hides scrolling when modal is mounted
+  componentDidMount() {
+    document.body.style.overflow = 'hidden';
+  }
+
+  render() {
     // get search term and search location from the url
-    let { find_desc, find_loc } = queryString.parse(props.location.search);
+    let { find_desc, find_loc } = queryString.parse(this.props.location.search);
     find_loc = find_loc || DEFAULT_LOCATION;
     
     return (
@@ -53,6 +63,7 @@ const SearchResultIndex = props => {
         </Query>
       </div>
     );
+  }
 };
 
 export default withRouter(SearchResultIndex);

@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  background: green;
+  height: 100%;
 }
 
 .search-result-body-container {
@@ -12,18 +12,19 @@
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
-  background: pink;
+  height: 100vh;
 }
 
 .search-result-restaurant-list-container {
   width: 60%;
+  height: 100%;
   padding: 40px;
   box-sizing: border-box;
-  background: orange;
+  overflow-y: scroll;
 }
 
 .search-result-restaurant-list-container h1 {
-  font-family: 'helveticaBold';
+  font-family: 'helveticaBold'; 
   font-size: 26px;
   color: var(--black);
 }
@@ -39,12 +40,12 @@
   list-style: none;
   margin-top: 30px;
   width: 100%;
-  background: yellow;
 }
 
 .search-result-restaurant-list-container ul li {
   border: 1px solid var(--light-border-color);  
   border-radius: 5px;
+  box-sizing: border-box;
   padding: 25px;
 }
 
@@ -66,16 +67,15 @@
 }
 
 .search-result-thumbnail-wrapper {
-  /* width: 34.05%; */
   width: 200px;
   height: 200px;
+  min-width: 200px;
+  min-height: 200px;
   overflow: hidden;
   border-radius: 5px;
-  background: green;
 }
 
 .search-result-thumbnail-wrapper img {
-  /* width: 100%; */
   height: 100%;
 }
 
