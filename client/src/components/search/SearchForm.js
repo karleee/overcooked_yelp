@@ -98,7 +98,7 @@ class SearchForm extends React.Component {
           // can be further refactored
           return (this.props.mode === "navbar") ? (
             <form
-              autocomplete="off"
+              autoComplete="off"
               className="search-form navbar"
               onSubmit={this.submitSearch(data.currentUserZipCode)}
             >
@@ -124,7 +124,7 @@ class SearchForm extends React.Component {
             </form>
           ) : (
             <form
-              autocomplete="off"
+              autoComplete="off"
               className="search-form"
               onSubmit={this.submitSearch(data.currentUserZipCode)}
             >
