@@ -660,7 +660,7 @@
   width: 65%;
 }
 
-.stars-icon-and-date {
+.stars-icon-and-date-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -677,10 +677,25 @@
   height: 100%;
 }
 
-.stars-icon-and-date p {
+.stars-icon-and-date-container p {
   font-family: sans-serif;
   font-size: 14px;
   color: var(--mid-text);
+}
+
+.review-photos-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'helveticaNormal';
+  font-size: 12px;
+  color: var(--blue);
+  padding-bottom: 10px;
+}
+
+.review-photos-container img {
+  height: 15px;
+  margin-right: 3px;
 }
 
 .body-container {

@@ -75,6 +75,9 @@ class RestaurantDetail extends Component {
       const month = date[1];
       const dat = date[2];
       const stars = getStarImage(review.rating);
+      const photos = review.photos.length;
+
+      console.log(review);
 
       return (
         <li key={review._id} className="review-container"> 
@@ -118,7 +121,7 @@ class RestaurantDetail extends Component {
           </div>
 
           <div className="user-review-container">
-            <div className="stars-icon-and-date">
+            <div className="stars-icon-and-date-container">
               <div className="stars-icon-wrapper">
                 <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt="Ratings icon" />
               </div>
@@ -126,7 +129,15 @@ class RestaurantDetail extends Component {
               <p>{`${month}/${dat}/${yr}`}</p>
             </div>
 
-            <p className="body-container">{review.body}</p>
+            <div className="review-photos-container">
+              <img src="/images/restaurant_detail/action_menu/camera_icon.png" alt="Camera" />
+
+              <p>{photos} {photos === 0 || photos > 1 ? 'photos' : 'photo'}</p>
+            </div>
+
+            <div className="body-container">
+              <p>{review.body}</p>
+            </div>
           </div>
         </li>
       )
@@ -138,7 +149,6 @@ class RestaurantDetail extends Component {
       <Query query={FETCH_RESTAURANT} variables={{ _id: this.props.match.params.id }}> 
         {({ loading, error, data }) => {
           if (loading) return <ProgressLoader type='loading'/>;
-
           if (error) return <ProgressLoader type='error' />;
 
           // Converting price into dollar sign equivalents
@@ -360,7 +370,7 @@ class RestaurantDetail extends Component {
                           {weekdayHours.map((weekday, indx) => {
                             // Conditional for determining if a restaurant is open based on time  
                             const isOpen = ((adjustedHour >= weekday[0][0] && ampm === 'am') || (adjustedHour < weekday[1][0] && ampm === 'pm')) ||
-                              (adjustedHour === 12 && ampm === 'pm');
+                              (adjustedHour === 12 && ampm === 'pm' && weekday[0][0] <= 12);
                                                         
                             return (
                               <section>

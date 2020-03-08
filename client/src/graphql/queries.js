@@ -11,35 +11,25 @@ export default {
         user {
           _id
           firstName
+        },
+        photos {
+          _id 
         }
       }
     }
-  `,
-  FETCH_REVIEWS_OF_RESTAURANT: gql`
-    query FetchReviewsOfRestaurant($_id: ID!) {
-      restaurant(_id: $_id) {
-        reviews {
-            _id
-            body
-            user {
-              _id
-              firstName
-            }
-            date
-            rating
-        }
-      }
-    }     
   `,
   FETCH_REVIEWS: gql`
     query FetchReviews {
       reviews {
         _id
-        user{
-          firstName
-        }
         body
         date
+        user {
+          firstName
+        },
+        photos {
+          _id
+        }
       }
     }
   `,
@@ -147,6 +137,9 @@ export default {
             photos {
               _id
             }
+          },
+          photos {
+            _id
           }
         },
         photos {
