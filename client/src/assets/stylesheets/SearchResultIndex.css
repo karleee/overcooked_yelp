@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  background: green;
 }
 
 .search-result-body-container {
@@ -11,16 +12,14 @@
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
+  background: pink;
 }
 
 .search-result-restaurant-list-container {
   width: 60%;
   padding: 40px;
   box-sizing: border-box;
-  /* background: orange; */
-  /* background: red; */
-  /* padding: 40px;
-  box-sizing: border-box; */
+  background: orange;
 }
 
 .search-result-restaurant-list-container h1 {
@@ -40,6 +39,7 @@
   list-style: none;
   margin-top: 30px;
   width: 100%;
+  background: yellow;
 }
 
 .search-result-restaurant-list-container ul li {
