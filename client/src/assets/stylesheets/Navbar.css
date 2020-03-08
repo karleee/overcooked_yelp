@@ -99,15 +99,18 @@
 
 .navbar-buttons-wrapper .login-logout-wrapper a:last-of-type {
   background: var(--light-red);
+  border: none;
   color: white;
 }
 
 .navbar-buttons-wrapper .login-logout-wrapper a:first-of-type:hover {
   background: var(--light-border-color);
   transition: background 0.5s;
+  cursor: pointer;
 }
 
 .navbar-buttons-wrapper .login-logout-wrapper a:last-of-type:hover {
   background: var(--red);
   transition: background 0.5s;
+  cursor: pointer;
 }
