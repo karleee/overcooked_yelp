@@ -71,7 +71,7 @@ class LoginForm extends React.Component {
         update={(client, data) => this.updateCache(client, data)}
       >
         {LoginUser => (
-          <div className="login-form-container">
+          <div className="login-form-container"> 
               <div className="login-form-header">
                 <Link to='/'>
                   <div className="logo-wrapper">
