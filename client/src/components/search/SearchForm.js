@@ -3,8 +3,8 @@ import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 import * as MapUtil from '../../util/map_util';
-import '../../assets/stylesheets/SearchForm.css';
 import Queries from '../../graphql/queries';
+import '../../assets/stylesheets/SearchForm.css';
 
 const { CURRENT_USER } = Queries;
 
@@ -82,7 +82,7 @@ class SearchForm extends React.Component {
     return (
       <Query query={CURRENT_USER}>
         {({ loading, data }) => {
-          if (loading) return <p>Loading</p>;
+          if(loading) return 'Loading...';
 
           // set defaults for location search
           let { find_loc } = queryString.parse(this.props.location.search);

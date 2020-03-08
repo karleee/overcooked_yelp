@@ -22,7 +22,7 @@ class RestaurantMap extends Component {
       <Query query={FETCH_RESTAURANT} variables={{ _id: this.props.match.params.id }}> 
         {({ loading, error, data }) => {
           if (loading) return <ProgressLoader type='loading' />;
-          if (error) return <ProgressLoader type='error' />;
+          if (error) return <ProgressLoader type='error' />; 
           
           return (
             <div className="full-map-container">

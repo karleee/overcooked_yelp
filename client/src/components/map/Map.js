@@ -119,11 +119,9 @@ class Map extends React.Component {
   }
 
   render() {
-    // const mapClass = this.singleRestaurant ? "single" : "list"; 
+    // const mapClass = this.singleRestaurant ? "single" : "list";  
     return (
-      <div id="restaurant-map" className="map-wrapper">
-        Restaurant Single Map
-      </div> 
+      <div id="restaurant-map" className="map-wrapper"></div> 
     );
   }
 }
