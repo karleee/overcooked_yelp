@@ -376,23 +376,21 @@ class RestaurantDetail extends Component {
                             
 
                             // Adjusted currentDay index to account for Sunday (index 0 vs index 6 in the open/close hours array)
-                            const currentDayIndx = (indx + 1);
-                            let newCurrentDay;
+                            let newCurrentDayIndx;
 
-                            if (currentDayIndx === 7) {
-                              newCurrentDay = 0;
+                            if (currentDay === 0) {
+                              newCurrentDayIndx = 6;
+                            } else if (currentDay === 1) {
+                              newCurrentDayIndx = 0;
                             } else {
-                              newCurrentDay = currentDayIndx;
+                              newCurrentDayIndx = currentDay - 1;
                             }
-
-                            console.log(currentDay);
-                            console.log('New current day: ' + newCurrentDay);
 
                             return (
                               <section>
                                 <p>{hoursArray[indx].open} - {hoursArray[indx].close}</p>
-                                <p className="restaurant-detail-closed-wrapper">{!isOpen && currentDay === newCurrentDay ? 'Closed now' : ''}</p>
-                                <p className="restaurant-detail-open-wrapper">{isOpen && currentDay === newCurrentDay ? 'Open now' : ''}</p>
+                                <p className="restaurant-detail-closed-wrapper">{!isOpen && indx === newCurrentDayIndx ? 'Closed now' : ''}</p>
+                                <p className="restaurant-detail-open-wrapper">{isOpen && indx === newCurrentDayIndx ? 'Open now' : ''}</p>
                               </section>
                             );
                           })}
