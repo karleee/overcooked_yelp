@@ -112,12 +112,12 @@ const Home = () => {
 
           <div className="other-cities-wrapper">
             <div className="cities-wrapper">
-              <p><Link to="/search?find_loc=Tahoe">Tahoe</Link></p>
-              <p><Link to="/search?find_loc=Honolulu">Honolulu</Link></p>
-              <p><Link to="/search?find_loc=Los%20Angeles">Los Angeles</Link></p>
-              <p><Link to="/search?find_loc=San%20Francisco">San Francisco</Link></p>
-              <p><Link to="/search?find_loc=Tokyo">Tokyo</Link></p>
-              <p><Link to="/search?find_loc=Portland">Portland</Link></p>
+              <p><Link to="/search?find_desc=&find_loc=Tahoe">Tahoe</Link></p>
+              <p><Link to="/search?find_desc=&find_loc=Honolulu">Honolulu</Link></p>
+              <p><Link to="/search?find_desc=&find_loc=Los%20Angeles">Los Angeles</Link></p>
+              <p><Link to="/search?find_desc=&find_loc=San%20Francisco">San Francisco</Link></p>
+              <p><Link to="/search?find_desc=&find_loc=Tokyo">Tokyo</Link></p>
+              <p><Link to="/search?find_desc=&find_loc=Portland">Portland</Link></p>
               <p><Link><i className="more-cities-icon"></i>More Cities</Link></p>
             </div> 
 
