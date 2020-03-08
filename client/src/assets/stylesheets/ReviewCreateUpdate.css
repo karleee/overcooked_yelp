@@ -1,54 +1,127 @@
 
 @import 'variables.css';
 
-.edit-review-hearts {
-    /* padding: 5px; */
-    width: inherit;
-    margin: auto;
-    border: 2px solid red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px 0;
-}
-
-.edit-review-hearts > .fa-heart {
-    color: red;
-    padding: 2px;
-    font-size: 40px;
-}
-
 .review-edit-container {
-    width: 500px;
-    margin: auto;
-    padding-top: 30px;
+    font-family: 'helveticaNormal', arial, sans-serif;
 }
 
-.review-edit-container .review-body-edit {
-    width: calc(100% - 10px);
+.review-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 12px;
+    background-color: var(--red);
+}
+
+.review-navbar .navbar-home-logo-wrapper {
+    margin: 0;
+    padding-left: 12px;
+}
+
+.review-navbar h2 {
+    margin-left: 30px;
+    font-size: 16px;
+    font-family: 'helveticaBold', sans-serif;
+    color: #fff;
+}
+
+.review-form-main {
+    max-width: 960px;
+    margin: 12px auto;
+    padding: 0 12px;
+}
+
+.review-form-heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    max-width: 625px;
+    padding: 24px 0;
+}
+
+.review-form-heading h1 {
+    font-size: 21px;
+    line-height: 1.3em;
+}
+
+.review-form-heading a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.review-form-heading a:hover {
+    text-decoration: underline;
+}
+
+.review-form-heading span {
+    font-size: 14px;
+}
+
+.review-form-editor-wrapper {
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+    padding: 18px;
+}
+
+.review-form-rating-wrapper {
+    margin-bottom: 24px;
+}
+
+.review-form {
+    max-width: 625px;
+}
+
+.review-form textarea {
+    width: 100%;
     height: 400px;
-    font-size: 20px;
-    border: 2px solid red;
-    border-top: none;
-    padding: 5px;
+    border: none;
+    font-size: 18px;
 }
 
-.edit-review-hearts > p {
-    padding-left: 30px;
-    width: 200px;
-}
-
-.review-edit-container > h1 {
-    color: rgb(37, 37, 172);
-    padding: 10px;
-}
-
-.review-edit-container button {
-    background-color: red;
+.review-form button {
+    margin-top: 24px;
+    background-color: var(--red);
     color: white;
     padding: 3px;
     width: 200px;
     height: 40px;
     font-size: 17px;
     font-weight: bold;
+    border-radius: 3px;
+}
+
+.review-photos-form-wrapper {
+    margin: 24px 0;
+}
+
+.review-photos-form-wrapper h3 small {
+    margin-left: 12px;
+    font-size: 12px;
+}
+
+.review-photos-upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 110px;
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.review-hearts {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.review-hearts i {
+    color: var(--red);
+    padding: 2px;
+    font-size: 25px;
 }
