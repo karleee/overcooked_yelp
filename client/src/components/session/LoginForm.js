@@ -94,6 +94,8 @@ class LoginForm extends React.Component {
 
                 <small>By logging in, you agree to Morsel's Terms of Service and Privacy Policy.</small>
 
+                <button onClick={this.performMutation(LoginUser, { email: 'onionking@gmail.com', password: '12345678' })}>Demo Login</button>
+
                 <form onSubmit={this.performMutation(LoginUser, {email, password})}>
                   <input
                     value={email}
