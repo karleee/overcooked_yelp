@@ -3,9 +3,42 @@ import '../../assets/stylesheets/reset.css';
 import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/Home.css';
 
+import { Link } from 'react-router-dom';
+import { Query } from 'react-apollo';
 import RestaurantIndex from '../restaurants/RestaurantIndex';
 import SessionButton from '../session/SessionButton';
 import SearchForm from '../search/SearchForm';
+
+import Queries from '../../graphql/queries';
+const { CURRENT_USER } = Queries;
+
+const LinkToLocalCategory = ({ searchTerm, children }) => {
+  let find_desc = encodeURI(searchTerm);
+  return (
+    <Query query={CURRENT_USER}>
+      {({ loading, error, data }) => {
+        if (loading) return <p>Loading...</p>
+        if (error) return <p>{error.message}</p>
+        let find_loc = data.currentUserZipCode;
+        return (
+          <Link to={`/search?find_desc=${find_desc}&find_loc=${find_loc}`}>{children}</Link>
+        );
+      }}
+    </Query>
+  );
+}
+
+const LocalizedMorselTitle = () => (
+  <Query query={CURRENT_USER}>
+    {({ loading, error, data }) => {
+      if (loading) return <p>Loading...</p>
+      if (error) return <p>{error.message}</p>
+      return (
+        <h1>Morsel {data.currentUserZipCode}</h1>
+      )
+    }}
+  </Query>
+);
 
 const Home = () => {
   return (
@@ -29,47 +62,57 @@ const Home = () => {
         <SearchForm />
       </div>
 
+
       <div className="best-restaurants-wrapper">
         <div className="header-wrapper">
           <h1>Find the Best Restaurants in Town</h1>
         </div>
 
         <div className="restaurants-wrapper">
-          <div className="surf-and-turf-wrapper">
-            <div className="thumbnail-wrapper"></div>
-            <p>Surf 'N' Turf</p>
-          </div>
+          <LinkToLocalCategory searchTerm="Surf 'N' Turf">
+            <div className="surf-and-turf-wrapper">
+              <div className="thumbnail-wrapper"></div>
+              <p>Surf 'N' Turf</p>
+            </div>
+          </LinkToLocalCategory>
 
-          <div className="holiday-desserts-wrapper">
-            <div className="thumbnail-wrapper"></div>
-            <p>Holiday Desserts</p>
-          </div>
+          <LinkToLocalCategory searchTerm="Holiday Desserts">
+            <div className="holiday-desserts-wrapper">
+              <div className="thumbnail-wrapper"></div>
+              <p>Holiday Desserts</p>
+            </div>
+          </LinkToLocalCategory>
 
-          <div className="chinese-wrapper">
-            <div className="thumbnail-wrapper"></div>
-            <p>Chinese</p>
-          </div>
+          <LinkToLocalCategory searchTerm="Chinese">
+            <div className="chinese-wrapper">
+              <div className="thumbnail-wrapper"></div>
+              <p>Chinese</p>
+            </div>
+          </LinkToLocalCategory>
 
-          <div className="burgers-wrapper">
-            <div className="thumbnail-wrapper"></div>
-            <p>Burgers</p>
-          </div>
+          <LinkToLocalCategory searchTerm="Burgers">
+            <div className="burgers-wrapper">
+              <div className="thumbnail-wrapper"></div>
+              <p>Burgers</p>
+            </div>
+          </LinkToLocalCategory>
         </div>
       </div>
 
+
       <div className="main-content-wrapper">
         <div className="header-wrapper">
-          <h1>Morsel (put user's location here)</h1>
+          <LocalizedMorselTitle />
 
           <div className="other-cities-wrapper">
             <div className="cities-wrapper">
-              <p>Tahoe City</p>
-              <p>Honolulu</p>
-              <p>Los Angeles</p>
-              <p>San Francisco</p>
-              <p>Tokyo</p>
-              <p>Portland</p>
-              <p><i className="more-cities-icon"></i>More Cities</p>
+              <p><Link to="/search?find_loc=Tahoe">Tahoe</Link></p>
+              <p><Link to="/search?find_loc=Honolulu">Honolulu</Link></p>
+              <p><Link to="/search?find_loc=Los%20Angeles">Los Angeles</Link></p>
+              <p><Link to="/search?find_loc=San%20Francisco">San Francisco</Link></p>
+              <p><Link to="/search?find_loc=Tokyo">Tokyo</Link></p>
+              <p><Link to="/search?find_loc=Portland">Portland</Link></p>
+              <p><Link><i className="more-cities-icon"></i>More Cities</Link></p>
             </div> 
 
             <div className="underline-wrapper"></div>
