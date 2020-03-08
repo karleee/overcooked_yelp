@@ -373,12 +373,26 @@ class RestaurantDetail extends Component {
                             // Conditional for determining if a restaurant is open based on time  
                             const isOpen = ((adjustedHour >= weekday[0][0] && ampm === 'am') || (adjustedHour < weekday[1][0] && ampm === 'pm')) ||
                               (adjustedHour === 12 && ampm === 'pm' && weekday[0][0] <= 12);
-                                                        
+                            
+
+                            // Adjusted currentDay index to account for Sunday (index 0 vs index 6 in the open/close hours array)
+                            const currentDayIndx = (indx + 1);
+                            let newCurrentDay;
+
+                            if (currentDayIndx === 7) {
+                              newCurrentDay = 0;
+                            } else {
+                              newCurrentDay = currentDayIndx;
+                            }
+
+                            console.log(currentDay);
+                            console.log('New current day: ' + newCurrentDay);
+
                             return (
                               <section>
                                 <p>{hoursArray[indx].open} - {hoursArray[indx].close}</p>
-                                <p className="restaurant-detail-closed-wrapper">{!isOpen && currentDay === indx + 1 ? 'Closed now' : ''}</p>
-                                <p className="restaurant-detail-open-wrapper">{isOpen && currentDay === indx + 1 ? 'Open now' : ''}</p>
+                                <p className="restaurant-detail-closed-wrapper">{!isOpen && currentDay === newCurrentDay ? 'Closed now' : ''}</p>
+                                <p className="restaurant-detail-open-wrapper">{isOpen && currentDay === newCurrentDay ? 'Open now' : ''}</p>
                               </section>
                             );
                           })}
