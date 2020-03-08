@@ -1,6 +1,6 @@
 import React from 'react';
 
-import RestaurantMap from '../map/RestaurantMap';
+import RestaurantMap from '../map/Map';
 
 const ResultMap = ({ restaurants, find_loc }) => (
     <div className="search-result-map-wrapper">
