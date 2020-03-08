@@ -1,5 +1,6 @@
 import React from 'react';
 import { getAverageRating, getStarImage, getDollarSigns } from '../../util/restaurant_util';
+import { Link } from 'react-router-dom';
 
 const ResultItem = ({ restaurant, num }) => {
   // Getting average rating from all reviews
@@ -22,7 +23,7 @@ const ResultItem = ({ restaurant, num }) => {
           <div className="search-result-meta-primary">
             <div className="search-result-header-wrapper">
               <h2>{num}.</h2>
-              <h2>{restaurant.name}</h2>
+              <Link to={`/restaurants/${restaurant._id}`}><h2>{restaurant.name}</h2></Link>
             </div>
 
             <div className="search-result-rating-and-reviews-wrapper">

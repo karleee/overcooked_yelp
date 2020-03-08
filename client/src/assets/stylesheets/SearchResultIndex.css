@@ -88,16 +88,24 @@
 .search-result-header-wrapper {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
   font-family: 'helveticaBold';
-  font-size: 14px;
   color: var(--black);
 }
 
-.search-result-header-wrapper h2:first-of-type {
+.search-result-header-wrapper h2,
+.search-result-header-wrapper a {
+  font-size: 21px;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.search-result-header-wrapper h2 {
   margin-right: 5px;
 }
 
-.search-result-header-wrapper h2:last-of-type:hover {
+.search-result-header-wrapper a:last-of-type:hover {
   text-decoration: underline;
   cursor: pointer;
 }
