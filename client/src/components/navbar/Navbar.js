@@ -8,28 +8,24 @@ import SearchForm from '../search/SearchForm';
 const Navbar = () => {
   return (
     <div className="navbar-container">
-      {/* <div className="main-navbar-wrapper"> */}
-        <div className="navbar-home-logo-wrapper">
-          <Link to='/'>
-            <p>morsel</p>
-            <img src="/images/navbar/plain_logo.png" alt="Logo" /> 
-          </Link>
+      <div className="navbar-home-logo-wrapper">
+        <Link to='/'>
+          <p>morsel</p>
+          <img src="/images/navbar/plain_logo.png" alt="Logo" /> 
+        </Link>
+      </div>
+
+      <SearchForm mode="navbar" />
+
+      <div className="navbar-links-wrapper">
+        <div className="navbar-review-link-wrapper"> 
+          <p>Write a Review</p>
+        </div> 
+
+        <div className="navbar-buttons-wrapper">
+          <SessionButton />
         </div>
-
-        {/* <div className="navbar-search-wrapper"> */} 
-          <SearchForm mode="navbar" />
-        {/* </div> */}
-
-        <div className="navbar-links-wrapper">
-          <div className="navbar-review-link-wrapper"> 
-            <p>Write a Review</p>
-          </div> 
-
-          <div className="navbar-buttons-wrapper">
-            <SessionButton />
-          </div>
-        </div>
-      {/* </div> */}
+      </div>
     </div>
   );
 };

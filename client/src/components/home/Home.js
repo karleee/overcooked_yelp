@@ -50,7 +50,7 @@ const Home = () => {
           </div>
 
           <div className="home-login-logout-wrapper">
-            <SessionButton />
+            <SessionButton /> 
           </div>
         </div>
 
