@@ -51,4 +51,26 @@ app.use(
   })
 );
 
+app.use(
+  '/sandbox',
+  async (req, res) => {
+    const Restaurant = mongoose.model('restaurant');
+    let { searchTerm } = req.query;
+    if (searchTerm) {
+      let results = await Restaurant.find(
+        {
+          $or: [
+            { name: { $regex: searchTerm, $options: 'i' } },
+            { category: { $regex: searchTerm, $options: 'i' } },
+          ]
+        }
+      );
+      res.json({ results });
+    } else {
+      let results = await Restaurant.find({});
+      res.json({ results });
+    }
+  }
+)
+
 module.exports = app;

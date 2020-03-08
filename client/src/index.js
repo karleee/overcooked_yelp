@@ -44,21 +44,12 @@ const client = new ApolloClient({
   }
 });
 
-// if we have a token we want to verify the user is actually logged in
+// see if we have a token
 const token = localStorage.getItem("auth-token");
-const currentUserId = localStorage.getItem("currentUserId");
-const currentUserFirstName = localStorage.getItem("currentUserFirstName");
-const currentUserLastName = localStorage.getItem("currentUserLastName");
 
-// we'll check localStorage to see if a token exists
-cache.writeData({
-  data: {
-    isLoggedIn: Boolean(token),
-    currentUserId,
-    currentUserFirstName,
-    currentUserLastName
-  }
-});
+// read from localStorage and write to cache as needed
+// for initial state
+SessionUtil.setInitialCacheState(cache, token);
 
 // then if we do have a token we'll go through with our mutation
 if (token) {

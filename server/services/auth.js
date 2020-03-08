@@ -94,9 +94,8 @@ const verifyUser = async data => {
     // return true if the id exists in the database
     let sessionUser = await User.findById(_id);
     if (sessionUser) {
-      let { _id, firstName, lastName } = sessionUser;
       const loggedIn = !!sessionUser;
-      return { loggedIn, _id, firstName, lastName };
+      return { loggedIn, ...sessionUser._doc, password: null };
     } else {
       return { loggedIn: false, _id: null }
     }

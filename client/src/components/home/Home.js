@@ -3,6 +3,7 @@ import '../../assets/stylesheets/Home.css';
 
 import RestaurantIndex from '../restaurants/RestaurantIndex';
 import SessionButton from '../session/SessionButton';
+import SearchForm from '../search/SearchForm';
 
 const Home = () => {
   return (
@@ -22,34 +23,8 @@ const Home = () => {
           </svg>
           <img src="/images/homepage/logo.png" alt="Logo" />
         </div>
-
-        <div className="search-input-wrapper">
-          <div className="find-input-wrapper">
-            <label>
-              Find
-            <input
-                type="text"
-                placeholder="burgers, pancakes, burritos, salads..."
-              />
-            </label>
-          </div>
-
-          <div className="separator-wrapper"></div>
-
-          <div className="near-input-wrapper">
-            <label>
-              Near
-            <input
-                type="text"
-                placeholder="Put user's current location here"
-              />
-            </label>
-          </div>
-
-          <div className="search-button-wrapper">
-            <i className="search-icon"></i>
-          </div>
-        </div>
+        
+        <SearchForm />
       </div>
 
       <div className="best-restaurants-wrapper">

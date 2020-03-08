@@ -9,6 +9,7 @@ import RestaurantDetail from './restaurants/RestaurantDetail';
 import Home from './home/Home';
 import ReviewCreate from './reviews/ReviewCreate';
 import ReviewUpdate from './reviews/ReviewUpdate';
+import SearchResultIndex from './search/SearchResultIndex';
 import '../assets/stylesheets/reset.css';
 import '../assets/stylesheets/App.css';
 
@@ -38,6 +39,7 @@ class App extends React.Component {
           <Route exact path='/restaurants/:id/photos' component={GalleryIndex} />
           <Route exact path='/restaurants/:id/map' component={RestaurantMap} />
           <Route exact path='/restaurants/:id' component={RestaurantDetail} />
+          <Route exact path='/search' component={SearchResultIndex} />
           <Route exact path='/' component={Home} />
           <AuthRoute exact path='/restaurants/:id/reviews/create' component={ReviewCreate} routeType="protected" />
           <AuthRoute exact path='/restaurants/:id/reviews/edit' component={ReviewUpdate} routeType="protected" />

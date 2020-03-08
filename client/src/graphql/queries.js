@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 export default {
   FETCH_REVIEW: gql`
-    query FetchReview($userId: ID!, $restaurantId:ID!) {
+    query FetchReview($userId: ID!, $restaurantId: ID!) {
       review(userId: $userId, restaurantId: $restaurantId) {
         _id
         date
@@ -22,11 +22,11 @@ export default {
     query FetchReviews {
       reviews {
         _id
-        body
-        date
         user {
           firstName
-        },
+        }
+        body
+        date
         photos {
           _id
         }
@@ -37,25 +37,25 @@ export default {
   FETCH_RESTAURANTS: gql`
     query FetchRestaurants {
       restaurants {
-        _id,
-        name,
-        price,
-        category,
+        _id
+        name
+        price
+        category
         location {
-          streetAddress,
-          city,
-          state,
+          streetAddress
+          city
+          state
           zipCode
-        },
+        }
         coordinates {
-          latitude,
+          latitude
           longitude
-        },
+        }
         photos {
           user {
-            firstName,
+            firstName
             lastName
-          },
+          }
           url
         },
       }
@@ -65,61 +65,61 @@ export default {
   FETCH_RESTAURANT: gql`
     query FetchRestaurant($_id: ID!) {
       restaurant(_id: $_id) {
-        _id,
-        name,
-        price,
-        category,
-        phoneNum,
+        _id
+        name
+        price
+        category
+        phoneNum
         location {
-          streetAddress,
-          city,
-          state,
+          streetAddress
+          city
+          state
           zipCode
-        },
+        }
         coordinates {
-          latitude,
+          latitude
           longitude
-        },
+        }
         hours {
           monday {
-            open,
-            close
-          },
-          tuesday {
-            open,
-            close
-          },
-          wednesday {
-            open,
-            close
-          },
-          thursday {
-            open,
-            close
-          },
-          friday {
-            open,
-            close
-          },
-          saturday {
-            open,
-            close
-          },
-          sunday {
-            open,
+            open
             close
           }
-        },
+          tuesday {
+            open
+            close
+          }
+          wednesday {
+            open
+            close
+          }
+          thursday {
+            open
+            close
+          }
+          friday {
+            open
+            close
+          }
+          saturday {
+            open
+            close
+          }
+          sunday {
+            open
+            close
+          }
+        }
         amenities {
-          healthScore,
-          takesReservations,
-          goodForHappyHour,
-          delivery,
-          vegetarianOptions,
-          takeOut,
-          acceptsCreditCards,
+          healthScore
+          takesReservations
+          happyHourSpecials
+          delivery
+          vegetarianOptions
+          takeOut
+          acceptsCreditCards
           wifi
-        },
+        }
         reviews {
           _id,
           rating,
@@ -144,23 +144,23 @@ export default {
         },
         photos {
           user {
-            firstName,
-            lastName,
-            profilePhoto,
-            friends,
+            firstName
+            lastName
+            profilePhoto
+            friends
             reviews {
               _id
             }
-          },
+          }
           review {
             date
-          },
-          url,
-          description,
+          }
+          url
+          description
           categories
-        },
+        }
         popularDishes {
-          name,
+          name
           url
         }
       }
@@ -198,6 +198,95 @@ export default {
       currentUserId @client
       currentUserFirstName @client
       currentUserLastName @client
+      currentUserZipCode @client
+    }
+  `,
+  // see if we can DRY this code up
+  SEARCH: gql`
+    query Search($find_desc: String, $find_loc: String) {
+      search(find_desc: $find_desc, find_loc: $find_loc) {
+        _id
+        name
+        price
+        category
+        phoneNum
+        location {
+          streetAddress
+          city
+          state
+          zipCode
+        }
+        coordinates {
+          latitude
+          longitude
+        }
+        hours {
+          monday {
+            open
+            close
+          }
+          tuesday {
+            open
+            close
+          }
+          wednesday {
+            open
+            close
+          }
+          thursday {
+            open
+            close
+          }
+          friday {
+            open
+            close
+          }
+          saturday {
+            open
+            close
+          }
+          sunday {
+            open
+            close
+          }
+        }
+        amenities {
+          healthScore
+          takesReservations
+          happyHourSpecials
+          delivery
+          vegetarianOptions
+          takeOut
+          acceptsCreditCards
+          wifi
+        }
+        reviews {
+          rating
+          body
+          date
+        }
+        photos {
+          user {
+            firstName
+            lastName
+            profilePhoto
+            friends
+            reviews {
+              _id
+            }
+          }
+          review {
+            date
+          }
+          url
+          description
+          categories
+        }
+        popularDishes {
+          name
+          url
+        }
+      }
     }
   `
 };
