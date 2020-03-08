@@ -27,7 +27,8 @@ class RestaurantDetail extends Component {
       viewMoreAmenities: false
     }
     this.toggleAmenities = this.toggleAmenities.bind(this);
-    this.orderReviews = this.orderReviews.bind(this);
+    // this.orderReviews = this.orderReviews.bind(this);
+    // this.renderPhotos = this.renderPhotos.bind(this);
   }
 
   // Runs once component is mounted
@@ -67,6 +68,17 @@ class RestaurantDetail extends Component {
     return reviewsCopy.reverse();
   }
 
+  // Rendering photos component of a review
+  renderPhotos(photos) {
+    return (
+      <div className="review-photos-container">
+        <img src="/images/restaurant_detail/action_menu/camera_icon.png" alt="Camera" />
+
+        <p>{photos} {photos > 1 ? 'photos' : 'photo'}</p>
+      </div>
+    );
+  }
+
   // Rendering all reviews on a restaurant
   renderAllReviews(reviews) {
     return reviews.map(review => {
@@ -77,7 +89,7 @@ class RestaurantDetail extends Component {
       const stars = getStarImage(review.rating);
       const photos = review.photos.length;
 
-      console.log(review);
+      // console.log(review);
 
       return (
         <li key={review._id} className="review-container"> 
@@ -129,11 +141,7 @@ class RestaurantDetail extends Component {
               <p>{`${month}/${dat}/${yr}`}</p>
             </div>
 
-            <div className="review-photos-container">
-              <img src="/images/restaurant_detail/action_menu/camera_icon.png" alt="Camera" />
-
-              <p>{photos} {photos === 0 || photos > 1 ? 'photos' : 'photo'}</p>
-            </div>
+            {photos > 0 ? this.renderPhotos(photos) : ''}
 
             <div className="body-container">
               <p>{review.body}</p>

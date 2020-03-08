@@ -7,14 +7,18 @@ import SearchForm from '../search/SearchForm';
 
 const Home = () => {
   return (
-    <div className="home-wrapper">
-      <div className="banner-wrapper">
-        <div className="home-nav-bar-wrapper">
-          <p>Write a Review</p>
+    <div className="home-container">
+      <div className="banner-container">
+        <div className="home-nav-bar-container">
+          <div className="write-review-wrapper">
+            <p>Write a Review</p> 
+          </div>
+
           <SessionButton />
         </div>
 
-        <img src="/images/homepage/banner.png" alt="Homepage banner" />
+        <img src="/images/homepage/banner.png" alt="Homepage banner" /> 
+
         <div className="overlay-wrapper"></div>
 
         <div className="logo-wrapper">

@@ -1,97 +1,74 @@
 @import 'variables.css';
 
-.home-wrapper {
-  position: relative;
+.home-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-bottom: 50px;
+  height: 100%;
+  /* background: red;  */
 }
 
-.banner-wrapper {
+.banner-container {
+  background: green;
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 85vh;
   overflow: hidden;
 }
 
-.banner-wrapper .home-nav-bar-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+.home-nav-bar-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  padding: 30px 200px;
-  box-sizing: border-box;
+  position: absolute;
   font-family: 'helveticaBold';
   font-size: 15px;
+  letter-spacing: 0.5;
   color: white;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 150px;
   z-index: 1;
 }
 
-.banner-wrapper .home-nav-bar-wrapper .login-logout-wrapper {
+.write-review-wrapper,
+.login-logout-wrapper a:first-of-type {
+  padding: 0 5px 5px 5px;
+}
+
+.write-review-wrapper:hover,
+.login-logout-wrapper a:first-of-type:hover {
+  border-bottom: 3px solid white;
+  cursor: pointer;
+}
+
+.login-logout-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-end;
-  width: 25%;
-  height: 30px; 
+  justify-content: flex-end;
+  align-items: center;
+  width: 90%;
 }
 
-.banner-wrapper .home-nav-bar-wrapper .login-logout-wrapper a {
-  font-family: 'helveticaBold';
-  font-size: 15px;
-  color: white; 
+.login-logout-wrapper a {
   text-decoration: none;
+  color: white;
 }
 
-.banner-wrapper .home-nav-bar-wrapper .login-logout-wrapper a:first-of-type {
-  border-bottom: 2px solid transparent;
-  text-align: center;
-  width: 23%;
-  height: 95%;
-}
-
-.banner-wrapper .home-nav-bar-wrapper .login-logout-wrapper a:first-of-type:hover {
-  border-bottom: 2px solid white;
-  cursor: pointer;
-}
-
-.banner-wrapper .home-nav-bar-wrapper .login-logout-wrapper a:last-of-type {
-  border: 2px solid white;
-  border-radius: 5px;
-  padding: 5px 20px; 
+.login-logout-wrapper a:last-of-type {
   box-sizing: border-box;
-  margin-left: 25px;
-}
-
-.banner-wrapper .home-nav-bar-wrapper .login-logout-wrapper a:last-of-type:hover {
-  cursor: default;
-}
-
-.banner-wrapper .home-nav-bar-wrapper .login-logout-wrapper button {
-  font-family: 'helveticaBold';
-  font-size: 15px;
-  color: white; 
-  background: transparent;
-  border-radius: 5px;
-  padding: 5px 20px; 
   border: 2px solid white;
-  margin-left: 84px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  margin-left: 30px;
 }
 
-.banner-wrapper .home-nav-bar-wrapper .login-logout-wrapper button:hover {
-  cursor: pointer;
+.banner-container {
+  position: relative;
 }
 
-.banner-wrapper img {
-  position: absolute;
-  top: -28%;
-  left: -20%;
-  transform: scale(0.8);
+.banner-container img {
+  width: 100%;
 }
 
 .overlay-wrapper {
@@ -113,7 +90,14 @@
   width: 100%;
 }
 
-.app-wrapper .home-wrapper .banner-wrapper .logo-wrapper svg text {
+.logo-wrapper img {
+  position: absolute;
+  width: 50px;
+  top: 20%;
+  left: 55.3%;
+}
+
+.logo-wrapper svg text { 
   font-family: 'helveticaRounded';
   font-size: 45px;
   font-weight: bold;
@@ -127,19 +111,12 @@
   paint-order: stroke fill;
 }
 
-.app-wrapper .home-wrapper .banner-wrapper .logo-wrapper img {
-  position: absolute;
-  width: 75px;
-  top: 9%;
-  left: 54.7%;
-}
-
 .best-restaurants-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 30px 0 40px 0;
+  padding-bottom: 40px;
   box-sizing: border-box;
   background-color: var(--background-color);
 }
@@ -147,14 +124,16 @@
 .header-wrapper {
   width: 100%;
   text-align: center;
+  margin-top: 30px;
 }
 
-.best-restaurants-wrapper .header-wrapper h1,
 .header-wrapper h1 {
   font-family: 'helveticaBold';
-  font-size: 23px;
+  font-size: 21px;
   color: var(--red);
 }
+
+
 
 .restaurants-wrapper {
   display: flex;
@@ -259,4 +238,4 @@
   font-size: 16px;
   color: var(--red);
   margin-top: 40px;
-}
+} 

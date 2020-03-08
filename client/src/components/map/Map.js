@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router-dom';
-
 import RestaurantInfoContent from './RestaurantInfoContent';
 import * as MapUtil from '../../util/map_util';
-import '../../assets/stylesheets/RestaurantMap.css';
 
 class Map extends React.Component {
   constructor(props) {
