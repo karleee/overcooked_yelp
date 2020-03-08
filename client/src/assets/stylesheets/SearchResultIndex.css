@@ -1,25 +1,159 @@
+@import 'variables.css';
+
 .search-result-wrapper {
   display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-.search-result-restaurant-list-wrapper,
-.search-result-map-wrapper {
-  flex: 1;
-}
-
-.search-result-item {
+.search-result-body-container {
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
+  width: 100%;
 }
-.search-result-restaurant-detail {
-  flex: 1;
+
+.search-result-restaurant-list-container {
+  width: 60%;
+  padding: 40px;
+  box-sizing: border-box;
+  /* background: orange; */
+  /* background: red; */
+  /* padding: 40px;
+  box-sizing: border-box; */
+}
+
+.search-result-restaurant-list-container h1 {
+  font-family: 'helveticaBold';
+  font-size: 26px;
+  color: var(--black);
+}
+
+.all-reviews-wrapper {
+  font-family: 'helveticaBold';
+  font-size: 16px;
+  color: var(--black);
+  margin-top: 30px;
+}
+
+.search-result-restaurant-list-container ul {
+  list-style: none;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.search-result-restaurant-list-container ul li {
+  border: 1px solid var(--light-border-color);  
+  border-radius: 5px;
+  padding: 25px;
+}
+
+.search-result-map-container {
+  width: 40%;
+  height: 100vh;
+}
+
+.search-result-map-container #restaurant-map { 
+  width: 100%;
+  height: 100%;
+}
+
+.search-result-item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.search-result-thumbnail-wrapper {
+  /* width: 34.05%; */
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 5px;
+  background: green;
+}
+
+.search-result-thumbnail-wrapper img {
+  /* width: 100%; */
+  height: 100%;
 }
 
 .search-result-meta {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
+.search-result-header-wrapper {
+  display: flex;
+  flex-direction: row;
+  font-family: 'helveticaBold';
+  font-size: 14px;
+  color: var(--black);
+}
+
+.search-result-header-wrapper h2:first-of-type {
+  margin-right: 5px;
+}
+
+.search-result-header-wrapper h2:last-of-type:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.search-result-details-wrapper {
+  margin-left: 20px;
+}
+
+.search-result-rating-and-reviews-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.search-result-rating-and-reviews-wrapper img {
+  margin-top: 5px;
+  height: 23px;
+  margin-right: 5px;
+}
+
+.search-result-rating-and-reviews-wrapper p {
+  font-family: 'helveticaNormal';
+  font-size: 14px;
+  color: var(--mid-text);
+  margin-top: 3px;
+}
+
+.search-result-price-category-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'helveticaNormal';
+  font-size: 14px;
+  color: var(--mid-text);
+  margin-top: 5px;
+}
+
+.search-result-price-category-wrapper p:first-of-type,
+.search-result-price-and-category-dot-wrapper {
+  font-family: sans-serif;
+}
+
+.search-result-price-and-category-dot-wrapper {
+  padding: 0 5px;
+}
+
 .search-result-meta-secondary {
+  font-family: 'helveticaNormal';
+  font-size: 12px;
+  color: var(--mid-text);
   text-align: right;
+}
+
+.search-result-review-wrapper {
+  font-family: 'helveticaNormal';
+  font-size: 14px;
+  color: var(--mid-text);
+  margin-top: 20px;
 }

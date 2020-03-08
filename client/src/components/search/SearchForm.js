@@ -2,11 +2,10 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
-
 import * as MapUtil from '../../util/map_util';
+import Queries from '../../graphql/queries';
 import '../../assets/stylesheets/SearchForm.css';
 
-import Queries from '../../graphql/queries';
 const { CURRENT_USER } = Queries;
 
 class SearchForm extends React.Component {
@@ -50,7 +49,7 @@ class SearchForm extends React.Component {
         type="text"
         value={this.state.find_desc}
         onChange={this.update('find_desc')}
-        placeholder="burgers, pancakes, burritos, salads..."
+        placeholder={this.props.mode === 'navbar' ? 'tacos, cheap dinner, Max\'s' : 'burgers, pancakes, burritos, salads...'}
       />
     );
   }
@@ -83,7 +82,7 @@ class SearchForm extends React.Component {
     return (
       <Query query={CURRENT_USER}>
         {({ loading, data }) => {
-          if (loading) return <p>Loading</p>;
+          if(loading) return 'Loading...';
 
           // set defaults for location search
           let { find_loc } = queryString.parse(this.props.location.search);
@@ -99,6 +98,7 @@ class SearchForm extends React.Component {
           // can be further refactored
           return (this.props.mode === "navbar") ? (
             <form
+              autocomplete="off"
               className="search-form navbar"
               onSubmit={this.submitSearch(data.currentUserZipCode)}
             >
@@ -117,13 +117,14 @@ class SearchForm extends React.Component {
                 >
                   <i className="navbar-search-icon"></i>
                 </div>
+
                 {/* need a button to allow for keyboard-submit */}
                 <button type="submit">Submit</button>
               </div>
-
             </form>
           ) : (
             <form
+              autocomplete="off"
               className="search-form"
               onSubmit={this.submitSearch(data.currentUserZipCode)}
             >

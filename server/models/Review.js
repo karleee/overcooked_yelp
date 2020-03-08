@@ -18,7 +18,7 @@ const ReviewSchema = new Schema({
     required: true
   },
   date: {
-    type: String,
+    type: Date,
     default: `${new Date().toLocaleDateString()}`
   },
   body: {

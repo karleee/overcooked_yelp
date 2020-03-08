@@ -11,22 +11,9 @@ export default {
         user {
           _id
           firstName
-        }
-      }
-    }
-  `,
-  FETCH_REVIEWS_OF_RESTAURANT: gql`
-    query FetchReviewsOfRestaurant($_id: ID!) {
-      restaurant(_id: $_id) {
-        reviews {
-          _id
-          body
-          user {
-            _id
-            firstName
-          }
-          date
-          rating
+        },
+        photos {
+          _id 
         }
       }
     }
@@ -40,6 +27,9 @@ export default {
         }
         body
         date
+        photos {
+          _id
+        }
       }
     }
   `,
@@ -123,7 +113,7 @@ export default {
         amenities {
           healthScore
           takesReservations
-          happyHourSpecials
+          goodForHappyHour
           delivery
           vegetarianOptions
           takeOut
@@ -136,14 +126,20 @@ export default {
           body,
           date,
           user {
+            _id,
             firstName,
             lastName
-            _id
-            profilePhoto
-            friends
+            profilePhoto,
+            friends,
             reviews {
               _id
+            },
+            photos {
+              _id
             }
+          },
+          photos {
+            _id
           }
         },
         photos {
@@ -257,7 +253,7 @@ export default {
         amenities {
           healthScore
           takesReservations
-          happyHourSpecials
+          goodForHappyHour
           delivery
           vegetarianOptions
           takeOut

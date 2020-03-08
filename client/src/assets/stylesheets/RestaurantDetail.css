@@ -1,3 +1,12 @@
+@import 'variables.css';
+
+.restaurant-detail-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
 .restaurant-detail-banner-wrapper {
   position: relative;
 }
@@ -135,7 +144,7 @@
   cursor: pointer;
 }
 
-.restaurant-detail-menu-buttons-wrapper {
+.restaurant-detail-menu-buttons-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -145,38 +154,83 @@
   border-bottom: 1px solid var(--light-border-color);
 }
 
-.restaurant-detail-review-button-wrapper,
-.restaurant-detail-add-photo-button-wrapper,
-.restaurant-detail-save-button-wrapper {
+.review-button-container,
+.photo-button-container,
+.save-button-container {
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  width: 128px;
+  height: 33px;
+}
+
+.photo-button-container {
+  width: 110px;
+  margin: 0 15px;
+}
+
+.save-button-container {
+  width: 70px;
+}
+
+.review-button-container:hover {
+  background: var(--button-hover-light-red);
+  border: 1px solid var(--button-border-hover-red);
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.photo-button-container:hover,
+.save-button-container:hover {
+  background: var(--background-color);
+  transition: background 0.5s;
+  cursor: pointer;
+}
+
+.review-button-wrapper,
+.photo-button-wrapper,
+.save-button-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: center;
-}
-
-.restaurant-detail-review-button-wrapper p {
-  font-family: 'helveticaMedium';
+  align-items: center;
+  font-family: 'helveticaBold';
   font-size: 13px;
   color: var(--red);
-  border-radius: 3px;
-  border: 1px solid var(--border-color);
-  padding: 5px 10px;
+  width: 100%;
+  height: 100%;
 }
 
-.restaurant-detail-add-photo-button-wrapper {
-  padding: 0 12px;
-}
-
-.restaurant-detail-add-photo-button-wrapper p,
-.restaurant-detail-save-button-wrapper p {
-  font-family: 'helveticaMedium';
-  font-size: 13px;
+.photo-button-wrapper,
+.save-button-wrapper {
   color: var(--mid-text);
-  border-radius: 3px;
-  border: 1px solid var(--light-border-color);
-  padding: 5px 10px;
 }
 
-.restaurant-detail-popular-dishes-wrapper,
+.review-button-icon-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 15px;
+  margin-right: 5px;
+}
+
+.photo-button-icon-wrapper {
+  width: 16px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.save-button-icon-wrapper {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.review-button-wrapper img,
+.photo-button-wrapper img,
+.save-button-wrapper img {
+  width: 100%;
+}
+
+.restaurant-detail-popular-dishes-container,
 .restaurant-detail-location-and-hours-wrapper, 
 .restaurant-detail-amenities-wrapper,
 .restaurant-detail-recommended-reviews-wrapper {
@@ -191,7 +245,7 @@
   border-bottom: none;
 }
 
-.restaurant-detail-popular-dishes-wrapper h3,
+.restaurant-detail-popular-dishes-container h3,
 .restaurant-detail-location-and-hours-wrapper h3,
 .restaurant-detail-amenities-wrapper h3,
 .restaurant-detail-recommended-reviews-wrapper h3 {
@@ -200,7 +254,7 @@
   color: var(--black);
 }
 
-.restaurant-detail-dishes-wrapper {
+.popular-dishes-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -212,7 +266,6 @@
 .dish-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   width: 32%;
   height: 190px;
   margin-right: 15px;
@@ -220,7 +273,7 @@
 
 .dish-image-wrapper {
   width: 100%;
-  height: 120px;
+  height: 117px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   overflow: hidden;
@@ -230,7 +283,7 @@
   width: 100%;
 }
 
-.dish-wrapper p {
+.dish-text-wrapper {
   font-family: 'helveticaMedium';
   font-size: 14px;
   width: 100%;
@@ -238,8 +291,25 @@
   box-sizing: border-box;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  border: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   padding: 15px 0 0 15px;
+}
+
+.dish-reviews-and-photos-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  font-family: 'helveticaNormal';
+  font-size: 12px;
+  color: var(--subtle-text);
+}
+
+.dish-reviews-and-photos-wrapper p:nth-of-type(2n) {
+  font-family: sans-serif;
+  padding: 0 3px;
 }
 
 .restaurant-detail-location-and-hours-body-wrapper {
@@ -254,7 +324,7 @@
 .restaurant-detail-map-wrapper {
   display: flex;
   flex-direction: column;
-  width: 47%;
+  width: 52%;
 }
 
 .restaurant-detail-map-image-wrapper {
@@ -301,6 +371,7 @@
   justify-content: flex-start;
   align-items: center;
   margin-left: 30px;
+  width: 48%;
 }
 
 .restaurant-detail-weekday-wrapper {
@@ -342,36 +413,86 @@
   color: var(--green);
 }
 
-.amenities-list-wrapper ul {
+.amenities-list-container {
+  display: flex;
+  flex-direction: column; 
+  box-sizing: border-box;
+  padding-top: 10px;
+}
+
+.amenities-list-container ul {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-content: space-between;
   flex-wrap: wrap;
   list-style: none;
-  height: 65px;
-  margin-top: 10px;
 }
 
-.amenities-list-wrapper ul li {
+.amenities-list-container ul li {
+  padding-bottom: 15px;
+}
+
+.amenities-list-container .extra-amenities-container li {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
+  width: 100%;
 }
 
-.amenity-icon {
+.amenities-list-container ul li,
+.amenities-list-container .extra-amenities-container li .extra-amenity-pair-first,
+.amenities-list-container .extra-amenities-container li .extra-amenity-pair-second  {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.amenities-list-container .extra-amenities-container li .extra-amenity-pair-first {
+  width: 411px;
+}
+
+.amenities-list-container ul:first-of-type {
+  height: 75px;
+}
+
+.healthScore-icon-wrapper,
+.takesReservations-icon-wrapper,
+.delivery-icon-wrapper,
+.goodForHappyHour-icon-wrapper,
+.vegetarianOptions-icon-wrapper,
+.takeOut-icon-wrapper,
+.acceptsCreditCards-icon-wrapper,
+.wifi-icon-wrapper {
   width: 30px;
-  height: 30px;
-  background: orange;
+  height: 18px;
+  text-align: center;
 }
 
-.amenities-list-wrapper ul li p:first-of-type {
+.healthScore-icon-wrapper img,
+.takesReservations-icon-wrapper img,
+.delivery-icon-wrapper img,
+.goodForHappyHour-icon-wrapper img,
+.vegetarianOptions-icon-wrapper img,
+.takeOut-icon-wrapper img,
+.acceptsCreditCards-icon-wrapper img {
+  height: 100%;
+}
+
+.wifi-icon-wrapper img {
+  height: 15px;
+}
+
+.amenities-list-container ul li p:first-of-type {
   font-family: 'helveticaNormal';
   color: var(--black);
   font-size: 14px;
   margin-left: 5px;
 }
 
-.amenities-list-wrapper ul li p:last-of-type {
+.amenities-list-container ul li p:last-of-type {
   font-family: 'helveticaBold';
   color: var(--black);
   font-size: 14px;
@@ -397,7 +518,7 @@
   justify-content: space-between;
   align-items: center;
   width: 32%;
-  height: 110px;
+  height: 105px;
   border: 1px solid var(--light-border-color);
   border-radius: 5px;
   font-family: 'helveticaNormal';
@@ -417,23 +538,32 @@
   margin-left: 15px;
 }
 
-.restaurant-detail-directions-wrapper {
+.restaurant-detail-directions-wrapper a {
+  text-decoration: none;
   color: var(--blue);
 }
 
-.restaurant-detail-phone-icon,
+.restaurant-detail-phone-icon {
+  width: 18px;
+  height: 18px;
+}
+
 .restaurant-detail-directions-icon {
-  width: 25px;
-  height: 25px;
-  background: green;
+  width: 23px;
+  height: 23px;
+}
+
+.restaurant-detail-phone-icon img,
+.restaurant-detail-directions-icon img {
+  width: 100%;
 }
 
 .restaurant-detail-phone-wrapper p,
-.restaurant-detail-directions-wrapper p {
+.restaurant-detail-directions-wrapper a {
   margin-left: 15px;
 }
 
-.restaurant-detail-directions-wrapper p:hover {
+.restaurant-detail-directions-wrapper a:hover {
   text-decoration: underline;
   cursor: pointer;
 }
@@ -444,66 +574,133 @@
   height: 1px;
 }
 
-.individual-review-info-container {
+/* Styling for reviews */
+.review-container {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 20px 0;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--light-border-color);
+  width: 100%;
 }
 
-.review-user-info-container {
-  width: 33.33%;
+.user-info-container {
   display: flex;
+  flex-direction: row;
+  width: 25%;
 }
 
-.review-info {
-  width: 66.66%;
+.profile-photo-container img {
+  width: 55px;
+  height: 55px;
+  background: lightblue;
+  border-radius: 5px;
 }
 
-.review-user-info {
-  padding-left: 10px;
+.stats-container {
+  margin-left: 8px;
 }
-.review-stars-icon-and-date {
+
+.stats-user-name-container {
+  font-family: 'helveticaBold';
+  font-size: 14px;
+  color: var(--blue);
+}
+
+.stats-user-name-container,
+.stats-friends-container,
+.stats-num-reviews-container,
+.stats-num-photos-container {
   display: flex;
+  flex-direction: row;
   align-items: center;
 }
 
-.review-stars-icon-and-date > * {
-  padding: 3px;
+.stats-friends-container,
+.stats-num-reviews-container,
+.stats-num-photos-container {
+  font-family: 'helveticaNormal';
+  font-size: 12px;
+  color: var(--black);
 }
 
-.review-user-profilephoto-container > img{
-  width: 70px;
+.stats-friends-container p:first-of-type,
+.stats-num-reviews-container p:first-of-type,
+.stats-num-photos-container p:first-of-type {
+  font-family: 'helveticaBold';
+  margin-right: 3px;
 }
 
-.review-user-name {
-  color: royalblue;
-  font-weight: bold;
-}
-
-.review-user-friends {
+.friends-icon-container,
+.num-reviews-icon-container,
+.num-photos-icon-container {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 20px;
+  height: 13px;
+}
+
+.stats-friends-container img,
+.stats-num-photos-container img {
+  width: 13px;
+  height: 11px;
+}
+
+.stats-num-reviews-container img {
+  height: 100%;
+}
+
+.user-review-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-review-container {
+  width: 65%;
+}
+
+.stars-icon-and-date-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.stars-icon-wrapper {
+  height: 19px;
+  margin-right: 7px;
   padding: 5px 0;
 }
 
-.review-user-friends > img {
-  height: 15px;
-  width: 15px;
-
+.stars-icon-wrapper img {
+  height: 100%;
 }
 
-.review-user-num-reviews {
+.stars-icon-and-date-container p {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: var(--mid-text);
+}
+
+.review-photos-container {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'helveticaNormal';
+  font-size: 12px;
+  color: var(--blue);
+  padding-bottom: 10px;
 }
 
-.review-user-num-reviews > img {
+.review-photos-container img {
   height: 15px;
-  width: 15px;
+  margin-right: 3px;
 }
 
-.review-user-friends > p {
-  padding-left: 5px;
-}
-
-.review-user-num-reviews > p {
-  padding-left: 5px;
+.body-container {
+  font-family: 'helveticaNormal';
+  font-size: 14px;
+  color: var(--black);
+  line-height: 1.25;
 }

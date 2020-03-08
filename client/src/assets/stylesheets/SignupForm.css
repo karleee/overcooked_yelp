@@ -1,0 +1,196 @@
+@import 'variables.css';
+
+.signup-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.signup-form-header { 
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  align-items: center;
+  width: 100%;
+  height: 9%;
+  background: var(--red);
+}
+
+.signup-form-header a .logo-wrapper {
+  position: absolute;
+  top: 18px;
+  left: 46.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.signup-form-header a .logo-wrapper svg {
+  width: 85px;
+  height: 30px;
+}
+
+.signup-form-header a .logo-wrapper svg text {
+  font-family: 'helveticaRounded';
+  font-size: 24px;
+  font-weight: bold;
+  fill: black;
+  stroke: white;
+  stroke-width: 6px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+}
+
+.signup-form-header a .logo-wrapper img {
+  width: 25px;
+  margin: -15px 0 0 -2px;
+}
+
+.signup-form-body-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 30px 100px;
+}
+
+.signup-main-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 27%;
+  text-align: center;
+  margin-right: 100px;
+}
+
+.signup-main-form-container h1 {
+  font-family: 'helveticaBold';
+  font-size: 22px;
+  color: var(--red);
+}
+
+.signup-main-form-container p {
+  font-family: 'helveticaBold';
+  font-size: 14px;
+  color: var(--black);
+}
+
+.signup-main-form-container p a {
+  text-decoration: none;
+  color: var(--blue);
+}
+
+.signup-main-form-container p a:hover {
+  text-decoration: underline;
+}
+
+.signup-main-form-container small {
+  font-family: 'helveticaNormal';
+  font-size: 12px;
+  color: var(--mid-text);
+  padding: 10px 0 30px 0;
+}
+
+.signup-main-form-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.signup-main-form-container form .first-and-last-name-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: -25px;
+}
+
+.signup-main-form-container form .first-and-last-name-container input:first-of-type,
+.signup-main-form-container form .first-and-last-name-container input:last-of-type {
+  width: 49%;
+  height: 100%;
+}
+
+.signup-main-form-container form input {
+  font-family: 'helveticaNormal';
+  font-size: 14px;
+  color: var(--black);
+  box-sizing: border-box;
+  padding: 5px 10px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid var(--mid-text);
+  margin-bottom: 10px;
+}
+
+.signup-main-form-container form input:last-of-type {
+  margin-bottom: 40px;
+}
+
+.signup-main-form-container form button {
+  font-family: 'helveticaBold';
+  font-size: 16px;
+  background: var(--red);
+  color: white;
+  padding: 10px 13px;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.signup-main-form-container form button:hover {
+  background: var(--button-hover-red);
+  transition: background 0.5s;
+  cursor: pointer;
+}
+
+.signup-main-form-container form small {
+  font-family: 'helveticaNormal';
+  font-size: 12px;
+  color: var(--subtle-text);
+}
+
+.signup-main-form-container form small a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.signup-main-form-container form small a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.signup-form-image-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+}
+
+.signup-form-image-container img {
+  width: 100%;
+}
+
+.signup-form-image-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+}
+
+.signup-form-image-container img {
+  width: 100%;
+}

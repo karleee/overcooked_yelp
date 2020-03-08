@@ -1,6 +1,4 @@
 import React from 'react';
-import '../../assets/stylesheets/reset.css';
-import '../../assets/stylesheets/App.css';
 import '../../assets/stylesheets/Home.css';
 
 import { Link } from 'react-router-dom';
@@ -8,6 +6,8 @@ import { Query } from 'react-apollo';
 import RestaurantIndex from '../restaurants/RestaurantIndex';
 import SessionButton from '../session/SessionButton';
 import SearchForm from '../search/SearchForm';
+import '../../assets/stylesheets/Home.css';
+import '../../assets/stylesheets/SearchForm.css';
 
 import Queries from '../../graphql/queries';
 const { CURRENT_USER } = Queries;
@@ -42,21 +42,27 @@ const LocalizedMorselTitle = () => (
 
 const Home = () => {
   return (
-    <div className="home-wrapper">
-      <div className="banner-wrapper">
-        <div className="home-nav-bar-wrapper">
-          <p>Write a Review</p>
-          <SessionButton />
+    <div className="home-container">
+      <div className="banner-container">
+        <div className="home-nav-bar-container">
+          <div className="write-review-wrapper">
+            <p>Write a Review</p> 
+          </div>
+
+          <div className="home-login-logout-wrapper">
+            <SessionButton />
+          </div>
         </div>
 
-        <img src="/images/homepage/banner.png" alt="Homepage banner" />
+        <img src="/images/homepage/banner.png" alt="Homepage banner" /> 
+
         <div className="overlay-wrapper"></div>
 
         <div className="logo-wrapper">
           <svg>
             <text x="50%" y="50%">morsel</text>
           </svg>
-          <img src="/images/homepage/logo.png" alt="Logo image" />
+          <img src="/images/homepage/logo.png" alt="Logo" />
         </div>
         
         <SearchForm />

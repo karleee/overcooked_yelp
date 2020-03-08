@@ -1,0 +1,21 @@
+/* Loading spinner */
+.pizza-loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: #9FA4F5;
+}
+
+.pizza-loader-text {
+  text-align: center;
+}
+
+.pizza-loader-text p {
+  font-family: 'helveticaBold';
+  font-size: 24px;
+  color: var(--black);
+  margin-top: 15px;
+}
