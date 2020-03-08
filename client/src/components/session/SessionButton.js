@@ -17,11 +17,11 @@ const SessionButton = props => {
 
   const renderSessionButton = (client, isLoggedIn) => {
     return isLoggedIn ? (
-      <div className="login-logout-wrapper">
+      <div className="login-logout-wrapper"> 
         <button onClick={logOutAndRedirect(client)}>Log Out</button>
       </div>
     ) : (
-      <div className="login-logout-wrapper">
+      <div className="login-logout-wrapper"> 
         <Link to='/login'>Log In</Link>
         <Link to='/signup'>Sign Up</Link> 
       </div>

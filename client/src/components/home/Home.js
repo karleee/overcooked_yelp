@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../assets/stylesheets/Home.css';
-
 import RestaurantIndex from '../restaurants/RestaurantIndex';
 import SessionButton from '../session/SessionButton';
 import SearchForm from '../search/SearchForm';
+import '../../assets/stylesheets/Home.css';
+import '../../assets/stylesheets/SearchForm.css';
 
 const Home = () => {
   return (
@@ -14,7 +14,9 @@ const Home = () => {
             <p>Write a Review</p> 
           </div>
 
-          <SessionButton />
+          <div className="home-login-logout-wrapper">
+            <SessionButton />
+          </div>
         </div>
 
         <img src="/images/homepage/banner.png" alt="Homepage banner" /> 
