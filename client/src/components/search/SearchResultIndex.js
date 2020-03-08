@@ -20,17 +20,18 @@ const { SEARCH } = Queries;
 class SearchResultIndex extends Component {
   constructor(props) {
     super(props);
+    window.scrollTo(0, 0);
   }
 
   // Hides scrolling when modal is mounted
-  // componentDidMount() {
-  //   document.body.style.overflow = 'hidden';
-  // }
+  componentDidMount() {
+    document.body.style.overflow = 'hidden';
+  }
 
   // Reactiviates scrolling when modal is unmounted
-  // componentWillUnmount() {
-  //   document.body.style.overflow = 'unset';
-  // }
+  componentWillUnmount() {
+    document.body.style.overflow = 'unset';
+  }
 
   render() {
     // get search term and search location from the url
