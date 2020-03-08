@@ -109,3 +109,14 @@ export const getPopularDishOccurences = (collection, dish, type) => {
 
   return foundOccurences;
 }
+
+// Converting price into dollar sign equivalents
+export const getDollarSigns = price => {
+  let dollars = [];
+
+  for (let i = 0; i < price; i++) {
+    dollars.push('$');
+  }
+
+  return dollars.join(''); 
+}

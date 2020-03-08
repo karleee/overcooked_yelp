@@ -10,7 +10,8 @@ import {
   getAverageRating, 
   getStarImage, 
   getCapitalizedKey, 
-  getPopularDishOccurences
+  getPopularDishOccurences,
+  getDollarSigns
 } from '../../util/restaurant_util';
 import '../../assets/stylesheets/RestaurantDetail.css';
 
@@ -160,14 +161,7 @@ class RestaurantDetail extends Component {
           if (error) return <ProgressLoader type='error' />;
 
           // Converting price into dollar sign equivalents
-          const price = data.restaurant.price;
-          let dollars = [];
-
-          for (let i = 0; i < price; i++) {
-            dollars.push('$');
-          }
-
-          dollars.join('');
+          const dollars = getDollarSigns(data.restaurant.price);
 
           // Getting current time
           const currentHour = this.state.currentTime.getHours();

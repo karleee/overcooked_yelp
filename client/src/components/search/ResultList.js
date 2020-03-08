@@ -1,32 +1,56 @@
 import React from 'react';
+import { getAverageRating, getStarImage, getDollarSigns } from '../../util/restaurant_util';
 
-const ResultItem = ({ restaurant }) => (
-  <div className="search-result-item">
-    <div className="search-result-thumbnail-wrapper">
-      <img src="https://via.placeholder.com/200" />
-    </div>
+const ResultItem = ({ restaurant, num }) => {
+  // Getting average rating from all reviews
+  const average = getAverageRating(restaurant.reviews);
 
-    <div className="search-result-restaurant-detail">
-      <div className="search-result-meta">
-        <div className="search-result-meta-primary">
-          <h2>{restaurant.name}</h2>
-          <p>5 stars!</p>
-          <p>$$ &bull; vietnamese</p>
-        </div>
+  // Getting star rating indicator image
+  const stars = getStarImage(average);
 
-        <div className="search-result-meta-secondary">
-          <p>phone</p>
-          <p>Address</p>
-          <p>neighborhood</p>
-        </div>
+  const dollars = getDollarSigns(restaurant.price);
+  const firstReview = restaurant.reviews[0].body;
+
+  return (
+    <div className="search-result-item-container">
+      <div className="search-result-thumbnail-wrapper">
+        <img src={restaurant.photos[0].url} alt="Search result restaurant thumbnail" />
       </div>
 
-      <div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu rutrum velit. Suspendisse quam nisi, sagittis vel aliquet nec, interdum eu dolor.</p>
+      <div className="search-result-details-wrapper">
+        <div className="search-result-meta">
+          <div className="search-result-meta-primary">
+            <div className="search-result-header-wrapper">
+              <h2>{num}.</h2>
+              <h2>{restaurant.name}</h2>
+            </div>
+
+            <div className="search-result-rating-and-reviews-wrapper">
+              <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt='Rating icon' />
+              <p>{restaurant.reviews.length}</p>
+            </div>
+
+            <div className="search-result-price-category-wrapper">
+              <p>{dollars}</p> 
+              <p class="search-result-price-and-category-dot-wrapper">•</p>
+              <p>{restaurant.category}</p>
+            </div>
+          </div>
+
+          <div className="search-result-meta-secondary">
+            <p>{restaurant.phoneNum}</p>
+            <p>{restaurant.location.streetAddress}</p>
+            <p>{restaurant.location.city}</p>
+          </div>
+        </div>
+
+        <div className="search-result-review-wrapper">
+          <p>"{firstReview.length > 100 ? `${firstReview.slice(0, 90)}...` : firstReview}"</p>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const ResultList = ({ restaurants, find_desc, find_loc }) => {
   const capitalizedLoc = find_loc.charAt(0).toUpperCase() + find_loc.slice(1);
@@ -36,11 +60,14 @@ const ResultList = ({ restaurants, find_desc, find_loc }) => {
       <div className="search-result-restaurant-list-container">
         {find_desc ? <h1>Best {find_desc} in {capitalizedLoc}</h1> : <h1>Browsing {capitalizedLoc}</h1>}
 
+        <p className="all-reviews-wrapper">All Results</p>
+
         <div className="search-result-reservations-menu-wrapper"></div>
+
         <ul>
           {restaurants.map((restaurant, i) =>
             <li key={i}>
-              <ResultItem restaurant={restaurant} />
+              <ResultItem restaurant={restaurant} num={i + 1} />
             </li>
           )}
         </ul>

@@ -20,15 +20,7 @@ const RestaurantIndex = () => {
 
           const randomPhrase = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
 
-          return (
-            <div className="loader-container">
-              {/* <div className="loader-wrapper">
-                <img src="/images/loader/loader.gif" alt="Loading spinner" />
-              </div>
-
-              <p>{randomPhrase}</p> */}
-            </div>
-          );
+          return <div className="loader-container"></div>;
         };
         if (error) return `Error! ${error.message}`;
 
