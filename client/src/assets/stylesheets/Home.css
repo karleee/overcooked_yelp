@@ -28,7 +28,6 @@
   box-sizing: border-box;
   padding: 30px 150px;
   z-index: 1;
-  /* background: blue; */
 }
 
 .write-review-wrapper, 
@@ -48,8 +47,6 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  /* width: 90%; */
-  /* background: green; */
 }
 
 .home-login-logout-wrapper .login-logout-wrapper a {
@@ -63,6 +60,7 @@
   padding: 5px 20px;
   border-radius: 5px;
   margin-left: 30px;
+  box-sizing: border-box;
 }
 
 .banner-container {
