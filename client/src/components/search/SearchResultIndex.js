@@ -21,6 +21,7 @@ const SearchResultIndex = props => {
     // get search term and search location from the url
     let { find_desc, find_loc } = queryString.parse(props.location.search);
     find_loc = find_loc || DEFAULT_LOCATION;
+    
     return (
       <div className="search-result-index-wrapper">
         <Query query={SEARCH} variables={{ find_desc, find_loc }}>

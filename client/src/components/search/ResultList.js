@@ -29,10 +29,12 @@ const ResultItem = ({ restaurant }) => (
 );
 
 const ResultList = ({ restaurants, find_desc, find_loc }) => {
+  const capitalizedLoc = find_loc.charAt(0).toUpperCase() + find_loc.slice(1);
+
   if (restaurants.length) {
     return (
       <div className="search-result-restaurant-list-container">
-        <h1>Best {find_desc || "restaurants"} in {find_loc}</h1>
+        {find_desc ? <h1>Best {find_desc} in {capitalizedLoc}</h1> : <h1>Browsing {capitalizedLoc}</h1>}
 
         <div className="search-result-reservations-menu-wrapper"></div>
         <ul>
