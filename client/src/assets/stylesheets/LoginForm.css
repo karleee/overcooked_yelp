@@ -1,0 +1,170 @@
+@import 'variables.css';
+
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.login-form-header { 
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  align-items: center;
+  width: 100%;
+  height: 9%;
+  background: var(--red);
+}
+
+.login-form-header a .logo-wrapper {
+  position: absolute;
+  top: 18px;
+  left: 46.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.login-form-header a .logo-wrapper svg {
+  width: 85px;
+  height: 30px;
+}
+
+.login-form-header a .logo-wrapper svg text {
+  font-family: 'helveticaRounded';
+  font-size: 24px;
+  font-weight: bold;
+  fill: black;
+  stroke: white;
+  stroke-width: 6px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+}
+
+.login-form-header a .logo-wrapper img {
+  width: 25px;
+  margin: -15px 0 0 -2px;
+}
+
+.login-form-body-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 30px 100px;
+}
+
+.login-main-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 27%;
+  text-align: center;
+  margin-right: 100px;
+}
+
+.login-main-form-container h1 {
+  font-family: 'helveticaBold';
+  font-size: 22px;
+  color: var(--red);
+}
+
+.login-main-form-container p {
+  font-family: 'helveticaBold';
+  font-size: 14px;
+  color: var(--black);
+}
+
+.login-main-form-container p a {
+  text-decoration: none;
+  color: var(--blue);
+}
+
+.login-main-form-container p a:hover {
+  text-decoration: underline;
+}
+
+.login-main-form-container small {
+  font-family: 'helveticaNormal';
+  font-size: 12px;
+  color: var(--mid-text);
+  padding: 10px 0 30px 0;
+}
+
+.login-main-form-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.login-main-form-container form input {
+  font-family: 'helveticaNormal';
+  font-size: 14px;
+  color: var(--black);
+  box-sizing: border-box;
+  padding: 5px 10px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid var(--mid-text);
+  margin-bottom: 10px;
+}
+
+.login-main-form-container form input:last-of-type {
+  margin-bottom: 40px;
+}
+
+.login-main-form-container form button {
+  font-family: 'helveticaBold';
+  font-size: 16px;
+  background: var(--red);
+  color: white;
+  padding: 10px 13px;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.login-main-form-container form button:hover {
+  background: var(--button-hover-red);
+  transition: background 0.5s;
+  cursor: pointer;
+}
+
+.login-main-form-container form small {
+  font-family: 'helveticaNormal';
+  font-size: 12px;
+  color: var(--subtle-text);
+}
+
+.login-main-form-container form small a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.login-main-form-container form small a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-form-image-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+}
+
+.login-form-image-container img {
+  width: 100%;
+}

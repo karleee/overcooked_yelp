@@ -1,13 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router-dom';
-
 import RestaurantInfoContent from './RestaurantInfoContent';
 import * as MapUtil from '../../util/map_util';
-import '../../assets/stylesheets/RestaurantMap.css';
 
-class RestaurantMap extends React.Component {
-  
+class Map extends React.Component {
   constructor(props) {
     super(props);
     // move all this to render?
@@ -122,14 +119,12 @@ class RestaurantMap extends React.Component {
   }
 
   render() {
-    const mapClass = (this.props.mode === "search" || !this.singleRestaurant) ? "list" : "single";
+    // const mapClass = this.singleRestaurant ? "single" : "list";  
     return (
-      <div id="restaurant-map" className={mapClass}>
-        Restaurant Map
-      </div>
+      <div id="restaurant-map" className="map-wrapper"></div> 
     );
   }
 }
 
 // add withRouter to give access to history/redirect
-export default withRouter(RestaurantMap);
+export default withRouter(Map);

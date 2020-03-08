@@ -3,7 +3,6 @@ import { Query } from 'react-apollo';
 import Queries from '../../graphql/queries';
 import { Link } from 'react-router-dom';
 import '../../assets/stylesheets/RestaurantIndex.css';
-import RestaurantMap from '../map/RestaurantMap';
 
 const { FETCH_RESTAURANTS } = Queries; 
 
@@ -12,7 +11,17 @@ const RestaurantIndex = () => {
   return (
     <Query query={FETCH_RESTAURANTS}>
       {({ loading, error, data }) => {
-        if (loading) return 'Loading...';
+        if (loading) {
+          const loadingPhrases = [
+            'Preheating the oven...',
+            'Pouring the sugar...',
+            'Pouring the milk...'
+          ];
+
+          const randomPhrase = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
+
+          return <div className="loader-container"></div>;
+        };
         if (error) return `Error! ${error.message}`;
 
         return (
@@ -39,7 +48,7 @@ const RestaurantIndex = () => {
                   <li key={restaurant._id}>
                     <Link to={`/restaurants/${restaurant._id}`}>
                       <div className="big-thumbnail-wrapper">
-                        <img src={restaurant.photos[0] ? restaurant.photos[0].url : ''} alt="Restaurant thumbnail image" />
+                        <img src={restaurant.photos[0] ? restaurant.photos[0].url : ''} alt="Restaurant thumbnail" />
                       </div>
 
                       <div className="text-info-wrapper">
@@ -63,8 +72,6 @@ const RestaurantIndex = () => {
                 );
               })}
             </ul>
-            
-            {/* <RestaurantMap restaurants={data.restaurants} /> */}
           </div>
         );
       }}

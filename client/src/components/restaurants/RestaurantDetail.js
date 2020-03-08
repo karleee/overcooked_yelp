@@ -3,13 +3,19 @@ import { Query } from 'react-apollo';
 import Queries from '../../graphql/queries';
 import { Link } from 'react-router-dom';
 import Navbar from '../navbar/Navbar';
-import RestaurantMap from '../map/RestaurantMap';
-import '../../assets/stylesheets/reset.css';
-import '../../assets/stylesheets/App.css';
+import Map from '../map/Map';
+import ProgressLoader from '../loader/ProgressLoader';
+import { 
+  setAmenityValue, 
+  getAverageRating, 
+  getStarImage, 
+  getCapitalizedKey, 
+  getPopularDishOccurences,
+  getDollarSigns
+} from '../../util/restaurant_util';
 import '../../assets/stylesheets/RestaurantDetail.css';
 
-const { FETCH_RESTAURANT, FETCH_REVIEW, CURRENT_USER, FETCH_REVIEWS_OF_RESTAURANT } = Queries;
-
+const { FETCH_RESTAURANT, FETCH_REVIEW, CURRENT_USER } = Queries;
 
 // RestaurantIndex component returning information about all restaurants from backend
 // Scrolls automatically to top of the page
@@ -22,18 +28,24 @@ class RestaurantDetail extends Component {
       viewMoreAmenities: false
     }
     this.toggleAmenities = this.toggleAmenities.bind(this);
+    // this.orderReviews = this.orderReviews.bind(this);
+    // this.renderPhotos = this.renderPhotos.bind(this);
   }
 
+  // Runs once component is mounted
+  // Continuously updaitng current time
   componentDidMount() {
     setInterval(() => {
       this.setState({ currentTime: new Date() })
     }, 1000);
   }
 
+  // Toggles amenities viewing state
   toggleAmenities() {
     this.setState({ viewMoreAmenities: !this.state.viewMoreAmenities });
   }
 
+  // Takes a user to create a new review or edit their existing one
   renderReview(restaurantId, reviewData, userId, restaurantName) {
     if(userId) {
       if(reviewData.data.review) {
@@ -46,50 +58,95 @@ class RestaurantDetail extends Component {
     }
   }
 
-  renderAllReviews(reviews) {
-    // console.log(reviews)
-    return reviews.map(review => {
-      let stars;
-      if(review.rating === 1) { 
-        stars = 'one';
-      } else if(review.rating === 2) {
-         stars = 'two';
-      } else if(review.rating === 3) { 
-        stars = 'three';
-      } else if(review.rating === 4) { 
-        stars = 'four';
-      } else if(review.rating === 5){
-        stars = 'five';
-      }
-      return (
-        <li key={review._id} className='individual-review-info-container'>
-          <div className='review-user-info-container'>
-            <div className='review-user-profilephoto-container'>
-              <img src={review.user.profilePhoto} />
-            </div>
-            <div className='review-user-info' >
-              <div className='review-user-name'>
+  // Ordering reviews by date with most recent on top
+  orderReviews(reviews) {    
+    const reviewsCopy = reviews.slice();
 
+    reviewsCopy.sort(function (a, b) {
+      return new Date(a.date) - new Date(b.date)
+    })
+    
+    return reviewsCopy.reverse();
+  }
+
+  // Rendering photos component of a review
+  renderPhotos(photos) {
+    return (
+      <div className="review-photos-container">
+        <img src="/images/restaurant_detail/action_menu/camera_icon.png" alt="Camera" />
+
+        <p>{photos} {photos > 1 ? 'photos' : 'photo'}</p>
+      </div>
+    );
+  }
+
+  // Rendering all reviews on a restaurant
+  renderAllReviews(reviews) {
+    return reviews.map(review => {
+      const date = review.date.split('-');
+      const yr = date[0];
+      const month = date[1];
+      const dat = date[2];
+      const stars = getStarImage(review.rating);
+      const photos = review.photos.length;
+
+      // console.log(review);
+
+      return (
+        <li key={review._id} className="review-container"> 
+          <div className="user-info-container">
+            <div className="profile-photo-container">
+              <img src={review.user.profilePhoto} alt="Profile thumbnail" />
+            </div>
+
+            <div className="stats-container">
+              <div className="stats-user-name-container">
                 <p>{review.user.firstName} {(review.user.lastName)[0]}.</p>
               </div>
-              <div  className='review-user-friends'>
-                <img src='/images/gallery/friends_icon.png'/>
-                <p>{review.user.friends} friends</p>
+
+              <div  className="stats-friends-container">
+                <div className="friends-icon-container">
+                  <img src="/images/gallery/friends_icon.png" alt="Friends icon" />
+                </div>
+
+                <p>{review.user.friends}</p>
+                <p>{review.user.friends > 1 || review.user.friends === 0 ? 'friends' : 'friend'}</p>
               </div>
-              <div className='review-user-num-reviews'>
-                <img src='/images/gallery/total_reviews_icon.png'/>
-                <p>{review.user.reviews.length} reviews </p>
+
+              <div className="stats-num-reviews-container">
+                <div className="num-reviews-icon-container">
+                  <img src="/images/gallery/total_reviews_icon.png" alt="Reviews icon" />
+                </div>
+
+                <p>{review.user.reviews.length}</p>
+                <p>{review.user.reviews.length > 1 || review.user.reviews.length === 0 ? 'reviews' : 'review'}</p>
+              </div>
+
+              <div className="stats-num-photos-container">
+                <div className="num-photos-icon-container">
+                  <img src="/images/gallery/camera_icon.png" alt="Camera icon" />
+                </div>
+
+                <p>{review.user.photos.length}</p>
+                <p>{review.user.photos.length > 1 || review.user.photos.length === 0 ? 'photos' : 'photo'}</p>
               </div>
             </div>
           </div>
-          <div className='review-info'>
-            <div className='review-stars-icon-and-date'>
-              <div className='stars-icon-wrapper'>
-                  <img src={`/images/restaurant_detail/${stars}.png`} />
+
+          <div className="user-review-container">
+            <div className="stars-icon-and-date-container">
+              <div className="stars-icon-wrapper">
+                <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt="Ratings icon" />
               </div>
-              <p className='individual-review-date'>{review.date}</p>
+
+              <p>{`${month}/${dat}/${yr}`}</p>
             </div>
-            <p className='individual-review-body'>{review.body}</p>
+
+            {photos > 0 ? this.renderPhotos(photos) : ''}
+
+            <div className="body-container">
+              <p>{review.body}</p>
+            </div>
           </div>
         </li>
       )
@@ -100,22 +157,14 @@ class RestaurantDetail extends Component {
     return (
       <Query query={FETCH_RESTAURANT} variables={{ _id: this.props.match.params.id }}> 
         {({ loading, error, data }) => {
-          if (loading) return 'Loading...';
-          if (error) return `Error! ${error.message}`;
+          if (loading) return <ProgressLoader type='loading'/>;
+          if (error) return <ProgressLoader type='error' />;
 
           // Converting price into dollar sign equivalents
-          const price = data.restaurant.price;
-          let dollars = [];
-
-          for (let i = 0; i < price; i++) {
-            dollars.push('$');
-          }
-
-          dollars.join('');
+          const dollars = getDollarSigns(data.restaurant.price);
 
           // Getting current time
           const currentHour = this.state.currentTime.getHours();
-          const currentMinutes = this.state.currentTime.getMinutes();
           const currentDay = this.state.currentTime.getDay();
           const ampm = (currentHour >= 12) ? 'pm' : 'am';
           let adjustedHour;
@@ -153,72 +202,32 @@ class RestaurantDetail extends Component {
             weekdayHours.push(openAndClose);
           });
 
-          // console.log(weekdayHours);
-
           // Creating an array for weekday labels
           const weekdayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
           // Getting an array of amenities
           const amenities = data.restaurant.amenities;
+          const amenitiesRawKeys = Object.keys(amenities);
 
-          const amenitiesKeys = Object.keys(amenities).slice(0, Object.keys(amenities).length - 1);
-          const amenitiesValues = Object.values(amenities).slice(0, Object.keys(amenities).length - 1);
-          let amenitiesArray = [];
-          let indx = 0;
+          // Put extra amenities into pairs
+          const extraAmenitiesRawKeys = amenitiesRawKeys.slice(4, amenitiesRawKeys.length - 1);
+          let pairedExtraAmenities = [];
 
-          while (indx < amenitiesKeys.length) {
-            let keyAndValue = [];
-            let spacedKey = '';
-            let spacedKeyArray = [];
-            let capitalizedKeyArray = [];
-
-            // Capitalizing spaced out key
-            spacedKey = amenitiesKeys[indx].replace(/([a-z](?=[A-Z]))/g, '$1 ');
-            spacedKeyArray = spacedKey.split(' ');
-            spacedKeyArray.map(word => capitalizedKeyArray.push(word[0].toUpperCase() + word.slice(1)));
-
-            keyAndValue.push(capitalizedKeyArray.join(' '), amenitiesValues[indx]);
-            amenitiesArray.push(keyAndValue);
-            indx++;
-          };
-
-          // Saving restaurant reviews to a variable for easier access
+          for (let i = 0; i < extraAmenitiesRawKeys.length; i += 2) {
+            let pair = [];
+            pair.push(extraAmenitiesRawKeys[i], extraAmenitiesRawKeys[i + 1]);
+            pairedExtraAmenities.push(pair);
+          }
+          
+          // Saving restaurant reviews and photos to a variable for easier access
           const reviews = data.restaurant.reviews;
+          const photos = data.restaurant.photos;
 
           // Getting average rating from all reviews
-          let total = 0;
-          let average;
-
-          reviews.forEach(review => {
-            total += review.rating;
-          });
-
-          average = total / reviews.length;
+          const average = getAverageRating(reviews);
 
           // Determining star ratings indicator
-          let stars;
-
-          if (average === 0) {
-            stars = 'zero';
-          } else if (average > 0 && average <= 1) {
-            stars = 'one'; 
-          } else if (average > 1 && average < 1.6) {
-            stars = 'one_and_half';
-          } else if (average >= 1.6 && average <= 2) {
-            stars = 'two';
-          } else if (average > 2 && average < 2.6) {
-            stars = 'two_and_half';
-          } else if (average >= 2.6 && average <= 3) {
-            stars = 'three';
-          } else if (average > 3 && average < 3.6) {
-            stars = 'three_and_half';
-          } else if (average >= 3.6 && average <= 4) {
-            stars = 'four';
-          } else if (average > 4 && average < 4.6) {
-            stars = 'four_and_half';
-          } else {
-            stars = 'five';
-          }
+          const stars = getStarImage(average);
           
           return (
             <div className="restaurant-detail-wrapper">
@@ -228,7 +237,7 @@ class RestaurantDetail extends Component {
               <div className="restaurant-detail-photos-wrapper">
                 {data.restaurant.photos.slice(0, 4).map((photo, indx) => (
                   <div key={photo._id} className="restaurant-detail-thumbnail-wrapper">
-                    <img src={photo.url} alt="Restaurant photo" />
+                    <img src={photo.url} alt="Restaurant thumbnail" />
                   </div>
                 ))}
               </div>
@@ -244,14 +253,14 @@ class RestaurantDetail extends Component {
                     <h1>{data.restaurant.name}</h1>
 
                     <div className="restaurant-detail-claimed-wrapper">
-                      <img src="/images/restaurant_detail/claimed.png" alt="Claimed icon image" />
+                      <img src="/images/restaurant_detail/claimed.png" alt="Claimed icon" />
                       <p>Claimed</p>
                     </div>
                   </div>
 
                   <div className="restaurant-detail-ratings-and-reviews-wrapper">
                     <div className="stars-icon-wrapper">
-                      <img src={`/images/restaurant_detail/${stars}.png`} />
+                      <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt="Ratings icon" />
                     </div>
                     <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
                   </div>
@@ -262,63 +271,77 @@ class RestaurantDetail extends Component {
                     <p>{data.restaurant.category}</p>
                   </div>
 
-                  <div className="restaurant-detail-menu-buttons-wrapper">
-                    <div className="restaurant-detail-review-button-wrapper">
-                      <i className="restaurant-detail-star-icon"></i>
-                      <Query query={CURRENT_USER} >
-                        {(currentUser) => {
-                          return (
-                            <Query query={FETCH_REVIEW} variables={{restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId}} >
-                              {(reviewData) => {
+                  <div className="restaurant-detail-menu-buttons-container">
+                    <div className="review-button-container">
+                      <div className="review-button-wrapper">
+                        <div className="review-button-icon-wrapper">
+                          <img src="/images/restaurant_detail/action_menu/star_icon.png" alt="Star icon" />
+                        </div>
+
+                        <Query query={CURRENT_USER} >
+                          {currentUser => {
+                            return (
+                              <Query query={FETCH_REVIEW} variables={{ restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId }} >
+                                {(reviewData) => {
                                   return (
-                                    <p><button onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>Write a Review</button></p>
+                                    <p onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>Write a Review</p>
                                   )
-                              }}
-                            </Query>
-                          )
-                        }}
-                      </Query>
+                                }}
+                              </Query>
+                            )
+                          }}
+                        </Query>
+                      </div>
                     </div>
 
-                    <div className="restaurant-detail-add-photo-button-wrapper">
-                      <i className="restaurant-detail-camera-icon"></i>
-                      <p>Add Photo</p>
+                    <div className="photo-button-container">
+                      <div className="photo-button-wrapper">
+                        <div className="photo-button-icon-wrapper">
+                          <img src="/images/restaurant_detail/action_menu/camera_icon.png" alt="Camera icon" />
+                        </div>
+
+                        <p>Add Photo</p>
+                      </div>
                     </div>
 
-                    <div className="restaurant-detail-save-button-wrapper">
-                      <i className="restaurant-detail-bookmark-icon"></i>
-                      <p>Save</p>
+                    <div className="save-button-container">
+                      <div className="save-button-wrapper">
+                        <div className="save-button-icon-wrapper">
+                          <img src="/images/restaurant_detail/action_menu/bookmark_icon.png" alt="Bookmark icon" />
+                        </div>
+
+                        <p>Save</p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="restaurant-detail-popular-dishes-wrapper">
+                  <div className="restaurant-detail-popular-dishes-container">
                     <h3>Popular Dishes</h3>
 
-                    <div className="restaurant-detail-dishes-wrapper">
-                      {data.restaurant.popularDishes.map((dish, indx) => (
-                        <div key={indx} className="dish-wrapper">
-                          <div className="dish-image-wrapper">
-                            <img src={dish.url} alt="Popular dish thumbnail image" />
+                    <div className="popular-dishes-wrapper">
+                      {data.restaurant.popularDishes.map((dish, indx) => {
+                        // Getting all reviews and photos associated with the popular dish
+                        const foundReviews = getPopularDishOccurences(reviews, dish.name, 'reviews');
+                        const foundPhotos = getPopularDishOccurences(photos, dish.name, 'photos');
+                        
+                        return (
+                          <div key={indx} className="dish-wrapper">
+                            <div className="dish-image-wrapper">
+                              <img src={dish.url} alt="Popular dish thumbnail" />
+                            </div>
+
+                            <div className="dish-text-wrapper">
+                              <p>{dish.name}</p>
+
+                              <div className="dish-reviews-and-photos-wrapper">
+                                <p>{foundPhotos.length} {foundPhotos.length > 1 || foundPhotos.length === 0 ? 'Photos' : 'Photo'}</p>
+                                <p>•</p>
+                                <p>{foundReviews.length} {foundReviews.length > 1 || foundReviews.length === 0 ? 'Reviews' : 'Review'}</p>
+                              </div>
+                            </div>
                           </div>
-
-                          <p>{dish.name}</p>
-                        </div>
-                      ))}
-
-                      {/* <div className="restaurant-detail-dish-1-wrapper">
-                        <div className="dish-image-wrapper"></div>
-                        <p>Blueberry Pancakes</p>
-                      </div>
-
-                      <div className="restaurant-detail-dish-2-wrapper">
-                        <div className="dish-image-wrapper"></div>
-                        <p>Toasted S'mores</p>
-                      </div> */}
-
-                      {/* <div className="restaurant-detail-dish-3-wrapper">
-                        <div className="dish-image-wrapper"></div>
-                        <p>Campfire Breakfast</p>
-                      </div> */}
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -328,8 +351,8 @@ class RestaurantDetail extends Component {
                     <div className="restaurant-detail-location-and-hours-body-wrapper">
                       <div className="restaurant-detail-map-wrapper">
                         <div className="restaurant-detail-map-image-wrapper"> 
-                          <RestaurantMap restaurants={[data.restaurant]} />
-                        </div>
+                          <Map restaurants={[data.restaurant]} />
+                        </div>   
 
                         <div className="restaurant-detail-map-text-info-wrapper">
                           <p>{data.restaurant.location.streetAddress}</p> 
@@ -347,9 +370,9 @@ class RestaurantDetail extends Component {
 
                         <div className="restaurant-detail-open-and-close-wrapper">
                           {weekdayHours.map((weekday, indx) => {
-                            // Conditional for determining if a restaurant is open based on time                            
+                            // Conditional for determining if a restaurant is open based on time  
                             const isOpen = ((adjustedHour >= weekday[0][0] && ampm === 'am') || (adjustedHour < weekday[1][0] && ampm === 'pm')) ||
-                              (adjustedHour === 12 && ampm === 'pm' && (weekday[0][0] === 12 && weekday[0][1] === 'pm') && (weekday[1][0] !== 12 && weekday[1][1] !== 'pm'));
+                              (adjustedHour === 12 && ampm === 'pm' && weekday[0][0] <= 12);
                                                         
                             return (
                               <section>
@@ -367,25 +390,19 @@ class RestaurantDetail extends Component {
                   <div className="restaurant-detail-amenities-wrapper">
                     <h3>Amenities</h3>
 
-                    <div className="amenities-list-wrapper">
+                    <div className="amenities-list-container">
                       <ul>
-                        {amenitiesArray.slice(0, 4).map((amenity, indx) => {
+                        {amenitiesRawKeys.slice(0, 4).map((key, indx) => {
                           // Accounting for number value for health score amenity
-                          let amenityValue;
-                          if (amenity[0] === 'Health Score') {
-                            amenityValue = amenity[1];
-                          } else {
-                            if (amenity[1]) {
-                              amenityValue = 'Yes';
-                            } else {
-                              amenityValue = 'No';
-                            }
-                          }
+                          const amenityValue = setAmenityValue(key, amenities[key]);
 
                           return (
                             <li key={indx}>
-                              <i className="amenity-icon"></i>
-                              <p>{amenity[0]}</p>
+                              <div className={`${key}-icon-wrapper`}>
+                                <img src={`/images/restaurant_detail/amenities/${key}_icon.png`} alt="Amenity icon" />
+                              </div>
+
+                              <p>{getCapitalizedKey(key)}</p>
                               <p>{amenityValue}</p>
                             </li>
                           );
@@ -393,27 +410,37 @@ class RestaurantDetail extends Component {
                       </ul> 
 
                       {this.state.viewMoreAmenities ? 
-                      <ul>
-                        {amenitiesArray.slice(4, amenitiesArray.length).map((amenity, indx) => {
-                          // Accounting for number value for health score amenity
-                          let amenityValue;
-                          if (amenity[0] === 'Health Score') {
-                            amenityValue = amenity[1];
-                          } else {
-                            if (amenity[1]) {
-                              amenityValue = 'Yes';
-                            } else {
-                              amenityValue = 'No';
-                            }
-                          }
+                      <ul className="extra-amenities-container">
+                        {pairedExtraAmenities.map((pair, indx) => {
+                          // Setting first and second pair of amenity keys and values                          
+                          const firstAmenityKey = pair[0];
+                          const firstAmenityValue = setAmenityValue(firstAmenityKey, pair[1]);
 
+                          const secondAmenityKey = pair[1];
+                          const secondAmenityValue = setAmenityValue(secondAmenityKey, pair[1]);
+                          
                           return (
                             <li key={indx}>
-                              <i className="amenity-icon"></i>
-                              <p>{amenity[0]}</p>
-                              <p>{amenityValue}</p>
+                              <div className="extra-amenity-pair-first">
+                                <div className={`${pair[0]}-icon-wrapper`}>
+                                  <img src={`/images/restaurant_detail/amenities/${firstAmenityKey}_icon.png`} alt="Amenity icon" />
+                                </div>
+
+                                <p>{getCapitalizedKey(firstAmenityKey)}</p>
+                                <p>{firstAmenityValue}</p>
+                              </div>
+
+                              <div className="extra-amenity-pair-second">
+                                <div className={`${pair[1]}-icon-wrapper`}>
+                                  <img src={`/images/restaurant_detail/amenities/${secondAmenityKey}_icon.png`} alt="Amenity icon" />
+                                </div>
+
+                                <p>{getCapitalizedKey(secondAmenityKey)}</p>
+                                <p>{secondAmenityValue}</p>
+                              </div>
                             </li>
                           );
+
                         })}
                       </ul> : ''}
                     </div>
@@ -422,29 +449,35 @@ class RestaurantDetail extends Component {
                       className="restaurant-detail-view-more-amenities-wrapper"
                       onClick={this.toggleAmenities}
                     >
-                      {this.state.viewMoreAmenities ? 'Show Less' : `${amenitiesArray.length - 4} more attributes`}
+                      {this.state.viewMoreAmenities ? 'Show Less' : `${extraAmenitiesRawKeys.length} more attributes`}
                     </div>
                   </div>
 
                   <div className="restaurant-detail-recommended-reviews-wrapper">
                     <h3>Recommended Reviews</h3>
                     <ul className='reviews-display-list'>
-                        {this.renderAllReviews(data.restaurant.reviews)}
+                      {this.renderAllReviews(this.orderReviews(data.restaurant.reviews))}
                     </ul>
                   </div>
                 </div>
 
                 <div className="restaurant-detail-sidebar-wrapper">
                   <div className="restaurant-detail-phone-wrapper">
-                    <i className="restaurant-detail-phone-icon"></i>
+                    <div className="restaurant-detail-phone-icon">
+                      <img src="/images/restaurant_detail/sidebar/phoneNum_icon.png" alt="Phone number icon" />
+                    </div>
+
                     <p>{data.restaurant.phoneNum}</p>
                   </div>
 
                   <div className="sidebar-underline-wrapper"></div>
 
                   <div className="restaurant-detail-directions-wrapper">
-                    <i className="restaurant-detail-directions-icon"></i>
-                    <p>Get Directions</p>
+                    <div className="restaurant-detail-directions-icon">
+                      <img src="/images/restaurant_detail/sidebar/directions_icon.png" alt="Phone number icon" />
+                    </div>
+
+                    <Link to={`/restaurants/${data.restaurant._id}/map`}>Get Directions</Link> 
                   </div>
                 </div>
               </div>

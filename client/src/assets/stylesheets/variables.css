@@ -51,6 +51,8 @@
 
   /* Hover colors */
   --button-hover-red: #f11423;
+  --button-hover-light-red: #fff5f6;
+  --button-border-hover-red: #f2e6e8;
 
   /* Background colors */
   --background-color: #f5f5f5;

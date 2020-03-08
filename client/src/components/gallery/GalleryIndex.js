@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import Queries from '../../graphql/queries';
 import Navbar from '../navbar/Navbar';
 import Modal from '../modal/Modal';
-import '../../assets/stylesheets/reset.css';
-import '../../assets/stylesheets/App.css';
+import ProgressLoader from '../loader/ProgressLoader';
+import { getAverageRating, getStarImage } from '../../util/restaurant_util';
 import '../../assets/stylesheets/GalleryIndex.css';
 
 const { FETCH_RESTAURANT } = Queries; 
@@ -53,46 +53,17 @@ class GalleryIndex extends Component {
     return (
       <Query query={FETCH_RESTAURANT} variables={{ _id: this.props.match.params.id }}>
         {({ loading, error, data }) => {
-          if (loading) return 'Loading...';
-          if (error) return `Error! ${error.message}`;
+          if (loading) return <ProgressLoader type='loading' />;
+          if (error) return <ProgressLoader type='error' />;;
 
           // Saving restaurant reviews to a variable for easier access
           const reviews = data.restaurant.reviews;
 
           // Getting average rating from all reviews
-          let total = 0;
-          let average;
-
-          reviews.forEach(review => {
-            total += review.rating;
-          });
-
-          average = total / reviews.length;
+          const average = getAverageRating(reviews);
 
           // Determining star ratings indicator
-          let stars;
-
-          if (average === 0) {
-            stars = 'zero';
-          } else if (average > 0 && average <= 1) {
-            stars = 'one';
-          } else if (average > 1 && average < 1.6) {
-            stars = 'one_and_half';
-          } else if (average >= 1.6 && average <= 2) {
-            stars = 'two';
-          } else if (average > 2 && average < 2.6) {
-            stars = 'two_and_half';
-          } else if (average >= 2.6 && average <= 3) {
-            stars = 'three';
-          } else if (average > 3 && average < 3.6) {
-            stars = 'three_and_half';
-          } else if (average >= 3.6 && average <= 4) {
-            stars = 'four';
-          } else if (average > 4 && average < 4.6) {
-            stars = 'four_and_half';
-          } else {
-            stars = 'five';
-          }
+          const stars = getStarImage(average);
 
           // Finding all, food, inside, drink, menu, and outside photos
           const allPhotos = data.restaurant.photos;
@@ -126,8 +97,6 @@ class GalleryIndex extends Component {
             });
           });
 
-          console.log(foodPhotos);
-
           return (
             <div className="restaurant-photo-gallery-wrapper">      
               <Navbar />
@@ -138,14 +107,14 @@ class GalleryIndex extends Component {
 
                   <div className="photo-gallery-header">
                     <div className="photo-gallery-thumbnail-wrapper">
-                      <img src={data.restaurant.photos[0].url} alt="Restaurant thumbnail image" />
+                      <img src={data.restaurant.photos[0].url} alt="Restaurant thumbnail" />
                     </div>
 
                     <div className="photo-gallery-text-wrapper">
-                      <Link to={`/restaurants/${data.restaurant._id}`}>{data.restaurant.name}</Link>
+                      <Link to={`/restaurants/${data.restaurant._id}`}>{data.restaurant.name}</Link> 
 
                       <div className="photo-gallery-stars-icon-wrapper">
-                        <img src={`/images/restaurant_detail/${stars}.png`} />
+                        <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt='Rating icon'/>
                       </div>
                     </div>
 
@@ -171,12 +140,12 @@ class GalleryIndex extends Component {
                     {this.state.photos.length === 0 && this.state.viewingTab === 'viewAll' ? 
                       allPhotos.map((photo, indx) =>
                         <div key={indx} className="gallery-thumbnail-photo-wrapper" onClick={() => this.toggleModal(indx)}>
-                          <img src={photo.url} alt="Restaurant photo thumbnail" />
+                          <img src={photo.url} alt="Restaurant thumbnail" />
                         </div>
                       ) : 
                       this.state.photos.map((photo, indx) => 
                         <div key={indx} className="gallery-thumbnail-photo-wrapper" onClick={() => this.toggleModal(indx)}>
-                          <img src={photo.url} alt="Restaurant photo thumbnail" />
+                          <img src={photo.url} alt="Restaurant thumbnail" />
                         </div>
                       )
                     }
@@ -185,7 +154,7 @@ class GalleryIndex extends Component {
               </div>
 
               <div className="photo-gallery-modal-wrapper">
-                {this.state.showModal ? <Modal restaurant={data.restaurant} imageNum={this.state.currentImage} toggleModal={this.toggleModal} /> : ''}
+                {this.state.showModal ? <Modal allPhotos={data.restaurant.photos} currentPhoto={this.state.currentImage} toggleModal={this.toggleModal} /> : ''}
               </div>
             </div>
           );
