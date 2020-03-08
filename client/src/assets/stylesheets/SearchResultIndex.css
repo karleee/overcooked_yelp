@@ -3,8 +3,8 @@
 }
 
 .search-result-restaurant-list-wrapper,
-.search-result-map-wrapper {
-  flex: 1;
+.map-wrapper {
+  flex: 1; 
 }
 
 .search-result-item {

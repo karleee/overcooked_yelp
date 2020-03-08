@@ -253,7 +253,7 @@ export default {
         amenities {
           healthScore
           takesReservations
-          happyHourSpecials
+          goodForHappyHour
           delivery
           vegetarianOptions
           takeOut
