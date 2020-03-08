@@ -23,9 +23,14 @@ class SearchResultIndex extends Component {
   }
 
   // Hides scrolling when modal is mounted
-  componentDidMount() {
-    document.body.style.overflow = 'hidden';
-  }
+  // componentDidMount() {
+  //   document.body.style.overflow = 'hidden';
+  // }
+
+  // Reactiviates scrolling when modal is unmounted
+  // componentWillUnmount() {
+  //   document.body.style.overflow = 'unset';
+  // }
 
   render() {
     // get search term and search location from the url

@@ -77,7 +77,7 @@ const Home = () => {
         <div className="restaurants-wrapper">
           <LinkToLocalCategory searchTerm="Surf 'N' Turf">
             <div className="surf-and-turf-wrapper">
-              <div className="thumbnail-wrapper"></div>
+              <div className="thumbnail-wrapper"></div> 
               <p>Surf 'N' Turf</p>
             </div>
           </LinkToLocalCategory>
@@ -112,8 +112,8 @@ const Home = () => {
 
           <div className="other-cities-wrapper">
             <div className="cities-wrapper">
-              <p><Link to="/search?find_desc=&find_loc=Tahoe">Tahoe</Link></p>
-              <p><Link to="/search?find_desc=&find_loc=Honolulu">Honolulu</Link></p>
+              <p><Link to="/search?find_desc=&find_loc=South%20Lake%20Tahoe">South Lake Tahoe</Link></p>
+              <p><Link to="/search?find_desc=&find_loc=Honolulu">Honolulu</Link></p> 
               <p><Link to="/search?find_desc=&find_loc=Los%20Angeles">Los Angeles</Link></p>
               <p><Link to="/search?find_desc=&find_loc=San%20Francisco">San Francisco</Link></p>
               <p><Link to="/search?find_desc=&find_loc=Tokyo">Tokyo</Link></p>
