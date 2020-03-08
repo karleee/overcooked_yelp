@@ -81,6 +81,7 @@ class LoginForm extends React.Component {
                 type="password"
                 placeholder="Password"
               />
+              <button onClick={this.performMutation(LoginUser, {email: 'onionking@gmail.com', password: '12345678'})}>Demo Login</button>
               <button type="submit">Log In</button>
             </form>
           </div>
