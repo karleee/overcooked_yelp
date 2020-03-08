@@ -125,6 +125,18 @@
   margin-bottom: 40px;
 }
 
+.login-main-form-container button {
+  margin-top: 10px;
+}
+
+.or-separator-wrapper {
+  font-family: 'helveticaBold';
+  font-size: 14px;
+  color: var(--black);
+  padding: 15px 0;
+}
+
+.login-main-form-container button,
 .login-main-form-container form button {
   font-family: 'helveticaBold';
   font-size: 16px;
@@ -135,6 +147,7 @@
   width: 100%;
 }
 
+.login-main-form-container button:hover,
 .login-main-form-container form button:hover {
   background: var(--button-hover-red);
   transition: background 0.5s;
