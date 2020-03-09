@@ -54,18 +54,24 @@ const ResultItem = ({ restaurant, num }) => {
 };
 
 const ResultList = ({ restaurants, find_desc, find_loc }) => {
-  const capitalizedLoc = find_loc.charAt(0).toUpperCase() + find_loc.slice(1);
+  const location = find_loc.split(' ');
+  const capitalizedLoc = [];
+
+  location.map(word => {
+    const capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1);
+    capitalizedLoc.push(capitalizedWord);
+  });
 
   if (restaurants.length) {
     return (
       <div className="search-result-restaurant-list-container">
-        {find_desc ? <h1>Best {find_desc} in {capitalizedLoc}</h1> : <h1>Browsing {capitalizedLoc}</h1>}
+        {find_desc ? <h1>Best {find_desc} in {capitalizedLoc.join(' ')}</h1> : <h1>Browsing {capitalizedLoc.join(' ')}</h1>}
 
         <p className="all-reviews-wrapper">All Results</p>
 
         <div className="search-result-reservations-menu-wrapper"></div>
 
-        <ul>
+        <ul className="restaurants-list-wrapper">
           {restaurants.map((restaurant, i) =>
             <li key={i}>
               <ResultItem restaurant={restaurant} num={i + 1} />
@@ -76,16 +82,19 @@ const ResultList = ({ restaurants, find_desc, find_loc }) => {
     );
   } else {
     return (
-      <div className="search-result-restaurant-list-wrapper">
-        <h1>No results for {find_desc || "restaurants"} in {find_loc}</h1>
-        <p>Nothing to Shaquille O'Neal 😞</p>
-        <strong>Suggestions for improving the results:</strong>
-        <ul>
-          <li>Try a larger search area</li>
-          <li>Try a different location.</li>
-          <li>Check the spelling or try alternate spellings.</li>
-          <li>Try a more general search. e.g. "pizza" instead of "pepperoni"</li>
-        </ul>
+      <div className="search-result-restaurant-list-container">
+        <h1>No results for {find_desc || "restaurants"} in {capitalizedLoc.join(' ')}</h1>
+
+        <div className="suggestions-container">
+          <strong>Suggestions for improving the results:</strong> 
+
+          <ul className="suggestions-list-wrapper">
+            <li>Try a larger search area</li>
+            <li>Try a different location.</li>
+            <li>Check the spelling or try alternate spellings.</li>
+            <li>Try a more general search. e.g. "pizza" instead of "pepperoni"</li>
+          </ul>
+        </div>
       </div>
     );
   }
