@@ -7,7 +7,7 @@ class Modal extends React.Component {
     super(props);
     this.state = { 
       currentPhoto: this.props.currentPhoto,
-      allPhotos: this.props.allPhotos
+      allPhotos: this.props.allPhotos 
     };
     this.previous = this.previous.bind(this);
     this.next = this.next.bind(this);

@@ -28,8 +28,6 @@ class RestaurantDetail extends Component {
       viewMoreAmenities: false
     }
     this.toggleAmenities = this.toggleAmenities.bind(this);
-    // this.orderReviews = this.orderReviews.bind(this);
-    // this.renderPhotos = this.renderPhotos.bind(this);
   }
 
   // Runs once component is mounted
@@ -89,8 +87,6 @@ class RestaurantDetail extends Component {
       const dat = date[2];
       const stars = getStarImage(review.rating);
       const photos = review.photos.length;
-
-      // console.log(review);
 
       return (
         <li key={review._id} className="review-container"> 
@@ -273,26 +269,26 @@ class RestaurantDetail extends Component {
 
                   <div className="restaurant-detail-menu-buttons-container">
                     <div className="review-button-container">
-                      <div className="review-button-wrapper">
-                        <div className="review-button-icon-wrapper">
-                          <img src="/images/restaurant_detail/action_menu/star_icon.png" alt="Star icon" />
-                        </div>
+                      <Query query={CURRENT_USER} >
+                        {currentUser => {
+                          return (
+                            <Query query={FETCH_REVIEW} variables={{ restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId }} >
+                              {(reviewData) => {
+                                return (
+                                  <div className="review-button-wrapper" onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>
+                                    <div className="review-button-icon-wrapper">
+                                      <img src="/images/restaurant_detail/action_menu/star_icon.png" alt="Star icon" />
+                                    </div>
 
-                        <Query query={CURRENT_USER} >
-                          {currentUser => {
-                            return (
-                              <Query query={FETCH_REVIEW} variables={{ restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId }} >
-                                {(reviewData) => {
-                                  return (
-                                    <p onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>Write a Review</p>
-                                  )
-                                }}
-                              </Query>
-                            )
-                          }}
-                        </Query>
-                      </div>
-                    </div>
+                                    <p>Write a Review</p>
+                                  </div>
+                                );
+                              }}
+                            </Query>
+                          );
+                        }}
+                      </Query>
+                    </div>   
 
                     <div className="photo-button-container">
                       <div className="photo-button-wrapper">
@@ -373,12 +369,24 @@ class RestaurantDetail extends Component {
                             // Conditional for determining if a restaurant is open based on time  
                             const isOpen = ((adjustedHour >= weekday[0][0] && ampm === 'am') || (adjustedHour < weekday[1][0] && ampm === 'pm')) ||
                               (adjustedHour === 12 && ampm === 'pm' && weekday[0][0] <= 12);
-                                                        
+                            
+
+                            // Adjusted currentDay index to account for Sunday (index 0 vs index 6 in the open/close hours array)
+                            let newCurrentDayIndx;
+
+                            if (currentDay === 0) {
+                              newCurrentDayIndx = 6;
+                            } else if (currentDay === 1) {
+                              newCurrentDayIndx = 0;
+                            } else {
+                              newCurrentDayIndx = currentDay - 1;
+                            }
+
                             return (
                               <section>
                                 <p>{hoursArray[indx].open} - {hoursArray[indx].close}</p>
-                                <p className="restaurant-detail-closed-wrapper">{!isOpen && currentDay === indx + 1 ? 'Closed now' : ''}</p>
-                                <p className="restaurant-detail-open-wrapper">{isOpen && currentDay === indx + 1 ? 'Open now' : ''}</p>
+                                <p className="restaurant-detail-closed-wrapper">{!isOpen && indx === newCurrentDayIndx ? 'Closed now' : ''}</p>
+                                <p className="restaurant-detail-open-wrapper">{isOpen && indx === newCurrentDayIndx ? 'Open now' : ''}</p>
                               </section>
                             );
                           })}

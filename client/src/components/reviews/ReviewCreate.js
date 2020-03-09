@@ -187,6 +187,7 @@ class ReviewCreate extends Component {
         {(newReview, { data }) => (
           <div className="review-edit-container">
             <ReviewNavbar mode="create" />
+            
             <div className="review-form-main">
               <div className="review-form-heading">
                 <h1 className="restaurant-name">

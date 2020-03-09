@@ -25,7 +25,7 @@ class GalleryIndex extends Component {
   }
 
   // Hides scrolling when modal is mounted
-  componentDidMount() {
+  componentDidMount() { 
     if (this.state.showModal) document.body.style.overflow = 'hidden';
   }
 
@@ -97,6 +97,9 @@ class GalleryIndex extends Component {
             });
           });
 
+          console.log(this.state.viewingTab);
+          console.log(this.state.photos);
+
           return (
             <div className="restaurant-photo-gallery-wrapper">      
               <Navbar />
@@ -154,7 +157,7 @@ class GalleryIndex extends Component {
               </div>
 
               <div className="photo-gallery-modal-wrapper">
-                {this.state.showModal ? <Modal allPhotos={data.restaurant.photos} currentPhoto={this.state.currentImage} toggleModal={this.toggleModal} /> : ''}
+                {this.state.showModal ? <Modal allPhotos={this.state.photos} currentPhoto={this.state.currentImage} toggleModal={this.toggleModal} /> : ''}
               </div>
             </div>
           );

@@ -19,7 +19,16 @@ const LinkToLocalCategory = ({ searchTerm, children }) => {
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>
         if (error) return <p>{error.message}</p>
-        let find_loc = data.currentUserZipCode;
+        // let find_loc = data.currentUserZipCode;
+        // temp fix for when user is not logged in
+        let find_loc;
+  
+        if (data.currentUserId) {
+          find_loc = data.currentUserZipCode;
+        } else {
+          find_loc = 'Orlando, FL';
+        }
+
         return (
           <Link to={`/search?find_desc=${find_desc}&find_loc=${find_loc}`}>{children}</Link>
         );
@@ -50,7 +59,7 @@ const Home = () => {
           </div>
 
           <div className="home-login-logout-wrapper">
-            <SessionButton />
+            <SessionButton /> 
           </div>
         </div>
 
@@ -77,28 +86,40 @@ const Home = () => {
         <div className="restaurants-wrapper">
           <LinkToLocalCategory searchTerm="Surf 'N' Turf">
             <div className="surf-and-turf-wrapper">
-              <div className="thumbnail-wrapper"></div>
+              <div className="thumbnail-wrapper">
+                <img src="/images/homepage/categories/categories_surfNTurf.png" alt="Surf N Turf" />
+              </div>  
+
               <p>Surf 'N' Turf</p>
             </div>
           </LinkToLocalCategory>
 
           <LinkToLocalCategory searchTerm="Holiday Desserts">
             <div className="holiday-desserts-wrapper">
-              <div className="thumbnail-wrapper"></div>
+              <div className="thumbnail-wrapper">
+                <img src="/images/homepage/categories/categories_holidayDesserts.png" alt="Holiday desserts" />
+              </div>
+
               <p>Holiday Desserts</p>
             </div>
           </LinkToLocalCategory>
 
           <LinkToLocalCategory searchTerm="Chinese">
             <div className="chinese-wrapper">
-              <div className="thumbnail-wrapper"></div>
+              <div className="thumbnail-wrapper">
+                <img src="/images/homepage/categories/categories_chinese.png" alt="Chinese" />
+              </div>
+
               <p>Chinese</p>
             </div>
           </LinkToLocalCategory>
 
           <LinkToLocalCategory searchTerm="Burgers">
             <div className="burgers-wrapper">
-              <div className="thumbnail-wrapper"></div>
+              <div className="thumbnail-wrapper">
+                <img src="/images/homepage/categories/categories_burgers.png" alt="Burgers" /> 
+              </div>
+
               <p>Burgers</p>
             </div>
           </LinkToLocalCategory>
@@ -112,8 +133,8 @@ const Home = () => {
 
           <div className="other-cities-wrapper">
             <div className="cities-wrapper">
-              <p><Link to="/search?find_desc=&find_loc=Tahoe">Tahoe</Link></p>
-              <p><Link to="/search?find_desc=&find_loc=Honolulu">Honolulu</Link></p>
+              <p><Link to="/search?find_desc=&find_loc=South%20Lake%20Tahoe">South Lake Tahoe</Link></p>
+              <p><Link to="/search?find_desc=&find_loc=Honolulu">Honolulu</Link></p> 
               <p><Link to="/search?find_desc=&find_loc=Los%20Angeles">Los Angeles</Link></p>
               <p><Link to="/search?find_desc=&find_loc=San%20Francisco">San Francisco</Link></p>
               <p><Link to="/search?find_desc=&find_loc=Tokyo">Tokyo</Link></p>
