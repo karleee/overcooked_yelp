@@ -72,6 +72,7 @@ class LoginForm extends React.Component {
       >
         {LoginUser => (
           <div className="login-form-container"> 
+              {/* Refactor this b/c being used in multiple places */}
               <div className="login-form-header">
                 <Link to='/'>
                   <div className="logo-wrapper">

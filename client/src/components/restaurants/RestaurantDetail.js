@@ -269,26 +269,26 @@ class RestaurantDetail extends Component {
 
                   <div className="restaurant-detail-menu-buttons-container">
                     <div className="review-button-container">
-                      <div className="review-button-wrapper">
-                        <div className="review-button-icon-wrapper">
-                          <img src="/images/restaurant_detail/action_menu/star_icon.png" alt="Star icon" />
-                        </div>
+                      <Query query={CURRENT_USER} >
+                        {currentUser => {
+                          return (
+                            <Query query={FETCH_REVIEW} variables={{ restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId }} >
+                              {(reviewData) => {
+                                return (
+                                  <div className="review-button-wrapper" onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>
+                                    <div className="review-button-icon-wrapper">
+                                      <img src="/images/restaurant_detail/action_menu/star_icon.png" alt="Star icon" />
+                                    </div>
 
-                        <Query query={CURRENT_USER} >
-                          {currentUser => {
-                            return (
-                              <Query query={FETCH_REVIEW} variables={{ restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId }} >
-                                {(reviewData) => {
-                                  return (
-                                    <p onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>Write a Review</p>
-                                  )
-                                }}
-                              </Query>
-                            )
-                          }}
-                        </Query>
-                      </div>
-                    </div>
+                                    <p>Write a Review</p>
+                                  </div>
+                                );
+                              }}
+                            </Query>
+                          );
+                        }}
+                      </Query>
+                    </div>   
 
                     <div className="photo-button-container">
                       <div className="photo-button-wrapper">
