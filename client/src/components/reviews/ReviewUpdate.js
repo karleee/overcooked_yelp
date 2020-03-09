@@ -176,6 +176,7 @@ class ReviewUpdate extends Component {
         {(updateReview, { data }) => (
           <div className="review-edit-container">
             <ReviewNavbar mode="edit" />
+            
             <div className="review-form-main">
               <div className="review-form-heading">
                 <h1 className="restaurant-name">
