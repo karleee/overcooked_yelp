@@ -26,7 +26,7 @@ const LinkToLocalCategory = ({ searchTerm, children }) => {
         if (data.currentUserId) {
           find_loc = data.currentUserZipCode;
         } else {
-          find_loc = '32789';
+          find_loc = 'Orlando, FL';
         }
 
         return (
