@@ -28,8 +28,6 @@ class RestaurantDetail extends Component {
       viewMoreAmenities: false
     }
     this.toggleAmenities = this.toggleAmenities.bind(this);
-    // this.orderReviews = this.orderReviews.bind(this);
-    // this.renderPhotos = this.renderPhotos.bind(this);
   }
 
   // Runs once component is mounted
@@ -89,8 +87,6 @@ class RestaurantDetail extends Component {
       const dat = date[2];
       const stars = getStarImage(review.rating);
       const photos = review.photos.length;
-
-      // console.log(review);
 
       return (
         <li key={review._id} className="review-container"> 
