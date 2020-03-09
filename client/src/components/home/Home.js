@@ -77,28 +77,40 @@ const Home = () => {
         <div className="restaurants-wrapper">
           <LinkToLocalCategory searchTerm="Surf 'N' Turf">
             <div className="surf-and-turf-wrapper">
-              <div className="thumbnail-wrapper"></div> 
+              <div className="thumbnail-wrapper">
+                <img src="/images/homepage/categories/categories_surfNTurf.png" alt="Surf N Turf" />
+              </div> 
+
               <p>Surf 'N' Turf</p>
             </div>
           </LinkToLocalCategory>
 
           <LinkToLocalCategory searchTerm="Holiday Desserts">
             <div className="holiday-desserts-wrapper">
-              <div className="thumbnail-wrapper"></div>
+              <div className="thumbnail-wrapper">
+                <img src="/images/homepage/categories/categories_holidayDesserts.png" alt="Holiday desserts" />
+              </div>
+
               <p>Holiday Desserts</p>
             </div>
           </LinkToLocalCategory>
 
           <LinkToLocalCategory searchTerm="Chinese">
             <div className="chinese-wrapper">
-              <div className="thumbnail-wrapper"></div>
+              <div className="thumbnail-wrapper">
+                <img src="/images/homepage/categories/categories_chinese.png" alt="Chinese" />
+              </div>
+
               <p>Chinese</p>
             </div>
           </LinkToLocalCategory>
 
           <LinkToLocalCategory searchTerm="Burgers">
             <div className="burgers-wrapper">
-              <div className="thumbnail-wrapper"></div>
+              <div className="thumbnail-wrapper">
+                <img src="/images/homepage/categories/categories_burgers.png" alt="Burgers" /> 
+              </div>
+
               <p>Burgers</p>
             </div>
           </LinkToLocalCategory>
