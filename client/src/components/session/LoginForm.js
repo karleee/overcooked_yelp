@@ -72,7 +72,6 @@ class LoginForm extends React.Component {
       >
         {LoginUser => (
           <div className="login-form-container"> 
-              {/* Refactor this b/c being used in multiple places */}
               <div className="login-form-header">
                 <Link to='/'>
                   <div className="logo-wrapper">
@@ -83,7 +82,7 @@ class LoginForm extends React.Component {
                     <img src="/images/homepage/logo.png" alt="Logo" />
                   </div>
                 </Link>
-              </div>
+              </div> 
 
             {this.renderErrorMessage()}
 
