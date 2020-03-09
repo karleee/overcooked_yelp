@@ -19,7 +19,16 @@ const LinkToLocalCategory = ({ searchTerm, children }) => {
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>
         if (error) return <p>{error.message}</p>
-        let find_loc = data.currentUserZipCode;
+        // let find_loc = data.currentUserZipCode;
+        // temp fix for when user is not logged in
+        let find_loc;
+  
+        if (data.currentUserId) {
+          find_loc = data.currentUserZipCode;
+        } else {
+          find_loc = '32789';
+        }
+
         return (
           <Link to={`/search?find_desc=${find_desc}&find_loc=${find_loc}`}>{children}</Link>
         );
@@ -79,7 +88,7 @@ const Home = () => {
             <div className="surf-and-turf-wrapper">
               <div className="thumbnail-wrapper">
                 <img src="/images/homepage/categories/categories_surfNTurf.png" alt="Surf N Turf" />
-              </div> 
+              </div>  
 
               <p>Surf 'N' Turf</p>
             </div>
