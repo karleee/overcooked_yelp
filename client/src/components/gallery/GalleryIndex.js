@@ -66,7 +66,10 @@ class GalleryIndex extends Component {
           const stars = getStarImage(average);
 
           // Finding all, food, inside, drink, menu, and outside photos
+          // Initially setting photos state to all restaurant photos by default
           const allPhotos = data.restaurant.photos;
+          this.state.photos = allPhotos;
+
           let foodPhotos = [];
           let insidePhotos = [];
           let drinkPhotos = [];
@@ -74,7 +77,7 @@ class GalleryIndex extends Component {
           let outsidePhotos = [];
 
           allPhotos.forEach(photo => {
-            photo.categories.forEach(category => {
+            photo.categories.forEach(category => { 
               if (category === 'food') {
                 foodPhotos.push(photo);
               }
@@ -96,9 +99,6 @@ class GalleryIndex extends Component {
               }
             });
           });
-
-          console.log(this.state.viewingTab);
-          console.log(this.state.photos);
 
           return (
             <div className="restaurant-photo-gallery-wrapper">      
