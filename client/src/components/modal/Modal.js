@@ -32,8 +32,10 @@ class Modal extends React.Component {
 
   // Renders component
   render() {
+    // console.log(this.state.allPhotos[this.state.currentPhoto]);
+    // console.log(this.state.allPhotos);
     const currentPhoto = this.state.allPhotos[this.state.currentPhoto];
-    const date = currentPhoto.review.date;
+    const date = currentPhoto.review.date; 
 
     // Formatting numerical date into string format
     const dateArray = date.split('-');
