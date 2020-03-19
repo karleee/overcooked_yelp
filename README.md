@@ -42,9 +42,29 @@ Using the provided images of star ratings from the Yelp developer resources, eac
 **Challenges**
 > Infrastructure Design and DRY Principles
 
-The first challenge to build out this feature was to preplan where and if this would be used throughout the application. Initially, this started out as a component specific function that was limited to the scope of the restaurant page only, however, as we progressed through our app, we realized that this process of calculating an average review **also** determined which rating image to display to the frontend. But what about in the case of a single user writing a single review for a restaurant? How do we display a rating indicator image for them as well? Rather than creating two different functions to handle a single and multiple ratings, we were able to refactor the code into two simple utility functions that could be used in both situations.
+The first challenge to build out this feature was to preplan where and if this would be used throughout the application. Initially, this started out as a component specific function that was limited to the scope of the restaurant page only, however, as we progressed through our app, we realized that this process of calculating an average review **also** determined which rating image to display to the frontend. But what about in the case of a single user writing a single review for a restaurant? How do we display a rating indicator image for them as well? 
 
-We created a generic function that would calculate the average of multiple ratings, and another that would take in a number value which it would use to return the correct string indicating which rating image to give to the frontend.
+<br>
+
+> Challenge # 2
+
+Info for challenge # 2
+
+<br>
+
+> Challenge # 3
+
+Info for challenge # 3
+
+<br>
+<br>
+
+**Solutions**
+> Infrastructure Design and DRY Principles: Solution
+
+Following the core principles of DRY, rather than creating two different functions to handle a single and multiple ratings, we were able to refactor the code into two simple utility functions that could be used in both situations.
+
+We created a generic function that would calculate the average of multiple ratings, and another that would take in a number value which it would use to return the correct string indicating which rating image to give to the frontend. In the case of a single review, all we would have to do is pass in the review's seeded number rating or a user's given rating to the `getStarImage` function. And a similar process follows for handling multiple reviews; except, in that case we would need to use the `getAverageRating` function first to get the correct float value to pass in.
 
 ```javascript
 // Calculates average rating of restaurant based on all reviews
@@ -87,26 +107,6 @@ export const getStarImage = average => {
   return stars;
 };
 ```
-
-<br>
-
-> Challenge # 2
-
-Info for challenge # 2
-
-<br>
-
-> Challenge # 3
-
-Info for challenge # 3
-
-<br>
-<br>
-
-**Solutions**
-> Problem: Solution
-
-Solution text
 
 <br>
 
