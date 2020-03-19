@@ -36,25 +36,28 @@ The first dynamic user based element is the average rating indicator located at 
 <img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_restaurant1.png" alt="Homepage" width="900px" border="1">
 </kbd>
 
+<br>
+<br>
+
 The second element is the open and closed label indicator that dynamically changes based on the user's current local time. In addition to time tracking, this element also adjusts itself according to the current day of the week that the user is viewing the website on.
 
 <kbd>
-<img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_restaurant1.png" alt="Homepage" width="900px" border="1">
+<img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_restaurant2.png" alt="Homepage" width="900px" border="1">
 </kbd>
 
 <br>
 <br>
 
 **Challenges**
-> Infrastructure Design and DRY Principles
+> Design and DRY Principles
 
-The most difficult challenge to build out this feature was to preplan where and if this would be used throughout the application. Initially, this started out as a component specific function that was limited to the scope of the restaurant page only, however, as we progressed through our app, we realized that this process of calculating an average review **also** determined which rating image to display to the frontend. But what about in the case of a single user writing a single review for a restaurant? How do we display a rating indicator image for them as well? 
+The most difficult challenge to build out the dynamic rating feature was to preplan where and if this would be used throughout the application. Initially, this started out as a component specific function that was limited to the scope of the restaurant page only, however, as we progressed through our app, we realized that this process of calculating an average review **also** determined which rating image to display to the frontend. But what about in the case of a single user writing a single review for a restaurant? How do we display a rating indicator image for them as well? 
 
 <br>
 
-> Challenge # 2
+> Weekday Mapping
 
-Info for challenge # 2
+Another interesting challenge that came up while I was building the open and closed label indicators was the dilemma of using the correct index to get the right weekday. The built in Javascript function to get the index of a weekday from a `Date` object begins the array with `0` as Sunday. However, to display the days in the correct order, I couldn't use the same index to display weekdays on the frontend; rather than displaying days in the order of Sun, Mon, Tues, etc., I needed to display them as Mon, Tues, Wed, etc. on the frontend.
 
 <br>
 
@@ -66,7 +69,7 @@ Info for challenge # 3
 <br>
 
 **Solutions**
-> Infrastructure Design and DRY Principles: Solution
+> Design and DRY Principles: Solution
 
 Following the core principles of DRY, rather than creating two different functions to handle a single and multiple ratings, we were able to refactor the code into two simple utility functions that could be used in both situations.
 
@@ -116,9 +119,22 @@ export const getStarImage = average => {
 
 <br>
 
-> Problem: Solution
+> Weekday Mapping: Solution
 
-Solution text
+To account for the offset in the index number of the weekday returned by the Javascript `getDay` function, I used a set of coniditonals to check for the special edge cases of index 0 and index 1. Without any altering, index 0 points to a Sunday and index 1 points to a Monday. If those edge case values were returned as the current day's index, then adjust them accordingly to match an array that would have began at Mon. If not, then simply subtract one to get the correct index in my prefilled array of weekdays (i.e. If the current day is a Wed, then the index number returned by the `getDay` function would be 3; and after being altered in the conditional, the new index number would be 2. Which corresponds correctly to an array of `[Mon, Tues, Wed, ...]`).
+
+```javascript
+  // Adjusted currentDay index to account for Sunday (index 0 vs index 6 in the open/close hours array)
+  let newCurrentDayIndx;
+
+  if (currentDay === 0) {
+    newCurrentDayIndx = 6;
+  } else if (currentDay === 1) {
+    newCurrentDayIndx = 0;
+  } else {
+    newCurrentDayIndx = currentDay - 1;
+  }
+```
 
 <br>
 
