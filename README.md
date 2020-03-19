@@ -61,9 +61,9 @@ Another interesting challenge that came up while I was building the open and clo
 
 <br>
 
-> Challenge # 3
+> Noon Time
 
-Info for challenge # 3
+Accounting for the flip in morning and afternoon (am vs pm) for determining whether a restaurant's operating hours was quite a tricky problem. Simply checking if the user's current hour was greater or less than the restaurant's opening and closing times, as well as matching am and pm, seemed to not hold true anymore (i.e. A user's current time is 12:00 pm and the restaurant opens at 11:00 am. If the check was only looking for hours greater than 11 **and** for the time of day to be am, then that would cover time slots between 11:00 am and 12:00 pm, but **not** 12:00 pm).
 
 <br>
 <br>
@@ -140,9 +140,9 @@ If those edge case values were returned as the current day's index, then adjust 
 
 <br>
 
-> Problem: Solution
+> Noon Time: Solution
 
-Solution text
+Although this is a current fix to the problem, in the future I would like to implement a more bulletproof solution. After researching multiple restaurants, I found that a majority, if not all of them, are **always** open during lunch time.
 
 ------
 
