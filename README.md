@@ -198,8 +198,9 @@ The obvious components of the solution was to first store all of a restaurant's 
   // Within the Query tag
   const allPhotos = data.restaurant.photos;
  ```
-  
-  
+ 
+<br>
+
 > Date Object Conversion: Solution
 
 As mentioned above, storing the date in a normal string was a naive approach that we had originally implemented; if we continued down this route, extracting date information to perform more complicated tasks would have been unnecessarily complicated. Specifically, storing months as a word rather than in a numerical format would have made performing a date ordering operation more tedious. To perform something like this with our design at the time would have required us to either formulate a way to determine order based on word string (i.e. 'January', 'February', etc.) **or** to perform an extra step of converting months into numerical equivalents (i.e. '01', '02', etc.).
