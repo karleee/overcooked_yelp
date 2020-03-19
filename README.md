@@ -33,16 +33,60 @@ To see the most up to date version, please visit [the homepage](https://themorse
 Using the provided images of star ratings from the Yelp developer resources, each restaurant page dynamically renders the correct average rating based on the individual ratings from all of its current reviews.
 
 <kbd>
-<img src="https://github.com/karleee/nookbnb/blob/master/README_images/calendar_widget_main.png" alt="Homepage" width="900px" border="1">
+<img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_restaurant1.png" alt="Homepage" width="900px" border="1">
 </kbd>
 
 <br>
 <br>
 
 **Challenges**
-> Challenge # 1
+> Infrastructure Design and DRY Principles
 
-Info for challenge # 1
+The first challenge to build out this feature was to preplan where and if this would be used throughout the application. Initially, this started out as a component specific function that was limited to the scope of the restaurant page only, however, as we progressed through our app, we realized that this process of calculating an average review **also** determined which rating image to display to the frontend. But what about in the case of a single user writing a single review for a restaurant? How do we display a rating indicator image for them as well? Rather than creating two different functions to handle a single and multiple ratings, we were able to refactor the code into two simple utility functions that could be used in both situations.
+
+We created a generic function that would calculate the average of multiple ratings, and another that would take in a number value which it would use to return the correct string indicating which rating image to give to the frontend.
+
+```javascript
+// Calculates average rating of restaurant based on all reviews
+export const getAverageRating = reviews => {
+  let total = 0;
+
+  reviews.forEach(review => {
+    total += review.rating;
+  });
+
+  return total / reviews.length;
+};
+
+// Determines which star rating image to use in a img src url
+export const getStarImage = average => {
+  let stars;
+
+  if (average === 0) {
+    stars = 'zero';
+  } else if (average > 0 && average <= 1) {
+    stars = 'one';
+  } else if (average > 1 && average < 1.6) {
+    stars = 'one_and_half';
+  } else if (average >= 1.6 && average <= 2) {
+    stars = 'two';
+  } else if (average > 2 && average < 2.6) {
+    stars = 'two_and_half';
+  } else if (average >= 2.6 && average <= 3) {
+    stars = 'three';
+  } else if (average > 3 && average < 3.6) {
+    stars = 'three_and_half';
+  } else if (average >= 3.6 && average <= 4) {
+    stars = 'four';
+  } else if (average > 4 && average < 4.6) {
+    stars = 'four_and_half';
+  } else {
+    stars = 'five';
+  }
+
+  return stars;
+};
+```
 
 <br>
 
