@@ -146,8 +146,20 @@ Although this is a current fix to the problem, in the future I would like to imp
 
 ------
 
-### Feature #2
+### Restaurant Photo Gallery
 
+In addition to the basic functionalities of a standard photo gallery where the user has viewing and scrolling capabilities, photos are also filtered based on their corresponding tags. A photo may also belong to multiple categories at once.
+
+<kbd>
+<img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_gallery1.png" alt="Homepage" width="900px" border="1">
+</kbd>
+
+<br>
+<br>
+
+<kbd>
+<img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_gallery2.png" alt="Homepage" width="900px" border="1">
+</kbd>
 
 
 **Challenges**
