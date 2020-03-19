@@ -12,6 +12,7 @@ const { FETCH_RESTAURANT } = Queries;
 
 // GalleryIndex component returning photo gallery of images from one restaurant from backend
 class GalleryIndex extends Component {
+  // Constructor for GalleryIndex component
   constructor(props) {
     super(props);
     this.state = { 
