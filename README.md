@@ -28,9 +28,9 @@ To see the most up to date version, please visit [the homepage](https://themorse
 
 
 ## Feature Spotlight
-### Custom Calendar Widget
+### Dynamic Star Rating Indicator
 
-Feature #1
+Using the provided images of star ratings from the Yelp developer resources, each restaurant page dynamically renders the correct average rating based on the individual ratings from all of its current reviews.
 
 <kbd>
 <img src="https://github.com/karleee/nookbnb/blob/master/README_images/calendar_widget_main.png" alt="Homepage" width="900px" border="1">
