@@ -169,9 +169,13 @@ In addition to the basic functionalities of a standard photo gallery where the u
 
 Because the original Yep website used all of a restaurant's photos as the default or initial gallery index upon loading, we not only had to filter out each photo into its respective categories, but we also had to implement a way to have all of the restaurant photos available right when the user clicked onto the page.
 
+<br>
+
 > Date Object Conversion
 
-During our initial project setup, we had chosen to use a normal string to represent the date for when a review was written, however, to accomodate how new user reviews were being stored in the database, it made more sense to use a different data type to store the dates for each review. 
+During our initial project setup, we had chosen to use a normal string to represent the date for when a review was written, however, to accomodate how new user reviews were being stored in the database, it made more sense to use a different data type to store the dates for each review.
+
+<br>
 
 > Challenge #3
 
@@ -220,6 +224,7 @@ Instead, we decided to change the data type from a normal string to a Javascript
   }
 ```
 
+<br>
 
 > Solution #3
 
