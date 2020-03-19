@@ -120,10 +120,6 @@ Solution text
 
 Solution text
 
-<kbd>
-<img src="https://github.com/karleee/airbnb_clone/blob/master/README_images/calendar_widget_guests.png" alt="Homepage" width="300px" border="1">
-</kbd>
-
 ------
 
 ### Feature #2
