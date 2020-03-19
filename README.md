@@ -161,19 +161,41 @@ In addition to the basic functionalities of a standard photo gallery where the u
 <img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_gallery2.png" alt="Homepage" width="900px" border="1">
 </kbd>
 
+<br>
+<br>
 
 **Challenges**
-> Challenge #1
+> Landing Photos
+
+Because the original Yep website used all of a restaurant's photos as the default or initial gallery index upon loading, we not only had to filter out each photo into its respective categories, but we also had to implement a way to have all of the restaurant photos available right when the user clicked onto the page.
 
 > Challenge #2
 
 > Challenge #3
 
 **Solutions**
+> Landing Photos: Solution
 
-> Solution #1
+The obvious components of the solution was to first store all of a restaurant's photos into a variable, and then focus on filtering based on an image's tags. However, we also needed a local state to keep track of **which** subcategory of photos that the user was clicking on. We could not initially start the local state with all of a restaurant's photos because the query only happens in the `render` method, however, we could initially set the state to an empty array. And only once the query is made, then we were able to initially change the state to all of the fetched restaurant's photos.
 
-
+```javascript
+  // Constructor for GalleryIndex component
+  constructor(props) {
+    super(props);
+    this.state = { 
+      showModal: false,
+      currentImage: 0,
+      photos: [],
+      viewingTab: 'viewAll'
+    }
+    this.toggleModal = this.toggleModal.bind(this);
+    this.togglePhotos = this.togglePhotos.bind(this);
+  }
+  
+  // Line of code in the render method that sets the photos variable 
+  // Within the Query tag
+  const allPhotos = data.restaurant.photos;
+ ```
   
 > Solution #2
 
