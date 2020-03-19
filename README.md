@@ -169,7 +169,9 @@ In addition to the basic functionalities of a standard photo gallery where the u
 
 Because the original Yep website used all of a restaurant's photos as the default or initial gallery index upon loading, we not only had to filter out each photo into its respective categories, but we also had to implement a way to have all of the restaurant photos available right when the user clicked onto the page.
 
-> Challenge #2
+> Date Object Conversion
+
+During our initial project setup, we had chosen to use a normal string to represent the date for when a review was written, however, to accomodate how new user reviews were being stored in the database, it made more sense to use a different data type to store the dates for each review. 
 
 > Challenge #3
 
@@ -197,7 +199,24 @@ The obvious components of the solution was to first store all of a restaurant's 
   const allPhotos = data.restaurant.photos;
  ```
   
-> Solution #2
+> Date Object Conversion: Solution
+
+As mentioned above, storing the date in a normal string was a naive approach that we had originally implemented; if we continued down this route, extracting uniformly formatted numerical equivalents for the months, days and year would have been unnecessarily complicated. It also would have added large blocks of code that could be refactored into something much simpler.
+
+Instead, we decided to change the data type from a normal string to a Javascript `Date` object. Once we implemented this, not only was extracting a uniform string for the date much easier to do, but this also enabled us to order reviews by the date that they were created via a utility function.
+
+```javascript
+  // Ordering reviews by date with most recent on top
+  orderReviews(reviews) {    
+    const reviewsCopy = reviews.slice();
+
+    reviewsCopy.sort(function (a, b) {
+      return new Date(a.date) - new Date(b.date)
+    })
+    
+    return reviewsCopy.reverse();
+  }
+```
 
 
 > Solution #3
