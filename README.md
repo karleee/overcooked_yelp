@@ -201,9 +201,9 @@ The obvious components of the solution was to first store all of a restaurant's 
   
 > Date Object Conversion: Solution
 
-As mentioned above, storing the date in a normal string was a naive approach that we had originally implemented; if we continued down this route, extracting uniformly formatted numerical equivalents for the months, days and year would have been unnecessarily complicated. It also would have added large blocks of code that could be refactored into something much simpler.
+As mentioned above, storing the date in a normal string was a naive approach that we had originally implemented; if we continued down this route, extracting date information to perform more complicated tasks would have been unnecessarily complicated. Specifically, storing months as a word rather than in a numerical format would have made performing a date ordering operation more tedious. To perform something like this with our design at the time would have required us to either formulate a way to determine order based on word string (i.e. 'January', 'February', etc.) **or** to perform an extra step of converting months into numerical equivalents (i.e. '01', '02', etc.).
 
-Instead, we decided to change the data type from a normal string to a Javascript `Date` object. Once we implemented this, not only was extracting a uniform string for the date much easier to do, but this also enabled us to order reviews by the date that they were created via a utility function.
+Instead, we decided to change the data type from a normal string to a Javascript `Date` object. Once we implemented this, extracting a word string version of the date simply became a matter of splitting the `Date` object on a specific character and storing values into variables. Using a `Date` object **also** allowed for an easy way to sort reviews based on the date that they were created.
 
 ```javascript
   // Ordering reviews by date with most recent on top
