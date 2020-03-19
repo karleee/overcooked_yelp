@@ -28,9 +28,15 @@ To see the most up to date version, please visit [the homepage](https://themorse
 
 
 ## Feature Spotlight
-### Dynamic Star Rating Indicator
+### Dynamic User Based Elements
 
-Using the provided images of star ratings from the Yelp developer resources, each restaurant page dynamically renders the correct average rating based on the individual ratings from all of its current reviews.
+The first dynamic user based element is the average rating indicator located at the top of each restaurant page. Using the provided images of star ratings from the Yelp developer resources, each restaurant page dynamically renders the correct average rating based on the individual ratings from all of its current reviews.
+
+<kbd>
+<img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_restaurant1.png" alt="Homepage" width="900px" border="1">
+</kbd>
+
+The second element is the open and closed label indicator that dynamically changes based on the user's current local time. In addition to time tracking, this element also adjusts itself according to the current day of the week that the user is viewing the website on.
 
 <kbd>
 <img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_restaurant1.png" alt="Homepage" width="900px" border="1">
@@ -42,7 +48,7 @@ Using the provided images of star ratings from the Yelp developer resources, eac
 **Challenges**
 > Infrastructure Design and DRY Principles
 
-The first challenge to build out this feature was to preplan where and if this would be used throughout the application. Initially, this started out as a component specific function that was limited to the scope of the restaurant page only, however, as we progressed through our app, we realized that this process of calculating an average review **also** determined which rating image to display to the frontend. But what about in the case of a single user writing a single review for a restaurant? How do we display a rating indicator image for them as well? 
+The most difficult challenge to build out this feature was to preplan where and if this would be used throughout the application. Initially, this started out as a component specific function that was limited to the scope of the restaurant page only, however, as we progressed through our app, we realized that this process of calculating an average review **also** determined which rating image to display to the frontend. But what about in the case of a single user writing a single review for a restaurant? How do we display a rating indicator image for them as well? 
 
 <br>
 
