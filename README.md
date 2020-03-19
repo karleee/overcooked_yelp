@@ -4,7 +4,7 @@
 Morsel is a single page MERN stack application that parodies off the concept and style of Yelp. Drawing inspiration from the popular 'Overcooked' video game series, visitors to the site are able to browse fictional restaurants and view restaurant photos.
 
 <kbd>
-<img src="https://github.com/karleee/airbnb_clone/blob/master/README_images/home_main1.png" alt="Homepage" width="900px"     border="1">
+<img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_main1.png" alt="Homepage" width="900px"     border="1">
 </kbd>
 
 <br>
@@ -12,9 +12,16 @@ Morsel is a single page MERN stack application that parodies off the concept and
 <br>
 
 <kbd>
-<img src="https://github.com/karleee/nookbnb/blob/master/README_images/home_main2.png" alt="Homepage" width="900px" border="1">
+<img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_main2.png" alt="Homepage" width="900px" border="1">
 </kbd>
 
+<br>
+<br>
+<br>
+
+<kbd>
+<img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_main3.png" alt="Homepage" width="900px" border="1">
+</kbd>
 
 ## How It Works
 To see the most up to date version, please visit [the homepage](https://themorsel.herokuapp.com/).
