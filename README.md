@@ -121,7 +121,7 @@ export const getStarImage = average => {
 
 > Weekday Mapping: Solution
 
-To account for the offset in the index number of the weekday returned by the Javascript `getDay` function, I used a set of coniditonals to check for the special edge cases of index 0 and index 1. Without any altering, index 0 points to a Sunday and index 1 points to a Monday. 
+To account for the offset in the index number of the weekday returned by the Javascript `getDay` function, I used a set of conditionals to check for the special edge cases of index 0 and index 1. Without any altering, index 0 points to a Sunday and index 1 points to a Monday. 
 
 If those edge case values were returned as the current day's index, then adjust them accordingly to match an array that would have began at Mon. If not, then simply subtract one to get the correct index in my prefilled array of weekdays (i.e. If the current day is a Wed, then the index number returned by the `getDay` function would be 3; and after being altered in the conditional, the new index number would be 2. Which corresponds correctly to an array of `[Mon, Tues, Wed, ...]`).
 
