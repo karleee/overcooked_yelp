@@ -177,7 +177,9 @@ During our initial project setup, we had chosen to use a normal string to repres
 
 <br>
 
-> Challenge #3
+> Single Use Modal
+
+To keep things DRY, I wanted to design the modal in a way that would make it versatile enough to be used on **all** subcategories of the gallery index. Rather than creating a new modal for every group type of photos, the photos that the modal points to would be switched out instead.
 
 **Solutions**
 > Landing Photos: Solution
@@ -226,8 +228,13 @@ Instead, we decided to change the data type from a normal string to a Javascript
 
 <br>
 
-> Solution #3
+> Single Use Modal: Solution
 
+To implement a single modal that would be flexible enough to be used for every group of photos listed in the filtering bar on the gallery index, I began with the basic component of a modal. Once I confirmed that it was functional with all of a restaurant's photos, I began to design a system for the photos themselves to be switched in and out. 
+
+The main problem that needed to be solved was how the application would know which photos the user clicked on; once the application had access to that indicator, then rendering the photos was just a matter of sorting. Using local state for this issue seemed to be the most straightforward solution that would allow for not only the group of photos to be stored, but also the specific photo that the user clicked on to view. 
+
+Initially, the local state is set to pass all of a restaurant's photos to the modal, as well as the very first image in the group as the default current image. Once the user clicks on one of the filters, the group of photos is set to a presorted array with the corresponding images and the current photo is set to the first one. 
 
 
 ## Future Updates
