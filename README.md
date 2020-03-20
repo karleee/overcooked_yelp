@@ -95,23 +95,7 @@ export const getStarImage = average => {
     stars = 'zero';
   } else if (average > 0 && average <= 1) {
     stars = 'one';
-  } else if (average > 1 && average < 1.6) {
-    stars = 'one_and_half';
-  } else if (average >= 1.6 && average <= 2) {
-    stars = 'two';
-  } else if (average > 2 && average < 2.6) {
-    stars = 'two_and_half';
-  } else if (average >= 2.6 && average <= 3) {
-    stars = 'three';
-  } else if (average > 3 && average < 3.6) {
-    stars = 'three_and_half';
-  } else if (average >= 3.6 && average <= 4) {
-    stars = 'four';
-  } else if (average > 4 && average < 4.6) {
-    stars = 'four_and_half';
-  } else {
-    stars = 'five';
-  }
+  ...
 
   return stars;
 };
