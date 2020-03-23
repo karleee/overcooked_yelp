@@ -52,92 +52,76 @@ class ReviewCreate extends Component {
           this.setState({ body: e.target.value })
       }
   }
+  
   renderHearts() {
-    //not dry, make dry
     if(this.state.rating === 0) {
         return (
             <div className='review-hearts'>
-              <div>
-                <i className='far fa-star' onClick={this.updateRating(1)}></i>
-                <i className='far fa-star' onClick={this.updateRating(2)}></i>
-                <i className='far fa-star' onClick={this.updateRating(3)}></i>
-                <i className='far fa-star' onClick={this.updateRating(4)}></i>
-                <i className='far fa-star' onClick={this.updateRating(5)}></i>
-              </div>
-              <p className='rating-message'>Select rating</p>
+                <div className='single-star' onClick={this.updateRating(1)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(2)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(3)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(4)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(5)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <p className='rating-message'>Select rating</p>
             </div>
         )
     } else if (this.state.rating === 1) {
         return (
             <div className='review-hearts'>
-              <div>
-                <i className='fas fa-star' onClick={this.updateRating(1)}></i>
-                <i className='far fa-star' onClick={this.updateRating(2)}></i>
-                <i className='far fa-star' onClick={this.updateRating(3)}></i>
-                <i className='far fa-star' onClick={this.updateRating(4)}></i>
-                <i className='far fa-star' onClick={this.updateRating(5)}></i>
-              </div>
-              <p className='rating-message'>Eek! Methinks not.</p>
-
+                <div className='single-star' onClick={this.updateRating(1)}><img src="/images/restaurant_detail/ratings/singles/solid_one_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(2)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(3)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(4)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(5)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <p className='rating-message'>Eek! Methinks not.</p>
             </div>
         )
     } else if (this.state.rating === 2) {
         return (
             <div className='review-hearts'>
-              <div>
-                <i className='fas fa-star' onClick={this.updateRating(1)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(2)}></i>
-                <i className='far fa-star' onClick={this.updateRating(3)}></i>
-                <i className='far fa-star' onClick={this.updateRating(4)}></i>
-                <i className='far fa-star' onClick={this.updateRating(5)}></i>
-              </div>
-              <p className='rating-message'>Meh, I've experience better.</p>
+                <div className='single-star' onClick={this.updateRating(1)}><img src="/images/restaurant_detail/ratings/singles/solid_two_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(2)}><img src="/images/restaurant_detail/ratings/singles/solid_two_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(3)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(4)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(5)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <p className='rating-message'>Meh, I've experience better.</p>
             </div>
         )
     } else if (this.state.rating === 3) {
         return (
             <div className='review-hearts'>
-              <div>
-                <i className='fas fa-star' onClick={this.updateRating(1)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(2)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(3)}></i>
-                <i className='far fa-star' onClick={this.updateRating(4)}></i>
-                <i className='far fa-star' onClick={this.updateRating(5)}></i>
-              </div>
-              <p className='rating-message'>A-OK.</p>
+                <div className='single-star' onClick={this.updateRating(1)}><img src="/images/restaurant_detail/ratings/singles/solid_three_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(2)}><img src="/images/restaurant_detail/ratings/singles/solid_three_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(3)}><img src="/images/restaurant_detail/ratings/singles/solid_three_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(4)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(5)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <p className='rating-message'>A-OK.</p>
             </div>
         )
     } else if (this.state.rating === 4) {
         return (
             <div className='review-hearts'>
-              <div>
-                <i className='fas fa-star' onClick={this.updateRating(1)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(2)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(3)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(4)}></i>
-                <i className='far fa-star' onClick={this.updateRating(5)}></i>
-              </div>
-              <p className='rating-message'>Yay! I'm a fan.</p>
+                <div className='single-star' onClick={this.updateRating(1)}><img src="/images/restaurant_detail/ratings/singles/solid_four_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(2)}><img src="/images/restaurant_detail/ratings/singles/solid_four_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(3)}><img src="/images/restaurant_detail/ratings/singles/solid_four_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(4)}><img src="/images/restaurant_detail/ratings/singles/solid_four_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(5)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <p className='rating-message'>Yay! I'm a fan.</p>
             </div>
         )
     } else if (this.state.rating === 5) {
         return (
             <div className='review-hearts'>
-              <div>
-                <i className='fas fa-star' onClick={this.updateRating(1)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(2)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(3)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(4)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(5)}></i>
-              </div>
-              <p className='rating-message'>Woohoo! As good as it gets!</p>
-
+                <div className='single-star' onClick={this.updateRating(1)}><img src="/images/restaurant_detail/ratings/singles/solid_five_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(2)}><img src="/images/restaurant_detail/ratings/singles/solid_five_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(3)}><img src="/images/restaurant_detail/ratings/singles/solid_five_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(4)}><img src="/images/restaurant_detail/ratings/singles/solid_five_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(5)}><img src="/images/restaurant_detail/ratings/singles/solid_five_star.png" /></div>
+                <p className='rating-message'>Woohoo! As good as it gets!</p>
             </div>
         )
     }
-  
-  }
-
+}
 
   updateCache(cache, {data: {newReview}} ) {
     let review;
