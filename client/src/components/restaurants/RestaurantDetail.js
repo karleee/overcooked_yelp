@@ -44,12 +44,12 @@ class RestaurantDetail extends Component {
   }
 
   // Takes a user to create a new review or edit their existing one
-  renderReview(restaurantId, reviewData, userId, restaurantName) {
+  renderReview(restaurantId, reviewData, userId) {
     if(userId) {
       if(reviewData.data.review) {
-        this.props.history.push({pathname: `/restaurants/${restaurantId}/reviews/edit`, state: {review: reviewData.data.review, userId, restaurantName }});
+        this.props.history.push(`/restaurants/${restaurantId}/reviews/edit`);
       } else {
-        this.props.history.push({pathname: `/restaurants/${restaurantId}/reviews/create`, state: {userId, restaurantName}});
+        this.props.history.push(`/restaurants/${restaurantId}/reviews/create`);
       }
     } else {
       this.props.history.push('/login');
