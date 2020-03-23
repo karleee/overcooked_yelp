@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Mutation } from 'react-apollo';
+import { Mutation, Query } from 'react-apollo';
 import Mutations from '../../graphql/mutations';
 import Queries from '../../graphql/queries';
 import ReviewNavbar from "./ReviewNavbar";
 import { Link } from "react-router-dom";
+import ProgressLoader from '../loader/ProgressLoader';
 
 import '../../assets/stylesheets/reset.css';
 import '../../assets/stylesheets/App.css';
@@ -11,9 +12,38 @@ import '../../assets/stylesheets/ReviewCreateUpdate.css';
 
 
 const { NEW_REVIEW } = Mutations;
-const { FETCH_REVIEW, FETCH_RESTAURANT } = Queries;
+const { FETCH_REVIEW, FETCH_RESTAURANT, CURRENT_USER } = Queries;
 
 const reviewPlaceHolder = "Doesn’t look like much when you walk past, but I was practically dying of hunger so I popped in. The definition of a hole-in-the-wall. I got the regular hamburger and wow…  there are no words. A classic burger done right. Crisp bun, juicy patty, stuffed with all the essentials (ketchup, shredded lettuce, tomato, and pickles). There’s about a million options available between the menu board and wall full of specials, so it can get a little overwhelming, but you really can’t go wrong. Not much else to say besides go see for yourself! You won’t be disappointed."
+
+class ReviewCreateContainer extends Component {
+  constructor(props) {
+      super(props)
+  }
+  
+  render() {
+      return (
+        <Query query={CURRENT_USER} >
+          {(currentUser) => {
+            if (currentUser.loading) return <ProgressLoader type='loading'/>;
+            if (currentUser.error) return <ProgressLoader type='error' />;
+            return (
+              <Query query={FETCH_RESTAURANT} variables={{ _id: this.props.match.params.id }} >
+              {( restaurantData ) => {
+                if (restaurantData.loading) return <ProgressLoader type='loading'/>;
+                if (restaurantData.error) return <ProgressLoader type='error' />;
+                return (
+                  <ReviewCreate {...this.props} restaurant= {restaurantData.data.restaurant} userId={currentUser.data.currentUserId}/>
+                )
+              }}
+            </Query>
+            )
+          }}
+        </Query>
+      )
+  }
+}
+
 
 class ReviewCreate extends Component {
   constructor(props) {
@@ -21,9 +51,6 @@ class ReviewCreate extends Component {
       this.state = {
           rating: 0,
           body: '',
-          restaurantId: this.props.match.params.id,
-          userId: this.props.location.state.userId,
-          restaurantName: this.props.location.state.restaurantName
       }
       window.scrollTo(0, 0);
   }
@@ -34,11 +61,11 @@ class ReviewCreate extends Component {
           variables: {
               rating: this.state.rating,
               body: this.state.body,
-              restaurantId: this.state.restaurantId,
+              restaurantId: this.props.match.params.id,
           }
       })
       .then(() => {
-        this.props.history.push(`/restaurants/${this.state.restaurantId}`)
+        this.props.history.push(`/restaurants/${this.props.match.params.id}`)
     })
   }
 
@@ -52,120 +79,103 @@ class ReviewCreate extends Component {
           this.setState({ body: e.target.value })
       }
   }
+  
   renderHearts() {
-    //not dry, make dry
     if(this.state.rating === 0) {
         return (
             <div className='review-hearts'>
-              <div>
-                <i className='far fa-star' onClick={this.updateRating(1)}></i>
-                <i className='far fa-star' onClick={this.updateRating(2)}></i>
-                <i className='far fa-star' onClick={this.updateRating(3)}></i>
-                <i className='far fa-star' onClick={this.updateRating(4)}></i>
-                <i className='far fa-star' onClick={this.updateRating(5)}></i>
-              </div>
-              <p className='rating-message'>Select rating</p>
+                <div className='single-star' onClick={this.updateRating(1)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(2)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(3)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(4)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(5)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <p className='rating-message'>Select rating</p>
             </div>
         )
     } else if (this.state.rating === 1) {
         return (
             <div className='review-hearts'>
-              <div>
-                <i className='fas fa-star' onClick={this.updateRating(1)}></i>
-                <i className='far fa-star' onClick={this.updateRating(2)}></i>
-                <i className='far fa-star' onClick={this.updateRating(3)}></i>
-                <i className='far fa-star' onClick={this.updateRating(4)}></i>
-                <i className='far fa-star' onClick={this.updateRating(5)}></i>
-              </div>
-              <p className='rating-message'>Eek! Methinks not.</p>
-
+                <div className='single-star' onClick={this.updateRating(1)}><img src="/images/restaurant_detail/ratings/singles/solid_one_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(2)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(3)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(4)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(5)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <p className='rating-message'>Eek! Methinks not.</p>
             </div>
         )
     } else if (this.state.rating === 2) {
         return (
             <div className='review-hearts'>
-              <div>
-                <i className='fas fa-star' onClick={this.updateRating(1)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(2)}></i>
-                <i className='far fa-star' onClick={this.updateRating(3)}></i>
-                <i className='far fa-star' onClick={this.updateRating(4)}></i>
-                <i className='far fa-star' onClick={this.updateRating(5)}></i>
-              </div>
-              <p className='rating-message'>Meh, I've experience better.</p>
+                <div className='single-star' onClick={this.updateRating(1)}><img src="/images/restaurant_detail/ratings/singles/solid_two_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(2)}><img src="/images/restaurant_detail/ratings/singles/solid_two_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(3)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(4)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(5)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <p className='rating-message'>Meh, I've experience better.</p>
             </div>
         )
     } else if (this.state.rating === 3) {
         return (
             <div className='review-hearts'>
-              <div>
-                <i className='fas fa-star' onClick={this.updateRating(1)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(2)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(3)}></i>
-                <i className='far fa-star' onClick={this.updateRating(4)}></i>
-                <i className='far fa-star' onClick={this.updateRating(5)}></i>
-              </div>
-              <p className='rating-message'>A-OK.</p>
+                <div className='single-star' onClick={this.updateRating(1)}><img src="/images/restaurant_detail/ratings/singles/solid_three_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(2)}><img src="/images/restaurant_detail/ratings/singles/solid_three_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(3)}><img src="/images/restaurant_detail/ratings/singles/solid_three_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(4)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(5)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <p className='rating-message'>A-OK.</p>
             </div>
         )
     } else if (this.state.rating === 4) {
         return (
             <div className='review-hearts'>
-              <div>
-                <i className='fas fa-star' onClick={this.updateRating(1)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(2)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(3)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(4)}></i>
-                <i className='far fa-star' onClick={this.updateRating(5)}></i>
-              </div>
-              <p className='rating-message'>Yay! I'm a fan.</p>
+                <div className='single-star' onClick={this.updateRating(1)}><img src="/images/restaurant_detail/ratings/singles/solid_four_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(2)}><img src="/images/restaurant_detail/ratings/singles/solid_four_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(3)}><img src="/images/restaurant_detail/ratings/singles/solid_four_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(4)}><img src="/images/restaurant_detail/ratings/singles/solid_four_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(5)}><img src="/images/restaurant_detail/ratings/singles/empty_star.png" /></div>
+                <p className='rating-message'>Yay! I'm a fan.</p>
             </div>
         )
     } else if (this.state.rating === 5) {
         return (
             <div className='review-hearts'>
-              <div>
-                <i className='fas fa-star' onClick={this.updateRating(1)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(2)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(3)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(4)}></i>
-                <i className='fas fa-star' onClick={this.updateRating(5)}></i>
-              </div>
-              <p className='rating-message'>Woohoo! As good as it gets!</p>
-
+                <div className='single-star' onClick={this.updateRating(1)}><img src="/images/restaurant_detail/ratings/singles/solid_five_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(2)}><img src="/images/restaurant_detail/ratings/singles/solid_five_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(3)}><img src="/images/restaurant_detail/ratings/singles/solid_five_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(4)}><img src="/images/restaurant_detail/ratings/singles/solid_five_star.png" /></div>
+                <div className='single-star' onClick={this.updateRating(5)}><img src="/images/restaurant_detail/ratings/singles/solid_five_star.png" /></div>
+                <p className='rating-message'>Woohoo! As good as it gets!</p>
             </div>
         )
     }
-  
-  }
-
+}
 
   updateCache(cache, {data: {newReview}} ) {
     let review;
     try {
-        review = cache.readQuery({ query: FETCH_REVIEW , variables: {userId: this.state.userId, restaurantId: this.state.restaurantId}});
+        review = cache.readQuery({ query: FETCH_REVIEW , variables: {userId: this.props.userId, restaurantId: this.props.match.params.id}});
     } catch (err) {
         return;
     }
     if (review) {
         cache.writeQuery({
             query: FETCH_REVIEW,
-            variables: {userId: this.state.userId, restaurantId: this.state.restaurantId},
+            variables: {userId: this.props.userId, restaurantId: this.props.match.params.id},
             data: { review: newReview }
         });
     }
 		let restaurant;
 		try {
-			restaurant = cache.readQuery({ query: FETCH_RESTAURANT, variables: {_id: this.state.restaurantId} }).restaurant
+			restaurant = cache.readQuery({ query: FETCH_RESTAURANT, variables: {_id: this.props.match.params.id} }).restaurant
 		} catch (err) {
 			return;
 		}
 		if (restaurant) {
-			// debugger;
 			restaurant.reviews.push(newReview);
 			console.log(restaurant);
 			cache.writeQuery({
 				query: FETCH_RESTAURANT,
-				variables: {_id: this.state.restaurantId},
+				variables: {_id: this.props.match.params.id},
 				data: { restaurant: restaurant }
 			});
 		}	
@@ -191,8 +201,8 @@ class ReviewCreate extends Component {
             <div className="review-form-main">
               <div className="review-form-heading">
                 <h1 className="restaurant-name">
-                  <Link to={`/restaurants/${this.state.restaurantId}`}>
-                    <h1>{this.state.restaurantName}</h1>
+                  <Link to={`/restaurants/${this.props.match.params.id}`}>
+                    <h1>{this.props.restaurant.name}</h1>
                   </Link>
                 </h1>
                 <span>
@@ -245,4 +255,4 @@ class ReviewCreate extends Component {
   }
 }
 
-export default ReviewCreate;
+export default ReviewCreateContainer;

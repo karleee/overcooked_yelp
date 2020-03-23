@@ -153,8 +153,6 @@
     align-items: center;
 }
 
-.review-hearts i {
-    color: var(--red);
-    padding: 2px;
-    font-size: 25px;
+.review-hearts > p {
+    padding-left: 10px;
 }
