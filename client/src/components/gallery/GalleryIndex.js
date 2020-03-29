@@ -73,7 +73,9 @@ class GalleryIndex extends Component {
           // Finding all, food, inside, drink, menu, and outside photos
           // Initially setting photos state to all restaurant photos by default
           const allPhotos = data.restaurant.photos;
-          this.state.photos = allPhotos;
+          if (this.state.photos.length === 0 && this.state.viewingTab === 'viewAll') {
+            this.state.photos = allPhotos;
+          }
 
           let foodPhotos = [];
           let insidePhotos = [];

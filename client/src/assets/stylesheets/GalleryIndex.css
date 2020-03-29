@@ -26,7 +26,7 @@
 }
 
 .photo-gallery-thumbnail-wrapper {
-  width: 4%;
+  width: 3.85%;
   height: 100%;
   border-radius: 3px;
   overflow: hidden;
@@ -116,6 +116,7 @@
 .photo-gallery-main-gallery-wrapper {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
@@ -124,16 +125,11 @@
 }
 
 .gallery-thumbnail-photo-wrapper {
-  width: 150px;
-  height: 150px;
+  width: 15%;
+  height: 21%;
   border-radius: 5px;
   overflow: hidden;
-  box-sizing: border-box;
-  margin:  0 16px 16px 0;
-}
-
-.gallery-thumbnail-photo-wrapper:nth-of-type(6n) {
-  margin-right: 0;
+  margin: 0 16px 16px 0;
 }
 
 .gallery-thumbnail-photo-wrapper img {
