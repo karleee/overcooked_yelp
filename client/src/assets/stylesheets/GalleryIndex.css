@@ -21,13 +21,12 @@
 .photo-gallery-header {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
-  height: 8%;
+  height: 5%;
   margin-top: 5px;
 }
 
 .photo-gallery-thumbnail-wrapper {
-  width: 6%;
+  width: 4%;
   height: 100%;
   border-radius: 3px;
   overflow: hidden;
