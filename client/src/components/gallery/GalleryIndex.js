@@ -47,6 +47,10 @@ class GalleryIndex extends Component {
   togglePhotos(photos, type) {
     this.setState({ viewingTab: type });
     this.setState({ photos });
+    // this.state.viewingTab = type;
+    // this.state.photos = photos;
+    console.log(this.state.photos);
+    console.log(this.state.viewingTab);
   }
   
   // Renders the component

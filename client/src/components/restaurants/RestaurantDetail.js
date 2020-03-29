@@ -41,7 +41,7 @@ class RestaurantDetail extends Component {
   // Toggles amenities viewing state
   toggleAmenities() {
     this.setState({ viewMoreAmenities: !this.state.viewMoreAmenities });
-  }
+  } 
 
   // Takes a user to create a new review or edit their existing one
   renderReview(restaurantId, reviewData, userId) {
