@@ -84,45 +84,45 @@ const Home = () => {
         </div>
 
         <div className="restaurants-wrapper">
-          <LinkToLocalCategory searchTerm="Surf 'N' Turf">
             <div className="surf-and-turf-wrapper">
+              <LinkToLocalCategory searchTerm="Surf 'N' Turf">
               <div className="thumbnail-wrapper">
                 <img src="/images/homepage/categories/categories_surfNTurf.png" alt="Surf N Turf" />
               </div>  
 
               <p>Surf 'N' Turf</p>
+              </LinkToLocalCategory>
             </div>
-          </LinkToLocalCategory>
 
-          <LinkToLocalCategory searchTerm="Holiday Desserts">
             <div className="holiday-desserts-wrapper">
-              <div className="thumbnail-wrapper">
-                <img src="/images/homepage/categories/categories_holidayDesserts.png" alt="Holiday desserts" />
-              </div>
+              <LinkToLocalCategory searchTerm="Holiday Desserts">
+                <div className="thumbnail-wrapper">
+                  <img src="/images/homepage/categories/categories_holidayDesserts.png" alt="Holiday desserts" />
+                </div>
 
-              <p>Holiday Desserts</p>
+                <p>Holiday Desserts</p>
+              </LinkToLocalCategory>
             </div>
-          </LinkToLocalCategory>
 
-          <LinkToLocalCategory searchTerm="Chinese">
             <div className="chinese-wrapper">
-              <div className="thumbnail-wrapper">
-                <img src="/images/homepage/categories/categories_chinese.png" alt="Chinese" />
-              </div>
+              <LinkToLocalCategory searchTerm="Chinese">
+                <div className="thumbnail-wrapper">
+                  <img src="/images/homepage/categories/categories_chinese.png" alt="Chinese" />
+                </div>
 
-              <p>Chinese</p>
+                <p>Chinese</p>
+              </LinkToLocalCategory>
             </div>
-          </LinkToLocalCategory>
 
-          <LinkToLocalCategory searchTerm="Burgers">
             <div className="burgers-wrapper">
-              <div className="thumbnail-wrapper">
-                <img src="/images/homepage/categories/categories_burgers.png" alt="Burgers" /> 
-              </div>
+              <LinkToLocalCategory searchTerm="Burgers">
+                <div className="thumbnail-wrapper">
+                  <img src="/images/homepage/categories/categories_burgers.png" alt="Burgers" /> 
+                </div>
 
-              <p>Burgers</p>
+                <p>Burgers</p>
+              </LinkToLocalCategory>
             </div>
-          </LinkToLocalCategory>
         </div>
       </div>
 
