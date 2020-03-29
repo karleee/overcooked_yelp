@@ -139,7 +139,7 @@ const Home = () => {
               <p><Link to="/search?find_desc=&find_loc=San%20Francisco">San Francisco</Link></p>
               <p><Link to="/search?find_desc=&find_loc=Tokyo">Tokyo</Link></p>
               <p><Link to="/search?find_desc=&find_loc=Portland">Portland</Link></p>
-              <p><Link><i className="more-cities-icon"></i>More Cities</Link></p>
+              {/* <p><Link><i className="more-cities-icon"></i>More Cities</Link></p> */}
             </div> 
 
             <div className="underline-wrapper"></div>

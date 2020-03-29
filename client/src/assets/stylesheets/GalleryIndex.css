@@ -3,9 +3,12 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100vh;
 }
 
 .restaurant-photo-gallery-main-content-wrapper {
+  width: 100%;
+  height: 100%;
   margin: 25px 0;
 }
 
@@ -18,14 +21,13 @@
 .photo-gallery-header {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
-  height: 36px;
+  height: 5%;
   margin-top: 5px;
 }
 
 .photo-gallery-thumbnail-wrapper {
-  width: 33px;
-  height: 33px;
+  width: 3.85%;
+  height: 100%;
   border-radius: 3px;
   overflow: hidden;
 }
@@ -115,24 +117,19 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: stretch;
+  align-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
-  height: 330px;
+  height: 100%;
   margin-top: 20px;
 }
 
 .gallery-thumbnail-photo-wrapper {
-  width: 150px;
-  height: 150px;
+  width: 15%;
+  height: 21%;
   border-radius: 5px;
   overflow: hidden;
-  box-sizing: border-box;
-  margin-right: 16px;
-}
-
-.gallery-thumbnail-photo-wrapper:nth-of-type(6n) {
-  margin-right: 0;
+  margin: 0 16px 16px 0;
 }
 
 .gallery-thumbnail-photo-wrapper img {
