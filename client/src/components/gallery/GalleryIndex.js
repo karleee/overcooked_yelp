@@ -107,7 +107,7 @@ class GalleryIndex extends Component {
             <div className="restaurant-photo-gallery-wrapper">      
               <Navbar />
 
-              <div className="restaurant-photo-gallery-main-content-wrapper">
+              {/* <div className="gallery-wrapper"> */}
                 <div className="main-content-wrapper">
                   <h1>Photos for {data.restaurant.name}</h1>
 
@@ -157,7 +157,7 @@ class GalleryIndex extends Component {
                     }
                   </div>
                 </div>
-              </div>
+              {/* </div> */}
 
               <div className="photo-gallery-modal-wrapper">
                 {this.state.showModal ? <Modal allPhotos={this.state.photos} currentPhoto={this.state.currentImage} toggleModal={this.toggleModal} /> : ''}
