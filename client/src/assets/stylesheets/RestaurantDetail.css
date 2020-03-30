@@ -5,6 +5,7 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
+  /* background: orange;  */
 }
 
 .restaurant-detail-banner-wrapper {
@@ -16,6 +17,8 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  height: 35vh;
+  /* background: yellow; */
 }
 
 .restaurant-detail-body-wrapper {
@@ -24,8 +27,8 @@
 
 .restaurant-detail-thumbnail-wrapper {
   position: relative;
-  width: 24.7%;
-  height: 240px;
+  width: 24.8%;
+  height: 100%;
   overflow: hidden;
 }
 
