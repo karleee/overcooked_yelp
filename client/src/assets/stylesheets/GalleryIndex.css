@@ -1,14 +1,18 @@
 .restaurant-photo-gallery-wrapper {
   width: 100%;
   height: 100%;
-}
+} 
 
 .gallery-wrapper,
 .main-content-wrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+}
+
+.main-content-wrapper {
+  margin-top: 30px;
 }
 
 .gallery-wrapper {
@@ -26,13 +30,12 @@
 .photo-gallery-header {
   display: flex;
   flex-direction: row;
-  height: 5%;
   margin-top: 5px;
 }
 
 .photo-gallery-thumbnail-wrapper {
-  width: 3.85%;
-  height: 100%;
+  width: 36px;
+  height: 36px;
   border-radius: 3px;
   overflow: hidden;
 }
@@ -124,14 +127,12 @@
   justify-content: flex-start;
   align-content: flex-start;
   flex-wrap: wrap;
-  width: 100%;
-  height: 100%;
   margin-top: 20px;
 }
 
 .gallery-thumbnail-photo-wrapper {
-  width: 15%;
-  height: 21%;
+  width: 140px;
+  height: 140px;
   border-radius: 5px;
   overflow: hidden;
   margin: 0 16px 16px 0;
