@@ -83,7 +83,6 @@ const Home = () => {
           <h1>Find the Best Restaurants in Town</h1>
         </div>
 
-<<<<<<< HEAD
         <div className="categories-wrapper">
           <LinkToLocalCategory searchTerm="Surf 'N' Turf">
             <div className="thumbnail-wrapper">
@@ -116,48 +115,6 @@ const Home = () => {
 
             <p>Burgers</p>
           </LinkToLocalCategory>
-=======
-        <div className="restaurants-wrapper">
-            <div className="surf-and-turf-wrapper">
-              <LinkToLocalCategory searchTerm="Surf 'N' Turf">
-              <div className="thumbnail-wrapper">
-                <img src="/images/homepage/categories/categories_surfNTurf.png" alt="Surf N Turf" />
-              </div>  
-
-              <p>Surf 'N' Turf</p>
-              </LinkToLocalCategory>
-            </div>
-
-            <div className="holiday-desserts-wrapper">
-              <LinkToLocalCategory searchTerm="Holiday Desserts">
-                <div className="thumbnail-wrapper">
-                  <img src="/images/homepage/categories/categories_holidayDesserts.png" alt="Holiday desserts" />
-                </div>
-
-                <p>Holiday Desserts</p>
-              </LinkToLocalCategory>
-            </div>
-
-            <div className="chinese-wrapper">
-              <LinkToLocalCategory searchTerm="Chinese">
-                <div className="thumbnail-wrapper">
-                  <img src="/images/homepage/categories/categories_chinese.png" alt="Chinese" />
-                </div>
-
-                <p>Chinese</p>
-              </LinkToLocalCategory>
-            </div>
-
-            <div className="burgers-wrapper">
-              <LinkToLocalCategory searchTerm="Burgers">
-                <div className="thumbnail-wrapper">
-                  <img src="/images/homepage/categories/categories_burgers.png" alt="Burgers" /> 
-                </div>
-
-                <p>Burgers</p>
-              </LinkToLocalCategory>
-            </div>
->>>>>>> 5c658c9da36f1af8c63893cc6696f056fb76d77f
         </div>
       </div>
 
