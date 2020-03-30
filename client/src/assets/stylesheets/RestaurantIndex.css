@@ -2,6 +2,7 @@
 
 .new-restaurant-thumbnails-wrapper {
   width: 100%;
+  height: 100vh;
 }
 
 .new-restaurant-thumbnails-wrapper ul {
@@ -16,7 +17,11 @@
 
 .new-restaurant-thumbnails-wrapper ul li {
   width: 31%;
+<<<<<<< HEAD
   height: 100%;
+=======
+  height: 45%;
+>>>>>>> 5c658c9da36f1af8c63893cc6696f056fb76d77f
   border-radius: 5px;
   border: 1px solid var(--border-color);
   box-sizing: border-box;
