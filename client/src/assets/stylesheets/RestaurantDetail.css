@@ -321,6 +321,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
+  height: 32.5vh;
   margin-top: 10px;
 }
 
@@ -328,11 +329,12 @@
   display: flex;
   flex-direction: column;
   width: 52%;
+  height: 100%;
 }
 
 .restaurant-detail-map-image-wrapper {
   width: 100%;
-  height: 150px;
+  height: 75%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   overflow: hidden;
