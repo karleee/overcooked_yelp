@@ -107,55 +107,53 @@ class GalleryIndex extends Component {
             <div className="restaurant-photo-gallery-wrapper">      
               <Navbar />
 
-              <div className="restaurant-photo-gallery-main-content-wrapper">
-                <div className="main-content-wrapper">
-                  <h1>Photos for {data.restaurant.name}</h1>
+              <div className="main-content-wrapper">
+                <h1>Photos for {data.restaurant.name}</h1>
 
-                  <div className="photo-gallery-header">
-                    <div className="photo-gallery-thumbnail-wrapper">
-                      <img src={data.restaurant.photos[0].url} alt="Restaurant thumbnail" />
+                <div className="photo-gallery-header">
+                  <div className="photo-gallery-thumbnail-wrapper">
+                    <img src={data.restaurant.photos[0].url} alt="Restaurant thumbnail" />
+                  </div>
+
+                  <div className="photo-gallery-text-wrapper">
+                    <Link to={`/restaurants/${data.restaurant._id}`}>{data.restaurant.name}</Link> 
+
+                    <div className="photo-gallery-stars-icon-wrapper">
+                      <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt='Rating icon'/>
                     </div>
+                  </div>
 
-                    <div className="photo-gallery-text-wrapper">
-                      <Link to={`/restaurants/${data.restaurant._id}`}>{data.restaurant.name}</Link> 
+                  <div className="photo-gallery-reviews-wrapper">
+                    <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
+                  </div>
+                </div>
 
-                      <div className="photo-gallery-stars-icon-wrapper">
-                        <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt='Rating icon'/>
+                <div className="photo-gallery-filter-options-wrapper">
+                  <div className="photo-gallery-filter-links-wrapper">
+                    <p onClick={() => this.togglePhotos(allPhotos, 'viewAll')} className={this.state.viewingTab === 'viewAll' ? 'active-filter-link' : ''}>All ({allPhotos.length})</p>
+                    <p onClick={() => this.togglePhotos(foodPhotos, 'viewFood')} className={this.state.viewingTab === 'viewFood' ? 'active-filter-link' : ''}>Food ({foodPhotos.length})</p>
+                    <p onClick={() => this.togglePhotos(insidePhotos, 'viewInside')} className={this.state.viewingTab === 'viewInside' ? 'active-filter-link' : ''}>Inside ({insidePhotos.length})</p>
+                    <p onClick={() => this.togglePhotos(drinkPhotos, 'viewDrink')} className={this.state.viewingTab === 'viewDrink' ? 'active-filter-link' : ''}>Drink ({drinkPhotos.length})</p>
+                    <p onClick={() => this.togglePhotos(menuPhotos, 'viewMenu')} className={this.state.viewingTab === 'viewMenu' ? 'active-filter-link' : ''}>Menu ({menuPhotos.length})</p>
+                    <p onClick={() => this.togglePhotos(outsidePhotos, 'viewOutside')} className={this.state.viewingTab === 'viewOutside' ? 'active-filter-link' : ''}>Outside ({outsidePhotos.length})</p>
+                  </div>
+                  
+                  <div className="photo-gallery-underline-wrapper"></div>
+                </div>
+
+                <div className="photo-gallery-main-gallery-wrapper">
+                  {this.state.photos.length === 0 && this.state.viewingTab === 'viewAll' ? 
+                    allPhotos.map((photo, indx) =>
+                      <div key={indx} className="gallery-thumbnail-photo-wrapper" onClick={() => this.toggleModal(indx)}>
+                        <img src={photo.url} alt="Restaurant thumbnail" />
                       </div>
-                    </div>
-
-                    <div className="photo-gallery-reviews-wrapper">
-                      <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
-                    </div>
-                  </div>
-
-                  <div className="photo-gallery-filter-options-wrapper">
-                    <div className="photo-gallery-filter-links-wrapper">
-                      <p onClick={() => this.togglePhotos(allPhotos, 'viewAll')} className={this.state.viewingTab === 'viewAll' ? 'active-filter-link' : ''}>All ({allPhotos.length})</p>
-                      <p onClick={() => this.togglePhotos(foodPhotos, 'viewFood')} className={this.state.viewingTab === 'viewFood' ? 'active-filter-link' : ''}>Food ({foodPhotos.length})</p>
-                      <p onClick={() => this.togglePhotos(insidePhotos, 'viewInside')} className={this.state.viewingTab === 'viewInside' ? 'active-filter-link' : ''}>Inside ({insidePhotos.length})</p>
-                      <p onClick={() => this.togglePhotos(drinkPhotos, 'viewDrink')} className={this.state.viewingTab === 'viewDrink' ? 'active-filter-link' : ''}>Drink ({drinkPhotos.length})</p>
-                      <p onClick={() => this.togglePhotos(menuPhotos, 'viewMenu')} className={this.state.viewingTab === 'viewMenu' ? 'active-filter-link' : ''}>Menu ({menuPhotos.length})</p>
-                      <p onClick={() => this.togglePhotos(outsidePhotos, 'viewOutside')} className={this.state.viewingTab === 'viewOutside' ? 'active-filter-link' : ''}>Outside ({outsidePhotos.length})</p>
-                    </div>
-                    
-                    <div className="photo-gallery-underline-wrapper"></div>
-                  </div>
-
-                  <div className="photo-gallery-main-gallery-wrapper">
-                    {this.state.photos.length === 0 && this.state.viewingTab === 'viewAll' ? 
-                      allPhotos.map((photo, indx) =>
-                        <div key={indx} className="gallery-thumbnail-photo-wrapper" onClick={() => this.toggleModal(indx)}>
-                          <img src={photo.url} alt="Restaurant thumbnail" />
-                        </div>
-                      ) : 
-                      this.state.photos.map((photo, indx) => 
-                        <div key={indx} className="gallery-thumbnail-photo-wrapper" onClick={() => this.toggleModal(indx)}>
-                          <img src={photo.url} alt="Restaurant thumbnail" />
-                        </div>
-                      )
-                    }
-                  </div>
+                    ) : 
+                    this.state.photos.map((photo, indx) => 
+                      <div key={indx} className="gallery-thumbnail-photo-wrapper" onClick={() => this.toggleModal(indx)}>
+                        <img src={photo.url} alt="Restaurant thumbnail" />
+                      </div>
+                    )
+                  }
                 </div>
               </div>
 
