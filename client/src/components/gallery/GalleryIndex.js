@@ -118,13 +118,10 @@ class GalleryIndex extends Component {
                   <div className="photo-gallery-text-wrapper">
                     <Link to={`/restaurants/${data.restaurant._id}`}>{data.restaurant.name}</Link> 
 
-                    <div className="photo-gallery-stars-icon-wrapper">
+                    <div className="gallery-reviews-wrapper">
                       <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt='Rating icon'/>
+                      <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
                     </div>
-                  </div>
-
-                  <div className="photo-gallery-reviews-wrapper">
-                    <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
                   </div>
                 </div>
 
