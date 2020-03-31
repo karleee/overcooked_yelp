@@ -1,0 +1,71 @@
+@import 'variables.css';
+
+.first-review-container {
+  width: 100%;
+  height: 100%;
+}
+
+.first-review-banner-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 32vh;
+  /* background: var(--background-color); */
+  background: yellow;
+}
+
+.banner-text-wrapper {
+  width: 50%;
+  height: 100%;
+  background: yellowgreen;
+}
+
+.banner-thumbnail-wrapper {
+  width: 30%;
+  height: 100%;
+  background: lightblue;
+}
+
+.banner-text-wrapper h1 {
+  font-family: 'helveticaBold';
+  font-size: 30px;
+  color: var(--black);
+}
+
+.banner-text-wrapper p {
+  font-family: 'helveticaNormal';
+  font-size: 16px;
+  color: var(--black);
+}
+
+.banner-text-wrapper form {
+  /* position: relative;  */
+  /* background: green; */
+  width: 100%;
+  height: 60%;
+}
+
+.banner-text-wrapper form .search-input-wrapper {
+  position: absolute;
+  left: 32.5%;
+  width: 45%;
+  background: transparent;
+}
+
+.banner-text-wrapper form .search-input-wrapper .find-input-wrapper {
+  background: white;
+}
+
+.banner-text-wrapper form .search-input-wrapper .find-input-wrapper label {
+  font-size: 15px;
+  color: var(--black);
+}
+
+.banner-text-wrapper form .search-input-wrapper .separator-wrapper {
+  display: none;
+}
+
+.banner-text-wrapper form .search-input-wrapper label {
+  /* display: none; */
+}
