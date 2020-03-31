@@ -52,7 +52,13 @@ const ReviewFirst = () => {
                       <div className="restaurant-text-wrapper">
                         <Link to={`/restaurants/${restaurant._id}`}>{restaurant.name}</Link>
                         <p>{restaurant.location.streetAddress}</p> 
-                        <img src="/images/restaurant_detail/ratings/zero.png" alt="Star rating" />
+
+                        <div className="restaurant-text-rating-wrapper">
+                          {/* <img src="/images/restaurant_detail/ratings/zero.png" alt="Star rating" /> */}
+                          <i className="rating-image"></i>
+
+                          <div className="one-star-wrapper"></div>
+                        </div>
                       </div>
                     </li>
                   );

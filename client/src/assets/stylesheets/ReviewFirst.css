@@ -168,6 +168,28 @@
   color: var(--mid-text);
 }
 
-.restaurant-text-wrapper img {
+.restaurant-text-rating-wrapper {
+  position: relative;
+}
+
+.rating-image {
+  content: url(/images/restaurant_detail/ratings/zero.png);
   height: 30px;
+}
+
+/* .restaurant-text-wrapper img {
+  height: 30px;
+  margin-top: 15px;
+} */
+
+.one-star-wrapper {
+  position: absolute;
+  top: 32%;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+}
+
+.one-star-wrapper:hover {
+  cursor: pointer;
 }
