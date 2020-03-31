@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
+import { Query } from 'react-apollo';
 import Queries from '../../graphql/queries';
 import Navbar from '../navbar/Navbar';
 import Modal from '../modal/Modal';
@@ -55,7 +55,7 @@ class GalleryIndex extends Component {
       <Query query={FETCH_RESTAURANT} variables={{ _id: this.props.match.params.id }}>
         {({ loading, error, data }) => {
           if (loading) return <ProgressLoader type='loading' />;
-          if (error) return <ProgressLoader type='error' />;;
+          if (error) return <ProgressLoader type='error' />;
 
           // Saving restaurant reviews to a variable for easier access
           const reviews = data.restaurant.reviews;
@@ -118,13 +118,10 @@ class GalleryIndex extends Component {
                   <div className="photo-gallery-text-wrapper">
                     <Link to={`/restaurants/${data.restaurant._id}`}>{data.restaurant.name}</Link> 
 
-                    <div className="photo-gallery-stars-icon-wrapper">
+                    <div className="gallery-reviews-wrapper">
                       <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt='Rating icon'/>
+                      <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
                     </div>
-                  </div>
-
-                  <div className="photo-gallery-reviews-wrapper">
-                    <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
                   </div>
                 </div>
 

@@ -55,8 +55,8 @@ const Home = () => {
       <div className="banner-container">
         <div className="home-nav-bar-container">
           <div className="write-review-wrapper">
-            <p>Write a Review</p> 
-          </div>
+            <Link to="/writeareview">Write a Review</Link> 
+          </div> 
 
           <div className="home-login-logout-wrapper">
             <SessionButton /> 
@@ -74,7 +74,7 @@ const Home = () => {
           <img src="/images/homepage/logo.png" alt="Logo" />
         </div>
         
-        <SearchForm />
+        <SearchForm mode='main'/>
       </div>
 
 

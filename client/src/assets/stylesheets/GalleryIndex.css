@@ -63,13 +63,17 @@
   cursor: pointer;
 }
 
-.photo-gallery-stars-icon-wrapper img {
+.gallery-reviews-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.gallery-reviews-wrapper img {
   height: 15px;
 }
 
-.photo-gallery-reviews-wrapper {
+.gallery-reviews-wrapper p {
   height: 100%;
-  padding-top: 22px;
   box-sizing: border-box;
   font-family: 'helveticaNormal';
   font-size: 12px;

@@ -19,7 +19,7 @@ const Navbar = () => {
 
       <div className="navbar-links-wrapper">
         <div className="navbar-review-link-wrapper"> 
-          <p>Write a Review</p>
+          <Link to="/writeareview">Write a Review</Link>
         </div> 
 
         <div className="navbar-buttons-wrapper">

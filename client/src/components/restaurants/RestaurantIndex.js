@@ -11,18 +11,8 @@ const RestaurantIndex = () => {
   return (
     <Query query={FETCH_RESTAURANTS}>
       {({ loading, error, data }) => {
-        if (loading) {
-          const loadingPhrases = [
-            'Preheating the oven...',
-            'Pouring the sugar...',
-            'Pouring the milk...'
-          ];
-
-          const randomPhrase = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
-
-          return <div className="loader-container"></div>;
-        };
-        if (error) return `Error! ${error.message}`;
+        if (loading) return 'Loading...';
+        if (error) return 'Oops! Something went wrong. Pleae try again later.';
 
         return (
           <div className="new-restaurant-thumbnails-wrapper">

@@ -65,6 +65,11 @@
   padding: 10px 15px;
 }
 
+.navbar-review-link-wrapper a {
+  text-decoration: none;
+  color: var(--black);
+}
+
 .navbar-review-link-wrapper:hover {
   background: var(--light-border-color);
   border-radius: 5px;

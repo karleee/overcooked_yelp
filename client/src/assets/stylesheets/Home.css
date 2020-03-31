@@ -30,6 +30,11 @@
   z-index: 1;
 }
 
+.write-review-wrapper a {
+  text-decoration: none;
+  color: white;
+}
+
 .write-review-wrapper, 
 .home-login-logout-wrapper .login-logout-wrapper a:first-of-type {
   padding: 0 5px 5px 5px;
@@ -175,6 +180,7 @@ a .thumbnail-wrapper {
 .main-content-wrapper {
   box-sizing: border-box;
   padding: 0 230px;
+  width: 100%;
 }
 
 .header-wrapper {
@@ -228,6 +234,7 @@ a .thumbnail-wrapper {
 
 .new-restaurants-wrapper {
   width: 100%;
+  height: 100%;
 }
 
 .new-restaurants-wrapper h2 {

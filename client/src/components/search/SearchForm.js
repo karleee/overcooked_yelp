@@ -43,13 +43,22 @@ class SearchForm extends React.Component {
   }
 
   renderFindInput() {
+    let placeholder;
+    if (this.props.mode === 'navbar') {
+      placeholder = 'tacos, cheap dinner, Max\'s';
+    } else if (this.props.mode === 'main') {
+      placeholder = 'burgers, pancakes, burritos, salads...';
+    } else {
+      placeholder = ''; 
+    }
+
     return (
       <input
         name="find_desc"
         type="text"
         value={this.state.find_desc}
         onChange={this.update('find_desc')}
-        placeholder={this.props.mode === 'navbar' ? 'tacos, cheap dinner, Max\'s' : 'burgers, pancakes, burritos, salads...'}
+        placeholder={placeholder}
       />
     );
   }
