@@ -29,11 +29,13 @@ const ReviewFirst = () => {
             <div className="first-review-banner-wrapper">
               <div className="banner-text-wrapper">
                 <h1>Your First Review Awaits</h1>
-                <p>Review your favorite businesses and share your experiences with our community. Need a little help getting started? Check out these tips.</p>
+                <p>Review your favorite businesses and share your experiences with our community. Need a little help getting started? Stay tuned for a future tip page.</p>
                 <SearchForm />
               </div>
 
-              <div className="banner-thumbnail-wrapper"></div>
+              <div className="banner-thumbnail-wrapper">
+                <img src="/images/review/first_review_banner.png" alt="Review banner" />
+              </div>
             </div>
 
             <div className="first-review-businesses-wrapper">
