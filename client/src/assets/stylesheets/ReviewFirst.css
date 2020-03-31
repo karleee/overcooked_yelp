@@ -5,6 +5,8 @@
   height: 100%;
 }
 
+/* Banner styling */
+
 .first-review-banner-wrapper {
   display: flex;
   flex-direction: row;
@@ -93,4 +95,71 @@
 
 .banner-text-wrapper form .search-input-wrapper .separator-wrapper {
   display: none;
+}
+
+/* Businesses styling */
+
+.first-review-businesses-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 65%;
+  margin-top: 20px;
+}
+
+.first-review-businesses-wrapper h2 {
+  font-family: 'helveticaBold';
+  font-size: 21px;
+  color: var(--red);
+}
+
+.first-review-businesses-wrapper ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100vh;
+  list-style: none;
+  margin-top: 20px;
+}
+
+.first-review-businesses-wrapper ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 48.5%;
+  height: 23%;
+  margin-bottom: 30px;
+  border-radius: 4px;
+  border: 1px solid var(--light-border-color);
+}
+
+.restaurant-thumbnail-wrapper {
+  width: 35%;
+  height: 100%;
+  background: yellow;
+}
+
+.restaurant-text-wrapper {
+  margin-left: 25px;
+}
+
+.restaurant-text-wrapper a {
+  font-family: 'helveticaBold';
+  font-size: 16px;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.restaurant-text-wrapper a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.restaurant-text-wrapper p {
+  font-family: 'helveticaNormal';
+  font-size: 14px;
+  color: var(--mid-text);
 }
