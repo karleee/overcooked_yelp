@@ -51,7 +51,7 @@ const ReviewFirst = () => {
 
                       <div className="restaurant-text-wrapper">
                         <Link to={`/restaurants/${restaurant._id}`}>{restaurant.name}</Link>
-                        <p>{restaurant.location.streetAddress}</p>
+                        <p>{restaurant.location.streetAddress}</p> 
                       </div>
                     </li>
                   );
