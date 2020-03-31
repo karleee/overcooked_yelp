@@ -55,9 +55,10 @@ const ReviewFirst = () => {
 
                         <div className="restaurant-text-rating-wrapper">
                           {/* <img src="/images/restaurant_detail/ratings/zero.png" alt="Star rating" /> */}
+                          <div className="one-star-wrapper"></div>
+                          
                           <i className="rating-image"></i>
 
-                          <div className="one-star-wrapper"></div>
                         </div>
                       </div>
                     </li>

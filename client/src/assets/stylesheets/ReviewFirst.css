@@ -175,6 +175,7 @@
 .rating-image {
   content: url(/images/restaurant_detail/ratings/zero.png);
   height: 30px;
+  margin-top: 15px;
 }
 
 /* .restaurant-text-wrapper img {
@@ -192,4 +193,8 @@
 
 .one-star-wrapper:hover {
   cursor: pointer;
+}
+
+.one-star-wrapper:hover + .rating-image {
+  content: url(/images/restaurant_detail/ratings/one.png);
 }
