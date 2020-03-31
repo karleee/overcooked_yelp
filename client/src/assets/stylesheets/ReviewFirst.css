@@ -167,3 +167,7 @@
   font-size: 14px;
   color: var(--mid-text);
 }
+
+.restaurant-text-wrapper img {
+  height: 30px;
+}
