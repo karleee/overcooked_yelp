@@ -11,14 +11,14 @@
   justify-content: center;
   width: 100%;
   height: 32vh;
-  /* background: var(--background-color); */
-  background: yellow;
+  background: var(--background-color);
 }
 
 .banner-text-wrapper {
   width: 50%;
   height: 100%;
-  background: yellowgreen;
+  margin-top: 30px;
+  /* background: yellowgreen; */
 }
 
 .banner-thumbnail-wrapper {
@@ -40,32 +40,48 @@
 }
 
 .banner-text-wrapper form {
-  /* position: relative;  */
-  /* background: green; */
   width: 100%;
   height: 60%;
 }
 
 .banner-text-wrapper form .search-input-wrapper {
   position: absolute;
-  left: 32.5%;
-  width: 45%;
+  top: 36%;
+  left: 30%;
+  width: 40%;
   background: transparent;
 }
 
-.banner-text-wrapper form .search-input-wrapper .find-input-wrapper {
+.banner-text-wrapper form .search-input-wrapper .find-input-wrapper,
+.banner-text-wrapper form .search-input-wrapper .near-input-wrapper {
+  padding: 3px;
   background: white;
+  border: 1px solid var(--mid-text);
+  border-radius: 3px;
+  margin-right: 8px;
 }
 
-.banner-text-wrapper form .search-input-wrapper .find-input-wrapper label {
+.banner-text-wrapper form .search-input-wrapper .find-input-wrapper label,
+.banner-text-wrapper form .search-input-wrapper .near-input-wrapper label {
   font-size: 15px;
   color: var(--black);
 }
 
-.banner-text-wrapper form .search-input-wrapper .separator-wrapper {
-  display: none;
+.banner-text-wrapper form .search-input-wrapper .search-button-wrapper {
+  width: 8%;
+  height: 45%;
+  border-radius: 3px;
 }
 
-.banner-text-wrapper form .search-input-wrapper label {
-  /* display: none; */
+.banner-text-wrapper form .search-input-wrapper .search-button-wrapper .search-icon {
+  width: 20px;
+}
+
+.banner-text-wrapper form .search-input-wrapper .find-input-wrapper label input,
+.banner-text-wrapper form .search-input-wrapper .near-input-wrapper label input {
+  font-size: 15px;
+}
+
+.banner-text-wrapper form .search-input-wrapper .separator-wrapper {
+  display: none;
 }
