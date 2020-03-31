@@ -54,16 +54,18 @@ const ReviewFirst = () => {
                         <p>{restaurant.location.streetAddress}</p> 
 
                         <div className="restaurant-text-rating-wrapper">
-                          <div className="one-star-wrapper"></div>
-                          <div className="two-star-wrapper"></div>
-                          <div className="three-star-wrapper"></div>
-                          <div className="four-star-wrapper"></div>
-                          <div className="five-star-wrapper"></div>
+                          <Link to={`/restaurants/${restaurant._id}/reviews/edit`}>
+                            <div className="one-star-wrapper"></div>
+                            <div className="two-star-wrapper"></div>
+                            <div className="three-star-wrapper"></div>
+                            <div className="four-star-wrapper"></div>
+                            <div className="five-star-wrapper"></div>
 
-                          <i className="rating-image"></i>
-
+                            <i className="rating-image"></i>
+                          </Link>
                         </div>
                       </div>
+                      
                     </li>
                   );
                 })}
