@@ -45,7 +45,9 @@ const ReviewFirst = () => {
                 {restaurants.map(restaurant => {
                   return (
                     <li>
-                      <div className="restaurant-thumbnail-wrapper"></div>
+                      <div className="restaurant-thumbnail-wrapper">
+                        <img src={restaurant.photos[0] ? restaurant.photos[0].url : ''} alt="Restaurant thumbnail" />
+                      </div>
 
                       <div className="restaurant-text-wrapper">
                         <Link to={`/restaurants/${restaurant._id}`}>{restaurant.name}</Link>

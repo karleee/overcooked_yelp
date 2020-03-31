@@ -104,7 +104,7 @@
   flex-direction: column;
   margin: 0 auto;
   width: 65%;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .first-review-businesses-wrapper h2 {
@@ -139,7 +139,11 @@
 .restaurant-thumbnail-wrapper {
   width: 35%;
   height: 100%;
-  background: yellow;
+  overflow: hidden;
+}
+
+.restaurant-thumbnail-wrapper img {
+  height: 100%;
 }
 
 .restaurant-text-wrapper {
