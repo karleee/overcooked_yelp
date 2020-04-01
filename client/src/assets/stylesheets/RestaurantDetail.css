@@ -139,6 +139,7 @@
   font-family: sans-serif;
   font-size: 16px;
   color: var(--blue);
+  margin-right: 3px;
 }
 
 .restaurant-detail-price-and-category-wrapper a:hover {
