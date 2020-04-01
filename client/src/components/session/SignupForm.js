@@ -63,6 +63,30 @@ class RegisterForm extends React.Component {
 
   render() {
     const { firstName, lastName, email, password, zipCode } = this.state;
+    const vegetables = [
+      'leek',
+      'carrot',
+      'potato',
+      'yam',
+      'bokchoi',
+      'broccoli',
+      'beet',
+      'celery',
+      'lettuce',
+      'cucumber',
+      'kale',
+      'turnip',
+      'tomato',
+      'okra',
+      'radish',
+      'pumpkin',
+      'avocado'
+    ];
+    const zipCodes = ['94016', '96150', '96795', '90001', '94558', '97035'];
+
+    const randomVeggie = vegetables[Math.floor(Math.random() * vegetables.length)];
+    const randomZipCode = zipCodes[Math.floor(Math.random() * zipCodes.length)];
+
     return (
       <Mutation
         mutation={REGISTER_USER}
@@ -93,6 +117,14 @@ class RegisterForm extends React.Component {
                 <p>Connect with great local businesses</p>
 
                 <small>By continuing, you agree to Morsel's Terms of Service and Privacy Policy.</small>
+
+                <button onClick={this.performMutation(RegisterUser, { 
+                  firstName: `${randomVeggie}`,
+                  lastName: 'Queen',
+                  zipCode: `${randomZipCode}`,
+                  email: `${randomVeggie}@gmail.com`, 
+                  password: '12345678' 
+                })}>Demo Sign Up</button>
 
                 <form
                   onSubmit={this.performMutation(RegisterUser, {  
