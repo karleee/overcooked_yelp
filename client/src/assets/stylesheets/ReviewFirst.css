@@ -254,7 +254,12 @@
   content: url(/images/restaurant_detail/ratings/five.png);
 }
 
+.one-star-wrapper:hover > .one-star-popup-wrapper {
+  display: block;
+}
+
 .one-star-popup-wrapper {
+  display: none;
   position: relative;
   top: -140%;
   left: -150%;
@@ -271,7 +276,7 @@
 }
 
 .one-star-popup-wrapper::after {
-  content:'';
+  content: '';
   position: absolute;
   top: 100%;
   left: 175%;
