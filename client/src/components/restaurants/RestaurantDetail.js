@@ -156,6 +156,30 @@ class RestaurantDetail extends Component {
           if (loading) return <ProgressLoader type='loading'/>;
           if (error) return <ProgressLoader type='error' />;
 
+          // Linking for search results page
+          const LinkToLocalCategory = ({ searchTerm, children }) => {
+            let find_desc = encodeURI(searchTerm);
+            return (
+              <Query query={CURRENT_USER}>
+                {({ loading, error, data }) => {
+                  if (loading) return <p>Loading...</p>
+                  if (error) return <p>{error.message}</p>
+                  let find_loc;
+
+                  if (data.currentUserId) {
+                    find_loc = data.currentUserZipCode;
+                  } else {
+                    find_loc = 'Orlando, FL';
+                  }
+
+                  return (
+                    <Link to={`/search?find_desc=${find_desc}&find_loc=${find_loc}`}>{children}</Link>
+                  );
+                }}
+              </Query>
+            );
+          };
+
           // Converting price into dollar sign equivalents
           const dollars = getDollarSigns(data.restaurant.price);
 
@@ -224,6 +248,10 @@ class RestaurantDetail extends Component {
 
           // Determining star ratings indicator
           const stars = getStarImage(average);
+
+          // Getting different categories
+          const categories = data.restaurant.category;
+          const categoriesArr = categories.split(',');
           
           return (
             <div className="restaurant-detail-wrapper">
@@ -264,7 +292,13 @@ class RestaurantDetail extends Component {
                   <div className="restaurant-detail-price-and-category-wrapper">
                     <p>{dollars}</p>
                     <p className="restaurant-detail-price-and-category-dot-wrapper">•</p>
-                    <p>{data.restaurant.category}</p>
+                    {categoriesArr.map((cat, indx) => {
+                      if (indx !== categoriesArr.length - 1) {
+                        return <LinkToLocalCategory searchTerm={`${cat}`}>{cat},</LinkToLocalCategory>;
+                      } else {
+                        return <LinkToLocalCategory searchTerm={`${cat}`}>{cat}</LinkToLocalCategory>;
+                      }
+                    })}
                   </div>
 
                   <div className="restaurant-detail-menu-buttons-container">
@@ -398,8 +432,8 @@ class RestaurantDetail extends Component {
                   <div className="restaurant-detail-amenities-wrapper">
                     <h3>Amenities</h3>
 
-                    <div className="amenities-list-container">
-                      <ul>
+                    <div className="amenities-list-container"> 
+                      <ul className="thumb-amenities-wrapper">
                         {amenitiesRawKeys.slice(0, 4).map((key, indx) => {
                           // Accounting for number value for health score amenity
                           const amenityValue = setAmenityValue(key, amenities[key]);
