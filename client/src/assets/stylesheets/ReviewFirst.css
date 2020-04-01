@@ -254,7 +254,9 @@
   content: url(/images/restaurant_detail/ratings/five.png);
 }
 
-.one-star-wrapper:hover > .one-star-popup-wrapper {
+.one-star-wrapper:hover > .one-star-popup-wrapper,
+.two-star-wrapper:hover > .two-star-popup-wrapper,
+.three-star-wrapper:hover > .three-star-popup-wrapper {
   display: block;
 }
 
@@ -263,6 +265,20 @@
   position: relative;
   top: -140%;
   left: -150%;
+}
+
+.two-star-popup-wrapper {
+  display: none;
+  position: relative;
+  top: -140%;
+  left: -240%;
+}
+
+.three-star-popup-wrapper {
+  display: none;
+  position: relative;
+  top: -140%;
+  left: -40%;
 }
 
 .one-star-popup-wrapper p {
@@ -275,11 +291,55 @@
   border-radius: 5px;
 }
 
+.two-star-popup-wrapper p {
+  font-family: 'helveticaBold';
+  font-size: 12px;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  width: 163px;
+  padding: 7px;
+  border-radius: 5px;
+}
+
+.three-star-popup-wrapper p {
+  font-family: 'helveticaBold';
+  font-size: 12px;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  width: 35px;
+  padding: 7px;
+  border-radius: 5px;
+}
+
 .one-star-popup-wrapper::after {
   content: '';
   position: absolute;
   top: 100%;
   left: 175%;
+  width: 0;
+  height: 0;
+  border-top: solid 7px rgba(0, 0, 0, 0.8);
+  border-left: solid 7px transparent;
+  border-right: solid 7px transparent;
+}
+
+.two-star-popup-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 265%;
+  width: 0;
+  height: 0;
+  border-top: solid 7px rgba(0, 0, 0, 0.8);
+  border-left: solid 7px transparent;
+  border-right: solid 7px transparent;
+}
+
+.three-star-popup-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 60%;
   width: 0;
   height: 0;
   border-top: solid 7px rgba(0, 0, 0, 0.8);
