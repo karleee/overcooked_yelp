@@ -432,8 +432,8 @@ class RestaurantDetail extends Component {
                   <div className="restaurant-detail-amenities-wrapper">
                     <h3>Amenities</h3>
 
-                    <div className="amenities-list-container">
-                      <ul>
+                    <div className="amenities-list-container"> 
+                      <ul className="thumb-amenities-wrapper">
                         {amenitiesRawKeys.slice(0, 4).map((key, indx) => {
                           // Accounting for number value for health score amenity
                           const amenityValue = setAmenityValue(key, amenities[key]);
