@@ -243,3 +243,11 @@ a .thumbnail-wrapper {
   color: var(--red);
   margin-top: 40px;
 } 
+
+/* Footer Styling */
+
+.footer-container {
+  width: 100%;
+  height: 200px;
+  background: orange;
+}
