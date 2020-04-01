@@ -150,6 +150,31 @@ class RestaurantDetail extends Component {
   }
 
   render() {
+    const LinkToLocalCategory = ({ searchTerm, children }) => {
+      let find_desc = encodeURI(searchTerm);
+      return (
+        <Query query={CURRENT_USER}>
+          {({ loading, error, data }) => {
+            if (loading) return <p>Loading...</p>
+            if (error) return <p>{error.message}</p>
+            // let find_loc = data.currentUserZipCode;
+            // temp fix for when user is not logged in
+            let find_loc;
+
+            if (data.currentUserId) {
+              find_loc = data.currentUserZipCode;
+            } else {
+              find_loc = 'Orlando, FL';
+            }
+
+            return (
+              <Link to={`/search?find_desc=${find_desc}&find_loc=${find_loc}`}>{children}</Link>
+            );
+          }}
+        </Query>
+      );
+    }
+
     return (
       <Query query={FETCH_RESTAURANT} variables={{ _id: this.props.match.params.id }}> 
         {({ loading, error, data }) => {
@@ -264,7 +289,7 @@ class RestaurantDetail extends Component {
                   <div className="restaurant-detail-price-and-category-wrapper">
                     <p>{dollars}</p>
                     <p className="restaurant-detail-price-and-category-dot-wrapper">•</p>
-                    <p>{data.restaurant.category}</p>
+                    <LinkToLocalCategory searchTerm="Breakfast">{data.restaurant.category}</LinkToLocalCategory>
                   </div>
 
                   <div className="restaurant-detail-menu-buttons-container">

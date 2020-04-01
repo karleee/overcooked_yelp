@@ -122,7 +122,7 @@
   margin-top: 5px;
 }
 
-.restaurant-detail-price-and-category-wrapper p:first-of-type {
+.restaurant-detail-price-and-category-wrapper p {
   font-family: sans-serif;
   font-size: 16px;
   color: var(--black);
@@ -134,13 +134,14 @@
   padding: 0 10px;
 }
 
-.restaurant-detail-price-and-category-wrapper p:last-of-type {
+.restaurant-detail-price-and-category-wrapper a {
+  text-decoration: none;
   font-family: sans-serif;
   font-size: 16px;
   color: var(--blue);
 }
 
-.restaurant-detail-price-and-category-wrapper p:last-of-type:hover {
+.restaurant-detail-price-and-category-wrapper a:hover {
   text-decoration: underline;
   cursor: pointer;
 }
