@@ -256,7 +256,8 @@
 
 .one-star-wrapper:hover > .one-star-popup-wrapper,
 .two-star-wrapper:hover > .two-star-popup-wrapper,
-.three-star-wrapper:hover > .three-star-popup-wrapper {
+.three-star-wrapper:hover > .three-star-popup-wrapper,
+.four-star-wrapper:hover > .four-star-popup-wrapper {
   display: block;
 }
 
@@ -279,6 +280,13 @@
   position: relative;
   top: -140%;
   left: -40%;
+}
+
+.four-star-popup-wrapper {
+  display: none;
+  position: relative;
+  top: -140%;
+  left: -60%;
 }
 
 .one-star-popup-wrapper p {
@@ -307,6 +315,16 @@
   color: white;
   background: rgba(0, 0, 0, 0.8);
   width: 35px;
+  padding: 7px;
+  border-radius: 5px;
+}
+
+.four-star-popup-wrapper p {
+  font-family: 'helveticaBold';
+  font-size: 12px;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  width: 80px;
   padding: 7px;
   border-radius: 5px;
 }
@@ -340,6 +358,18 @@
   position: absolute;
   top: 100%;
   left: 60%;
+  width: 0;
+  height: 0;
+  border-top: solid 7px rgba(0, 0, 0, 0.8);
+  border-left: solid 7px transparent;
+  border-right: solid 7px transparent;
+}
+
+.four-star-popup-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 115%;
   width: 0;
   height: 0;
   border-top: solid 7px rgba(0, 0, 0, 0.8);
