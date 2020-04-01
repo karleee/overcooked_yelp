@@ -126,6 +126,8 @@ class RegisterForm extends React.Component {
                   password: '12345678' 
                 })}>Demo Sign Up</button>
 
+                <p className="or-separator-wrapper">or</p>
+
                 <form
                   onSubmit={this.performMutation(RegisterUser, {  
                     firstName,
