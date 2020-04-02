@@ -156,11 +156,19 @@ const Home = () => {
           <div className="discover-wrapper">
             <h3>Discover</h3>
             <ul>
-              <li>Nookbnb</li>
+              <li><a href="https://nookbnb.herokuapp.com/#/">Nookbnb</a></li>
             </ul>
           </div>
 
-          <div className="contact-wrapper"><h3>Contact</h3></div>
+          <div className="developers-wrapper">
+            <h3>Developers</h3>
+            <ul>
+              <li>John Enriquez <div className="developers-triangle-wrapper"></div></li>
+              <li>Don Sondapperumaarachchi</li>
+              <li>Josh Graham</li>
+              <li>Karen Lee</li>
+            </ul>
+          </div>
         </div>
 
         <div className="footer-image-wrapper"></div>

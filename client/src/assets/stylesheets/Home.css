@@ -249,12 +249,13 @@ a .thumbnail-wrapper {
 
 .footer-container {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 40vh;
   background: var(--background-color);
   border-top: 1px solid var(--border-color); 
+  padding: 20px;
 }
 
 .footer-columns-wrapper {
@@ -271,9 +272,53 @@ a .thumbnail-wrapper {
   color: var(--red);
 }
 
+.footer-columns-wrapper ul {
+  font-family: 'helveticaNormal';
+  font-size: 14px;
+  color: var(--blue);
+  list-style: none;
+  margin-top: 5px;
+}
+
+.footer-columns-wrapper ul a {
+  font-family: 'helveticaNormal';
+  font-size: 14px;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.footer-columns-wrapper ul a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .about-wrapper,
 .discover-wrapper,
-.contact-wrapper {
+.developers-wrapper {
   width: 25%;
-  /* background: yellow; */
+}
+
+.developers-wrapper ul li {
+  position: relative;
+  background: yellow; 
+}
+
+/* .developers-wrapper ul li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 30%;
+  width: 0;
+  height: 0;
+  border-top: solid 7px rgba(0, 0, 0, 0.8);
+  border-left: solid 7px transparent;
+  border-right: solid 7px transparent;
+} */
+
+.footer-image-wrapper {
+  width: 60%;
+  height: 200px;
+  background: yellowgreen;
+  overflow: hidden;
+  margin-top: 30px;
 }
