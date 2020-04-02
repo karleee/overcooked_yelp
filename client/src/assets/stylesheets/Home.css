@@ -181,6 +181,7 @@ a .thumbnail-wrapper {
   box-sizing: border-box;
   padding: 0 230px;
   width: 100%;
+  height: 135vh;
 }
 
 .header-wrapper {
@@ -247,7 +248,32 @@ a .thumbnail-wrapper {
 /* Footer Styling */
 
 .footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   width: 100%;
-  height: 200px;
-  /* background: orange; */
+  height: 40vh;
+  background: var(--background-color);
+  border-top: 1px solid var(--border-color); 
+}
+
+.footer-columns-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+  margin-top: 30px;
+}
+
+.footer-columns-wrapper h3 {
+  font-family: 'helveticaBold';
+  font-size: 16px;
+  color: var(--red);
+}
+
+.about-wrapper,
+.discover-wrapper,
+.contact-wrapper {
+  width: 25%;
+  /* background: yellow; */
 }

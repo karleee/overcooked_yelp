@@ -118,7 +118,6 @@ const Home = () => {
         </div>
       </div>
 
-
       <div className="main-content-wrapper">
         <div className="header-wrapper">
           <LocalizedMorselTitle />
@@ -146,7 +145,27 @@ const Home = () => {
       </div>
 
       <div className="footer-container">
+        <div className="footer-columns-wrapper">
+          <div className="about-wrapper">
+            <h3>About</h3>
+            <ul>
+              <li><a href="https://github.com/karleee/morsel">Github</a></li>
+            </ul>
+          </div>
 
+          <div className="discover-wrapper">
+            <h3>Discover</h3>
+            <ul>
+              <li>Nookbnb</li>
+            </ul>
+          </div>
+
+          <div className="contact-wrapper"><h3>Contact</h3></div>
+        </div>
+
+        <div className="footer-image-wrapper"></div>
+
+        <div className="footer-copyright-wrapper"></div>
       </div>
     </div>
   );
