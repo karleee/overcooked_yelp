@@ -233,11 +233,11 @@ class Home extends Component {
 
                   {this.state.dev2ShowContact ? <div className="developers-dropdown-wrapper">
                     <ul>
-                      <li>Github</li>
-                      <li>LinkedIn</li>
-                      <li>Angel List</li>
-                      <li>Portfolio</li>
-                      <li>Email</li>
+                      <li><a href="https://github.com/kewlfeet">Github</a></li>
+                      <li><a href="https://www.linkedin.com/in/don-ayesh-sondapperumaarachchi-827894146/">LinkedIn</a></li>
+                      <li><a href="https://angel.co/u/don-sondapperumaarachchi">Angel List</a></li>
+                      <li><a href="">Portfolio</a></li>
+                      <li><a href="mailto:someone@yoursite.com">Email</a></li>
                     </ul>
                   </div> : ''}
                 </li>
@@ -267,11 +267,11 @@ class Home extends Component {
                   
                   {this.state.dev4ShowContact ? <div className="developers-dropdown-wrapper">
                     <ul>
-                      <li>Github</li>
-                      <li>LinkedIn</li>
-                      <li>Angel List</li>
-                      <li>Portfolio</li>
-                      <li>Email</li>
+                      <li><a href="https://github.com/karleee">Github</a></li>
+                      <li><a href="https://www.linkedin.com/in/karleee/">LinkedIn</a></li>
+                      <li><a href="https://angel.co/u/karleee">Angel List</a></li>
+                      <li><a href="http://karleee.com/">Portfolio</a></li>
+                      <li><a href="mailto:karleee@protonmail.com">Email</a></li>
                     </ul>
                   </div> : ''}
                 </li>

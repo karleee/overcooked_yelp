@@ -360,6 +360,15 @@ a .thumbnail-wrapper {
   border: none;
 }
 
+.developers-dropdown-wrapper ul li:hover {
+  background: var(--blue);
+}
+
+.developers-dropdown-wrapper ul li:hover > a {
+  text-decoration: none;
+  color: white;
+}
+
 .footer-image-wrapper {
   width: 60%;
   height: 200px;
