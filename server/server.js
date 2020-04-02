@@ -1,5 +1,6 @@
 const express = require('express');
 const expressGraphQL = require('express-graphql');
+const { graphqlUploadExpress } = require("graphql-upload");
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -39,7 +40,9 @@ if (process.env.NODE_ENV === 'production') {
 
 // Setting up graphql
 app.use(
-  '/graphql',
+  "/graphql",
+  // use graphQLUploadExpress as the middleware for /graphql path
+  graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }),
   expressGraphQL(req => {
     return {
       schema,

@@ -2,8 +2,8 @@ import gql from "graphql-tag";
 
 export default {
   NEW_REVIEW: gql`
-      mutation newReview($rating: Int, $body: String, $restaurantId: ID!) {
-          newReview(rating: $rating, body: $body, restaurantId: $restaurantId) {
+      mutation newReview($rating: Int, $body: String, $restaurantId: ID!, $photo: Upload!) {
+          newReview(rating: $rating, body: $body, restaurantId: $restaurantId, photo: $photo) {
               _id
               rating
               date
@@ -12,6 +12,7 @@ export default {
                 _id
                 firstName
               }
+              photo
           }
       }
   `,
@@ -23,12 +24,13 @@ export default {
       }
   `,
   UPDATE_REVIEW: gql`
-      mutation updateReview($_id: ID!, $body: String, $rating: Int, $date: String) {
-          updateReview(_id: $_id, body: $body, rating: $rating, date: $date) {
+      mutation updateReview($_id: ID!, $body: String, $rating: Int, $date: String, $photo: Upload!) {
+          updateReview(_id: $_id, body: $body, rating: $rating, date: $date, photo: $photo) {
               _id
               body
               rating
               date
+              photo
           }
       }
   `,

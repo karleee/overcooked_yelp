@@ -3,3 +3,4 @@
 /config/keys_dev.js
 .git
 *docker-compose*
+credentials.json

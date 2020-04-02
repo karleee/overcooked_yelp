@@ -31,6 +31,9 @@ const ReviewSchema = new Schema({
       ref: 'photo'
     }
   ],
+  photo: {
+    type: String,
+  }
 });
 
 // Static function to find all photos for a review

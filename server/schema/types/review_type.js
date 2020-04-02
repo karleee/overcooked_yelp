@@ -3,6 +3,8 @@ const graphql = require('graphql');
 const graphqlDate = require('graphql-iso-date');
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLFloat, GraphQLList } = graphql;
 const { GraphQLDate } = graphqlDate;
+
+const { s3 } = require('../../services/s3');
 const User = require('../../models/User');
 const Review = require('../../models/Review');
 const Restaurant = require('../../models/Restaurant')
@@ -38,6 +40,19 @@ const ReviewType = new GraphQLObjectType({
       type: new GraphQLList(require('./photo_type')),
       resolve(parentValue) {
         return Review.findPhotos(parentValue._id);
+      }
+    },
+    photo: { 
+      type: GraphQLString,
+      resolve(parentValue) {
+        let photoUrl;
+        if (parentValue.photo) {
+          photoUrl = s3.getSignedUrl('getObject', {
+            Bucket: "morsel-media",
+            Key: parentValue.photo
+          });
+        }
+        return photoUrl || parentValue.photo;
       }
     },
     date: { type: GraphQLDate } 

@@ -11,10 +11,11 @@ export default {
         user {
           _id
           firstName
-        },
+        }
         photos {
           _id 
         }
+        photo
       }
     }
   `,
@@ -30,6 +31,7 @@ export default {
         photos {
           _id
         }
+        photo
       }
     }
   `,

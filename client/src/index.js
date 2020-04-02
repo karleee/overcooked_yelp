@@ -4,6 +4,7 @@ import ApolloClient from "apollo-boost";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloProvider } from "react-apollo";
 import { HashRouter } from "react-router-dom";
+import { createUploadLink } from "apollo-upload-client";
 
 import * as SessionUtil from "./util/session_util";
 import App from "./components/App";
@@ -16,6 +17,7 @@ const cache = new InMemoryCache({
   dataIdFromObject: object => object._id || null
 });
 
+
 // when settled, move this to keys + env + heroku
 let graphqlURI;
 if (process.env.NODE_ENV === "production") {
@@ -24,9 +26,18 @@ if (process.env.NODE_ENV === "production") {
   graphqlURI = "http://localhost:5000/graphql";
 }
 
+// set up apollo upload
+const httpLink = createUploadLink({
+  uri: graphqlURI,
+  headers: {
+    authorization: localStorage.getItem("auth-token")
+  }
+});
+
 const client = new ApolloClient({
   cache,
   uri: graphqlURI,
+  link: httpLink,
   onError: ({ networkError, graphQLErrors }) => {
     if (process.env.NODE_ENV !== "production") {
       console.log("graphQLErrors", graphQLErrors);

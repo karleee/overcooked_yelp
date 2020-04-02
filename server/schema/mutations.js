@@ -1,7 +1,9 @@
 const graphql = require('graphql');
 const mongoose = require('mongoose')
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLID, GraphQLNonNull} = graphql;
+const { GraphQLUpload } = require('graphql-upload');
 
+const { singleFileUpload } = require('../services/s3');
 const AuthService = require('../services/auth');
 const UserService = require('../services/user');
 const ReviewService = require('../services/review')
@@ -66,12 +68,12 @@ const mutation = new GraphQLObjectType({
           args: {
               rating: { type: GraphQLInt },
               body: { type: GraphQLString },
-              restaurantId: { type: new GraphQLNonNull(GraphQLID) }
+              restaurantId: { type: new GraphQLNonNull(GraphQLID) },
+              photo: { type: GraphQLUpload }
           },
-          async resolve(parent, { rating, body, restaurantId }, context) {
+          async resolve(parent, { rating, body, photo, restaurantId }, context) {
             const user = await AuthService.verifyUser(context)
-            console.log(user)
-            return ReviewService.newReview(rating, body, user, restaurantId)
+            return ReviewService.newReview(rating, body, user, restaurantId, photo)
           }
       },
       updateReview: {
@@ -81,9 +83,12 @@ const mutation = new GraphQLObjectType({
               rating: { type: GraphQLInt },
               date: { type: GraphQLString },
               body: { type: GraphQLString },
+              photo: { type: GraphQLUpload }
           },
-          resolve(parent, { _id, rating, date, body }) {
-              return ReviewService.updateReview(_id, rating, date, body);
+          resolve(parent, { _id, rating, date, photo, body }) {
+            debugger; // what is photo here?
+            console.log("photo before reviewservice", photo);
+            return ReviewService.updateReview(_id, rating, date, body, photo);
           }
       },
       deleteReview: {
