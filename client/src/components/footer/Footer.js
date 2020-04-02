@@ -66,6 +66,7 @@ class Footer extends Component {
             <ul>
               <li><a href="https://nookbnb.herokuapp.com/#/">Nookbnb</a></li>
               <li><a href="http://sleepify-dev.herokuapp.com/">Sleepify</a></li>
+              <li><a href="https://rumble-demo.herokuapp.com/">Rumble</a></li>
             </ul>
           </div>
 
@@ -100,8 +101,8 @@ class Footer extends Component {
                     <li><a href="https://github.com/kewlfeet">Github</a></li>
                     <li><a href="https://www.linkedin.com/in/don-ayesh-sondapperumaarachchi-827894146/">LinkedIn</a></li>
                     <li><a href="https://angel.co/u/don-sondapperumaarachchi">Angel List</a></li>
-                    <li><a href="">Portfolio</a></li>
-                    <li><a href="mailto:someone@yoursite.com">Email</a></li>
+                    <li><a href="http://donsondapperumaarachchi.com/">Portfolio</a></li>
+                    <li><a href="mailto:ayesh98@gmail.com">Email</a></li>
                   </ul>
                 </div> : ''}
               </li>
@@ -131,11 +132,11 @@ class Footer extends Component {
 
                 {this.state.dev4ShowContact ? <div className="developers-dropdown-wrapper">
                   <ul>
-                    <li>Github</li>
-                    <li>LinkedIn</li>
-                    <li>Angel List</li>
-                    <li>Portfolio</li>
-                    <li>Email</li>
+                    <li><a href="https://github.com/johnenriquez">Github</a></li>
+                    <li><a href="https://www.linkedin.com/in/johnenriquez/">LinkedIn</a></li>
+                    <li><a href="https://angel.co/u/john-enriquez">Angel List</a></li>
+                    <li><a href="https://johnenriquez.com/">Portfolio</a></li>
+                    <li><a href="mailto:john.enriquez@gmail.com">Email</a></li>
                   </ul>
                 </div> : ''}
               </li>
