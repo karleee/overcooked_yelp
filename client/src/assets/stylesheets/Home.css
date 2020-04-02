@@ -299,21 +299,25 @@ a .thumbnail-wrapper {
 }
 
 .developers-wrapper ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   position: relative;
-  background: yellow; 
 }
 
-/* .developers-wrapper ul li::after {
+.developers-wrapper ul li:hover {
+  cursor: pointer;
+}
+
+.developers-triangle-wrapper {
   content: '';
-  position: absolute;
-  top: 0;
-  left: 30%;
   width: 0;
   height: 0;
-  border-top: solid 7px rgba(0, 0, 0, 0.8);
-  border-left: solid 7px transparent;
-  border-right: solid 7px transparent;
-} */
+  border-top: solid 4px var(--blue);
+  border-left: solid 4px transparent;
+  border-right: solid 4px transparent;
+  margin-left: 7px;
+}
 
 .footer-image-wrapper {
   width: 60%;
