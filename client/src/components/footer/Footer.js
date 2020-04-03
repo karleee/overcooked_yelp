@@ -65,11 +65,11 @@ class Footer extends Component {
 
                 {this.state.currentDev === 'dev1' ? <div className="developers-dropdown-wrapper">
                   <ul>
-                    <li><a href="https://github.com/karleee">Github</a></li>
-                    <li><a href="https://www.linkedin.com/in/karleee/">LinkedIn</a></li>
-                    <li><a href="https://angel.co/u/karleee">Angel List</a></li>
-                    <li><a href="http://karleee.com/">Portfolio</a></li>
-                    <li><a href="mailto:karleee@protonmail.com">Email</a></li>
+                    <a href="https://github.com/karleee"><li>Github</li></a> 
+                    <a href="https://www.linkedin.com/in/karleee/"><li>LinkedIn</li></a>
+                    <a href="https://angel.co/u/karleee"><li>Angel List</li></a>
+                    <a href="http://karleee.com/"><li>Portfolio</li></a>
+                    <a href="mailto:karleee@protonmail.com"><li>Email</li></a>
                   </ul>
                 </div> : ''}
               </li>
@@ -82,11 +82,11 @@ class Footer extends Component {
 
                 {this.state.currentDev === 'dev2' ? <div className="developers-dropdown-wrapper">
                   <ul>
-                    <li><a href="https://github.com/kewlfeet">Github</a></li>
-                    <li><a href="https://www.linkedin.com/in/don-ayesh-sondapperumaarachchi-827894146/">LinkedIn</a></li>
-                    <li><a href="https://angel.co/u/don-sondapperumaarachchi">Angel List</a></li>
-                    <li><a href="http://donsondapperumaarachchi.com/">Portfolio</a></li>
-                    <li><a href="mailto:ayesh98@gmail.com">Email</a></li>
+                    <a href="https://github.com/kewlfeet"><li>Github</li></a>
+                    <a href="https://www.linkedin.com/in/don-ayesh-sondapperumaarachchi-827894146/"><li>LinkedIn</li></a>
+                    <a href="https://angel.co/u/don-sondapperumaarachchi"><li>Angel List</li></a>
+                    <a href="http://donsondapperumaarachchi.com/"><li>Portfolio</li></a>
+                    <a href="mailto:ayesh98@gmail.com"><li>Email</li></a>
                   </ul>
                 </div> : ''}
               </li>
@@ -116,11 +116,11 @@ class Footer extends Component {
 
                 {this.state.currentDev === 'dev4' ? <div className="developers-dropdown-wrapper">
                   <ul>
-                    <li><a href="https://github.com/johnenriquez">Github</a></li>
-                    <li><a href="https://www.linkedin.com/in/johnenriquez/">LinkedIn</a></li>
-                    <li><a href="https://angel.co/u/john-enriquez">Angel List</a></li>
-                    <li><a href="https://johnenriquez.com/">Portfolio</a></li>
-                    <li><a href="mailto:john.enriquez@gmail.com">Email</a></li>
+                    <a href="https://github.com/johnenriquez"><li>Github</li></a>
+                    <a href="https://www.linkedin.com/in/johnenriquez/"><li>LinkedIn</li></a>
+                    <a href="https://angel.co/u/john-enriquez"><li>Angel List</li></a>
+                    <a href="https://johnenriquez.com/"><li>Portfolio</li></a>
+                    <a href="mailto:john.enriquez@gmail.com"><li>Email</li></a>
                   </ul>
                 </div> : ''}
               </li>
