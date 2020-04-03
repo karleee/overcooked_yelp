@@ -72,18 +72,8 @@ export const getPopularDishOccurences = (collection, dish, type) => {
   const lowerCasedDish = [];
   let foundOccurences = [];
 
-  dishArray.forEach(word => {
-    const letters = /&[a-zA-z]+$/;
-    const lastLetter = word.slice(-1);
-    let unpunctuatedWord;
-
-    if (!lastLetter.match(letters)) {
-      unpunctuatedWord = word.slice(0, word.length);
-    } else {
-      unpunctuatedWord = word;
-    }
-
-    lowerCasedDish.push(unpunctuatedWord.toLowerCase());
+  dishArray.forEach(word => { 
+    lowerCasedDish.push(word.toLowerCase());
   });
 
   collection.forEach(item => {
@@ -101,7 +91,10 @@ export const getPopularDishOccurences = (collection, dish, type) => {
     }
 
     body.forEach(word => {
-      lowerCasedBody.push(word.toLowerCase());
+      // Removing punctuation marks from a word
+      const unpunctuated = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+      const final = unpunctuated.replace(/\s{2, }/g, '');
+      lowerCasedBody.push(final.toLowerCase());
     });
 
     if ((lowerCasedBody.includes(firstKeyword) && lowerCasedBody[lowerCasedBody.indexOf(firstKeyword) + 1] === secondKeyword) || (lowerCasedDish.length === 1 && lowerCasedBody.includes(firstKeyword))) foundOccurences.push(item);
