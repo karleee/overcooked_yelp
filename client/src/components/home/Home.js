@@ -128,7 +128,6 @@ const Home = props => (
             <p><Link to="/search?find_desc=&find_loc=Honolulu">Honolulu</Link></p> 
             <p><Link to="/search?find_desc=&find_loc=Los%20Angeles">Los Angeles</Link></p>
             <p><Link to="/search?find_desc=&find_loc=San%20Francisco">San Francisco</Link></p>
-            <p><Link to="/search?find_desc=&find_loc=Napa">Napa</Link></p>
             <p><Link to="/search?find_desc=&find_loc=Portland">Portland</Link></p>
             <p><Link to="/search?find_desc=&find_loc=Orlando">Orlando</Link></p>
           </div> 
