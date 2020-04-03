@@ -5,10 +5,8 @@ class Footer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dev1ShowContact: false,
-      dev2ShowContact: false,
-      dev3ShowContact: false,
-      dev4ShowContact: false
+      currentDev: '',
+      otherDevs: []
     }
     this.monitorClick();
     this.showContactInfo = this.showContactInfo.bind(this);
@@ -16,36 +14,21 @@ class Footer extends Component {
   }
 
   showContactInfo(devNum) {
-    if (devNum === 1) {
-      this.setState({ dev1ShowContact: !this.state.dev1ShowContact });
-      this.setState({ dev2ShowContact: false });
-      this.setState({ dev3ShowContact: false });
-      this.setState({ dev4ShowContact: false });
-    } else if (devNum === 2) {
-      this.setState({ dev2ShowContact: !this.state.dev2ShowContact });
-      this.setState({ dev1ShowContact: false });
-      this.setState({ dev3ShowContact: false });
-      this.setState({ dev4ShowContact: false });
-    } else if (devNum === 3) {
-      this.setState({ dev3ShowContact: !this.state.dev3ShowContact });
-      this.setState({ dev1ShowContact: false });
-      this.setState({ dev2ShowContact: false });
-      this.setState({ dev4ShowContact: false });
-    } else {
-      this.setState({ dev4ShowContact: !this.state.dev4ShowContact });
-      this.setState({ dev1ShowContact: false });
-      this.setState({ dev2ShowContact: false });
-      this.setState({ dev3ShowContact: false });
-    }
+    const allKeys = Object.keys(this.state);
+    const currentDev = `dev${devNum}`;
+    const foundKey = allKeys.indexOf(currentDev);
+
+    const otherDevs = allKeys.slice(2, foundKey).concat(allKeys.slice(foundKey + 1, allKeys.length));
+
+    this.setState({ currentDev });
+    this.setState({ otherDevs });
   }
 
   monitorClick() {
     window.addEventListener('click', e => {
       if (e.target.parentElement.className !== 'developer-name-wrapper') {
-        this.setState({ dev1ShowContact: false });
-        this.setState({ dev2ShowContact: false });
-        this.setState({ dev3ShowContact: false });
-        this.setState({ dev4ShowContact: false });
+        this.setState({ currentDev: '' });
+        this.setState({ otherDevs: [] });
       }
     });
   }
@@ -79,7 +62,7 @@ class Footer extends Component {
                   <div className="developers-triangle-wrapper"></div>
                 </div>
 
-                {this.state.dev1ShowContact ? <div className="developers-dropdown-wrapper">
+                {this.state.currentDev === 'dev1' ? <div className="developers-dropdown-wrapper">
                   <ul>
                     <li><a href="https://github.com/karleee">Github</a></li>
                     <li><a href="https://www.linkedin.com/in/karleee/">LinkedIn</a></li>
@@ -96,7 +79,7 @@ class Footer extends Component {
                   <div className="developers-triangle-wrapper"></div> 
                 </div>
 
-                {this.state.dev2ShowContact ? <div className="developers-dropdown-wrapper">
+                {this.state.currentDev === 'dev2' ? <div className="developers-dropdown-wrapper">
                   <ul>
                     <li><a href="https://github.com/kewlfeet">Github</a></li>
                     <li><a href="https://www.linkedin.com/in/don-ayesh-sondapperumaarachchi-827894146/">LinkedIn</a></li>
@@ -113,7 +96,7 @@ class Footer extends Component {
                   <div className="developers-triangle-wrapper"></div>
                 </div>
 
-                {this.state.dev3ShowContact ? <div className="developers-dropdown-wrapper">
+                {this.state.currentDev === 'dev3' ? <div className="developers-dropdown-wrapper">
                   <ul>
                     <li>Github</li>
                     <li>LinkedIn</li>
@@ -130,7 +113,7 @@ class Footer extends Component {
                   <div className="developers-triangle-wrapper"></div>
                 </div>
 
-                {this.state.dev4ShowContact ? <div className="developers-dropdown-wrapper">
+                {this.state.currentDev === 'dev4' ? <div className="developers-dropdown-wrapper">
                   <ul>
                     <li><a href="https://github.com/johnenriquez">Github</a></li>
                     <li><a href="https://www.linkedin.com/in/johnenriquez/">LinkedIn</a></li>
