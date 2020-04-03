@@ -131,7 +131,7 @@ const Home = props => (
             <p><Link to="/search?find_desc=&find_loc=Portland">Portland</Link></p>
             <p><Link to="/search?find_desc=&find_loc=Orlando">Orlando</Link></p>
           </div> 
-
+ 
           <div className="underline-wrapper"></div>
         </div>
 
