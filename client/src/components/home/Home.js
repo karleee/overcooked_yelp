@@ -84,12 +84,12 @@ const Home = props => (
       </div>
 
       <div className="categories-wrapper">
-        <LinkToLocalCategory searchTerm="Surf 'N' Turf">
+        <LinkToLocalCategory searchTerm="Steakhouses">
           <div className="thumbnail-wrapper">
-            <img src="/images/homepage/categories/categories_surfNTurf.png" alt="Surf N Turf" />
+            <img src="/images/homepage/categories/categories_steakhouses.png" alt="Steakhouses" />
           </div>  
 
-          <p>Surf 'N' Turf</p>
+          <p>Steakhouses</p>
         </LinkToLocalCategory>
 
         <LinkToLocalCategory searchTerm="Holiday Desserts">
@@ -128,7 +128,6 @@ const Home = props => (
             <p><Link to="/search?find_desc=&find_loc=Honolulu">Honolulu</Link></p> 
             <p><Link to="/search?find_desc=&find_loc=Los%20Angeles">Los Angeles</Link></p>
             <p><Link to="/search?find_desc=&find_loc=San%20Francisco">San Francisco</Link></p>
-            <p><Link to="/search?find_desc=&find_loc=Napa">Napa</Link></p>
             <p><Link to="/search?find_desc=&find_loc=Portland">Portland</Link></p>
             <p><Link to="/search?find_desc=&find_loc=Orlando">Orlando</Link></p>
           </div> 
