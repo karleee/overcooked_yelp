@@ -84,12 +84,12 @@ const Home = props => (
       </div>
 
       <div className="categories-wrapper">
-        <LinkToLocalCategory searchTerm="Surf 'N' Turf">
+        <LinkToLocalCategory searchTerm="Steakhouses">
           <div className="thumbnail-wrapper">
-            <img src="/images/homepage/categories/categories_surfNTurf.png" alt="Surf N Turf" />
+            <img src="/images/homepage/categories/categories_steakhouses.png" alt="Steakhouses" />
           </div>  
 
-          <p>Surf 'N' Turf</p>
+          <p>Steakhouses</p>
         </LinkToLocalCategory>
 
         <LinkToLocalCategory searchTerm="Holiday Desserts">
