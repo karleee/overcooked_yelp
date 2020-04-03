@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import ProgressLoader from '../loader/ProgressLoader';
 import Navbar from '../navbar/Navbar';
 import SearchForm from '../search/SearchForm';
+import Footer from '../footer/Footer';
 
 import '../../assets/stylesheets/ReviewFirst.css';
 
@@ -95,6 +96,8 @@ const ReviewFirst = () => {
                 })}
               </ul>
             </div>
+
+            <Footer />
           </div>
         );
       }}

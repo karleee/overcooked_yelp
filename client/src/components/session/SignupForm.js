@@ -68,7 +68,7 @@ class RegisterForm extends React.Component {
       'carrot',
       'potato',
       'yam',
-      'bokchoi',
+      'bokchoy',
       'broccoli',
       'beet',
       'celery',
@@ -80,9 +80,14 @@ class RegisterForm extends React.Component {
       'okra',
       'radish',
       'pumpkin',
-      'avocado'
+      'avocado',
+      'squash',
+      'zucchini',
+      'artichoke',
+      'cabbage',
+      'fennel'
     ];
-    const zipCodes = ['94016', '96150', '96795', '90001', '94558', '97035'];
+    const zipCodes = ['94016', '96150', '96795', '90001', '94599', '97035'];
 
     const randomVeggie = vegetables[Math.floor(Math.random() * vegetables.length)];
     const randomZipCode = zipCodes[Math.floor(Math.random() * zipCodes.length)];
@@ -119,11 +124,11 @@ class RegisterForm extends React.Component {
                 <small>By continuing, you agree to Morsel's Terms of Service and Privacy Policy.</small>
 
                 <button onClick={this.performMutation(RegisterUser, { 
-                  firstName: `${randomVeggie}`,
+                  firstName: `${randomVeggie[0].toUpperCase() + randomVeggie.slice(1, randomVeggie.length)}`,
                   lastName: 'Queen',
                   zipCode: `${randomZipCode}`,
                   email: `${randomVeggie}@gmail.com`, 
-                  password: '12345678' 
+                  password: '12345678'  
                 })}>Demo Sign Up</button>
 
                 <p className="or-separator-wrapper">or</p>

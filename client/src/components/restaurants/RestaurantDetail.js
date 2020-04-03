@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
+
 import Queries from '../../graphql/queries';
 import { Link } from 'react-router-dom';
+
 import Navbar from '../navbar/Navbar';
 import Map from '../map/Map';
 import ProgressLoader from '../loader/ProgressLoader';
@@ -13,6 +15,8 @@ import {
   getPopularDishOccurences,
   getDollarSigns
 } from '../../util/restaurant_util';
+import Footer from '../footer/Footer';
+
 import '../../assets/stylesheets/RestaurantDetail.css';
 
 const { FETCH_RESTAURANT, FETCH_REVIEW, CURRENT_USER } = Queries;
@@ -523,6 +527,8 @@ class RestaurantDetail extends Component {
                   </div>
                 </div>
               </div>
+
+              <Footer />
             </div>
           );
         }}

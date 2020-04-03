@@ -5,6 +5,7 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
 }
 
 .restaurant-detail-banner-wrapper {
@@ -246,6 +247,7 @@
 
 .restaurant-detail-recommended-reviews-wrapper {
   border-bottom: none;
+  padding-bottom: 100px;
 }
 
 .restaurant-detail-popular-dishes-container h3,
