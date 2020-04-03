@@ -57,8 +57,15 @@
   width: 25%;
 }
 
+/* .developers-wrapper ul {
+  background: green;
+} */
+
+.developers-wrapper ul:hover {
+  cursor: default;
+}
+
 .developers-wrapper ul li {
-  display: inline-block;
   position: relative;
 }
 
@@ -66,10 +73,15 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  display: inline-flex;
+}
+
+.developer-name-wrapper:hover {
+  cursor: pointer;
 }
 
 .developers-wrapper ul li:hover {
-  cursor: pointer;
+  cursor: default;
 }
 
 .developers-triangle-wrapper {

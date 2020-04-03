@@ -13,7 +13,8 @@ class Footer extends Component {
     this.monitorClick = this.monitorClick.bind(this);
   }
 
-  showContactInfo(devNum) {
+  showContactInfo(e, devNum) {
+    e.stopPropagation();
     const allKeys = Object.keys(this.state);
     const currentDev = `dev${devNum}`;
     const foundKey = allKeys.indexOf(currentDev);
@@ -56,8 +57,8 @@ class Footer extends Component {
           <div className="developers-wrapper">
             <h3>Developers</h3>
             <ul>
-              <li onClick={() => this.showContactInfo(1)}>
-                <div className="developer-name-wrapper">
+              <li>
+                <div className="developer-name-wrapper" onClick={e => this.showContactInfo(e, 1)}>
                   <p>Karen Lee</p>
                   <div className="developers-triangle-wrapper"></div>
                 </div>
@@ -73,8 +74,8 @@ class Footer extends Component {
                 </div> : ''}
               </li>
 
-              <li onClick={() => this.showContactInfo(2)}>
-                <div className="developer-name-wrapper">
+              <li>
+                <div className="developer-name-wrapper" onClick={e => this.showContactInfo(e, 2)}>
                   <p>Don Sondapperumaarachchi</p>
                   <div className="developers-triangle-wrapper"></div> 
                 </div>
@@ -90,8 +91,8 @@ class Footer extends Component {
                 </div> : ''}
               </li>
 
-              <li onClick={() => this.showContactInfo(3)}>
-                <div className="developer-name-wrapper">
+              <li>
+                <div className="developer-name-wrapper" onClick={e => this.showContactInfo(e, 3)}>
                   <p>Josh Graham</p>
                   <div className="developers-triangle-wrapper"></div>
                 </div>
@@ -107,8 +108,8 @@ class Footer extends Component {
                 </div> : ''}
               </li>
 
-              <li onClick={() => this.showContactInfo(4)}>
-                <div className="developer-name-wrapper">
+              <li>
+                <div className="developer-name-wrapper" onClick={e => this.showContactInfo(e, 4)}>
                   <p >John Enriquez</p>
                   <div className="developers-triangle-wrapper"></div>
                 </div>
@@ -134,7 +135,7 @@ class Footer extends Component {
         <div className="footer-copyright-wrapper">
           <small>Copyright &copy; 2020 Morsel</small>
         </div>
-      </div>
+      </div> 
     );
   }
 }
