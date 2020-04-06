@@ -5,31 +5,46 @@ class Footer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentDev: '',
-      otherDevs: []
+      dev1: false,
+      dev2: false,
+      dev3: false,
+      dev4: false
+      // currentDev: '',
+      // otherDevs: []
     }
     this.monitorClick();
-    this.showContactInfo = this.showContactInfo.bind(this);
+    this.toggleDev = this.toggleDev.bind(this);
     this.monitorClick = this.monitorClick.bind(this);
   }
 
-  showContactInfo(e, devNum) {
-    e.stopPropagation();
-    const allKeys = Object.keys(this.state);
-    const currentDev = `dev${devNum}`;
-    const foundKey = allKeys.indexOf(currentDev);
+  toggleDev(e, devNum) {
+    const allDevs = Object.keys(this.state);
+    const devIndx = devNum - 1;
+    let devBool;
 
-    const otherDevs = allKeys.slice(2, foundKey).concat(allKeys.slice(foundKey + 1, allKeys.length));
+    const otherDevs = allDevs.slice(2, devIndx).concat(allDevs.slice(devIndx + 1, allDevs.length));
 
-    this.setState({ currentDev });
-    this.setState({ otherDevs });
+    if (devNum === 1) {
+      devBool = this.state.dev1;
+    } else if (devNum === 2) {
+      devBool = this.state.dev2;
+    } else if (devNum === 3) {
+      devBool = this.state.dev3;
+    } else {
+      devBool = this.state.dev4;
+    }
+
+    // Setting the state for the current viewable dev and remaining devs
+    this.setState({ [allDevs[devIndx]]: !devBool });
+    otherDevs.forEach(dev => { this.setState({ [dev]: false }) });
   }
 
   monitorClick() {
+    const allDevs = Object.keys(this.state);
+
     window.addEventListener('click', e => {
       if (e.target.parentElement.className !== 'developer-name-wrapper') {
-        this.setState({ currentDev: '' });
-        this.setState({ otherDevs: [] });
+        allDevs.forEach(dev => { this.setState({ [dev]: false }) });
       }
     });
   }
@@ -58,69 +73,69 @@ class Footer extends Component {
             <h3>Developers</h3>
             <ul>
               <li>
-                <div className="developer-name-wrapper" onClick={e => this.showContactInfo(e, 1)}>
+                <div className="developer-name-wrapper" onClick={e => this.toggleDev(e, 1)}>
                   <p>Karen Lee</p>
                   <div className="developers-triangle-wrapper"></div>
                 </div>
 
-                {this.state.currentDev === 'dev1' ? <div className="developers-dropdown-wrapper">
+                {this.state.dev1 ? <div className="developers-dropdown-wrapper">
                   <ul>
-                    <a href="https://github.com/karleee"><li>Github</li></a> 
-                    <a href="https://www.linkedin.com/in/karleee/"><li>LinkedIn</li></a>
-                    <a href="https://angel.co/u/karleee"><li>Angel List</li></a>
-                    <a href="http://karleee.com/"><li>Portfolio</li></a>
-                    <a href="mailto:karleee@protonmail.com"><li>Email</li></a>
+                    <li><a href="https://github.com/karleee">Github</a></li>
+                    <li><a href="https://www.linkedin.com/in/karleee/">LinkedIn</a></li>
+                    <li><a href="https://angel.co/u/karleee">Angel List</a></li>
+                    <li><a href="http://karleee.com/">Portfolio</a></li>
+                    <li><a href="mailto:karleee@protonmail.com">Email</a></li>
                   </ul>
                 </div> : ''}
               </li>
 
               <li>
-                <div className="developer-name-wrapper" onClick={e => this.showContactInfo(e, 2)}>
+                <div className="developer-name-wrapper" onClick={e => this.toggleDev(e, 2)}>
                   <p>Don Sondapperumaarachchi</p>
                   <div className="developers-triangle-wrapper"></div> 
                 </div>
 
-                {this.state.currentDev === 'dev2' ? <div className="developers-dropdown-wrapper">
+                {this.state.dev2 ? <div className="developers-dropdown-wrapper">
                   <ul>
-                    <a href="https://github.com/kewlfeet"><li>Github</li></a>
-                    <a href="https://www.linkedin.com/in/don-ayesh-sondapperumaarachchi-827894146/"><li>LinkedIn</li></a>
-                    <a href="https://angel.co/u/don-sondapperumaarachchi"><li>Angel List</li></a>
-                    <a href="http://donsondapperumaarachchi.com/"><li>Portfolio</li></a>
-                    <a href="mailto:ayesh98@gmail.com"><li>Email</li></a>
+                    <li><a href="https://github.com/kewlfeet">Github</a></li>
+                    <li><a href="https://www.linkedin.com/in/don-ayesh-sondapperumaarachchi-827894146/">LinkedIn</a></li>
+                    <li><a href="https://angel.co/u/don-sondapperumaarachchi">Angel List</a></li>
+                    <li><a href="http://donsondapperumaarachchi.com/">Portfolio</a></li>
+                    <li><a href="mailto:ayesh98@gmail.com">Email</a></li>
                   </ul>
                 </div> : ''}
               </li>
 
               <li>
-                <div className="developer-name-wrapper" onClick={e => this.showContactInfo(e, 3)}>
+                <div className="developer-name-wrapper" onClick={e => this.toggleDev(e, 3)}>
                   <p>Josh Graham</p>
                   <div className="developers-triangle-wrapper"></div>
                 </div>
 
-                {this.state.currentDev === 'dev3' ? <div className="developers-dropdown-wrapper">
+                {this.state.dev3 ? <div className="developers-dropdown-wrapper">
                   <ul>
-                    <li>Github</li>
-                    <li>LinkedIn</li>
-                    <li>Angel List</li>
-                    <li>Portfolio</li>
-                    <li>Email</li>
+                    <li><a href="https://github.com/JoshGraham1">Github</a></li>
+                    <li><a href="https://www.linkedin.com/in/joshua-graham-b8962515a/">LinkedIn</a></li>
+                    <li><a href="https://angel.co/u/joshua-graham-10">Angel List</a></li>
+                    <li><a href="">Portfolio</a></li>
+                    <li><a href="">Email</a></li>
                   </ul>
                 </div> : ''}
               </li>
 
               <li>
-                <div className="developer-name-wrapper" onClick={e => this.showContactInfo(e, 4)}>
+                <div className="developer-name-wrapper" onClick={e => this.toggleDev(e, 4)}>
                   <p >John Enriquez</p>
                   <div className="developers-triangle-wrapper"></div>
                 </div>
 
-                {this.state.currentDev === 'dev4' ? <div className="developers-dropdown-wrapper">
+                {this.state.dev4 ? <div className="developers-dropdown-wrapper">
                   <ul>
-                    <a href="https://github.com/johnenriquez"><li>Github</li></a>
-                    <a href="https://www.linkedin.com/in/johnenriquez/"><li>LinkedIn</li></a>
-                    <a href="https://angel.co/u/john-enriquez"><li>Angel List</li></a>
-                    <a href="https://johnenriquez.com/"><li>Portfolio</li></a>
-                    <a href="mailto:john.enriquez@gmail.com"><li>Email</li></a>
+                    <li><a href="https://github.com/johnenriquez">Github</a></li>
+                    <li><a href="https://www.linkedin.com/in/johnenriquez/">LinkedIn</a></li>
+                    <li><a href="https://angel.co/u/john-enriquez">Angel List</a></li>
+                    <li><a href="https://johnenriquez.com/">Portfolio</a></li>
+                    <li><a href="mailto:john.enriquez@gmail.com">Email</a></li>
                   </ul>
                 </div> : ''}
               </li>
