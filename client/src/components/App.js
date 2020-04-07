@@ -24,7 +24,7 @@ class App extends React.Component {
 
   componentDidMount() {
     // CreateReactApp requires the REACT_APP_ prefix for env vars
-    let MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY;
+    let MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY; 
     // place the google maps api as a script tag in the head
     // this script places a google object on window.google
     let mapsApiUrl = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}`;
