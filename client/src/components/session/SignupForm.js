@@ -5,7 +5,7 @@ import * as SessionUtil from '../../util/session_util';
 import Mutations from '../../graphql/mutations';
 import '../../assets/stylesheets/SignupForm.css';
 
-const { REGISTER_USER } = Mutations;
+const { REGISTER_USER, LOGIN_USER } = Mutations;
 
 class RegisterForm extends React.Component {
   _isMounted = false;
@@ -37,11 +37,17 @@ class RegisterForm extends React.Component {
   }
 
   updateCache(client, { data }) {
-    SessionUtil.saveUserToCache(client, data.register);
+    const clientData = data.login || data.register;
+    SessionUtil.saveUserToCache(client, clientData);
   }
 
   registerAndRedirectTo(url, data) {
     SessionUtil.saveUserToLocalStorage(data.register);
+    this.props.history.push(url);
+  }
+
+  loginAndRedirectTo(url, data) {
+    SessionUtil.saveUserToLocalStorage(data.login);
     this.props.history.push(url);
   }
 
@@ -61,36 +67,21 @@ class RegisterForm extends React.Component {
     this.setState({ errorMessage: error.message });
   }
 
+  demoSignUp() {
+    return (
+      <Mutation
+        mutation={LOGIN_USER}
+        onError={error => this.handleGraphQLError(error)}
+        onCompleted={data => this.loginAndRedirectTo('/', data)}
+        update={(client, data) => this.updateCache(client, data)}
+      >
+        {LoginUser => (<button onClick={this.performMutation(LoginUser, { email: 'chocolatte@gmail.com', password: '12345678' })}>Demo Sign Up</button>)}
+      </Mutation>
+    );
+  }
+
   render() {
     const { firstName, lastName, email, password, zipCode } = this.state;
-    const vegetables = [
-      'leek',
-      'carrot',
-      'potato',
-      'yam',
-      'bokchoy',
-      'broccoli',
-      'beet',
-      'celery',
-      'lettuce',
-      'cucumber',
-      'kale',
-      'turnip',
-      'tomato',
-      'okra',
-      'radish',
-      'pumpkin',
-      'avocado',
-      'squash',
-      'zucchini',
-      'artichoke',
-      'cabbage',
-      'fennel'
-    ];
-    const zipCodes = ['94016', '96150', '96795', '90001', '94599', '97035'];
-
-    const randomVeggie = vegetables[Math.floor(Math.random() * vegetables.length)];
-    const randomZipCode = zipCodes[Math.floor(Math.random() * zipCodes.length)];
 
     return (
       <Mutation
@@ -123,13 +114,7 @@ class RegisterForm extends React.Component {
 
                 <small>By continuing, you agree to Morsel's Terms of Service and Privacy Policy.</small>
 
-                <button onClick={this.performMutation(RegisterUser, { 
-                  firstName: `${randomVeggie[0].toUpperCase() + randomVeggie.slice(1, randomVeggie.length)}`,
-                  lastName: 'Queen',
-                  zipCode: `${randomZipCode}`,
-                  email: `${randomVeggie}@gmail.com`, 
-                  password: '12345678'  
-                })}>Demo Sign Up</button>
+                {this.demoSignUp()}
 
                 <p className="or-separator-wrapper">or</p>
 

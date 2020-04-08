@@ -6,7 +6,7 @@ const ResultMap = ({ restaurants, find_loc }) => (
   <div className="search-result-map-container">
     <Map
       restaurants={restaurants} 
-      find_loc={find_loc}
+      find_loc={find_loc} 
       mode="search"
     />
   </div>

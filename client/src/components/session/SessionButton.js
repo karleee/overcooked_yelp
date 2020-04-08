@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ApolloConsumer, Query } from 'react-apollo';
 import { withRouter } from 'react-router';
-import * as SessionUtil from '../../util/session_util';
-import Queries from '../../graphql/queries';
 
-const { IS_LOGGED_IN } = Queries;
+import * as SessionUtil from '../../util/session_util';
+
+import Queries from '../../graphql/queries';
+const { IS_LOGGED_IN, CURRENT_USER } = Queries;
 
 const SessionButton = props => {
-
   const logOutAndRedirect = client => e => {
     e.preventDefault();
     SessionUtil.logOutUser(client);
