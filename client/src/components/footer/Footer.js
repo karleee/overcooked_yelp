@@ -43,7 +43,7 @@ class Footer extends Component {
     const allDevs = Object.keys(this.state);
 
     window.addEventListener('click', e => {
-      if (e.target.parentElement.className !== 'developer-name-wrapper') {
+      if (e.target.parentElement && e.target.parentElement.className !== 'developer-name-wrapper') {
         allDevs.forEach(dev => { this.setState({ [dev]: false }) });
       }
     });

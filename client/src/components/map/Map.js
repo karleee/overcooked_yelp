@@ -7,7 +7,6 @@ import * as MapUtil from '../../util/map_util';
 class Map extends React.Component {
   constructor(props) {
     super(props);
-    // move all this to render?
     this.singleRestaurant = (this.props.restaurants.length === 1);
     this.redirectToRestaurant = this.redirectToRestaurant.bind(this);
   }
@@ -24,7 +23,7 @@ class Map extends React.Component {
     const google = window.google;
 
     // wait til we get coords back from the api
-    MapUtil.setOptionsFromLocation(this.props.find_loc)
+    MapUtil.setOptionsFromLocation(this.props.find_loc) 
     .then(defaultOptions => {
       // render the map
       // consider setting default map options if restaurant.count === 0
@@ -119,7 +118,6 @@ class Map extends React.Component {
   }
 
   render() {
-    // const mapClass = this.singleRestaurant ? "single" : "list";  
     return (
       <div id="restaurant-map" className="map-wrapper"></div> 
     );

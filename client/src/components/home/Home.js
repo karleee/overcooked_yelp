@@ -20,8 +20,6 @@ const LinkToLocalCategory = ({ searchTerm, children }) => {
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>
         if (error) return <p>{error.message}</p>
-        // let find_loc = data.currentUserZipCode;
-        // temp fix for when user is not logged in
         let find_loc;
   
         if (data.currentUserId) {
@@ -44,7 +42,7 @@ const LocalizedMorselTitle = () => (
       if (loading) return <p>Loading...</p>
       if (error) return <p>{error.message}</p>
       return (
-        <h1>Morsel {data.currentUserZipCode}</h1>
+        <h1>Morsel</h1>
       )
     }}
   </Query>

@@ -96,7 +96,7 @@ class LoginForm extends React.Component {
 
                 <button onClick={this.performMutation(LoginUser, { email: 'onionking@gmail.com', password: '12345678' })}>Demo Login</button>
 
-                <p className="or-separator-wrapper">or</p>
+                <p className="or-separator-wrapper">or</p> 
 
                 <form onSubmit={this.performMutation(LoginUser, {email, password})}>
                   <input
