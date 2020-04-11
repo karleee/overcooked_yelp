@@ -328,7 +328,7 @@ class RestaurantDetail extends Component {
                       </Query>
                     </div>   
 
-                    <div className="photo-button-container">
+                    {/* <div className="photo-button-container">
                       <div className="photo-button-wrapper">
                         <div className="photo-button-icon-wrapper">
                           <img src="/images/restaurant_detail/action_menu/camera_icon.png" alt="Camera icon" />
@@ -336,16 +336,16 @@ class RestaurantDetail extends Component {
 
                         <p>Add Photo</p>
                       </div>
-                    </div>
+                    </div> */}
 
-                    <div className="save-button-container">
+                    {/* <div className="save-button-container">
                       <div className="save-button-wrapper">
                         <div className="save-button-icon-wrapper">
                           <img src="/images/restaurant_detail/action_menu/bookmark_icon.png" alt="Bookmark icon" />
                         </div>
 
                         <p>Save</p>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 

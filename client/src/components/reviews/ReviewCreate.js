@@ -227,7 +227,7 @@ class ReviewCreate extends Component {
                     />
                   </div>
 
-                  <div className="review-photos-form-wrapper">
+                  {/* <div className="review-photos-form-wrapper">
                     <h3>
                       Attach Photos <small>Optional</small>
                     </h3>
@@ -237,7 +237,7 @@ class ReviewCreate extends Component {
                         <div>Upload</div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   <button
                     id="submit-review"
                     className="submit-review-button"
