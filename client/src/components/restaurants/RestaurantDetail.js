@@ -346,7 +346,7 @@ class RestaurantDetail extends Component {
 
                         <p>Save</p>
                       </div> */}
-                    </div>
+                    {/* </div> */}
                   </div>
 
                   <div className="restaurant-detail-popular-dishes-container">
