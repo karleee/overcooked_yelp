@@ -221,7 +221,7 @@ class ReviewUpdate extends Component {
                         className="review-body-edit"
                         />
                     </div>
-                    <div className="review-photos-form-wrapper">
+                    {/* <div className="review-photos-form-wrapper">
                         <h3>Attach Photos <small>Optional</small></h3>
                         <div className="review-photos-upload-wrapper">
                         <div className="upload-icon">
@@ -229,7 +229,7 @@ class ReviewUpdate extends Component {
                             <div>Upload</div>
                         </div>
                         </div>
-                    </div>
+                    </div> */}
                     <button
                         id="submit-review"
                         className="submit-review-button"
