@@ -65,18 +65,19 @@ const login = async data => {
     // see if we can find the user
     const user = await User.findOne({ email: data.email });
 
-    if (!user) throw new Error("Invalid Credentials");
+    if (!user) throw new Error('The email address or password you entered is incorrect.');
 
     // do the passwords match?
     let password_matches = await bcrypt.compareSync(
       data.password,
       user.password
     );
+
     if (password_matches) {
       const token = jwt.sign({ _id: user._id }, keys.secretOrKey);
       return { token, loggedIn: true, ...user._doc, password: null };
     } else {
-      throw new Error('Invalid Credentials');
+      throw new Error('The email address or password you entered is incorrect.');
     }
   } catch (err) {
     throw new Error(err);
