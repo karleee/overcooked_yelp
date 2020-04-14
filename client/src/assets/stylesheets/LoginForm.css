@@ -191,8 +191,7 @@
 
 /* Errors styling */
 
-.email-error-container,
-.password-error-container {
+.login.error-container {
   position: absolute;
   top: 90%;
   left: 0;

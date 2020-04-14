@@ -10,8 +10,6 @@ import '../../assets/stylesheets/LoginForm.css';
 const { LOGIN_USER } = Mutations;
 
 class LoginForm extends React.Component {
-  // _isMounted = false;
-
   constructor(props) {
     super(props);
     this.state = {
@@ -33,13 +31,8 @@ class LoginForm extends React.Component {
     });
   }
 
-  // componentDidMount() {
-  //   this._isMounted = true;
-  // }
-
   componentWillUnmount() {
     this.setState({ errorMessage: '' });
-    // this._isMounted = false;
   }
 
   // Update user input
@@ -69,7 +62,6 @@ class LoginForm extends React.Component {
 
   // Sets the local state with found error message
   handleGraphQLError(error) {
-    // if (this._isMounted) this.setState({ errorMessage: error.message })
     this.setState({ errorMessage: error.message });
   }
 
@@ -77,18 +69,14 @@ class LoginForm extends React.Component {
     const { email, password, errorMessage } = this.state;
 
     // Setting correct error message
-    let emailError = '', passwordError = '', credentialsError = '';
+    let error = '';
 
-    if (errorMessage) {
-      if (errorMessage.includes('Email required')) {
-        emailError = 'Please fill out this field.';
-      } else if (errorMessage.includes('Invalid email')) {
-        emailError = 'Please include an \'@\' and a domain in the email address.';
-      } else if (errorMessage.includes('Password required')) {
-        passwordError = 'Please fill out this field.';
-      } else if (errorMessage.includes('Incorrect credentials')) {
-        credentialsError = 'The email address or password you entered is incorrect.';
-      }
+    if (errorMessage.includes('required')) {
+      error = 'Please fill out this field.';
+    } else if (errorMessage.includes('invalid')) {
+      error = 'Please include an \'@\' and a domain in the email address.';
+    } else if (errorMessage.includes('credentials')) {
+      error = 'The email address or password you entered is incorrect.';
     }
 
     return (
@@ -109,7 +97,7 @@ class LoginForm extends React.Component {
             </div> 
 
             <div className="credentials-error-container">
-              {credentialsError ? <p>{credentialsError}</p> : ''}
+              {errorMessage.includes('credentials') ? <p>{error}</p> : ''}
             </div>
 
             <div className="login body-container">
@@ -135,13 +123,13 @@ class LoginForm extends React.Component {
                         placeholder="Email"
                       />
 
-                      {emailError.length ? 
-                        <div className='email-error-container'>
+                      {errorMessage.includes('Email') ? 
+                        <div className='login error-container'>
                           <div className="error text-wrapper">
                             <div className="error-icon-wrapper">
                               <img src="/images/session/error_icon.png" alt="Error" /> 
                             </div>
-                            <p>{emailError}</p>
+                            <p>{error}</p>
                           </div>
               
                           <div className="errors triangle-wrapper">
@@ -158,13 +146,13 @@ class LoginForm extends React.Component {
                         placeholder="Password"
                       />
 
-                      {passwordError.length ? 
-                        <div className="password-error-container">
+                      {errorMessage.includes('Password') ? 
+                        <div className="login error-container">
                           <div className="error text-wrapper">
                             <div className="error-icon-wrapper">
                               <img src="/images/session/error_icon.png" alt="Error" />
                             </div>
-                            <p>{passwordError}</p>
+                            <p>{error}</p> 
                           </div>
 
                           <div className="errors triangle-wrapper">

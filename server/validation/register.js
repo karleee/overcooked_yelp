@@ -16,20 +16,20 @@ module.exports = function validateLoginInput(data) {
     return { message: 'Last name required', isValid: false };
   }
 
-  if (!Validator.isEmail(data.email)) {
-    return { message: 'Email is invalid', isValid: false };
+  if (Validator.isEmpty(data.email)) {
+    return { message: 'Email required', isValid: false };
   }
 
-  if (Validator.isEmpty(data.email)) {
-    return { message: 'Email field is required', isValid: false };
+  if (!Validator.isEmail(data.email)) {
+    return { message: 'Email invalid', isValid: false };
   }
 
   if (Validator.isEmpty(data.password)) {
-    return { message: 'Password field is required', isValid: false };
+    return { message: 'Password required', isValid: false };
   }
 
   if (Validator.isEmpty(data.zipCode)) {
-    return { message: 'Zip code field is required', isValid: false };
+    return { message: 'Zip code required', isValid: false };
   }
   
   return {

@@ -92,11 +92,17 @@ class RegisterForm extends React.Component {
 
   render() {
     const { firstName, lastName, email, password, zipCode, errorMessage } = this.state;
-    let firstNameError = '';
+    // let firstNameError = '';
+    // let lastNameError = '';
+    // let emailError = '';
+    // let passwordError = '';
+    let error = '';
 
     // Setting correct email message
-    if (errorMessage.includes('First name required')) {
-      firstNameError = 'Please fill out this field.';
+    if (errorMessage.includes('required')) {
+      error = 'Please fill out this field.';
+    } else if (errorMessage.includes('invalid')) {
+      error = 'Please include an \'@\' and a domain in the email address.';
     }
 
     return (
@@ -150,13 +156,13 @@ class RegisterForm extends React.Component {
                           placeholder="First Name"
                         />
 
-                        {firstNameError.length ?
-                          <div className='first-name-error-container'>
+                        {errorMessage.includes('First name') ?
+                          <div className='signup error-container'>
                             <div className="error text-wrapper">
                               <div className="error-icon-wrapper">
                                 <img src="/images/session/error_icon.png" alt="Error" />
                               </div>
-                              <p>{firstNameError}</p>
+                              <p>{error}</p>
                             </div>
 
                             <div className="errors triangle-wrapper">
@@ -171,28 +177,90 @@ class RegisterForm extends React.Component {
                           onChange={this.update('lastName')}
                           placeholder="Last Name"
                         />
+
+                        {errorMessage.includes('Last name') ?
+                          <div className='signup error-container'>
+                            <div className="error text-wrapper">
+                              <div className="error-icon-wrapper">
+                                <img src="/images/session/error_icon.png" alt="Error" />
+                              </div>
+                              <p>{error}</p>
+                            </div>
+
+                            <div className="errors triangle-wrapper">
+                              <div className="errors inner-triangle-wrapper"></div>
+                            </div>
+                          </div> : ''}
                       </div>
                     </div>
 
-                    <input
-                      value={email}
-                      onChange={this.update('email')}
-                      placeholder="Email"
-                    />
+                    <div className="signup email-input">
+                      <input
+                        value={email}
+                        onChange={this.update('email')}
+                        placeholder="Email"
+                      />
 
-                    <input
-                      value={password}
-                      onChange={this.update('password')}
-                      type="password"
-                      placeholder="Password"
-                    />
+                      {errorMessage.includes('Email') ?
+                        <div className='signup error-container'>
+                          <div className="error text-wrapper">
+                            <div className="error-icon-wrapper">
+                              <img src="/images/session/error_icon.png" alt="Error" />
+                            </div>
+                            <p>{error}</p>
+                          </div>
 
-                    <input
-                      value={zipCode}
-                      onChange={this.update('zipCode')}
-                      type="number"
-                      placeholder="Zip Code"
-                    />
+                          <div className="errors triangle-wrapper">
+                            <div className="errors inner-triangle-wrapper"></div>
+                          </div>
+                        </div> : ''}
+                    </div>
+
+                    <div className="signup password-input">
+                      <input
+                        value={password}
+                        onChange={this.update('password')}
+                        type="password"
+                        placeholder="Password"
+                      />
+
+                      {errorMessage.includes('Password') ?
+                        <div className='signup error-container'>
+                          <div className="error text-wrapper">
+                            <div className="error-icon-wrapper">
+                              <img src="/images/session/error_icon.png" alt="Error" />
+                            </div>
+                            <p>{error}</p>
+                          </div>
+
+                          <div className="errors triangle-wrapper">
+                            <div className="errors inner-triangle-wrapper"></div>
+                          </div>
+                        </div> : ''}
+                    </div>
+
+                    <div className="signup zip-code-input">
+                      <input
+                        value={zipCode}
+                        onChange={this.update('zipCode')}
+                        type="number"
+                        placeholder="Zip Code"
+                      />
+
+                      {errorMessage.includes('Zip code') ?
+                        <div className='signup error-container'>
+                          <div className="error text-wrapper">
+                            <div className="error-icon-wrapper">
+                              <img src="/images/session/error_icon.png" alt="Error" />
+                            </div>
+                            <p>{error}</p>
+                          </div>
+
+                          <div className="errors triangle-wrapper">
+                            <div className="errors inner-triangle-wrapper"></div>
+                          </div>
+                        </div> : ''}
+                    </div>
 
                     <button type="submit">Sign Up</button>
 
