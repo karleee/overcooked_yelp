@@ -17,8 +17,7 @@ const register = async data => {
 
     const existingUser = await User.findOne({ email });
 
-    if (existingUser) throw new Error('Email already registered');
-    //The email address you entered has already been registered.
+    if (existingUser) throw new Error('Existing credentials'); 
 
     const hashedPassword = await bcrypt.hash(password, 10);
 

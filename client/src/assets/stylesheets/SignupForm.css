@@ -263,3 +263,22 @@
   border-right: solid 11px transparent;
   margin-left: -11px;
 }
+
+/* Credentials error styling */
+
+.signup.credentials-error-container {
+  font-family: 'helveticaNormal';
+  font-size: 1em;
+  color: var(--black);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px 200px;
+}
+
+.signup.credentials-error-container p {
+  box-sizing: border-box;
+  padding: 20px 15px 20px 20px;
+  width: 100%;
+  border-radius: 5px;
+  background: var(--errors-red); 
+}

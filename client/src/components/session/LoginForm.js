@@ -96,7 +96,7 @@ class LoginForm extends React.Component {
                 </svg>
             </div> 
 
-            <div className="credentials-error-container">
+            <div className="login credentials-error-container">
               {errorMessage.includes('credentials') ? <p>{error}</p> : ''}
             </div>
 

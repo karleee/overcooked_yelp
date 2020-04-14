@@ -92,10 +92,6 @@ class RegisterForm extends React.Component {
 
   render() {
     const { firstName, lastName, email, password, zipCode, errorMessage } = this.state;
-    // let firstNameError = '';
-    // let lastNameError = '';
-    // let emailError = '';
-    // let passwordError = '';
     let error = '';
 
     // Setting correct email message
@@ -103,6 +99,8 @@ class RegisterForm extends React.Component {
       error = 'Please fill out this field.';
     } else if (errorMessage.includes('invalid')) {
       error = 'Please include an \'@\' and a domain in the email address.';
+    } else if (errorMessage.includes('credentials')) {
+      error = 'The email address you entered has already been registered.';
     }
 
     return (
@@ -122,7 +120,9 @@ class RegisterForm extends React.Component {
               </svg>
             </div> 
 
-            {/* {this.renderErrorMessage()} */}
+            <div className="signup credentials-error-container">
+              {errorMessage.includes('credentials') ? <p>{error}</p> : ''}
+            </div>
 
             <div className="signup body-container">
               <div className="signup main-form-container">
