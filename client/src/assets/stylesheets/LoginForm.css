@@ -194,7 +194,7 @@
 .email-error-container,
 .password-error-container {
   position: absolute;
-  top: 85%;
+  top: 90%;
   left: 0;
   z-index: 1;
 }

@@ -92,17 +92,13 @@ class RegisterForm extends React.Component {
       >
         {RegisterUser => (
           <div className="signup-form-container">
-            <div className="signup-form-header">
-              <Link to='/'>
-                <div className="logo-wrapper">
-                  <svg>
-                    <text x="50%" y="50%">morsel</text>
-                  </svg>
-
-                  <img src="/images/homepage/logo.png" alt="Logo" />
-                </div>
-              </Link>
-            </div>
+            <div className="signup navbar-container">
+              <svg>
+                <Link to='/'>
+                  <text x="50%" y="50%">morsel</text>
+                </Link>
+              </svg>
+            </div> 
 
             {this.renderErrorMessage()}
 
