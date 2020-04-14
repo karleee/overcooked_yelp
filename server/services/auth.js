@@ -17,7 +17,8 @@ const register = async data => {
 
     const existingUser = await User.findOne({ email });
 
-    if (existingUser) throw new Error('User already exists');
+    if (existingUser) throw new Error('Email already registered');
+    //The email address you entered has already been registered.
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -65,7 +66,7 @@ const login = async data => {
     // see if we can find the user
     const user = await User.findOne({ email: data.email });
 
-    if (!user) throw new Error('The email address or password you entered is incorrect.');
+    if (!user) throw new Error('Incorrect credentials');
 
     // do the passwords match?
     let password_matches = await bcrypt.compareSync(
@@ -77,7 +78,7 @@ const login = async data => {
       const token = jwt.sign({ _id: user._id }, keys.secretOrKey);
       return { token, loggedIn: true, ...user._doc, password: null };
     } else {
-      throw new Error('The email address or password you entered is incorrect.');
+      throw new Error('Incorrect credentials');
     }
   } catch (err) {
     throw new Error(err);

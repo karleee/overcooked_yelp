@@ -9,11 +9,11 @@ module.exports = function validateLoginInput(data) {
   data.zipCode = validText(data.zipCode) ? data.zipCode : '';
 
   if (Validator.isEmpty(data.firstName)) {
-    return { message: 'First name field is required', isValid: false };
+    return { message: 'First name required', isValid: false };
   }
 
   if (Validator.isEmpty(data.lastName)) {
-    return { message: 'Last name field is required', isValid: false };
+    return { message: 'Last name required', isValid: false };
   }
 
   if (!Validator.isEmail(data.email)) {

@@ -8,7 +8,7 @@ import '../../assets/stylesheets/SignupForm.css';
 const { REGISTER_USER, LOGIN_USER } = Mutations;
 
 class RegisterForm extends React.Component {
-  _isMounted = false;
+  // _isMounted = false;
 
   constructor(props) {
     super(props);
@@ -20,16 +20,26 @@ class RegisterForm extends React.Component {
       zipCode: '',
       errorMessage: ''
     };
+    this.monitorClick();
     this.performMutation.bind(this);
   }
 
-  componentDidMount() {
-    this._isMounted = true;
+  // Monitors user clicking and closes error if necessary
+  monitorClick() {
+    window.addEventListener('click', e => {
+      if (e.target.parentElement.className !== 'login email-input') {
+        this.setState({ errorMessage: '' });
+      }
+    });
   }
+
+  // componentDidMount() {
+  //   this._isMounted = true;
+  // }
 
   componentWillUnmount() {
     this.setState({ errorMessage: '' });
-    this._isMounted = false;
+    // this._isMounted = false;
   }
 
   update(field) {
@@ -81,7 +91,13 @@ class RegisterForm extends React.Component {
   }
 
   render() {
-    const { firstName, lastName, email, password, zipCode } = this.state;
+    const { firstName, lastName, email, password, zipCode, errorMessage } = this.state;
+    let firstNameError = '';
+
+    // Setting correct email message
+    if (errorMessage.includes('First name required')) {
+      firstNameError = 'Please fill out this field.';
+    }
 
     return (
       <Mutation
@@ -91,7 +107,7 @@ class RegisterForm extends React.Component {
         update={(client, data) => this.updateCache(client, data)}
       >
         {RegisterUser => (
-          <div className="signup-form-container">
+          <div className="signup content-container">
             <div className="signup navbar-container">
               <svg>
                 <Link to='/'>
@@ -100,70 +116,92 @@ class RegisterForm extends React.Component {
               </svg>
             </div> 
 
-            {this.renderErrorMessage()}
+            {/* {this.renderErrorMessage()} */}
 
-            <div className="signup-form-body-container">
-              <div className="signup-main-form-container">
-                <h1>Sign Up for Morsel</h1>
+            <div className="signup body-container">
+              <div className="signup main-form-container">
+                <div className="signup header-container">
+                  <h1>Sign Up for Morsel</h1>
 
-                <p>Connect with great local businesses</p>
+                  <p>Connect with great local businesses</p>
 
-                <small>By continuing, you agree to Morsel's Terms of Service and Privacy Policy.</small>
+                  <small>By continuing, you agree to Morsel's Terms of Service and Privacy Policy.</small>
 
-                {this.demoSignUp()}
+                  {this.demoSignUp()}
 
-                <p className="or-separator-wrapper">or</p>
+                  <p className="or-separator-wrapper">or</p>
+                </div>
 
-                <form
-                  onSubmit={this.performMutation(RegisterUser, {  
-                    firstName,
-                    lastName,
-                    email,
-                    password,
-                    zipCode
-                  })}
-                >
-                  <div className="first-and-last-name-container">
+                <div className="signup form-container">
+                  <form
+                    onSubmit={this.performMutation(RegisterUser, {  
+                      firstName,
+                      lastName,
+                      email,
+                      password,
+                      zipCode
+                    })}
+                  >
+                    <div className="signup first-last-name-input">
+                      <div className="signup first-name-input">
+                        <input
+                          value={firstName}
+                          onChange={this.update('firstName')}
+                          placeholder="First Name"
+                        />
+
+                        {firstNameError.length ?
+                          <div className='first-name-error-container'>
+                            <div className="error text-wrapper">
+                              <div className="error-icon-wrapper">
+                                <img src="/images/session/error_icon.png" alt="Error" />
+                              </div>
+                              <p>{firstNameError}</p>
+                            </div>
+
+                            <div className="errors triangle-wrapper">
+                              <div className="errors inner-triangle-wrapper"></div>
+                            </div>
+                          </div> : ''}
+                      </div>
+
+                      <div className="signup last-name-input">
+                        <input
+                          value={lastName}
+                          onChange={this.update('lastName')}
+                          placeholder="Last Name"
+                        />
+                      </div>
+                    </div>
+
                     <input
-                      value={firstName}
-                      onChange={this.update('firstName')}
-                      placeholder="First Name"
+                      value={email}
+                      onChange={this.update('email')}
+                      placeholder="Email"
                     />
 
                     <input
-                      value={lastName}
-                      onChange={this.update('lastName')}
-                      placeholder="Last Name"
+                      value={password}
+                      onChange={this.update('password')}
+                      type="password"
+                      placeholder="Password"
                     />
-                  </div>
 
-                  <input
-                    value={email}
-                    onChange={this.update('email')}
-                    placeholder="Email"
-                  />
+                    <input
+                      value={zipCode}
+                      onChange={this.update('zipCode')}
+                      type="number"
+                      placeholder="Zip Code"
+                    />
 
-                  <input
-                    value={password}
-                    onChange={this.update('password')}
-                    type="password"
-                    placeholder="Password"
-                  />
+                    <button type="submit">Sign Up</button>
 
-                  <input
-                    value={zipCode}
-                    onChange={this.update('zipCode')}
-                    type="number"
-                    placeholder="Zip Code"
-                  />
-
-                  <button type="submit">Sign Up</button>
-
-                  <small>Already on Morsel? <Link to='/login'>Log In</Link></small>
-                </form>
+                    <small>Already on Morsel? <Link to='/login'>Log In</Link></small>
+                  </form>
+                </div>
               </div>
 
-              <div className="signup-form-image-container">
+              <div className="signup image-container">
                 <img src="/images/session/login_image.png" alt="Sign up splash thumbnail" />
               </div>
             </div>

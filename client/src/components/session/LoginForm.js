@@ -77,7 +77,7 @@ class LoginForm extends React.Component {
     const { email, password, errorMessage } = this.state;
 
     // Setting correct error message
-    let emailError = '', passwordError = '';
+    let emailError = '', passwordError = '', credentialsError = '';
 
     if (errorMessage) {
       if (errorMessage.includes('Email required')) {
@@ -86,6 +86,8 @@ class LoginForm extends React.Component {
         emailError = 'Please include an \'@\' and a domain in the email address.';
       } else if (errorMessage.includes('Password required')) {
         passwordError = 'Please fill out this field.';
+      } else if (errorMessage.includes('Incorrect credentials')) {
+        credentialsError = 'The email address or password you entered is incorrect.';
       }
     }
 
@@ -97,7 +99,7 @@ class LoginForm extends React.Component {
         update={(client, data) => this.updateCache(client, data)}
       >
         {LoginUser => (
-          <div className="login form-container"> 
+          <div className="login content-container"> 
             <div className="login navbar-container">
                 <svg>
                   <Link to='/'>
@@ -107,7 +109,7 @@ class LoginForm extends React.Component {
             </div> 
 
             <div className="credentials-error-container">
-              {errorMessage.includes('incorrect') ? <p>{SessionUtil.stripGraphQLPrefix(errorMessage)}</p> : ''}
+              {credentialsError ? <p>{credentialsError}</p> : ''}
             </div>
 
             <div className="login body-container">
@@ -178,7 +180,7 @@ class LoginForm extends React.Component {
                 </div>
               </div>
 
-              <div className="login-form-image-container">
+              <div className="login image-container">
                 <img src="/images/session/login_image.png" alt="Log in splash thumbnail" />
               </div>
             </div>
