@@ -1,6 +1,6 @@
 @import 'variables.css';
 
-.login-form-container {
+.login.form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,33 +11,20 @@
 /* Header bar styling */
 
 .login.navbar-container { 
-  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center; 
   align-items: center;
   width: 100%;
-  height: 9%;
+  height: 10%;
   background: var(--red);
 }
 
-.login.navbar-container a .logo-wrapper {
-  position: absolute;
-  top: 18px;
-  left: 46.5%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center; 
-  width: 100%;
+.login.navbar-container svg {
+  height: 100%;
 }
 
-.login.navbar-container a .logo-wrapper svg {
-  width: 85px;
-  height: 30px;
-}
-
-.login.navbar-container a .logo-wrapper svg text {
+.login.navbar-container svg a text {
   font-family: 'helveticaRounded';
   font-size: 24px;
   font-weight: bold;
@@ -49,11 +36,6 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   paint-order: stroke fill;
-}
-
-.login.navbar-container a .logo-wrapper img {
-  width: 25px;
-  margin: -15px 0 0 -2px;
 }
 
 /* Main body styling */
@@ -77,12 +59,6 @@
   height: 100%;
   text-align: center;
   margin-right: 100px;
-}
-
-/* Header styling */
-
-.login.header-container {
-  width: 100%;
 }
 
 /* Header styling */
@@ -237,15 +213,19 @@
 }
 
 .error-icon-wrapper {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   margin-right: 10px;
-  background: green;
+  overflow: hidden;
+}
+
+.error-icon-wrapper img {
+  width: 100%;
 }
 
 .errors.triangle-wrapper {
   position: absolute;
-  top: -12px;
+  top: -11px;
   left: 7%;
   content: '';
   width: 0;
@@ -267,4 +247,22 @@
   border-left: solid 11px transparent;
   border-right: solid 11px transparent;
   margin-left: -11px;
+}
+
+/* Credentials error styling */
+
+.credentials-error-container {
+  font-family: 'helveticaNormal';
+  font-size: 1em;
+  color: var(--black);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px 100px;
+}
+
+.credentials-error-container p {
+  box-sizing: border-box;
+  padding: 20px 15px;
+  width: 100%;
+  background: var(--errors-red); 
 }

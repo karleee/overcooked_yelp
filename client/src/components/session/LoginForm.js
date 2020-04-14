@@ -32,8 +32,13 @@ class LoginForm extends React.Component {
     this._isMounted = false;
   }
 
+  // Update user input
+  // Remove error message upon input update
   update(field) {
-    return e => this.setState({ [field]: e.target.value });
+    return e => {
+      this.setState({ [field]: e.target.value });
+      this.setState({ errorMessage: '' });
+    }
   }
 
   updateCache(client, { data }) {
@@ -50,14 +55,6 @@ class LoginForm extends React.Component {
       e.preventDefault();
       Mutation({ variables });
     };
-  }
-
-  // Renders invalid credentails error message
-  renderErrorMessage() {
-    const { errorMessage } = this.state;
-    if (errorMessage.includes('incorrect')) {
-      return errorMessage ? <p>{SessionUtil.stripGraphQLPrefix(errorMessage)}</p> : null;
-    }
   }
 
   // Sets the local state with found error message
@@ -81,8 +78,6 @@ class LoginForm extends React.Component {
       }
     }
 
-    console.log(errorMessage);
-
     return (
       <Mutation
         mutation={LOGIN_USER}
@@ -91,20 +86,18 @@ class LoginForm extends React.Component {
         update={(client, data) => this.updateCache(client, data)}
       >
         {LoginUser => (
-          <div className="login-form-container"> 
+          <div className="login form-container"> 
             <div className="login navbar-container">
-              <Link to='/'>
-                <div className="logo-wrapper">
-                  <svg>
+                <svg>
+                  <Link to='/'>
                     <text x="50%" y="50%">morsel</text>
-                  </svg>
-
-                  <img src="/images/homepage/logo.png" alt="Logo" />
-                </div>
-              </Link>
+                  </Link>
+                </svg>
             </div> 
 
-            {this.renderErrorMessage()}
+            <div className="credentials-error-container">
+              {errorMessage.includes('incorrect') ? <p>{SessionUtil.stripGraphQLPrefix(errorMessage)}</p> : ''}
+            </div>
 
             <div className="login body-container">
               <div className="login main-form-container">
@@ -132,7 +125,9 @@ class LoginForm extends React.Component {
                       {emailError.length ? 
                         <div className='email-error-container'>
                           <div className="error text-wrapper">
-                            <div className="error-icon-wrapper"></div>
+                            <div className="error-icon-wrapper">
+                              <img src="/images/session/error_icon.png" alt="Error" /> 
+                            </div>
                             <p>{emailError}</p>
                           </div>
               
@@ -152,7 +147,16 @@ class LoginForm extends React.Component {
 
                       {passwordError.length ? 
                         <div className="password-error-container">
-                          <p>{passwordError}</p>
+                          <div className="error text-wrapper">
+                            <div className="error-icon-wrapper">
+                              <img src="/images/session/error_icon.png" alt="Error" />
+                            </div>
+                            <p>{passwordError}</p>
+                          </div>
+
+                          <div className="errors triangle-wrapper">
+                            <div className="errors inner-triangle-wrapper"></div>
+                          </div>
                         </div> : ''}
                     </div>
 

@@ -19,7 +19,7 @@
   background: var(--red);
 }
 
-.signup-form-header a .logo-wrapper {
+/* .signup-form-header a .logo-wrapper {
   position: absolute;
   top: 18px;
   left: 46.5%;
@@ -28,14 +28,14 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-}
+} */
 
-.signup-form-header a .logo-wrapper svg {
+/* .signup-form-header a .logo-wrapper svg {
   width: 85px;
   height: 30px;
-}
+} */
 
-.signup-form-header a .logo-wrapper svg text {
+/* .signup-form-header a .logo-wrapper svg text {
   font-family: 'helveticaRounded';
   font-size: 24px;
   font-weight: bold;
@@ -47,12 +47,12 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   paint-order: stroke fill;
-}
+} */
 
-.signup-form-header a .logo-wrapper img {
+/* .signup-form-header a .logo-wrapper img {
   width: 25px;
   margin: -15px 0 0 -2px;
-}
+} */
 
 .signup-form-body-container {
   display: flex;
