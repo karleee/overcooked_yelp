@@ -10,7 +10,7 @@ import '../../assets/stylesheets/LoginForm.css';
 const { LOGIN_USER } = Mutations;
 
 class LoginForm extends React.Component {
-  _isMounted = false;
+  // _isMounted = false;
 
   constructor(props) {
     super(props);
@@ -19,17 +19,27 @@ class LoginForm extends React.Component {
       password: '',
       errorMessage: ''
     };
+    this.monitorClick();
     this.performMutation.bind(this);
     this.handleGraphQLError.bind(this);
   }
 
-  componentDidMount() {
-    this._isMounted = true;
+  // Monitors user clicking and closes error if necessary
+  monitorClick() {
+    window.addEventListener('click', e => {
+      if (e.target.parentElement.className !== 'login email-input') {
+        this.setState({ errorMessage: '' });
+      }
+    });
   }
+
+  // componentDidMount() {
+  //   this._isMounted = true;
+  // }
 
   componentWillUnmount() {
     this.setState({ errorMessage: '' });
-    this._isMounted = false;
+    // this._isMounted = false;
   }
 
   // Update user input
@@ -59,7 +69,8 @@ class LoginForm extends React.Component {
 
   // Sets the local state with found error message
   handleGraphQLError(error) {
-    if (this._isMounted) this.setState({ errorMessage: error.message })
+    // if (this._isMounted) this.setState({ errorMessage: error.message })
+    this.setState({ errorMessage: error.message });
   }
 
   render() {
