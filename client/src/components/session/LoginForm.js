@@ -10,8 +10,6 @@ import '../../assets/stylesheets/LoginForm.css';
 const { LOGIN_USER } = Mutations;
 
 class LoginForm extends React.Component {
-  _isMounted = false;
-
   constructor(props) {
     super(props);
     this.state = {
@@ -19,21 +17,31 @@ class LoginForm extends React.Component {
       password: '',
       errorMessage: ''
     };
+    this.monitorClick();
     this.performMutation.bind(this);
     this.handleGraphQLError.bind(this);
   }
 
-  componentDidMount() {
-    this._isMounted = true;
+  // Monitors user clicking and closes error if necessary
+  monitorClick() {
+    window.addEventListener('click', e => {
+      if (e.target.parentElement.className !== 'login email-input') {
+        this.setState({ errorMessage: '' });
+      }
+    });
   }
 
   componentWillUnmount() {
     this.setState({ errorMessage: '' });
-    this._isMounted = false;
   }
 
+  // Update user input
+  // Remove error message upon input update
   update(field) {
-    return e => this.setState({ [field]: e.target.value });
+    return e => {
+      this.setState({ [field]: e.target.value });
+      this.setState({ errorMessage: '' });
+    }
   }
 
   updateCache(client, { data }) {
@@ -52,17 +60,25 @@ class LoginForm extends React.Component {
     };
   }
 
-  renderErrorMessage() {
-    const { errorMessage } = this.state;
-    return (errorMessage) ? <p>{SessionUtil.stripGraphQLPrefix(errorMessage)}</p> : null;
-  }
-
+  // Sets the local state with found error message
   handleGraphQLError(error) {
-    if (this._isMounted) this.setState({ errorMessage: error.message })
+    this.setState({ errorMessage: error.message });
   }
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, errorMessage } = this.state;
+
+    // Setting correct error message
+    let error = '';
+
+    if (errorMessage.includes('required')) {
+      error = 'Please fill out this field.';
+    } else if (errorMessage.includes('invalid')) {
+      error = 'Please include an \'@\' and a domain in the email address.';
+    } else if (errorMessage.includes('credentials')) {
+      error = 'The email address or password you entered is incorrect.';
+    }
+
     return (
       <Mutation
         mutation={LOGIN_USER}
@@ -71,54 +87,88 @@ class LoginForm extends React.Component {
         update={(client, data) => this.updateCache(client, data)}
       >
         {LoginUser => (
-          <div className="login-form-container"> 
-              <div className="login-form-header">
-                <Link to='/'>
-                  <div className="logo-wrapper">
-                    <svg>
-                      <text x="50%" y="50%">morsel</text>
-                    </svg>
+          <div className="login content-container"> 
+            <div className="login navbar-container">
+                <svg>
+                  <Link to='/'>
+                    <text x="50%" y="50%">morsel</text>
+                  </Link>
+                </svg>
+            </div> 
 
-                    <img src="/images/homepage/logo.png" alt="Logo" />
-                  </div>
-                </Link>
-              </div> 
+            <div className="login credentials-error-container">
+              {errorMessage.includes('credentials') ? <p>{error}</p> : ''}
+            </div>
 
-            {this.renderErrorMessage()}
+            <div className="login body-container">
+              <div className="login main-form-container">
+                <div className="login header-container">
+                  <h1>Log In to Morsel</h1>
 
-            <div className="login-form-body-container">
-              <div className="login-main-form-container">
-                <h1>Log In to Morsel</h1>
+                  <p>New to Morsel? <Link to='/signup'>Sign Up</Link></p>
 
-                <p>New to Morsel? <Link to='/signup'>Sign Up</Link></p>
+                  <small>By logging in, you agree to Morsel's Terms of Service and Privacy Policy.</small>
 
-                <small>By logging in, you agree to Morsel's Terms of Service and Privacy Policy.</small>
+                  <button onClick={this.performMutation(LoginUser, { email: 'onionking@gmail.com', password: '12345678' })}>Demo Login</button>
 
-                <button onClick={this.performMutation(LoginUser, { email: 'onionking@gmail.com', password: '12345678' })}>Demo Login</button>
+                  <p className="or-separator-wrapper">or</p> 
+                </div>
 
-                <p className="or-separator-wrapper">or</p> 
+                <div className="login form-container">
+                  <form onSubmit={this.performMutation(LoginUser, {email, password})}>
+                    <div className="login email-input">
+                      <input
+                        value={email}
+                        onChange={this.update("email")}
+                        placeholder="Email"
+                      />
 
-                <form onSubmit={this.performMutation(LoginUser, {email, password})}>
-                  <input
-                    value={email}
-                    onChange={this.update("email")}
-                    placeholder="Email"
-                  />
+                      {errorMessage.includes('Email') ? 
+                        <div className='login error-container'>
+                          <div className="error text-wrapper">
+                            <div className="error-icon-wrapper">
+                              <img src="/images/session/error_icon.png" alt="Error" /> 
+                            </div>
+                            <p>{error}</p>
+                          </div>
+              
+                          <div className="errors triangle-wrapper">
+                            <div className="errors inner-triangle-wrapper"></div>
+                          </div>
+                        </div> : ''}
+                    </div>
 
-                  <input
-                    value={password}
-                    onChange={this.update("password")}
-                    type="password"
-                    placeholder="Password"
-                  />
+                    <div className="login password-input">
+                      <input
+                        value={password}
+                        onChange={this.update("password")}
+                        type="password"
+                        placeholder="Password"
+                      />
 
-                  <button type="submit">Log In</button>
+                      {errorMessage.includes('Password') ? 
+                        <div className="login error-container">
+                          <div className="error text-wrapper">
+                            <div className="error-icon-wrapper">
+                              <img src="/images/session/error_icon.png" alt="Error" />
+                            </div>
+                            <p>{error}</p> 
+                          </div>
 
-                  <small>New to Morsel? <Link to='/signup'>Sign Up</Link></small>
-                </form>
+                          <div className="errors triangle-wrapper">
+                            <div className="errors inner-triangle-wrapper"></div>
+                          </div>
+                        </div> : ''}
+                    </div>
+
+                    <button type="submit">Log In</button>
+
+                    <small>New to Morsel? <Link to='/signup'>Sign Up</Link></small>
+                  </form>
+                </div>
               </div>
 
-              <div className="login-form-image-container">
+              <div className="login image-container">
                 <img src="/images/session/login_image.png" alt="Log in splash thumbnail" />
               </div>
             </div>

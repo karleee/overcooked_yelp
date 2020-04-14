@@ -9,27 +9,27 @@ module.exports = function validateLoginInput(data) {
   data.zipCode = validText(data.zipCode) ? data.zipCode : '';
 
   if (Validator.isEmpty(data.firstName)) {
-    return { message: 'First name field is required', isValid: false };
+    return { message: 'First name required', isValid: false };
   }
 
   if (Validator.isEmpty(data.lastName)) {
-    return { message: 'Last name field is required', isValid: false };
-  }
-
-  if (!Validator.isEmail(data.email)) {
-    return { message: 'Email is invalid', isValid: false };
+    return { message: 'Last name required', isValid: false };
   }
 
   if (Validator.isEmpty(data.email)) {
-    return { message: 'Email field is required', isValid: false };
+    return { message: 'Email required', isValid: false };
+  }
+
+  if (!Validator.isEmail(data.email)) {
+    return { message: 'Email invalid', isValid: false };
   }
 
   if (Validator.isEmpty(data.password)) {
-    return { message: 'Password field is required', isValid: false };
+    return { message: 'Password required', isValid: false };
   }
 
   if (Validator.isEmpty(data.zipCode)) {
-    return { message: 'Zip code field is required', isValid: false };
+    return { message: 'Zip code required', isValid: false };
   }
   
   return {

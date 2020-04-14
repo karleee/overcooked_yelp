@@ -8,7 +8,7 @@ import '../../assets/stylesheets/SignupForm.css';
 const { REGISTER_USER, LOGIN_USER } = Mutations;
 
 class RegisterForm extends React.Component {
-  _isMounted = false;
+  // _isMounted = false;
 
   constructor(props) {
     super(props);
@@ -20,16 +20,26 @@ class RegisterForm extends React.Component {
       zipCode: '',
       errorMessage: ''
     };
+    this.monitorClick();
     this.performMutation.bind(this);
   }
 
-  componentDidMount() {
-    this._isMounted = true;
+  // Monitors user clicking and closes error if necessary
+  monitorClick() {
+    window.addEventListener('click', e => {
+      if (e.target.parentElement.className !== 'login email-input') {
+        this.setState({ errorMessage: '' });
+      }
+    });
   }
+
+  // componentDidMount() {
+  //   this._isMounted = true;
+  // }
 
   componentWillUnmount() {
     this.setState({ errorMessage: '' });
-    this._isMounted = false;
+    // this._isMounted = false;
   }
 
   update(field) {
@@ -81,7 +91,17 @@ class RegisterForm extends React.Component {
   }
 
   render() {
-    const { firstName, lastName, email, password, zipCode } = this.state;
+    const { firstName, lastName, email, password, zipCode, errorMessage } = this.state;
+    let error = '';
+
+    // Setting correct email message
+    if (errorMessage.includes('required')) {
+      error = 'Please fill out this field.';
+    } else if (errorMessage.includes('invalid')) {
+      error = 'Please include an \'@\' and a domain in the email address.';
+    } else if (errorMessage.includes('credentials')) {
+      error = 'The email address you entered has already been registered.';
+    }
 
     return (
       <Mutation
@@ -91,83 +111,165 @@ class RegisterForm extends React.Component {
         update={(client, data) => this.updateCache(client, data)}
       >
         {RegisterUser => (
-          <div className="signup-form-container">
-            <div className="signup-form-header">
-              <Link to='/'>
-                <div className="logo-wrapper">
-                  <svg>
-                    <text x="50%" y="50%">morsel</text>
-                  </svg>
+          <div className="signup content-container">
+            <div className="signup navbar-container">
+              <svg>
+                <Link to='/'>
+                  <text x="50%" y="50%">morsel</text>
+                </Link>
+              </svg>
+            </div> 
 
-                  <img src="/images/homepage/logo.png" alt="Logo" />
-                </div>
-              </Link>
+            <div className="signup credentials-error-container">
+              {errorMessage.includes('credentials') ? <p>{error}</p> : ''}
             </div>
 
-            {this.renderErrorMessage()}
+            <div className="signup body-container">
+              <div className="signup main-form-container">
+                <div className="signup header-container">
+                  <h1>Sign Up for Morsel</h1>
 
-            <div className="signup-form-body-container">
-              <div className="signup-main-form-container">
-                <h1>Sign Up for Morsel</h1>
+                  <p>Connect with great local businesses</p>
 
-                <p>Connect with great local businesses</p>
+                  <small>By continuing, you agree to Morsel's Terms of Service and Privacy Policy.</small>
 
-                <small>By continuing, you agree to Morsel's Terms of Service and Privacy Policy.</small>
+                  {this.demoSignUp()}
 
-                {this.demoSignUp()}
+                  <p className="or-separator-wrapper">or</p>
+                </div>
 
-                <p className="or-separator-wrapper">or</p>
+                <div className="signup form-container">
+                  <form
+                    onSubmit={this.performMutation(RegisterUser, {  
+                      firstName,
+                      lastName,
+                      email,
+                      password,
+                      zipCode
+                    })}
+                  >
+                    <div className="signup first-last-name-input">
+                      <div className="signup first-name-input">
+                        <input
+                          value={firstName}
+                          onChange={this.update('firstName')}
+                          placeholder="First Name"
+                        />
 
-                <form
-                  onSubmit={this.performMutation(RegisterUser, {  
-                    firstName,
-                    lastName,
-                    email,
-                    password,
-                    zipCode
-                  })}
-                >
-                  <div className="first-and-last-name-container">
-                    <input
-                      value={firstName}
-                      onChange={this.update('firstName')}
-                      placeholder="First Name"
-                    />
+                        {errorMessage.includes('First name') ?
+                          <div className='signup error-container'>
+                            <div className="error text-wrapper">
+                              <div className="error-icon-wrapper">
+                                <img src="/images/session/error_icon.png" alt="Error" />
+                              </div>
+                              <p>{error}</p>
+                            </div>
 
-                    <input
-                      value={lastName}
-                      onChange={this.update('lastName')}
-                      placeholder="Last Name"
-                    />
-                  </div>
+                            <div className="errors triangle-wrapper">
+                              <div className="errors inner-triangle-wrapper"></div>
+                            </div>
+                          </div> : ''}
+                      </div>
 
-                  <input
-                    value={email}
-                    onChange={this.update('email')}
-                    placeholder="Email"
-                  />
+                      <div className="signup last-name-input">
+                        <input
+                          value={lastName}
+                          onChange={this.update('lastName')}
+                          placeholder="Last Name"
+                        />
 
-                  <input
-                    value={password}
-                    onChange={this.update('password')}
-                    type="password"
-                    placeholder="Password"
-                  />
+                        {errorMessage.includes('Last name') ?
+                          <div className='signup error-container'>
+                            <div className="error text-wrapper">
+                              <div className="error-icon-wrapper">
+                                <img src="/images/session/error_icon.png" alt="Error" />
+                              </div>
+                              <p>{error}</p>
+                            </div>
 
-                  <input
-                    value={zipCode}
-                    onChange={this.update('zipCode')}
-                    type="number"
-                    placeholder="Zip Code"
-                  />
+                            <div className="errors triangle-wrapper">
+                              <div className="errors inner-triangle-wrapper"></div>
+                            </div>
+                          </div> : ''}
+                      </div>
+                    </div>
 
-                  <button type="submit">Sign Up</button>
+                    <div className="signup email-input">
+                      <input
+                        value={email}
+                        onChange={this.update('email')}
+                        placeholder="Email"
+                      />
 
-                  <small>Already on Morsel? <Link to='/login'>Log In</Link></small>
-                </form>
+                      {errorMessage.includes('Email') ?
+                        <div className='signup error-container'>
+                          <div className="error text-wrapper">
+                            <div className="error-icon-wrapper">
+                              <img src="/images/session/error_icon.png" alt="Error" />
+                            </div>
+                            <p>{error}</p>
+                          </div>
+
+                          <div className="errors triangle-wrapper">
+                            <div className="errors inner-triangle-wrapper"></div>
+                          </div>
+                        </div> : ''}
+                    </div>
+
+                    <div className="signup password-input">
+                      <input
+                        value={password}
+                        onChange={this.update('password')}
+                        type="password"
+                        placeholder="Password"
+                      />
+
+                      {errorMessage.includes('Password') ?
+                        <div className='signup error-container'>
+                          <div className="error text-wrapper">
+                            <div className="error-icon-wrapper">
+                              <img src="/images/session/error_icon.png" alt="Error" />
+                            </div>
+                            <p>{error}</p>
+                          </div>
+
+                          <div className="errors triangle-wrapper">
+                            <div className="errors inner-triangle-wrapper"></div>
+                          </div>
+                        </div> : ''}
+                    </div>
+
+                    <div className="signup zip-code-input">
+                      <input
+                        value={zipCode}
+                        onChange={this.update('zipCode')}
+                        type="number"
+                        placeholder="Zip Code"
+                      />
+
+                      {errorMessage.includes('Zip code') ?
+                        <div className='signup error-container'>
+                          <div className="error text-wrapper">
+                            <div className="error-icon-wrapper">
+                              <img src="/images/session/error_icon.png" alt="Error" />
+                            </div>
+                            <p>{error}</p>
+                          </div>
+
+                          <div className="errors triangle-wrapper">
+                            <div className="errors inner-triangle-wrapper"></div>
+                          </div>
+                        </div> : ''}
+                    </div>
+
+                    <button type="submit">Sign Up</button>
+
+                    <small>Already on Morsel? <Link to='/login'>Log In</Link></small>
+                  </form>
+                </div>
               </div>
 
-              <div className="signup-form-image-container">
+              <div className="signup image-container">
                 <img src="/images/session/login_image.png" alt="Sign up splash thumbnail" />
               </div>
             </div>
