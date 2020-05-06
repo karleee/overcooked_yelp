@@ -5,7 +5,7 @@ const MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY;
 const MAPS_BASE_URL = "https://maps.googleapis.com/maps/api/geocode/json";
 
 // set default location if not logged in
-export const DEFAULT_LOCATION = "Orlando, FL";
+export const DEFAULT_LOCATION = 'San Francisco, CA';
 
 // fetch results
 const _getCoordsFromAddress = address => (
