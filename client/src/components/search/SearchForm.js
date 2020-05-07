@@ -140,11 +140,9 @@ class SearchForm extends React.Component {
                   Find
                   {this.renderFindInput()}
                 </label>
-              </div>
+              {/* </div> */}
 
-              <div className="search-form separator-wrapper"></div>
-
-              <div className="search-form input-wrapper">
+              {/* <div className="search-form input-wrapper"> */}
                 <label>
                   Near
                   {this.renderNearInput(userLocation)}
