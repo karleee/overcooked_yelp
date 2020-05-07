@@ -10,13 +10,16 @@
 .home.banner-container {
   position: relative;
   width: 100%;
-  height: 85vh;
+  padding-top: 40%;
   overflow: hidden;
 }
 
 /* Home nav bar styling */
 
 .home.nav-bar-container {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -68,11 +71,14 @@
 
 /* Home banner styling */
 
-.banner-container img {
+.home.banner-container > img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
 }
 
-.overlay-wrapper {
+.home.banner-overlay-wrapper {
   position: absolute;
   top: 0;
   left: 0;

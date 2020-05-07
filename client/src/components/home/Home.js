@@ -63,7 +63,7 @@ const Home = props => (
 
       <img src="/images/homepage/banner.png" alt="Homepage banner" /> 
 
-      <div className="overlay-wrapper"></div>
+      <div className="home banner-overlay-wrapper"></div>
 
       <div className="logo-wrapper">
         <svg>
