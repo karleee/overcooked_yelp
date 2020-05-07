@@ -50,13 +50,13 @@ const LocalizedMorselTitle = () => (
 
 const Home = props => (
   <div className="home-container">
-    <div className="banner-container">
-      <div className="home-nav-bar-container">
-        <div className="write-review-wrapper">
+    <div className="home banner-container">
+      <div className="home nav-bar-container">
+        <div className="write-review-wrapper"> 
           <Link to="/writeareview">Write a Review</Link> 
         </div> 
 
-        <div className="home-login-logout-wrapper">
+        <div className="home login-logout-wrapper">
           <SessionButton /> 
         </div>
       </div>
