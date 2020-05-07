@@ -32,31 +32,22 @@
   z-index: 1;
 }
 
-.write-review-wrapper {
-  width: 30%;
-  /* background: red; */
-}
-
-.write-review-wrapper a {
+.home.nav-bar-container a {
   text-decoration: none;
   color: white;
 }
 
 .write-review-wrapper, 
-.home-login-logout-wrapper .login-logout-wrapper a:first-of-type {
-  padding: 0 5px 5px 5px;
+.home.login-logout-wrapper .login-logout-wrapper a:first-of-type {
+  box-sizing: border-box;
+  padding: 0 1em 0.5em 1em;
   border-bottom: 3px solid transparent;
 }
 
 .write-review-wrapper:hover,
-.home-login-logout-wrapper .login-logout-wrapper a:first-of-type:hover {
+.home.login-logout-wrapper .login-logout-wrapper a:first-of-type:hover {
   border-bottom: 3px solid white;
   cursor: pointer;
-}
-
-.home.login-logout-wrapper {
-  width: 60%;
-  /* background: orange; */
 }
 
 .home.login-logout-wrapper .login-logout-wrapper {
@@ -64,11 +55,6 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-}
-
-.home.login-logout-wrapper .login-logout-wrapper a {
-  text-decoration: none;
-  color: white;
 }
 
 .home.login-logout-wrapper .login-logout-wrapper a:last-of-type { 
@@ -79,6 +65,8 @@
   margin-left: 30px;
   box-sizing: border-box;
 }
+
+/* Home banner styling */
 
 .banner-container img {
   width: 100%;
