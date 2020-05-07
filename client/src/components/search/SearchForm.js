@@ -111,7 +111,6 @@ class SearchForm extends React.Component {
               className="search-form navbar"
               onSubmit={this.submitSearch(data.currentUserZipCode)}
             >
-
               <div className="navbar-search-input-wrapper">
                 
                 {this.renderFindInput()}
@@ -127,7 +126,6 @@ class SearchForm extends React.Component {
                   <i className="navbar-search-icon"></i>
                 </div>
 
-                {/* need a button to allow for keyboard-submit */}
                 <button type="submit">Submit</button>
               </div>
             </form>
@@ -137,32 +135,29 @@ class SearchForm extends React.Component {
               className="search-form"
               onSubmit={this.submitSearch(data.currentUserZipCode)}
             >
-              <div className="search-input-wrapper">
-                <div className="find-input-wrapper">
-                  <label>
-                    Find
-                    {this.renderFindInput()}
-                  </label>
-                </div>
-
-                <div className="separator-wrapper"></div>
-
-                <div className="near-input-wrapper">
-                  <label>
-                    Near
-                    {this.renderNearInput(userLocation)}
-                  </label>
-                </div>
-
-                <div
-                  className="search-button-wrapper"
-                  onClick={this.submitSearch(data.currentUserZipCode)}
-                >
-                  <i className="search-icon"></i>
-                </div>
-                {/* need a button to allow for keyboard-submit */}
-                <button type="submit">Submit</button>
+              <div className="search-form input-wrapper">
+                <label>
+                  Find
+                  {this.renderFindInput()}
+                </label>
               </div>
+
+              <div className="search-form separator-wrapper"></div>
+
+              <div className="search-form input-wrapper">
+                <label>
+                  Near
+                  {this.renderNearInput(userLocation)}
+                </label>
+              </div>
+
+              <div
+                className="search-form button-wrapper"
+                onClick={this.submitSearch(data.currentUserZipCode)}
+              >
+                <i className="search-icon"></i>
+              </div>
+              <button type="submit">Submit</button>
             </form>
           );
         }}
