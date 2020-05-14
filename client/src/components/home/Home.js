@@ -76,14 +76,12 @@ const Home = props => (
     </div>
 
 
-    <div className="best-restaurants-wrapper">
-      <div className="header-wrapper">
-        <h1>Find the Best Restaurants in Town</h1>
-      </div>
+    <div className="home best-restaurants-wrapper">
+      <h1>Find the Best Restaurants in Town</h1>
 
-      <div className="categories-wrapper">
+      <div className="home categories-wrapper">
         <LinkToLocalCategory searchTerm="Steakhouses">
-          <div className="thumbnail-wrapper">
+          <div className="home best-restaurants-thumb-wrapper">
             <img src="/images/homepage/categories/categories_steakhouses.png" alt="Steakhouses" />
           </div>  
 
@@ -91,7 +89,7 @@ const Home = props => (
         </LinkToLocalCategory>
 
         <LinkToLocalCategory searchTerm="Holiday Desserts">
-          <div className="thumbnail-wrapper">
+          <div className="home best-restaurants-thumb-wrapper">
             <img src="/images/homepage/categories/categories_holidayDesserts.png" alt="Holiday desserts" />
           </div>
 
@@ -99,7 +97,7 @@ const Home = props => (
         </LinkToLocalCategory>
 
         <LinkToLocalCategory searchTerm="Chinese">
-          <div className="thumbnail-wrapper">
+          <div className="home best-restaurants-thumb-wrapper">
             <img src="/images/homepage/categories/categories_chinese.png" alt="Chinese" />
           </div>
 
@@ -107,7 +105,7 @@ const Home = props => (
         </LinkToLocalCategory>
 
         <LinkToLocalCategory searchTerm="Burgers">
-          <div className="thumbnail-wrapper">
+          <div className="home best-restaurants-thumb-wrapper">
             <img src="/images/homepage/categories/categories_burgers.png" alt="Burgers" /> 
           </div>
 
@@ -116,29 +114,23 @@ const Home = props => (
       </div>
     </div>
 
-    <div className="main-content-wrapper">
-      <div className="header-wrapper">
-        <LocalizedMorselTitle />
-
-        <div className="other-cities-wrapper">
-          <div className="cities-wrapper">
-            <p><Link to="/search?find_desc=&find_loc=South%20Lake%20Tahoe">South Lake Tahoe</Link></p>
-            <p><Link to="/search?find_desc=&find_loc=Honolulu">Honolulu</Link></p> 
-            <p><Link to="/search?find_desc=&find_loc=Los%20Angeles">Los Angeles</Link></p>
-            <p><Link to="/search?find_desc=&find_loc=San%20Francisco">San Francisco</Link></p>
-            <p><Link to="/search?find_desc=&find_loc=Portland">Portland</Link></p>
-            <p><Link to="/search?find_desc=&find_loc=Orlando">Orlando</Link></p>
-          </div> 
+    <div className="home hot-new-businesses-wrapper">
+      <LocalizedMorselTitle />
+      
+      <div className="home other-cities-wrapper">
+        <Link to="/search?find_desc=&find_loc=South%20Lake%20Tahoe">South Lake Tahoe</Link>
+        <Link to="/search?find_desc=&find_loc=Honolulu">Honolulu</Link> 
+        <Link to="/search?find_desc=&find_loc=Los%20Angeles">Los Angeles</Link>
+        <Link to="/search?find_desc=&find_loc=San%20Francisco">San Francisco</Link>
+        <Link to="/search?find_desc=&find_loc=Portland">Portland</Link>
+        <Link to="/search?find_desc=&find_loc=Orlando">Orlando</Link>
  
-          <div className="underline-wrapper"></div>
-        </div>
-
-        <div className="new-restaurants-wrapper">
-          <h2>Hot & New Businesses</h2>
-
-          <RestaurantIndex />
-        </div>
+        <div className="home underline-wrapper"></div>
       </div>
+
+      <h2>Hot & New Businesses</h2>
+
+      <RestaurantIndex />
     </div>
 
     <Footer />
