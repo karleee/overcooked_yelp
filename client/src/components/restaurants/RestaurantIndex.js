@@ -15,7 +15,7 @@ const RestaurantIndex = () => {
         if (error) return 'Oops! Something went wrong. Pleae try again later.';
 
         return (
-          <div className="new-restaurant-thumbnails-wrapper">
+          <div className="restaurant-index thumbnails-wrapper">
             <ul>
               {data.restaurants.map(restaurant => {
                 // Converting price for each restaurant into dollar sign equivalents
@@ -37,23 +37,23 @@ const RestaurantIndex = () => {
                 return (
                   <li key={restaurant._id}>
                     <Link to={`/restaurants/${restaurant._id}`}>
-                      <div className="big-thumbnail-wrapper">
+                      {/* <div className="big-thumbnail-wrapper"> */}
                         <img src={restaurant.photos[0] ? restaurant.photos[0].url : ''} alt="Restaurant thumbnail" />
-                      </div>
+                      {/* </div> */}
 
-                      <div className="text-info-wrapper">
+                      <div className="restaurant-index text-wrapper">
                         <h3>{restaurant.name}</h3>
 
-                        <div className="price-and-category-wrapper">
+                        <div className="restaurant-index price-and-category-wrapper">
                           <p>{dollars}</p>
-                          <p className="dot-wrapper">•</p>
+                          <p className="restaurant-index dot-wrapper">•</p>
                           <p>{restaurant.category}</p>
                         </div>
 
-                        <p className="location-wrapper">{restaurant.location.city}, {restaurant.location.state}</p>
+                        <p>{restaurant.location.city}, {restaurant.location.state}</p>
 
-                        <div className="opened-time-wrapper">
-                          <i className="fire-icon"></i>
+                        <div className="restaurant-detail open-wrapper">
+                          <img src="/images/homepage/fire_icon.png" alt="Fire" />
                           <p>Opened {weeks} {weeks > 1 ? 'weeks' : 'week'} ago</p>
                         </div>
                       </div>

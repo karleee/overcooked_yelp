@@ -1,117 +1,141 @@
 @import 'variables.css';
 
-.new-restaurant-thumbnails-wrapper { 
+.restaurant-index.thumbnails-wrapper { 
   width: 100%;
   height: 100%;
-  padding-bottom: 30px;
 }
 
-.new-restaurant-thumbnails-wrapper ul {
+.restaurant-index.thumbnails-wrapper  ul {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
   list-style: none;
   width: 100%;
-  margin-top: 15px;
+  margin-top: 2%;
 }
 
-.new-restaurant-thumbnails-wrapper ul li {
+.restaurant-index.thumbnails-wrapper ul li {
   width: 31%;
-  height: 100%;
   border-radius: 5px;
-  border: 1px solid var(--light-border-color);
   box-sizing: border-box;
-  margin-bottom: 30px;
+  border: 1px solid var(--light-border-color);
+  margin-bottom: 5%;
 }
 
-.new-restaurant-thumbnails-wrapper ul li a {
+.restaurant-index.thumbnails-wrapper ul li a {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-decoration: none;
-  width: 100%;
-  height: 100%;
 }
 
-.big-thumbnail-wrapper {
+.restaurant-index.thumbnails-wrapper ul li a img {
   width: 100%;
-  height: 60%;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  overflow: hidden;
 }
 
-.big-thumbnail-wrapper img {
-  transform: scale(1.2);
-  width: 100%;
-  height: 100%;
-}
-
-.text-info-wrapper {
+.restaurant-index.text-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  padding: 15px;
+  box-sizing: border-box;
+  padding: 5%;
 }
 
-.text-info-wrapper h3 {
+.restaurant-index.text-wrapper p {
+  font-family: 'helveticaNormal';
+  color: var(--black);
+}
+
+.restaurant-index.text-wrapper h3 {
   font-family: 'helveticaBold';
-  font-size: 17px;
   color: var(--blue);
 }
 
-.text-info-wrapper h3:hover {
-  text-decoration: underline;
+.restaurant-index.text-wrapper h3:hover {
   cursor: pointer;
+  text-decoration: underline;
 }
 
-.price-and-category-wrapper {
+.restaurant-index.price-and-category-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100%;
 }
 
-.price-and-category-wrapper p:first-of-type {
+.restaurant-index.price-and-category-wrapper p {
   font-family: sans-serif;
-  font-size: 15px;
   color: var(--black);
 }
 
-.price-and-category-wrapper .dot-wrapper {
-  padding: 0 5px;
-  font-size: 12px;
+.restaurant-index.price-and-category-wrapper .dot-wrapper {
   color: var(--subtle-text);
+  margin: 0 2%;
 }
 
-.price-and-category-wrapper p:last-of-type {
+.restaurant-index.price-and-category-wrapper p:last-of-type {
   font-family: 'helveticaNormal';
-  font-size: 14px;
-  color: var(--black);
 }
 
-.location-wrapper {
-  font-family: 'helveticaNormal';
-  font-size: 14px;
-  color: var(--black);
-}
-
-.opened-time-wrapper {
+.restaurant-detail.open-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 5px;
+  margin: 5% 0 2% 0;
 }
 
-.fire-icon {
-  content: url('/images/homepage/fire_icon.png');
-  width: 14px;
-  margin-right: 5px;
+.restaurant-index.text-wrapper .restaurant-detail.open-wrapper img {
+  width: 10%;
+  margin-right: 3%;
 }
 
-.opened-time-wrapper p {
+.restaurant-detail.open-wrapper p {
   font-family: 'helveticaMedium';
-  font-size: 14px;
   color: var(--orange);
+}
+
+/* Dynamic styling */
+
+@media screen and (min-width: 320px) {
+  .restaurant-index.text-wrapper h3 {
+    font-size: calc(8px + 9 * ((100vw - 320px) / 680));
+  }
+
+  .restaurant-index.price-and-category-wrapper p {
+    font-size: calc(10px + 5 * ((100vw - 320px) / 680));
+  }
+
+  .restaurant-index.price-and-category-wrapper p:last-of-type,
+  .restaurant-index.text-wrapper p,
+  .restaurant-detail.open-wrapper p {
+    font-size: calc(1px + 13 * ((100vw - 320px) / 680));
+  }
+
+  .restaurant-index.price-and-category-wrapper .dot-wrapper {
+    font-size: calc(9px + 3 * ((100vw - 320px) / 680));
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .restaurant-index.text-wrapper h3 {
+    font-size: 17px;
+  }
+
+  .restaurant-index.price-and-category-wrapper p {
+    font-size: 15px;
+  }
+  
+  .restaurant-index.price-and-category-wrapper p:last-of-type,
+  .restaurant-index.text-wrapper p,
+  .restaurant-detail.open-wrapper p {
+    font-size: 14px;
+  }
+
+  .restaurant-index.price-and-category-wrapper .dot-wrapper {
+    font-size: 12px;
+  }
 }
