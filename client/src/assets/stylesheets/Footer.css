@@ -7,20 +7,19 @@
   width: 100%;
   background: var(--background-color);
   border-top: 1px solid var(--border-color);  
-  padding: 20px;
+  box-sizing: border-box;
+  padding: 4% 20%; 
 }
 
 .footer-columns-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 60%;
-  margin-top: 30px;
+  width: 100%;
 }
 
 .footer-columns-wrapper h3 {
   font-family: 'helveticaBold';
-  font-size: 16px;
   color: var(--red);
 }
 
@@ -28,27 +27,25 @@
   display: flex;
   flex-direction: column;
   font-family: 'helveticaNormal';
-  font-size: 14px;
   color: var(--blue);
   list-style: none;
-  margin-top: 5px;
+  margin-top: 1%;
 }
 
 .footer-columns-wrapper ul li {
   box-sizing: border-box;
-  padding: 2px 0;
+  padding: 1% 0;
 }
 
 .footer-columns-wrapper ul a {
   font-family: 'helveticaNormal';
-  font-size: 14px;
   color: var(--blue);
   text-decoration: none;
 }
 
 .footer-columns-wrapper ul a:hover {
-  text-decoration: underline;
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .about-wrapper,
@@ -76,9 +73,9 @@
   content: '';
   width: 0;
   height: 0;
-  border-top: solid 4px var(--blue);
-  border-left: solid 4px transparent;
-  border-right: solid 4px transparent;
+  border-top: solid 0.3em var(--blue);
+  border-left: solid 0.3em transparent;
+  border-right: solid 0.3em transparent;
   margin-left: 7px;
 }
 
@@ -131,9 +128,9 @@
 }
 
 .footer-image-wrapper {
-  width: 60%;
-  margin-top: 30px;
-}
+  width: 100%;
+  margin-top: 5%;
+} 
 
 .footer-image-wrapper img {
   width: 100%;
@@ -141,7 +138,36 @@
 
 .footer-copyright-wrapper {
   font-family: 'helveticaNormal';
-  font-size: 13px;
   color: var(--mid-text);
   padding: 15px 0;
+}
+
+/* Dynamic styling */
+
+@media screen and (min-width: 320px) {
+  .footer-columns-wrapper h3 {
+    font-size: calc(8px + 8 * ((100vw - 320px) / 680));
+  }
+
+  .footer-columns-wrapper ul {
+    font-size: calc(1px + 13 * ((100vw - 320px) / 680));
+  }
+
+  .footer-copyright-wrapper {
+    font-size: calc(3px + 10 * ((100vw - 320px) / 680));
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .footer-columns-wrapper h3 {
+    font-size: 16px;
+  }
+
+  .footer-columns-wrapper ul {
+    font-size: 14px;
+  }
+
+  .footer-copyright-wrapper {
+    font-size: 13px;
+  }
 }
