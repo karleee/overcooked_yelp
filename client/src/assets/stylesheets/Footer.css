@@ -6,7 +6,7 @@
   align-items: center;
   width: 100%;
   background: var(--background-color);
-  border-top: 1px solid var(--border-color); 
+  border-top: 1px solid var(--border-color);  
   padding: 20px;
 }
 
