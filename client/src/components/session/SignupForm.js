@@ -135,7 +135,7 @@ class RegisterForm extends React.Component {
 
                   {this.demoSignUp()}
 
-                  <p className="or-separator-wrapper">or</p>
+                  <p>or</p>
                 </div>
 
                 <form

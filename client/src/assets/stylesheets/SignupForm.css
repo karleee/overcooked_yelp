@@ -57,13 +57,12 @@
 
 .signup.form-container button {
   font-family: 'helveticaBold';
-  font-size: 16px;
   background: var(--red);
   color: white;
-  padding: 10px 13px;
   border-radius: 3px;
   width: 100%;
-  margin: 10px 0; 
+  box-sizing: border-box;
+  padding: 3% 0;
 }
 
 .signup.form-container button:hover {
@@ -102,36 +101,37 @@
 
 .signup.header-container h1 {
   font-family: 'helveticaBold';
-  font-size: 22px;
   color: var(--red);
   margin-bottom: 2%;
 }
 
 .signup.header-container p {
   font-family: 'helveticaBold';
-  font-size: 14px;
   color: var(--black);
   margin-bottom: 2%;
 }
 
+.signup.header-container p:last-of-type {
+  margin: 5% 0;
+}
+
 .signup.header-container small {
   font-family: 'helveticaNormal';
-  font-size: 12px;
   color: var(--mid-text);
+  margin-bottom: 3%;
 }
 
 /* Form input styling */
 
 .signup.form-container form input {
   font-family: 'helveticaNormal';
-  font-size: 14px;
   color: var(--black);
   width: 100%;
   border-radius: 3px;
   box-sizing: border-box;
   padding: 5px 10px;
   border: 1px solid var(--mid-text);
-  margin-bottom: 20px;
+  margin-bottom: 1em;
 }
 
 .signup.form-container input:focus {
@@ -167,8 +167,8 @@
 
 .signup.form-container form small {
   font-family: 'helveticaNormal';
-  font-size: 12px;
   color: var(--subtle-text);
+  margin-top: 3%;
 }
 
 .signup.form-container form small a {
@@ -257,4 +257,46 @@
   width: 100%;
   border-radius: 5px;
   background: var(--errors-red); 
+}
+
+/* Dynamic styling */
+
+@media screen and (min-width: 320px) {
+  .signup.form-container button {
+    font-size: calc(8px + 8 * ((100vw - 320px) / 680));
+  }
+
+  .signup.header-container h1 {
+    font-size: calc(10px + 12 * ((100vw - 320px) / 680));
+  }
+
+  .signup.header-container p,
+  .signup.form-container form input {
+    font-size: calc(3px + 11 * ((100vw - 320px) / 680));
+  }
+
+  .signup.header-container small,
+  .signup.form-container form small {
+    font-size: calc(2px + 10 * ((100vw - 320px) / 680));
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .signup.form-container button {
+    font-size: 16px;
+  }
+
+  .signup.header-container h1 {
+    font-size: 22px;
+  }
+
+  .signup.header-container p,
+  .signup.form-container form input {
+    font-size: 14px;
+  }
+
+  .signup.header-container small,
+  .signup.form-container form small {
+    font-size: 12px;
+  }
 }
