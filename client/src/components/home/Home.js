@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import '../../assets/stylesheets/Home.css';
+import React from 'react';
 
 import { Link } from 'react-router-dom';
 import { Query } from 'react-apollo';
@@ -7,6 +6,7 @@ import RestaurantIndex from '../restaurants/RestaurantIndex';
 import SessionButton from '../session/SessionButton';
 import SearchForm from '../search/SearchForm';
 import Footer from '../footer/Footer';
+
 import '../../assets/stylesheets/Home.css';
 import '../../assets/stylesheets/SearchForm.css';
 

@@ -108,7 +108,7 @@ class SearchForm extends React.Component {
           return (this.props.mode === "navbar") ? (
             <form
               autoComplete="off"
-              className="search-form navbar"
+              className="search-form navbar" 
               onSubmit={this.submitSearch(data.currentUserZipCode)}
             >
               <div className="navbar-search-input-wrapper">
