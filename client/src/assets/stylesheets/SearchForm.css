@@ -156,7 +156,7 @@ form {
 
 @media screen and (min-width: 1000px) {
   .search-form.input-wrapper label,
-  .search-form.input-wrapper label input {
+  .search-form.input-wrapper label input { 
     font-size: 18px;
   }
 } */

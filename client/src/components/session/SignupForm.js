@@ -85,7 +85,7 @@ class RegisterForm extends React.Component {
         onCompleted={data => this.loginAndRedirectTo('/', data)}
         update={(client, data) => this.updateCache(client, data)}
       >
-        {LoginUser => (<button onClick={this.performMutation(LoginUser, { email: 'chocolatte@gmail.com', password: '12345678' })}>Demo Sign Up</button>)}
+        {LoginUser => (<button onClick={this.performMutation(LoginUser, {email: 'chocolatte@gmail.com', password: '12345678'})}>Demo Sign Up</button>)}
       </Mutation>
     );
   }
@@ -120,9 +120,7 @@ class RegisterForm extends React.Component {
               </svg>
             </div> 
 
-            <div className="signup credentials-error-container">
-              {errorMessage.includes('credentials') ? <p>{error}</p> : ''}
-            </div>
+            {errorMessage.includes('credentials') ? <div className="signup credentials-error-container"><p>{error}</p></div> : ''}
 
             <div className="signup content-container">
               <div className="signup form-container">
