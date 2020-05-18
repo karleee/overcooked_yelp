@@ -189,35 +189,28 @@
 
 .error.text-wrapper {
   display: inline-block;
-  /* vertical-align: middle; */
-  /* display: flex;
-  flex-direction: row;
-  align-items: center; */
-  /* position: absolute; */
-  /* z-index: 1; */
-  /* display: inline-block; */
   white-space: nowrap;
   background: white;
   border-radius: 3px;
   box-sizing: border-box;
   border: 1px solid var(--black);
-  /* padding: 3%; */
+  padding: 3%;
   box-shadow: 5px 5px 5px 0.5px rgba(0, 0, 0, 0.2);
 }
 
 .error.text-wrapper p {
   display: inline-block;
+  vertical-align: middle;
   font-family: 'helveticaNormal';
   color: var(--black);
-  /* float: right; */
 }
 
 .error.text-wrapper img {
   display: inline-block;
+  vertical-align: middle;
   width: 30px;
   box-sizing: border-box;
   padding-right: 3%;
-  /* float: left; */
 }
 
 .errors.triangle-wrapper {
