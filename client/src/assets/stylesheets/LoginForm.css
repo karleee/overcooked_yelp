@@ -1,6 +1,5 @@
-@import 'variables.css';
+/* @import 'variables.css';
 
-/* General component styling */
 
 .login.content-container {
   display: flex;
@@ -10,7 +9,7 @@
   height: 100vh;
 }
 
-/* Header bar styling */
+
 
 .login.navbar-container { 
   display: flex;
@@ -40,7 +39,7 @@
   paint-order: stroke fill;
 }
 
-/* Main body styling */
+
 
 .login.body-container {
   display: flex;
@@ -63,7 +62,7 @@
   margin-right: 10em;
 }
 
-/* Header styling */
+
 
 .login.header-container h1 {
   font-family: 'helveticaBold';
@@ -95,7 +94,7 @@
   margin-bottom: 10px;
 }
 
-/* Form styling */
+
 
 .login.form-container {
   width: 100%;
@@ -179,7 +178,7 @@
   width: 100%;
 }
 
-/* Input div styling */
+
 
 .login.email-input,
 .login.password-input { 
@@ -189,7 +188,7 @@
   padding-bottom: 0.6250em;
 }
 
-/* Errors styling */
+
 
 .login.error-container {
   position: absolute;
@@ -252,7 +251,7 @@
   margin-left: -11px;
 }
 
-/* Credentials error styling */
+
 
 .login.credentials-error-container {
   font-family: 'helveticaNormal';
@@ -269,4 +268,4 @@
   width: 100%;
   border-radius: 5px;
   background: var(--errors-red); 
-}
+} */
