@@ -188,42 +188,36 @@
 }
 
 .error.text-wrapper {
-  /* position: absolute; */
   display: inline-block;
+  /* vertical-align: middle; */
   /* display: flex;
-  flex-direction: row; */
+  flex-direction: row;
+  align-items: center; */
+  /* position: absolute; */
+  /* z-index: 1; */
+  /* display: inline-block; */
   white-space: nowrap;
   background: white;
   border-radius: 3px;
   box-sizing: border-box;
   border: 1px solid var(--black);
-  /* padding: 5%; */
+  /* padding: 3%; */
   box-shadow: 5px 5px 5px 0.5px rgba(0, 0, 0, 0.2);
-  /* z-index: 1; */
-  /* display: flex;
-  flex-direction: row;
-  align-items: center;
-  background: white;
-  border-radius: 3px;
-  box-sizing: border-box;
-  border: 1px solid var(--black);
-  padding: 5%;
-  box-shadow: 5px 5px 5px 0.5px rgba(0, 0, 0, 0.2);
-  white-space: nowrap; */
 }
 
 .error.text-wrapper p {
+  display: inline-block;
   font-family: 'helveticaNormal';
   color: var(--black);
-  float: right;
-  /* display: inline-block; */
+  /* float: right; */
 }
 
 .error.text-wrapper img {
-  width: 17%;
+  display: inline-block;
+  width: 30px;
   box-sizing: border-box;
   padding-right: 3%;
-  float: left;
+  /* float: left; */
 }
 
 .errors.triangle-wrapper {
