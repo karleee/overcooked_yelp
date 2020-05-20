@@ -51,9 +51,11 @@ const LocalizedMorselTitle = () => (
 const Home = props => (
   <div className="home-container">
     <div className="home banner-container">
+      <div className="home banner-overlay-wrapper"></div>
+
       <div className="home nav-bar-container">
         <div className="write-review-wrapper"> 
-          <Link to="/writeareview">Write a Review</Link> 
+          <Link to="/writeareview">Write a Review</Link>  
         </div> 
 
         <div className="home login-logout-wrapper">
@@ -61,9 +63,7 @@ const Home = props => (
         </div>
       </div>
 
-      <img src="/images/homepage/banner.png" alt="Homepage banner" /> 
 
-      <div className="home banner-overlay-wrapper"></div>
 
       <div className="logo-wrapper">
         <svg>

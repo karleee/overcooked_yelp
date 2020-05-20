@@ -112,17 +112,11 @@ class SearchForm extends React.Component {
               onSubmit={this.submitSearch(data.currentUserZipCode)}
             >
               <div className="navbar-search-input-wrapper">
-                
                 {this.renderFindInput()}
-
                 <div className="navbar-search-separator-wrapper"></div>
-
                 {this.renderNearInput(userLocation)}
 
-                <div
-                  className="navbar-search-icon-wrapper"
-                  onClick={this.submitSearch(data.currentUserZipCode)}
-                >
+                <div className="navbar-search-icon-wrapper" onClick={this.submitSearch(data.currentUserZipCode)}>
                   <i className="navbar-search-icon"></i>
                 </div>
 
@@ -132,7 +126,7 @@ class SearchForm extends React.Component {
           ) : (
             <form
               autoComplete="off"
-              className="search-form"
+              className="search-form home"
               onSubmit={this.submitSearch(data.currentUserZipCode)}
             >
               <div className="search-form input-wrapper">
