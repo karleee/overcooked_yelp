@@ -141,12 +141,10 @@ class SearchForm extends React.Component {
                 </label>
               </div>
 
-              <div
-                className="search-form button-wrapper"
-                onClick={this.submitSearch(data.currentUserZipCode)}
-              >
+              <div className="search-form button-wrapper" onClick={this.submitSearch(data.currentUserZipCode)}>
                 <i className="search-icon"></i>
               </div>
+              
               <button type="submit">Submit</button>
             </form>
           );
