@@ -5,7 +5,6 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  /* background: yellow;   */
   box-sizing: border-box;
 }
 
@@ -59,45 +58,6 @@
   transition: background 0.5s;
   cursor: pointer;
 }
-
-/* .restaurant-detail-body-wrapper {
-  width: 63%;
-} */
-
-/* .restaurant-detail-thumbnail-wrapper {
-  position: relative;
-  width: 24.8%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.restaurant-detail.photos-container img { 
-  height: 100%;
-  transform: scale(1.25);
-} */
-
-/* .restaurant-detail-gallery-button-wrapper {
-  position: absolute;
-  top: 80%;
-  left: 92%;
-} */
-
-/* .restaurant-detail-gallery-button-wrapper a {
-  font-family: 'helveticaBold';
-  font-size: 14px;
-  color: var(--mid-text);
-  background: white;
-  padding: 6px 18px;
-  box-sizing: border-box;
-  border-radius: 3px;
-  text-decoration: none;
-} */
-
-/* .restaurant-detail-gallery-button-wrapper:hover {
-  background: var(--light-border-color);
-  transition: background 0.5s;
-  cursor: pointer;
-} */
 
 /* Restaurant detail text styling */
 
@@ -167,7 +127,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 1%;
+  margin-top: 2%;
 }
 
 .restaurant-detail.price-category-wrapper p {
@@ -195,23 +155,13 @@
   cursor: pointer;
 }
 
-.restaurant-detail-menu-buttons-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 100%;
-  margin-top: 20px;
-  padding-bottom: 25px;
-  border-bottom: 1px solid var(--light-border-color);
-}
-
-.review-button-container,
-.photo-button-container,
-.save-button-container {
+.restaurant-detail.review-button-container {
   border: 1px solid var(--border-color);
   border-radius: 3px;
-  width: 128px;
-  height: 33px;
+  width: 20%;
+  box-sizing: border-box;
+  padding: 1.5% 0;
+  margin-top: 2%;
 }
 
 .photo-button-container {
@@ -251,10 +201,10 @@
   height: 100%;
 }
 
-.photo-button-wrapper,
+/* .photo-button-wrapper,
 .save-button-wrapper {
   color: var(--mid-text);
-}
+} */
 
 .review-button-icon-wrapper {
   display: flex;
@@ -263,17 +213,17 @@
   margin-right: 5px;
 }
 
-.photo-button-icon-wrapper {
+/* .photo-button-icon-wrapper {
   width: 16px;
   height: 15px;
   margin-right: 5px;
-}
+} */
 
-.save-button-icon-wrapper {
+/* .save-button-icon-wrapper {
   width: 15px;
   height: 15px;
   margin-right: 5px;
-}
+} */
 
 .review-button-wrapper img,
 .photo-button-wrapper img,
