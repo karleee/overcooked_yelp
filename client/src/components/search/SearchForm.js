@@ -111,17 +111,17 @@ class SearchForm extends React.Component {
               className="search-form navbar" 
               onSubmit={this.submitSearch(data.currentUserZipCode)}
             >
-              <div className="navbar-search-input-wrapper">
+              <div className="search-form navbar input-wrapper">
                 {this.renderFindInput()}
-                <div className="navbar-search-separator-wrapper"></div>
+                <div className="search-form navbar separator-wrapper"></div>
                 {this.renderNearInput(userLocation)}
 
-                <div className="navbar-search-icon-wrapper" onClick={this.submitSearch(data.currentUserZipCode)}>
-                  <i className="navbar-search-icon"></i>
+                <div className="search-form navbar button-wrapper" onClick={this.submitSearch(data.currentUserZipCode)}>
+                  <i className="search-form navbar search-icon"></i>
                 </div>
-
-                <button type="submit">Submit</button>
               </div>
+              
+              <button type="submit">Submit</button>
             </form>
           ) : (
             <form
@@ -142,9 +142,9 @@ class SearchForm extends React.Component {
               </div>
 
               <div className="search-form button-wrapper" onClick={this.submitSearch(data.currentUserZipCode)}>
-                <i className="search-icon"></i>
+                <i className="search-form search-icon"></i>
               </div>
-              
+
               <button type="submit">Submit</button>
             </form>
           );

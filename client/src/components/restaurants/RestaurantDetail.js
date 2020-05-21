@@ -258,44 +258,40 @@ class RestaurantDetail extends Component {
           const categoriesArr = categories.split(',');
           
           return (
-            <div className="restaurant-detail-wrapper">
-              <Navbar />
+            <div className="restaurant-detail body-container">
+              <Navbar /> 
 
-            <div className="restaurant-detail-banner-wrapper">
-              <div className="restaurant-detail-photos-wrapper">
+            <div className="restaurant-detail banner-container">
+              <div className="restaurant-detail photos-container">
                 {data.restaurant.photos.slice(0, 4).map((photo, indx) => (
-                  <div key={photo._id} className="restaurant-detail-thumbnail-wrapper">
+                  <div key={photo._id} className="restaurant-detail thumbnail-wrapper">
                     <img src={photo.url} alt="Restaurant thumbnail" />
                   </div>
                 ))}
               </div>
 
-              <div className="restaurant-detail-gallery-button-wrapper">
-                <Link to={`/restaurants/${data.restaurant._id}/photos`}>See All {data.restaurant.photos.length}</Link>
-              </div>
+              <Link to={`/restaurants/${data.restaurant._id}/photos`}>See All {data.restaurant.photos.length}</Link>
             </div>
 
-              <div className="restaurant-detail-main-content-wrapper">
-                <div className="restaurant-detail-body-wrapper">
-                  <div className="restaurant-detail-header-wrapper">
+              <div className="restaurant-detail text-wrapper">
+                {/* <div className="restaurant-detail-body-wrapper"> */}
+                  <div className="restaurant-detail header-wrapper">
                     <h1>{data.restaurant.name}</h1>
 
-                    <div className="restaurant-detail-claimed-wrapper">
+                    <div className="restaurant-detail claimed-wrapper">
                       <img src="/images/restaurant_detail/claimed.png" alt="Claimed icon" />
                       <p>Claimed</p>
                     </div>
                   </div>
 
-                  <div className="restaurant-detail-ratings-and-reviews-wrapper">
-                    <div className="stars-icon-wrapper">
-                      <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt="Ratings icon" />
-                    </div>
+                  <div className="restaurant-detail ratings-and-reviews-wrapper">
+                    <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt="Ratings icon" />
                     <p>{reviews.length} {reviews.length > 1 || reviews.length === 0 ? 'reviews' : 'review'}</p>
                   </div>
 
-                  <div className="restaurant-detail-price-and-category-wrapper">
+                  <div className="restaurant-detail price-category-wrapper">
                     <p>{dollars}</p>
-                    <p className="restaurant-detail-price-and-category-dot-wrapper">•</p>
+                    <p className="restaurant-detail dot-wrapper">•</p>
                     {categoriesArr.map((cat, indx) => {
                       if (indx !== categoriesArr.length - 1) {
                         return <LinkToLocalCategory searchTerm={`${cat}`}>{cat},</LinkToLocalCategory>;
@@ -327,26 +323,6 @@ class RestaurantDetail extends Component {
                         }}
                       </Query>
                     </div>   
-
-                    {/* <div className="photo-button-container">
-                      <div className="photo-button-wrapper">
-                        <div className="photo-button-icon-wrapper">
-                          <img src="/images/restaurant_detail/action_menu/camera_icon.png" alt="Camera icon" />
-                        </div>
-
-                        <p>Add Photo</p>
-                      </div>
-                    </div> */}
-
-                    {/* <div className="save-button-container">
-                      <div className="save-button-wrapper">
-                        <div className="save-button-icon-wrapper">
-                          <img src="/images/restaurant_detail/action_menu/bookmark_icon.png" alt="Bookmark icon" />
-                        </div>
-
-                        <p>Save</p>
-                      </div> */}
-                    {/* </div> */}
                   </div>
 
                   <div className="restaurant-detail-popular-dishes-container">
@@ -525,7 +501,7 @@ class RestaurantDetail extends Component {
 
                     <Link to={`/restaurants/${data.restaurant._id}/map`}>Get Directions</Link> 
                   </div>
-                </div>
+                {/* </div> */}
               </div>
 
               <Footer />
