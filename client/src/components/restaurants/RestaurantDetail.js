@@ -301,17 +301,17 @@ class RestaurantDetail extends Component {
                     })}
                   </div>
 
-                  <div className="restaurant-detail review-button-container">
+                  {/* <div className="restaurant-detail review-button-container"> */}
                     <Query query={CURRENT_USER} >
                       {currentUser => {
                         return (
                           <Query query={FETCH_REVIEW} variables={{ restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId }} >
                             {(reviewData) => {
                               return (
-                                <div className="review-button-wrapper" onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>
-                                  <div className="review-button-icon-wrapper">
+                                <div className="restaurant-detail review-button-container" onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>
+                                  {/* <div className="review-button-icon-wrapper"> */}
                                     <img src="/images/restaurant_detail/action_menu/star_icon.png" alt="Star icon" />
-                                  </div>
+                                  {/* </div> */}
 
                                   <p>Write a Review</p>
                                 </div>
@@ -321,9 +321,9 @@ class RestaurantDetail extends Component {
                         );
                       }}
                     </Query>
-                  </div>   
+                  {/* </div>    */}
 
-                  <div className="restaurant-detail-popular-dishes-container">
+                  <div className="restaurant-detail popular-dishes-container">
                     <h3>Popular Dishes</h3>
 
                     <div className="popular-dishes-wrapper">

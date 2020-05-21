@@ -74,6 +74,8 @@
   width: 63%;
 }
 
+/* Restaurant text header styling */
+
 .restaurant-detail.header-wrapper {
   display: flex;
   flex-direction: row;
@@ -156,6 +158,12 @@
 }
 
 .restaurant-detail.review-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: 'helveticaBold';
+  font-size: 13px;
+  color: var(--red);
   border: 1px solid var(--border-color);
   border-radius: 3px;
   width: 20%;
@@ -164,74 +172,23 @@
   margin-top: 2%;
 }
 
-.photo-button-container {
-  width: 110px;
-  margin: 0 15px;
-}
-
-.save-button-container {
-  width: 70px;
-}
-
-.review-button-container:hover {
+.restaurant-detail.review-button-container:hover {
   background: var(--button-hover-light-red);
   border: 1px solid var(--button-border-hover-red);
   transition: all 0.5s;
   cursor: pointer;
 }
 
-.photo-button-container:hover,
-.save-button-container:hover {
-  background: var(--background-color);
-  transition: background 0.5s;
-  cursor: pointer;
-}
-
-.review-button-wrapper,
-.photo-button-wrapper,
-.save-button-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-family: 'helveticaBold';
-  font-size: 13px;
-  color: var(--red);
-  width: 100%;
-  height: 100%;
-}
-
-/* .photo-button-wrapper,
-.save-button-wrapper {
-  color: var(--mid-text);
-} */
-
-.review-button-icon-wrapper {
+.restaurant-detail.review-button-container img {
   display: flex;
   flex-direction: row;
   width: 15px;
   margin-right: 5px;
 }
 
-/* .photo-button-icon-wrapper {
-  width: 16px;
-  height: 15px;
-  margin-right: 5px;
-} */
+/* Restaurant text popular dishes styling */
 
-/* .save-button-icon-wrapper {
-  width: 15px;
-  height: 15px;
-  margin-right: 5px;
-} */
-
-.review-button-wrapper img,
-.photo-button-wrapper img,
-.save-button-wrapper img {
-  width: 100%;
-}
-
-.restaurant-detail-popular-dishes-container,
+/* .restaurant-detail.popular-dishes-container,
 .restaurant-detail-location-and-hours-wrapper, 
 .restaurant-detail-amenities-wrapper,
 .restaurant-detail-recommended-reviews-wrapper {
@@ -240,6 +197,13 @@
   margin-top: 20px;
   padding-bottom: 25px;
   border-bottom: 1px solid var(--light-border-color);
+} */
+
+.restaurant-detail.popular-dishes-container {
+  border-top: 1px solid var(--light-border-color);
+  box-sizing: border-box;
+  padding-top: 3%; 
+  margin-top: 3%;
 }
 
 .restaurant-detail-recommended-reviews-wrapper {
@@ -247,7 +211,7 @@
   padding-bottom: 100px;
 }
 
-.restaurant-detail-popular-dishes-container h3,
+.restaurant-detail.popular-dishes-container h3,
 .restaurant-detail-location-and-hours-wrapper h3,
 .restaurant-detail-amenities-wrapper h3,
 .restaurant-detail-recommended-reviews-wrapper h3 {
