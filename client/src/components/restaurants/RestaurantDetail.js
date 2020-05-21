@@ -261,20 +261,20 @@ class RestaurantDetail extends Component {
             <div className="restaurant-detail body-container">
               <Navbar /> 
 
-            <div className="restaurant-detail banner-container">
-              <div className="restaurant-detail photos-container">
-                {data.restaurant.photos.slice(0, 4).map((photo, indx) => (
-                  <div key={photo._id} className="restaurant-detail thumbnail-wrapper">
-                    <img src={photo.url} alt="Restaurant thumbnail" />
-                  </div>
-                ))}
+              <div className="restaurant-detail banner-container">
+                <div className="restaurant-detail photos-container">
+                  {data.restaurant.photos.slice(0, 4).map((photo, indx) => (
+                    <div key={photo._id} className="restaurant-detail thumbnail-wrapper">
+                      <img src={photo.url} alt="Restaurant thumbnail" />
+                    </div>
+                  ))}
+                </div>
+
+                <Link to={`/restaurants/${data.restaurant._id}/photos`}>See All {data.restaurant.photos.length}</Link>
               </div>
 
-              <Link to={`/restaurants/${data.restaurant._id}/photos`}>See All {data.restaurant.photos.length}</Link>
-            </div>
-
               <div className="restaurant-detail text-wrapper">
-                {/* <div className="restaurant-detail-body-wrapper"> */}
+                <div className="restaurant-detail main-info-wrapper">
                   <div className="restaurant-detail header-wrapper">
                     <h1>{data.restaurant.name}</h1>
 
@@ -501,7 +501,7 @@ class RestaurantDetail extends Component {
 
                     <Link to={`/restaurants/${data.restaurant._id}/map`}>Get Directions</Link> 
                   </div>
-                {/* </div> */}
+                </div>
               </div>
 
               <Footer />
