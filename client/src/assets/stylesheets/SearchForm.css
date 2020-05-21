@@ -89,6 +89,22 @@
   border-radius: 5px;
 }
 
+/* Dynamic styling */
+
+@media screen and (min-width: 320px) {
+  .search-form.input-wrapper label,
+  .search-form.input-wrapper label input {
+    font-size: calc(5px + 13 * ((100vw - 320px) / 680));
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .search-form.input-wrapper label,
+  .search-form.input-wrapper label input { 
+    font-size: 18px;
+  }
+}
+
 /* .navbar-search-input-wrapper {
   width: 100%;
   height: 40%;
