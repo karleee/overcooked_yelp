@@ -301,47 +301,42 @@ class RestaurantDetail extends Component {
                     })}
                   </div>
 
-                  {/* <div className="restaurant-detail review-button-container"> */}
-                    <Query query={CURRENT_USER} >
-                      {currentUser => {
-                        return (
-                          <Query query={FETCH_REVIEW} variables={{ restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId }} >
-                            {(reviewData) => {
-                              return (
-                                <div className="restaurant-detail review-button-container" onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>
-                                  {/* <div className="review-button-icon-wrapper"> */}
-                                    <img src="/images/restaurant_detail/action_menu/star_icon.png" alt="Star icon" />
-                                  {/* </div> */}
-
-                                  <p>Write a Review</p>
-                                </div>
-                              );
-                            }}
-                          </Query>
-                        );
-                      }}
-                    </Query>
-                  {/* </div>    */}
+                  <Query query={CURRENT_USER} >
+                    {currentUser => {
+                      return (
+                        <Query query={FETCH_REVIEW} variables={{ restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId }} >
+                          {(reviewData) => {
+                            return (
+                              <div className="restaurant-detail review-button-container" onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>
+                                <img src="/images/restaurant_detail/action_menu/star_icon.png" alt="Star icon" />
+                                <p>Write a Review</p>
+                              </div>
+                            );
+                          }}
+                        </Query>
+                      );
+                    }}
+                  </Query>
 
                   <div className="restaurant-detail popular-dishes-container">
                     <h3>Popular Dishes</h3>
 
-                    <div className="popular-dishes-wrapper">
+                    <div className="restaurant-detail dishes-wrapper">
                       {data.restaurant.popularDishes.map((dish, indx) => {
                         // Getting all reviews and photos associated with the popular dish
                         const foundReviews = getPopularDishOccurences(reviews, dish.name, 'reviews');
                         const foundPhotos = getPopularDishOccurences(photos, dish.name, 'photos');
                         
                         return (
-                          <div key={indx} className="dish-wrapper">
-                            <div className="dish-image-wrapper">
+                          <div key={indx} className="restaurant-detail dish-wrapper">
+                            <div className="restaurant-detail dish-thumb-wrapper">
                               <img src={dish.url} alt="Popular dish thumbnail" />
                             </div>
 
-                            <div className="dish-text-wrapper">
+                            <div className="restaurant-detail dish-text-wrapper">
                               <p>{dish.name}</p>
 
-                              <div className="dish-reviews-and-photos-wrapper">
+                              <div className="restaurant-detail dish-photo-review-wrapper">
                                 <p>{foundPhotos.length} {foundPhotos.length > 1 || foundPhotos.length === 0 ? 'Photos' : 'Photo'}</p>
                                 <p>•</p>
                                 <p>{foundReviews.length} {foundReviews.length > 1 || foundReviews.length === 0 ? 'Reviews' : 'Review'}</p>

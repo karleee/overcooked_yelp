@@ -206,7 +206,71 @@
   margin-top: 3%;
 }
 
-.restaurant-detail-recommended-reviews-wrapper {
+.restaurant-detail.popular-dishes-container h3 {
+  font-family: 'helveticaBold';
+  font-size: 16px;
+  color: var(--black);
+}
+
+.restaurant-detail.dishes-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+}
+
+.restaurant-detail.dish-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 32%;
+  height: 100%;
+  margin-right: 15px;
+}
+
+.restaurant-detail.dish-thumb-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 65%;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  overflow: hidden;
+}
+
+.restaurant-detail.dish-thumb-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.restaurant-detail.dish-text-wrapper {
+  font-family: 'helveticaMedium';
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 8% 0 7% 8%;
+}
+
+.restaurant-detail.dish-photo-review-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  font-family: 'helveticaNormal';
+  font-size: 12px;
+  color: var(--subtle-text);
+}
+
+.restaurant-detail.dish-photo-review-wrapper p:nth-of-type(2n) {
+  font-family: sans-serif;
+  padding: 0 2%;
+}
+
+/* .restaurant-detail-recommended-reviews-wrapper {
   border-bottom: none;
   padding-bottom: 100px;
 }
@@ -229,14 +293,6 @@
   height: 26vh;
   margin-top: 10px;
   padding-bottom: 10px;
-}
-
-.dish-wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 32%;
-  height: 100%;
-  margin-right: 15px;
 }
 
 .dish-image-wrapper {
@@ -673,4 +729,4 @@
   font-size: 14px;
   color: var(--black);
   line-height: 1.25;
-}
+} */
