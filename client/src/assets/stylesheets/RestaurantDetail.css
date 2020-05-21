@@ -188,25 +188,16 @@
 
 /* Restaurant text popular dishes styling */
 
-/* .restaurant-detail.popular-dishes-container,
-.restaurant-detail-location-and-hours-wrapper, 
-.restaurant-detail-amenities-wrapper,
-.restaurant-detail-recommended-reviews-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-  padding-bottom: 25px;
-  border-bottom: 1px solid var(--light-border-color);
-} */
-
-.restaurant-detail.popular-dishes-container {
+.restaurant-detail.popular-dishes-container,
+.restaurant-detail.location-and-hours-container {
   border-top: 1px solid var(--light-border-color);
   box-sizing: border-box;
-  padding-top: 3%; 
+  padding: 3% 0; 
   margin-top: 3%;
 }
 
-.restaurant-detail.popular-dishes-container h3 {
+.restaurant-detail.popular-dishes-container h3,
+.restaurant-detail.location-and-hours-container h3 {
   font-family: 'helveticaBold';
   font-size: 16px;
   color: var(--black);
@@ -268,6 +259,55 @@
 .restaurant-detail.dish-photo-review-wrapper p:nth-of-type(2n) {
   font-family: sans-serif;
   padding: 0 2%;
+}
+
+/* Restaurant location and hours styling */
+
+.restaurant-detail.map-hours-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 2%;
+  height: 35vh;
+}
+
+.restaurant-detail.map-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+}
+
+.restaurant-detail.map-wrapper .map-wrapper {
+  width: 100%;
+  height: 70%;
+  box-sizing: border-box;
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.restaurant-detail.map-text-wrapper {
+  width: 100%;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  font-family: 'helveticaBold';
+  font-size: 14px;
+  color: var(--black);
+  box-sizing: border-box;
+  padding: 3% 0 3% 4%;
+  line-height: 1.4;
+}
+
+.restaurant-detail.map-text-wrapper p:last-of-type {
+  font-family: 'helveticaNormal';
 }
 
 /* .restaurant-detail-recommended-reviews-wrapper {

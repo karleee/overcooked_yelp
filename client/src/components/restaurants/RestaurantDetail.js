@@ -348,16 +348,16 @@ class RestaurantDetail extends Component {
                     </div>
                   </div>
 
-                  <div className="restaurant-detail-location-and-hours-wrapper">
+                  <div className="restaurant-detail location-and-hours-container">
                     <h3>Location & Hours</h3>
 
-                    <div className="restaurant-detail-location-and-hours-body-wrapper">
-                      <div className="restaurant-detail-map-wrapper">
-                        <div className="restaurant-detail-map-image-wrapper"> 
+                    <div className="restaurant-detail map-hours-wrapper">
+                      <div className="restaurant-detail map-wrapper">
+                        {/* <div className="restaurant-detail-map-image-wrapper">  */}
                           <Map restaurants={[data.restaurant]} />
-                        </div>   
+                        {/* </div>    */}
 
-                        <div className="restaurant-detail-map-text-info-wrapper">
+                        <div className="restaurant-detail map-text-wrapper">
                           <p>{data.restaurant.location.streetAddress}</p> 
                           <p>{data.restaurant.location.city}, {data.restaurant.location.state} {data.restaurant.location.zipCode}</p>
                           <p>{data.restaurant.location.city}</p>
