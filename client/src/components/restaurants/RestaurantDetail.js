@@ -74,9 +74,8 @@ class RestaurantDetail extends Component {
   // Rendering photos component of a review
   renderPhotos(photos) {
     return (
-      <div className="review-photos-container">
+      <div className="restaurant-detail review-photos-wrapper">
         <img src="/images/restaurant_detail/action_menu/camera_icon.png" alt="Camera" />
-
         <p>{photos} {photos > 1 ? 'photos' : 'photo'}</p>
       </div>
     );
@@ -130,7 +129,7 @@ class RestaurantDetail extends Component {
 
             {photos > 0 ? this.renderPhotos(photos) : ''}
 
-            <div className="body-container">
+            <div className="restaurant-detail review-body-container">
               <p>{review.body}</p>
             </div>
           </div>

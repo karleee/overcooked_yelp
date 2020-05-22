@@ -542,197 +542,24 @@
   margin-right: 2%;
 }
 
-
-
-
-/* .restaurant-detail-sidebar-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 32%;
-  height: 105px;
-  border: 1px solid var(--light-border-color);
-  border-radius: 5px;
-  font-family: 'helveticaNormal';
-  font-size: 13px;
-  color: var(--black); 
-  padding: 15px 10px;
-  box-sizing: border-box;
-  margin-left: 20px;
-}
-
-.restaurant-detail-phone-wrapper,
-.restaurant-detail-directions-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  margin-left: 15px;
-}
-
-.restaurant-detail-directions-wrapper a {
-  text-decoration: none;
-  color: var(--blue);
-}
-
-.restaurant-detail-phone-icon {
-  width: 18px;
-  height: 18px;
-}
-
-.restaurant-detail-directions-icon {
-  width: 23px;
-  height: 23px;
-}
-
-.restaurant-detail-phone-icon img,
-.restaurant-detail-directions-icon img {
-  width: 100%;
-}
-
-.restaurant-detail-phone-wrapper p,
-.restaurant-detail-directions-wrapper a {
-  margin-left: 15px;
-}
-
-.restaurant-detail-directions-wrapper a:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.restaurant-detail-sidebar-wrapper .sidebar-underline-wrapper {
-  border-bottom: 1px solid var(--light-border-color);
-  width: 100%;
-  height: 1px;
-}
-
-.review-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--light-border-color);
-  width: 100%;
-}
-
-.user-info-container {
-  display: flex;
-  flex-direction: row;
-  width: 25%;
-}
-
-.profile-photo-container img {
-  width: 55px;
-  height: 55px;
-  background: lightblue;
-  border-radius: 5px;
-}
-
-.stats-container {
-  margin-left: 8px;
-}
-
-.stats-user-name-container {
-  font-family: 'helveticaBold';
-  font-size: 14px;
-  color: var(--blue);
-}
-
-.stats-user-name-container,
-.stats-friends-container,
-.stats-num-reviews-container,
-.stats-num-photos-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.stats-friends-container,
-.stats-num-reviews-container,
-.stats-num-photos-container {
-  font-family: 'helveticaNormal';
-  font-size: 12px;
-  color: var(--black);
-}
-
-.stats-friends-container p:first-of-type,
-.stats-num-reviews-container p:first-of-type,
-.stats-num-photos-container p:first-of-type {
-  font-family: 'helveticaBold';
-  margin-right: 3px;
-}
-
-.friends-icon-container,
-.num-reviews-icon-container,
-.num-photos-icon-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 20px;
-  height: 13px;
-}
-
-.stats-friends-container img,
-.stats-num-photos-container img {
-  width: 13px;
-  height: 11px;
-}
-
-.stats-num-reviews-container img {
-  height: 100%;
-}
-
-.user-review-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.user-review-container {
-  width: 65%;
-}
-
-.stars-icon-and-date-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.stars-icon-wrapper {
-  height: 19px;
-  margin-right: 7px;
-  padding: 5px 0;
-}
-
-.stars-icon-wrapper img {
-  height: 100%;
-}
-
-.stars-icon-and-date-container p {
-  font-family: sans-serif;
-  font-size: 14px;
-  color: var(--mid-text);
-}
-
-.review-photos-container {
+.restaurant-detail.review-photos-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
   font-family: 'helveticaNormal';
   font-size: 12px;
   color: var(--blue);
-  padding-bottom: 10px;
+  margin: 2% 0 3% 0;
 }
 
-.review-photos-container img {
-  height: 15px;
-  margin-right: 3px;
-}
+.restaurant-detail.review-photos-wrapper img {
+  width: 4%;
+  margin-right: 1%;
+}  
 
-.body-container {
+.restaurant-detail.review-body-container {
   font-family: 'helveticaNormal';
   font-size: 14px;
   color: var(--black);
   line-height: 1.25;
-}  */
+}
