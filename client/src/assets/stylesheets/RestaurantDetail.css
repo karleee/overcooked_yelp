@@ -189,7 +189,8 @@
 /* Restaurant text popular dishes styling */
 
 .restaurant-detail.popular-dishes-container,
-.restaurant-detail.location-and-hours-container {
+.restaurant-detail.location-and-hours-container,
+.restaurant-detail.amenities-container {
   border-top: 1px solid var(--light-border-color);
   box-sizing: border-box;
   padding: 3% 0; 
@@ -197,13 +198,15 @@
 }
 
 .restaurant-detail.popular-dishes-container h3,
-.restaurant-detail.location-and-hours-container h3 {
+.restaurant-detail.location-and-hours-container h3,
+.restaurant-detail.amenities-container h3 {
   font-family: 'helveticaBold';
   font-size: 16px;
   color: var(--black);
 }
 
-.restaurant-detail.dishes-wrapper {
+.restaurant-detail.dishes-wrapper,
+.restaurant-detail.map-hours-wrapper {
   display: flex;
   flex-direction: row;
   margin-top: 2%;
@@ -264,12 +267,6 @@
 /* Restaurant location and hours styling */
 
 .restaurant-detail.map-hours-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  margin-top: 2%;
   height: 35vh;
 }
 
@@ -315,11 +312,8 @@
 .restaurant-detail.hours-wrapper {
   display: flex;
   flex-direction: row;
-  /* justify-content: flex-start; */
-  /* align-items: center; */
   margin-left: 5%;
   width: 50%;
-  /* background: yellow; */
 }
 
 .restaurant-detail.weekday-wrapper {

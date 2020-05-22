@@ -389,8 +389,7 @@ class RestaurantDetail extends Component {
                               <div className="restaurant-detail weekday-hours-wrapper">  
                                 <p>{hoursArray[indx].open} - {hoursArray[indx].close}</p>
                                 <p className="restaurant-detail open-wrapper">{isOpen && indx === newCurrentDayIndx ? 'Open now' : ''}</p>
-                                {/* <p className="restaurant-detail closed-wrapper">{!isOpen && indx === newCurrentDayIndx ? 'Closed now' : ''}</p>
-                                <p className="restaurant-detail open-wrapper">{isOpen && indx === newCurrentDayIndx ? 'Open now' : ''}</p> */}
+                                <p className="restaurant-detail closed-wrapper">{!isOpen && indx === newCurrentDayIndx ? 'Closed now' : ''}</p> 
                               </div>
                             );
                           })}
@@ -399,7 +398,7 @@ class RestaurantDetail extends Component {
                     </div>
                   </div>
 
-                  <div className="restaurant-detail-amenities-wrapper">
+                  <div className="restaurant-detail amenities-container">
                     <h3>Amenities</h3>
 
                     <div className="amenities-list-container"> 
