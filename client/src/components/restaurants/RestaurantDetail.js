@@ -93,52 +93,38 @@ class RestaurantDetail extends Component {
       const photos = review.photos.length;
 
       return (
-        <li key={review._id} className="review-container"> 
-          <div className="user-info-container">
-            <div className="profile-photo-container">
-              <img src={review.user.profilePhoto} alt="Profile thumbnail" />
-            </div>
+        <li key={review._id}> 
+          <div className="restaurant-detail user-profile-container">
+            <img src={review.user.profilePhoto} alt="Profile thumbnail" />
 
-            <div className="stats-container">
-              <div className="stats-user-name-container">
+            <div className="restaurant-detail user-stats-container">
+              <div className="restaurant-detail username-wrapper">
                 <p>{review.user.firstName} {(review.user.lastName)[0]}.</p>
               </div>
 
-              <div  className="stats-friends-container">
-                <div className="friends-icon-container">
-                  <img src="/images/gallery/friends_icon.png" alt="Friends icon" />
-                </div>
-
+              <div  className="restaurant-detail friends-wrapper">
+                <img src="/images/gallery/friends_icon.png" alt="Friends icon" />
                 <p>{review.user.friends}</p>
                 <p>{review.user.friends > 1 || review.user.friends === 0 ? 'friends' : 'friend'}</p>
               </div>
 
-              <div className="stats-num-reviews-container">
-                <div className="num-reviews-icon-container">
-                  <img src="/images/gallery/total_reviews_icon.png" alt="Reviews icon" />
-                </div>
-
+              <div className="restaurant-detail total-reviews-wrapper">
+                <img src="/images/gallery/total_reviews_icon.png" alt="Reviews icon" />
                 <p>{review.user.reviews.length}</p>
                 <p>{review.user.reviews.length > 1 || review.user.reviews.length === 0 ? 'reviews' : 'review'}</p>
               </div>
 
-              <div className="stats-num-photos-container">
-                <div className="num-photos-icon-container">
-                  <img src="/images/gallery/camera_icon.png" alt="Camera icon" />
-                </div>
-
+              <div className="restaurant-detail total-photos-wrapper">
+                <img src="/images/gallery/camera_icon.png" alt="Camera icon" />
                 <p>{review.user.photos.length}</p>
                 <p>{review.user.photos.length > 1 || review.user.photos.length === 0 ? 'photos' : 'photo'}</p>
               </div>
             </div>
           </div>
 
-          <div className="user-review-container">
-            <div className="stars-icon-and-date-container">
-              <div className="stars-icon-wrapper">
-                <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt="Ratings icon" />
-              </div>
-
+          <div className="restaurant-detail user-review-container">
+            <div className="restauranat-detail rating-date-wrapper">
+              <img src={`/images/restaurant_detail/ratings/${stars}.png`} alt="Ratings icon" />
               <p>{`${month}/${dat}/${yr}`}</p>
             </div>
 
@@ -461,9 +447,9 @@ class RestaurantDetail extends Component {
                     </div>
                   </div>
 
-                  <div className="restaurant-detail-recommended-reviews-wrapper">
+                  <div className="restaurant-detail reviews-container">
                     <h3>Recommended Reviews</h3>
-                    <ul className='reviews-display-list'>
+                    <ul>
                       {this.renderAllReviews(this.orderReviews(data.restaurant.reviews))}
                     </ul>
                   </div>
