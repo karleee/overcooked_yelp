@@ -364,7 +364,7 @@
   align-content: space-between;
   flex-wrap: wrap;
   list-style: none;
-  height: 70px;
+  height: 13.5vh;
 }
 
 .restaurant-detail.amenity-preview-wrapper li {
@@ -373,7 +373,7 @@
   align-items: center;
   width: 50%;
   box-sizing: border-box;
-  padding: 1%;
+  padding: 2%;
 }
 
 .restaurant-detail.amenity-extra-wrapper {
@@ -397,7 +397,7 @@
   flex-direction: row;
   width: 100%;
   box-sizing: border-box;
-  padding: 1%;
+  padding: 2%;
 }
 
 .healthScore-icon-wrapper,
@@ -408,9 +408,9 @@
 .takeOut-icon-wrapper,
 .acceptsCreditCards-icon-wrapper,
 .wifi-icon-wrapper {
+  position: relative;
   width: 1.2em;
   height: 1.2em;
-  text-align: center;
 }
 
 .healthScore-icon-wrapper img,
@@ -420,10 +420,17 @@
 .vegetarianOptions-icon-wrapper img,
 .takeOut-icon-wrapper img,
 .acceptsCreditCards-icon-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
   height: 100%;
 }
 
-.wifi-icon-wrapper img {
+.wifi-icon-wrapper img,
+.acceptsCreditCards-icon-wrapper img {
   height: 80%;
 }
 
