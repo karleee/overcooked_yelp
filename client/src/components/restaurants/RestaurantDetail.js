@@ -401,15 +401,15 @@ class RestaurantDetail extends Component {
                   <div className="restaurant-detail amenities-container">
                     <h3>Amenities</h3>
 
-                    <div className="amenities-list-container"> 
-                      <ul className="thumb-amenities-wrapper">
+                    <div className="restaurant-detail amenities-list-wrapper"> 
+                      <ul className="restaurant-detail amenity-preview-wrapper">
                         {amenitiesRawKeys.slice(0, 4).map((key, indx) => {
                           // Accounting for number value for health score amenity
                           const amenityValue = setAmenityValue(key, amenities[key]);
 
                           return (
                             <li key={indx}>
-                              <div className={`${key}-icon-wrapper`}>
+                              <div className={`restaurant-detail ${key}-icon-wrapper`}> 
                                 <img src={`/images/restaurant_detail/amenities/${key}_icon.png`} alt="Amenity icon" />
                               </div>
 
@@ -421,7 +421,7 @@ class RestaurantDetail extends Component {
                       </ul> 
 
                       {this.state.viewMoreAmenities ? 
-                      <ul className="extra-amenities-container">
+                      <ul className="restaurant-detail amenity-extra-wrapper">
                         {pairedExtraAmenities.map((pair, indx) => {
                           // Setting first and second pair of amenity keys and values                          
                           const firstAmenityKey = pair[0];
@@ -432,7 +432,7 @@ class RestaurantDetail extends Component {
                           
                           return (
                             <li key={indx}>
-                              <div className="extra-amenity-pair-first">
+                              <div className="restaurant-detail first-amenity-pair">
                                 <div className={`${pair[0]}-icon-wrapper`}>
                                   <img src={`/images/restaurant_detail/amenities/${firstAmenityKey}_icon.png`} alt="Amenity icon" />
                                 </div>
@@ -441,7 +441,7 @@ class RestaurantDetail extends Component {
                                 <p>{firstAmenityValue}</p>
                               </div>
 
-                              <div className="extra-amenity-pair-second">
+                              <div className="restaurant-detail second-amenity-pair">
                                 <div className={`${pair[1]}-icon-wrapper`}>
                                   <img src={`/images/restaurant_detail/amenities/${secondAmenityKey}_icon.png`} alt="Amenity icon" />
                                 </div>
@@ -456,10 +456,7 @@ class RestaurantDetail extends Component {
                       </ul> : ''}
                     </div>
 
-                    <div 
-                      className="restaurant-detail-view-more-amenities-wrapper"
-                      onClick={this.toggleAmenities}
-                    >
+                    <div className="restaurant-detail view-more-wrapper" onClick={this.toggleAmenities}>
                       {this.state.viewMoreAmenities ? 'Show Less' : `${extraAmenitiesRawKeys.length} more attributes`}
                     </div>
                   </div>

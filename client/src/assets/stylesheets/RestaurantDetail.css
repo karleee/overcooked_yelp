@@ -356,9 +356,100 @@
   color: var(--green);
 }
 
+/* Restaurant amenities styling */
 
+.restaurant-detail.amenity-preview-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  flex-wrap: wrap;
+  list-style: none;
+  height: 70px;
+}
 
+.restaurant-detail.amenity-preview-wrapper li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 1%;
+}
 
+.restaurant-detail.amenity-extra-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  list-style: none;
+}
+
+.restaurant-detail.amenity-extra-wrapper li {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.restaurant-detail.first-amenity-pair,
+.restaurant-detail.second-amenity-pair {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1%;
+}
+
+.healthScore-icon-wrapper,
+.takesReservations-icon-wrapper,
+.delivery-icon-wrapper,
+.goodForHappyHour-icon-wrapper,
+.vegetarianOptions-icon-wrapper,
+.takeOut-icon-wrapper,
+.acceptsCreditCards-icon-wrapper,
+.wifi-icon-wrapper {
+  width: 1.2em;
+  height: 1.2em;
+  text-align: center;
+}
+
+.healthScore-icon-wrapper img,
+.takesReservations-icon-wrapper img,
+.delivery-icon-wrapper img,
+.goodForHappyHour-icon-wrapper img,
+.vegetarianOptions-icon-wrapper img,
+.takeOut-icon-wrapper img,
+.acceptsCreditCards-icon-wrapper img {
+  height: 100%;
+}
+
+.wifi-icon-wrapper img {
+  height: 80%;
+}
+
+.restaurant-detail.amenities-list-wrapper ul li p:first-of-type {
+  font-family: 'helveticaNormal';
+  color: var(--black);
+  font-size: 14px;
+  margin-left: 3%;
+}
+
+.restaurant-detail.amenities-list-wrapper ul li p:last-of-type {
+  font-family: 'helveticaBold';
+  color: var(--black);
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+/* Restaurant view more amenities styling */
+
+.restaurant-detail.view-more-wrapper {
+  font-family: 'helveticaNormal';
+  font-size: 12px;
+  color: var(--blue);
+  width: 16%;
+  margin-top: 5%;
+}
 
 /* .restaurant-detail-recommended-reviews-wrapper {
   border-bottom: none;
