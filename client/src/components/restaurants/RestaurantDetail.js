@@ -367,7 +367,7 @@ class RestaurantDetail extends Component {
                           {weekdayLabels.map(weekday => <p>{weekday}</p>)}
                         </div>
 
-                        <div className="restaurant-detail open-and-close-wrapper">
+                        <div className="restaurant-detail all-hours-wrapper">
                           {weekdayHours.map((weekday, indx) => {
                             // Conditional for determining if a restaurant is open based on time  
                             const isOpen = ((adjustedHour >= weekday[0][0] && ampm === 'am') || (adjustedHour < weekday[1][0] && ampm === 'pm')) ||
@@ -386,10 +386,11 @@ class RestaurantDetail extends Component {
                             }
 
                             return (
-                              <div className="restaurant-detail weekday-hours-wrapper">
+                              <div className="restaurant-detail weekday-hours-wrapper">  
                                 <p>{hoursArray[indx].open} - {hoursArray[indx].close}</p>
-                                <p className="restaurant-detail closed-wrapper">{!isOpen && indx === newCurrentDayIndx ? 'Closed now' : ''}</p>
                                 <p className="restaurant-detail open-wrapper">{isOpen && indx === newCurrentDayIndx ? 'Open now' : ''}</p>
+                                {/* <p className="restaurant-detail closed-wrapper">{!isOpen && indx === newCurrentDayIndx ? 'Closed now' : ''}</p>
+                                <p className="restaurant-detail open-wrapper">{isOpen && indx === newCurrentDayIndx ? 'Open now' : ''}</p> */}
                               </div>
                             );
                           })}

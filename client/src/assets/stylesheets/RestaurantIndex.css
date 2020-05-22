@@ -5,7 +5,7 @@
   height: 100%;
 }
 
-.restaurant-index.thumbnails-wrapper  ul {
+.restaurant-index.thumbnails-wrapper ul {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -30,7 +30,7 @@
   text-decoration: none;
 }
 
-.restaurant-index.thumbnails-wrapper ul li a img {
+.restaurant-index.thumbnails-wrapper ul li a > img {
   width: 100%;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -81,19 +81,19 @@
   font-family: 'helveticaNormal';
 }
 
-.restaurant-detail.open-wrapper {
+.restaurant-index.new-open-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 5% 0 2% 0;
+  margin: 3% 0 2% 0;
 }
 
-.restaurant-index.text-wrapper .restaurant-detail.open-wrapper img {
+.restaurant-index.new-open-wrapper img {
   width: 10%;
   margin-right: 3%;
 }
 
-.restaurant-detail.open-wrapper p {
+.restaurant-index.new-open-wrapper p {
   font-family: 'helveticaMedium';
   color: var(--orange);
 }

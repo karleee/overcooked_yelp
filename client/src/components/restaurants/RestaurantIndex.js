@@ -50,7 +50,7 @@ const RestaurantIndex = () => {
 
                         <p>{restaurant.location.city}, {restaurant.location.state}</p>
 
-                        <div className="restaurant-detail open-wrapper">
+                        <div className="restaurant-index new-open-wrapper">
                           <img src="/images/homepage/fire_icon.png" alt="Fire" />
                           <p>Opened {weeks} {weeks > 1 ? 'weeks' : 'week'} ago</p>
                         </div>

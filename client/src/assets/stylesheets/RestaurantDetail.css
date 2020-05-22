@@ -315,10 +315,11 @@
 .restaurant-detail.hours-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+  /* justify-content: flex-start; */
+  /* align-items: center; */
   margin-left: 5%;
-  width: 48%;
+  width: 50%;
+  /* background: yellow; */
 }
 
 .restaurant-detail.weekday-wrapper {
@@ -327,32 +328,30 @@
   font-family: 'helveticaBold';
   font-size: 14px;
   color: var(--black);
-  line-height: 1.3;
 }
 
-.restaurant-detail.open-and-close-wrapper {
+.restaurant-detail.all-hours-wrapper {
   display: flex;
   flex-direction: column;
   font-family: 'helveticaNormal';
   font-size: 14px;
   color: var(--black);
-  line-height: 1.3;
-  letter-spacing: 0.5px;
-  margin-left: 20px;
+  margin-left: 5%;
 }
 
 .restaurant-detail.weekday-hours-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
+  white-space: nowrap;
 }
 
 .restaurant-detail.closed-wrapper,
 .restaurant-detail.open-wrapper {
+  display: inline-block;
   font-family: 'helveticaBold';
   font-size: 12.5px;
-  letter-spacing: -0.15px; 
-  margin-left: 5px;
+  margin-left: 5%;
 }
 
 .restaurant-detail.closed-wrapper {
@@ -362,6 +361,10 @@
 .restaurant-detail.open-wrapper {
   color: var(--green);
 }
+
+
+
+
 
 /* .restaurant-detail-recommended-reviews-wrapper {
   border-bottom: none;
