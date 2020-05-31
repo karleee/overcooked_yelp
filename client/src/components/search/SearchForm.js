@@ -113,12 +113,11 @@ class SearchForm extends React.Component {
             >
               <div className="search-form navbar input-wrapper">
                 {this.renderFindInput()}
-                <div className="search-form navbar separator-wrapper"></div>
                 {this.renderNearInput(userLocation)}
+              </div>
 
-                <div className="search-form navbar button-wrapper" onClick={this.submitSearch(data.currentUserZipCode)}>
-                  <i className="search-form navbar search-icon"></i>
-                </div>
+              <div className="search-form navbar button-wrapper" onClick={this.submitSearch(data.currentUserZipCode)}>
+                <i className="search-form navbar search-icon"></i>
               </div>
               
               <button type="submit">Submit</button>
