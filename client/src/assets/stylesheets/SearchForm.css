@@ -110,7 +110,6 @@
 
 .search-form.navbar.input-wrapper input {
   font-family: 'helveticaNormal';
-  font-size: 16px;
   color: var(--black);
   width: 50%;
   box-sizing: border-box;
@@ -155,12 +154,20 @@
   .search-form.input-wrapper label input {
     font-size: calc(5px + 13 * ((100vw - 320px) / 680));
   }
+
+  .search-form.navbar.input-wrapper input {
+    font-size: calc(6px + 10 * ((100vw - 320px) / 680));
+  }
 }
 
 @media screen and (min-width: 1000px) {
   .search-form.input-wrapper label,
   .search-form.input-wrapper label input { 
     font-size: 18px;
+  }
+
+  .search-form.navbar.input-wrapper input {
+    font-size: 16px;
   }
 }
 

@@ -51,10 +51,9 @@
   justify-content: space-between;
   align-items: center;
   font-family: 'helveticaMedium';
-  font-size: 15px;
   color: var(--black);
   width: 40%;
-  margin-left: 50px;
+  margin-left: 5%;
 }
 
 .navbar-review-link-wrapper {
@@ -65,7 +64,7 @@
   padding: 10px 15px;
 }
 
-.navbar-review-link-wrapper a {
+.navbar-review-link-wrapper a { 
   text-decoration: none;
   color: var(--black);
 }
@@ -105,7 +104,7 @@
 .navbar-buttons-wrapper .login-logout-wrapper a:last-of-type {
   background: var(--light-red);
   border: none;
-  color: white;
+  color: white; 
 }
 
 .navbar-buttons-wrapper .login-logout-wrapper a:first-of-type:hover {
@@ -118,4 +117,18 @@
   background: var(--red);
   transition: background 0.5s;
   cursor: pointer;
+}
+
+/* Dynamic styling */
+
+@media screen and (min-width: 320px) {
+  .navbar-review-link-wrapper {
+    font-size: calc(5px + 10 * ((100vw - 320px) / 680));
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .navbar-review-link-wrapper {
+    font-size: 15px;
+  }
 }

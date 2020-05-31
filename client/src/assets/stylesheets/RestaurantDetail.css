@@ -460,6 +460,10 @@
   margin-top: 5%;
 }
 
+.restaurant-detail.view-more-wrapper:hover {
+  cursor: pointer;
+}
+
 /* Restaurant reviews styling */
 
 .restaurant-detail.reviews-container ul {
