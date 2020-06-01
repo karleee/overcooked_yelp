@@ -117,7 +117,8 @@ class SearchForm extends React.Component {
               </div>
 
               <div className="search-form navbar button-wrapper" onClick={this.submitSearch(data.currentUserZipCode)}>
-                <i className="search-form navbar search-icon"></i>
+                {/* <i className="search-form navbar search-icon"></i> */}
+                <img src="/images/navbar/search_icon.png" alt="Search" />
               </div>
               
               <button type="submit">Submit</button>
@@ -141,7 +142,8 @@ class SearchForm extends React.Component {
               </div>
 
               <div className="search-form button-wrapper" onClick={this.submitSearch(data.currentUserZipCode)}>
-                <i className="search-form search-icon"></i>
+                {/* <i className="search-form search-icon"></i> */}
+                <img src="/images/navbar/search_icon.png" alt="Search" />
               </div>
 
               <button type="submit">Submit</button>
