@@ -84,10 +84,8 @@
 
 .restaurant-detail.header-wrapper h1 {
   font-family: 'helveticaBold';
-  font-size: 30px;
   color: var(--black);
-  display: inline-block;
-  margin-right: 1%;
+  margin-right: 0.5em;
 }
 
 .restaurant-detail.claimed-wrapper {
@@ -95,6 +93,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  margin-top: 0.7em;
 }
 
 .restaurant-detail.claimed-wrapper img {
@@ -103,7 +102,6 @@
 
 .restaurant-detail.claimed-wrapper p {
   font-family: 'helveticaNormal';
-  font-size: 14px;
   color: var(--black);
   margin-left: 3px;
 }
@@ -121,7 +119,7 @@
 .restaurant-detail.ratings-and-reviews-wrapper p {
   font-family: 'helveticaNormal';
   color: var(--mid-text);
-  font-size: 16px;
+  /* font-size: 16px; */
   margin-left: 1.5%;
 }
  
@@ -558,7 +556,7 @@
 
 .restaurant-detail.review-photos-wrapper img {
   width: 4%;
-  margin-right: 1%;
+  margin-right: 1%; 
 }  
 
 .restaurant-detail.review-body-container {
@@ -566,4 +564,34 @@
   font-size: 14px;
   color: var(--black);
   line-height: 1.25;
+}
+
+/* Dynamic styling */
+
+@media screen and (min-width: 320px) {
+  .restaurant-detail.header-wrapper h1 {
+    font-size: calc(25px + 5 * ((100vw - 320px) / 680));
+  }
+
+  .restaurant-detail.claimed-wrapper p {
+    font-size: calc(10px + 4 * ((100vw - 320px) / 680));
+  }
+
+  .restaurant-detail.ratings-and-reviews-wrapper p {
+    font-size: calc(12px + 4 * ((100vw - 320px) / 680));
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .restaurant-detail.header-wrapper h1 {
+    font-size: 30px;
+  }
+
+  .restaurant-detail.claimed-wrapper p {
+    font-size: 14px;
+  }
+
+  .restaurant-detail.ratings-and-reviews-wrapper p {
+    font-size: 16px;
+  }
 }
