@@ -290,7 +290,7 @@ class RestaurantDetail extends Component {
                     {currentUser => {
                       return (
                         <Query query={FETCH_REVIEW} variables={{ restaurantId: this.props.match.params.id, userId: currentUser.data.currentUserId }} >
-                          {(reviewData) => {
+                          {reviewData => {
                             return (
                               <div className="restaurant-detail review-button-container" onClick={() => this.renderReview(data.restaurant._id, reviewData, currentUser.data.currentUserId, data.restaurant.name)}>
                                 <img src="/images/restaurant_detail/action_menu/star_icon.png" alt="Star icon" />

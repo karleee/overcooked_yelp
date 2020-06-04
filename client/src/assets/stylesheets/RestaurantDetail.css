@@ -152,18 +152,15 @@
 }
 
 .restaurant-detail.review-button-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  display: inline-block;
+  white-space: nowrap;
   font-family: 'helveticaBold';
-  font-size: 13px;
   color: var(--red);
   border: 1px solid var(--border-color);
   border-radius: 3px;
-  width: 20%;
-  box-sizing: border-box;
-  padding: 1.5% 0;
   margin-top: 2%;
+  box-sizing: border-box;
+  padding: 1.5% 3%;
 }
 
 .restaurant-detail.review-button-container:hover {
@@ -174,10 +171,16 @@
 }
 
 .restaurant-detail.review-button-container img {
-  display: flex;
-  flex-direction: row;
-  width: 15px;
-  margin-right: 5px;
+  display: inline-block;
+  width: 2em;
+  box-sizing: border-box;
+  padding-right: 5%;
+  vertical-align: middle;
+}
+
+.restaurant-detail.review-button-container p {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* Restaurant text popular dishes styling */
@@ -582,6 +585,10 @@
   .restaurant-detail.banner-container a {
     font-size: calc(7px + 7 * ((100vw - 320px) / 680));
   }
+
+  .restaurant-detail.review-button-container {
+    font-size: calc(9px + 4 * ((100vw - 320px) / 680));
+  }
 }
 
 @media screen and (min-width: 1000px) {
@@ -601,5 +608,9 @@
 
   .restaurant-detail.banner-container a {
     font-size: 16px;
+  }
+
+  .restaurant-detail.review-button-container {
+    font-size: 13px;
   }
 }
