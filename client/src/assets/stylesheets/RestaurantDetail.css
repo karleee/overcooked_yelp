@@ -468,30 +468,27 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--light-border-color);
   width: 100%;
+  box-sizing: border-box;
+  padding: 4% 0;
+  border-bottom: 1px solid var(--light-border-color);
 }
 
 .restaurant-detail.user-profile-container {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   width: 25%;
 }
 
 .restaurant-detail.user-profile-container img {
-  width: 3em;
-  height: 3em;
+  width: 32%;
   border-radius: 5px;
-}
-
-.restaurant-detail.user-stats-container {
-  margin-left: 5%;
+  margin-right: 7%;
 }
 
 .restaurant-detail.username-wrapper {
   font-family: 'helveticaBold';
-  font-size: 14px;
   color: var(--blue);
 }
 
@@ -502,7 +499,6 @@
   flex-direction: row;
   align-items: center;
   font-family: 'helveticaNormal';
-  font-size: 12px;
   color: var(--black);
 }
 
@@ -531,12 +527,12 @@
   flex-direction: row;
   align-items: center;
   font-family: sans-serif;
-  font-size: 14px;
   color: var(--mid-text);
 }
 
 .restauranat-detail.rating-date-wrapper img {
   width: 25%;
+  min-width: 70px;
   margin-right: 2%;
 }
 
@@ -545,21 +541,21 @@
   flex-direction: row;
   align-items: center;
   font-family: 'helveticaNormal';
-  font-size: 12px;
   color: var(--blue);
-  margin: 2% 0 3% 0;
+  margin-top: 3%;
 }
 
 .restaurant-detail.review-photos-wrapper img {
   width: 4%;
+  min-width: 10px;
   margin-right: 1%; 
 }  
 
 .restaurant-detail.review-body-container {
   font-family: 'helveticaNormal';
-  font-size: 14px;
   color: var(--black);
   line-height: 1.25;
+  margin-top: 3%;
 }
 
 /* Dynamic styling */
@@ -603,7 +599,10 @@
     font-size: calc(13px + 3 * ((100vw - 320px) / 680));
   }
 
-  .restaurant-detail.dish-photo-review-wrapper {
+  .restaurant-detail.dish-photo-review-wrapper,
+  .restaurant-detail.friends-wrapper,
+  .restaurant-detail.total-reviews-wrapper,
+  .restaurant-detail.total-photos-wrapper {
     font-size: calc(4px + 8 * ((100vw - 320px) / 680));
   }
 
@@ -614,6 +613,19 @@
 
   .restaurant-detail.view-more-wrapper {
     font-size: calc(6px + 6 * ((100vw - 320px) / 680));
+  }
+
+  .restaurant-detail.username-wrapper {
+    font-size: calc(5px + 9 * ((100vw - 320px) / 680));
+  }
+
+  .restauranat-detail.rating-date-wrapper,
+  .restaurant-detail.review-body-container {
+    font-size: calc(10px + 4 * ((100vw - 320px) / 680));
+  }
+
+  .restaurant-detail.review-photos-wrapper {
+    font-size: calc(10px + 2 * ((100vw - 320px) / 680));
   }
 }
 
@@ -628,7 +640,10 @@
   .restaurant-detail.weekday-wrapper,
   .restaurant-detail.all-hours-wrapper,
   .restaurant-detail.amenities-list-wrapper ul li p:first-of-type,
-  .restaurant-detail.amenities-list-wrapper ul li p:last-of-type {
+  .restaurant-detail.amenities-list-wrapper ul li p:last-of-type,
+  .restaurant-detail.username-wrapper,
+  .restauranat-detail.rating-date-wrapper,
+  .restaurant-detail.review-body-container {
     font-size: 14px;
   }
 
@@ -653,7 +668,11 @@
   }
 
   .restaurant-detail.dish-photo-review-wrapper,
-  .restaurant-detail.view-more-wrapper {
+  .restaurant-detail.view-more-wrapper,
+  .restaurant-detail.friends-wrapper,
+  .restaurant-detail.total-reviews-wrapper,
+  .restaurant-detail.total-photos-wrapper,
+  .restaurant-detail.review-photos-wrapper {
     font-size: 12px;
   }
 }
