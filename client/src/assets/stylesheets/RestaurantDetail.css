@@ -409,9 +409,11 @@
 .takeOut-icon-wrapper,
 .acceptsCreditCards-icon-wrapper,
 .wifi-icon-wrapper {
-  position: relative;
-  width: 1.2em;
-  height: 1.2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 7%;
 }
 
 .healthScore-icon-wrapper img,
@@ -419,33 +421,25 @@
 .delivery-icon-wrapper img,
 .goodForHappyHour-icon-wrapper img,
 .vegetarianOptions-icon-wrapper img,
-.takeOut-icon-wrapper img,
-.acceptsCreditCards-icon-wrapper img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  margin: auto;
-  height: 100%;
-}
-
+.acceptsCreditCards-icon-wrapper img,
 .wifi-icon-wrapper img,
 .acceptsCreditCards-icon-wrapper img {
-  height: 80%;
+  width: 100%;
+}
+
+.takeOut-icon-wrapper img {
+  width: 70%;
 }
 
 .restaurant-detail.amenities-list-wrapper ul li p:first-of-type {
   font-family: 'helveticaNormal';
   color: var(--black);
-  font-size: 14px;
   margin-left: 3%;
 }
 
 .restaurant-detail.amenities-list-wrapper ul li p:last-of-type {
   font-family: 'helveticaBold';
   color: var(--black);
-  font-size: 14px;
   margin-left: 5px;
 }
 
@@ -608,6 +602,11 @@
   .restaurant-detail.dish-photo-review-wrapper {
     font-size: calc(4px + 6 * ((100vw - 320px) / 680));
   }
+
+  .restaurant-detail.amenities-list-wrapper ul li p:first-of-type,
+  .restaurant-detail.amenities-list-wrapper ul li p:last-of-type {
+    font-size: calc(5px + 9 * ((100vw - 320px) / 680));
+  }
 }
 
 @media screen and (min-width: 1000px) {
@@ -619,7 +618,9 @@
   .restaurant-detail.dish-text-wrapper,
   .restaurant-detail.map-text-wrapper,
   .restaurant-detail.weekday-wrapper,
-  .restaurant-detail.all-hours-wrapper {
+  .restaurant-detail.all-hours-wrapper,
+  .restaurant-detail.amenities-list-wrapper ul li p:first-of-type,
+  .restaurant-detail.amenities-list-wrapper ul li p:last-of-type {
     font-size: 14px;
   }
 
