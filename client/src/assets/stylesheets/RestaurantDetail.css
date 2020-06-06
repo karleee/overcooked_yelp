@@ -200,7 +200,6 @@
 .restaurant-detail.amenities-container h3,
 .restaurant-detail.reviews-container h3 {
   font-family: 'helveticaBold';
-  font-size: 16px;
   color: var(--black);
 }
 
@@ -237,7 +236,6 @@
 
 .restaurant-detail.dish-text-wrapper {
   font-family: 'helveticaMedium';
-  font-size: 14px;
   width: 100%;
   box-sizing: border-box;
   border-bottom-right-radius: 5px;
@@ -254,7 +252,7 @@
   align-items: center;
   width: 100%;
   font-family: 'helveticaNormal';
-  font-size: 12px;
+  /* font-size: 12px; */
   color: var(--subtle-text);
 }
 
@@ -572,7 +570,8 @@
     font-size: calc(25px + 5 * ((100vw - 320px) / 680));
   }
 
-  .restaurant-detail.claimed-wrapper p {
+  .restaurant-detail.claimed-wrapper p,
+  .restaurant-detail.dish-text-wrapper {
     font-size: calc(10px + 4 * ((100vw - 320px) / 680));
   }
 
@@ -589,6 +588,17 @@
   .restaurant-detail.review-button-container {
     font-size: calc(9px + 4 * ((100vw - 320px) / 680));
   }
+
+  .restaurant-detail.popular-dishes-container h3,
+  .restaurant-detail.location-and-hours-container h3,
+  .restaurant-detail.amenities-container h3,
+  .restaurant-detail.reviews-container h3 {
+    font-size: calc(13px + 3 * ((100vw - 320px) / 680));
+  }
+
+  .restaurant-detail.dish-photo-review-wrapper {
+    font-size: calc(4px + 6 * ((100vw - 320px) / 680));
+  }
 }
 
 @media screen and (min-width: 1000px) {
@@ -596,7 +606,8 @@
     font-size: 30px;
   }
 
-  .restaurant-detail.claimed-wrapper p {
+  .restaurant-detail.claimed-wrapper p,
+  .restaurant-detail.dish-text-wrapper {
     font-size: 14px;
   }
 
@@ -606,11 +617,19 @@
     font-size: 16px;
   }
 
-  .restaurant-detail.banner-container a {
+  .restaurant-detail.banner-container a,
+  .restaurant-detail.popular-dishes-container h3,
+  .restaurant-detail.location-and-hours-container h3,
+  .restaurant-detail.amenities-container h3,
+  .restaurant-detail.reviews-container h3 { 
     font-size: 16px;
   }
 
   .restaurant-detail.review-button-container {
     font-size: 13px;
+  }
+
+  .restaurant-detail.dish-photo-review-wrapper {
+    font-size: 12px;
   }
 }
