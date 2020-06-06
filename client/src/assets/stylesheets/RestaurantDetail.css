@@ -264,7 +264,6 @@
 
 .restaurant-detail.map-hours-wrapper {
   width: 100%;
-  height: 35vh;
 }
 
 .restaurant-detail.map-wrapper {
@@ -273,7 +272,7 @@
   flex-direction: column;
   width: 50%;
   min-width: 180px;
-  padding-top: 50%;
+  padding-top: 40%;
 }
 
 .restaurant-detail.map-wrapper .map-wrapper {
@@ -281,7 +280,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 55%;
+  height: 65%;
   box-sizing: border-box;
   border-left: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
@@ -292,9 +291,13 @@
 
 .restaurant-detail.map-text-wrapper {
   position: absolute;
-  top: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 65%;
   left: 0;
   width: 100%;
+  height: 35%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom: 1px solid var(--border-color);
@@ -303,7 +306,7 @@
   font-family: 'helveticaBold';
   color: var(--black);
   box-sizing: border-box;
-  padding: 3% 0 3% 4%;
+  padding-left: 4%;
   line-height: 1.4;
 }
 
@@ -447,9 +450,7 @@
 
 .restaurant-detail.view-more-wrapper {
   font-family: 'helveticaNormal';
-  font-size: 12px;
   color: var(--blue);
-  width: 16%;
   margin-top: 5%;
 }
 
@@ -570,10 +571,13 @@
 
   .restaurant-detail.claimed-wrapper p,
   .restaurant-detail.dish-text-wrapper,
-  .restaurant-detail.map-text-wrapper,
   .restaurant-detail.weekday-wrapper,
   .restaurant-detail.all-hours-wrapper {
     font-size: calc(10px + 4 * ((100vw - 320px) / 680));
+  }
+
+  .restaurant-detail.map-text-wrapper {
+    font-size: calc(6px + 8 * ((100vw - 320px) / 680));
   }
 
   .restaurant-detail.ratings-and-reviews-wrapper p,
@@ -600,12 +604,16 @@
   }
 
   .restaurant-detail.dish-photo-review-wrapper {
-    font-size: calc(4px + 6 * ((100vw - 320px) / 680));
+    font-size: calc(4px + 8 * ((100vw - 320px) / 680));
   }
 
   .restaurant-detail.amenities-list-wrapper ul li p:first-of-type,
   .restaurant-detail.amenities-list-wrapper ul li p:last-of-type {
     font-size: calc(5px + 9 * ((100vw - 320px) / 680));
+  }
+
+  .restaurant-detail.view-more-wrapper {
+    font-size: calc(6px + 6 * ((100vw - 320px) / 680));
   }
 }
 
@@ -644,7 +652,8 @@
     font-size: 13px;
   }
 
-  .restaurant-detail.dish-photo-review-wrapper {
+  .restaurant-detail.dish-photo-review-wrapper,
+  .restaurant-detail.view-more-wrapper {
     font-size: 12px;
   }
 }
