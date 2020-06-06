@@ -252,7 +252,6 @@
   align-items: center;
   width: 100%;
   font-family: 'helveticaNormal';
-  /* font-size: 12px; */
   color: var(--subtle-text);
 }
 
@@ -264,19 +263,25 @@
 /* Restaurant location and hours styling */
 
 .restaurant-detail.map-hours-wrapper {
+  width: 100%;
   height: 35vh;
 }
 
 .restaurant-detail.map-wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 50%;
-  height: 100%;
+  min-width: 180px;
+  padding-top: 50%;
 }
 
 .restaurant-detail.map-wrapper .map-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 70%;
+  height: 55%;
   box-sizing: border-box;
   border-left: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
@@ -286,6 +291,9 @@
 }
 
 .restaurant-detail.map-text-wrapper {
+  position: absolute;
+  top: 55%;
+  left: 0;
   width: 100%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -293,7 +301,6 @@
   border-left: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
   font-family: 'helveticaBold';
-  font-size: 14px;
   color: var(--black);
   box-sizing: border-box;
   padding: 3% 0 3% 4%;
@@ -571,7 +578,8 @@
   }
 
   .restaurant-detail.claimed-wrapper p,
-  .restaurant-detail.dish-text-wrapper {
+  .restaurant-detail.dish-text-wrapper,
+  .restaurant-detail.map-text-wrapper {
     font-size: calc(10px + 4 * ((100vw - 320px) / 680));
   }
 
@@ -607,7 +615,8 @@
   }
 
   .restaurant-detail.claimed-wrapper p,
-  .restaurant-detail.dish-text-wrapper {
+  .restaurant-detail.dish-text-wrapper,
+  .restaurant-detail.map-text-wrapper {
     font-size: 14px;
   }
 

@@ -338,7 +338,7 @@ class RestaurantDetail extends Component {
 
                     <div className="restaurant-detail map-hours-wrapper">
                       <div className="restaurant-detail map-wrapper">
-                        <Map restaurants={[data.restaurant]} />
+                        <Map restaurants={[data.restaurant]} /> 
 
                         <div className="restaurant-detail map-text-wrapper">
                           <p>{data.restaurant.location.streetAddress}</p> 
