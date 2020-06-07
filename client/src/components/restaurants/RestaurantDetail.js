@@ -454,22 +454,14 @@ class RestaurantDetail extends Component {
                   </div>
                 </div>
 
-                <div className="restaurant-detail-sidebar-wrapper">
-                  <div className="restaurant-detail-phone-wrapper">
-                    <div className="restaurant-detail-phone-icon">
-                      <img src="/images/restaurant_detail/sidebar/phoneNum_icon.png" alt="Phone number icon" />
-                    </div>
-
+                <div className="restaurant-detail sidebar-wrapper">
+                  <div className="restaurant-detail phone-wrapper">
+                    <img src="/images/restaurant_detail/sidebar/phoneNum_icon.png" alt="Phone number icon" />
                     <p>{data.restaurant.phoneNum}</p>
                   </div>
 
-                  <div className="sidebar-underline-wrapper"></div>
-
-                  <div className="restaurant-detail-directions-wrapper">
-                    <div className="restaurant-detail-directions-icon">
-                      <img src="/images/restaurant_detail/sidebar/directions_icon.png" alt="Phone number icon" />
-                    </div>
-
+                  <div className="restaurant-detail directions-wrapper">
+                    <img src="/images/restaurant_detail/sidebar/directions_icon.png" alt="Phone number icon" />
                     <Link to={`/restaurants/${data.restaurant._id}/map`}>Get Directions</Link> 
                   </div>
                 </div>

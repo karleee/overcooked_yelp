@@ -65,12 +65,57 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  padding: 2.5% 15%;
   box-sizing: border-box;
+  padding: 2.5% 15%;
 }
 
 .restaurant-detail.main-info-wrapper {
   width: 63%;
+}
+
+/* Restaurant sidebar styling */
+.restaurant-detail.sidebar-wrapper {
+  width: 30%;
+  box-sizing: border-box;
+  padding: 1% 2%;
+  /* height: 7%; */
+  border: 1px solid var(--light-border-color);
+  border-radius: 5px;
+}
+
+.restaurant-detail.phone-wrapper,
+.restaurant-detail.directions-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5%;
+}
+
+.restaurant-detail.phone-wrapper {
+  border-bottom: 1px solid var(--light-border-color);
+}
+
+.restaurant-detail.phone-wrapper img,
+.restaurant-detail.directions-wrapper img {
+  width: 8%;
+  margin-right: 3%;
+}
+
+.restaurant-detail.phone-wrapper p,
+.restaurant-detail.directions-wrapper a {
+  font-family: 'helveticaNormal';  
+  color: var(--black);
+}
+
+.restaurant-detail.directions-wrapper a {
+  text-decoration: none;
+  color: var(--blue);
+}
+
+.restaurant-detail.directions-wrapper a:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /* Restaurant text header styling */
@@ -627,6 +672,11 @@
   .restaurant-detail.review-photos-wrapper {
     font-size: calc(10px + 2 * ((100vw - 320px) / 680));
   }
+
+  .restaurant-detail.phone-wrapper p,
+  .restaurant-detail.directions-wrapper a {
+    font-size: calc(7px + 7 * ((100vw - 320px) / 680));
+  }
 }
 
 @media screen and (min-width: 1000px) {
@@ -643,7 +693,9 @@
   .restaurant-detail.amenities-list-wrapper ul li p:last-of-type,
   .restaurant-detail.username-wrapper,
   .restauranat-detail.rating-date-wrapper,
-  .restaurant-detail.review-body-container {
+  .restaurant-detail.review-body-container,
+  .restaurant-detail.phone-wrapper p,
+  .restaurant-detail.directions-wrapper a {
     font-size: 14px;
   }
 
