@@ -34,7 +34,9 @@ const ReviewFirst = () => {
                 <SearchForm /> 
               </div>
 
-              <img src="/images/review/first_review_banner.png" alt="Review banner" />
+              <div className="banner-thumbnail-wrapper">
+                <img src="/images/review/first_review_banner.png" alt="Review banner" />
+              </div>
             </div>
 
             <div className="first-review-businesses-wrapper">

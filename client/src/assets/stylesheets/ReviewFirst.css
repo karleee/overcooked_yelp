@@ -24,8 +24,21 @@
   margin: 2% 2% 0 0;
 }
 
-.first-review-banner-wrapper img {
-  width: 20%;
+.banner-thumbnail-wrapper {
+  position: relative;
+  width: 30%;
+  padding-top: 20%;
+  overflow: hidden;
+}
+
+.banner-thumbnail-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 75%;
 }
 
 .banner-text-wrapper h1 {
