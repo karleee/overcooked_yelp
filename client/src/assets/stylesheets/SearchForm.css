@@ -96,7 +96,7 @@
   height: 35%;
   border-radius: 5px;
   box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.09);
-  background: white;
+  background: white; 
 }
 
 .search-form.navbar.input-wrapper {
