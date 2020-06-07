@@ -21,21 +21,11 @@
   justify-content: flex-start;
   width: 50%;
   height: 100%;
-  margin-top: 2%;
+  margin: 2% 2% 0 0;
 }
 
-.banner-thumbnail-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 30%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.banner-thumbnail-wrapper img {
-  height: 80%;
+.first-review-banner-wrapper img {
+  width: 20%;
 }
 
 .banner-text-wrapper h1 {
@@ -58,49 +48,6 @@
   margin: 2% 0 0 0;
 }
 
-/* .banner-text-wrapper .search-form.home .search-form.input-wrapper { 
-  position: absolute;
-  top: 35%;
-  left: 30%;
-  width: 40%;
-  background: lightblue;
-} */
-
-/* .banner-text-wrapper .search-form.home .search-form.input-wrapper .find-input-wrapper,
-.banner-text-wrapper .search-form.home .search-form.input-wrapper .near-input-wrapper {
-  padding: 3px;
-  background: white;
-  border: 1px solid var(--mid-text);
-  border-radius: 3px;
-  margin-right: 8px;
-} */
-
-/* .banner-text-wrapper .search-form.home .search-form.input-wrapper .find-input-wrapper label,
-.banner-text-wrapper .search-form.home .search-form.input-wrapper .near-input-wrapper label {
-  font-size: 15px;
-  color: var(--black);
-  padding-left: 3px;
-} */
-
-/* .banner-text-wrapper .search-form.home .search-form.input-wrapper .search-button-wrapper {
-  width: 8%;
-  height: 100%;
-  border-radius: 3px;
-} */
-
-/* .banner-text-wrapper .search-form.home .search-form.input-wrapper .search-button-wrapper .search-icon {
-  width: 20px;
-} */
-
-/* .banner-text-wrapper .search-form.home .search-form.input-wrapper .find-input-wrapper label input,
-.banner-text-wrapper .search-form.home .search-form.input-wrapper .near-input-wrapper label input {
-  font-size: 15px;
-} */
-
-/* .banner-text-wrapper .search-form.home .search-form.input-wrapper .separator-wrapper {
-  display: none;
-} */
-
 /* Businesses styling */
 
 .first-review-businesses-wrapper {
@@ -108,7 +55,7 @@
   flex-direction: column;
   margin: 0 auto;
   width: 65%;
-  margin-top: 30px;
+  margin-top: 3%;
 }
 
 .first-review-businesses-wrapper h2 {
