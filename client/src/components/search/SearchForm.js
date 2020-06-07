@@ -117,7 +117,6 @@ class SearchForm extends React.Component {
               </div>
 
               <div className="search-form navbar button-wrapper" onClick={this.submitSearch(data.currentUserZipCode)}>
-                {/* <i className="search-form navbar search-icon"></i> */}
                 <img src="/images/navbar/search_icon.png" alt="Search" />
               </div>
               
