@@ -28,21 +28,16 @@ class RestaurantMap extends Component {
             <div className="full-map-container">
               <Navbar />
 
-              <div className="map-restaurant-container">
-                <div className="map-restaurant-wrapper">
-                  <div className="location-marker-container">
-                    <img src='/images/map/location_marker_icon.png' alt="Location marker icon" />
-                  </div>
+              <div className="map-main-content-container">
+                <Map restaurants={[data.restaurant]} />
 
+                <div className="map-restaurant-container">
+                  <img src='/images/map/location_marker_icon.png' alt="Location marker icon" />
                   <div className="text-container">
                     <Link to={`/restaurants/${data.restaurant._id}`}>{data.restaurant.name}</Link>
                     <p>{data.restaurant.location.streetAddress}</p>
                   </div>
                 </div>
-              </div>
-
-              <div className="map-main-content-container">
-                <Map restaurants={[data.restaurant]} />
               </div>
             </div>
           );

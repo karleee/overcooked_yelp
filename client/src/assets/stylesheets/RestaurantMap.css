@@ -1,62 +1,57 @@
 @import 'variables.css';
 
 .full-map-container {
-  position: relative;
   width: 100%;
   height: 100%;
 }
 
 .map-main-content-container {
+  position: relative;
   width: 100%;
   height: 100vh;
   box-sizing: border-box;
-  padding: 30px 240px;
+  padding: 3% 15%;
 }
 
 .map-main-content-container #restaurant-map {
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  box-sizing: border-box;
+  box-sizing: border-box; 
   border: 1px solid var(--border-color);
+}
+
+.map-restaurant-container {
+  position: absolute;
+  top: 15%;
+  left: 16%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 1% 3.5% 1% 1%;
+  border: 2px solid var(--light-border-color);
+  border-radius: 5px;
+  background: white;
+  z-index: 1;
 }
 
 .map-restaurant-container {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
   align-items: center;
-  position: absolute;
-  top: 230px;
-  left: 250px;
-  padding: 12px 50px 15px 15px;
-  border: 2px solid var(--light-border-color);
-  border-radius: 5px;
-  box-sizing: border-box;
-  background: white;
-  z-index: 1;
 }
 
-.map-restaurant-wrapper {
-  display: flex;
-  flex-direction: row;
-}
-
-.location-marker-container,
 .text-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-.location-marker-container {
-  padding-top: 5px;
-  margin-right: 8px;
-}
-
-.location-marker-container img {
-  width: 12px;
-  height: 18px;
+.map-restaurant-container img {
+  width: 13%;
+  margin-right: 6%;
 }
 
 .text-container a {
