@@ -144,9 +144,7 @@ class LoginForm extends React.Component {
                     {errorMessage.includes('Password') ? 
                       <div className="login error-container">
                         <div className="error text-wrapper">
-                          <div className="error-icon-wrapper">
-                            <img src="/images/session/error_icon.png" alt="Error" />
-                          </div>
+                          <img src="/images/session/error_icon.png" alt="Error" />
                           <p>{error}</p> 
                         </div>
 
