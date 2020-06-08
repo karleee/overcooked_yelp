@@ -149,7 +149,7 @@
   .search-form.input-wrapper label,
   .search-form.input-wrapper label input {
     font-size: calc(5px + 13 * ((100vw - 320px) / 680));
-  }
+  } 
 
   .search-form.navbar.input-wrapper input {
     font-size: calc(6px + 10 * ((100vw - 320px) / 680));

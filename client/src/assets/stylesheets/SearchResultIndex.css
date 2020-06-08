@@ -25,33 +25,29 @@
 
 .search-result-restaurant-list-container h1 {
   font-family: 'helveticaBold'; 
-  font-size: 26px;
   color: var(--black);
 }
 
 .suggestions-container {
-  margin-top: 30px;
+  margin-top: 4%;
 }
 
 .search-result-restaurant-list-container strong {
   font-family: 'helveticaBold';
-  font-size: 14px;
   color: var(--black);
 }
 
 .suggestions-list-wrapper {
   list-style: none;
   font-family: 'helveticaNormal';
-  font-size: 14px;
   color: var(--black);
-  margin-top: 10px;
+  margin-top: 2%;
 }
 
 .all-reviews-wrapper {
   font-family: 'helveticaBold';
-  font-size: 16px;
   color: var(--black);
-  margin-top: 30px;
+  margin-top: 4%;
 }
 
 .restaurants-list-wrapper {
@@ -61,10 +57,13 @@
 }
 
 .restaurants-list-wrapper li {
+  /* position: relative;
+  width: 100%;
+  padding-top: 50%; */
   border: 1px solid var(--light-border-color);  
   border-radius: 5px;
   box-sizing: border-box;
-  padding: 25px;
+  padding: 3%;
 }
 
 .search-result-map-container {
@@ -81,19 +80,32 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-content: center;
   width: 100%;
 }
 
 .search-result-thumbnail-wrapper {
-  width: 200px;
-  height: 200px;
-  min-width: 200px;
-  min-height: 200px;
+  /* width: 200px; */
+  /* height: 200px; */
+  /* min-width: 200px; */
+  /* min-height: 200px; */
+  position: relative;
+  /* width: 20em; */
+  /* padding-top: 20em; */
+  width: 15em;
+  height: 13em;
+  /* width: 35%;
+  padding-top: 25%; */
+  /* background: green; */
+  /* height: 100%; */
   overflow: hidden;
   border-radius: 5px;
 }
 
 .search-result-thumbnail-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
 }
 
@@ -114,13 +126,14 @@
 
 .search-result-header-wrapper h2,
 .search-result-header-wrapper a {
-  font-size: 21px;
+  display: inline-block;
+  white-space: nowrap;
   color: var(--black);
   text-decoration: none;
 }
 
 .search-result-header-wrapper h2 {
-  margin-right: 5px;
+  margin-right: 3%;
 }
 
 .search-result-header-wrapper a:last-of-type:hover {
@@ -129,7 +142,7 @@
 }
 
 .search-result-details-wrapper {
-  margin-left: 20px;
+  margin-left: 3%;
 }
 
 .search-result-rating-and-reviews-wrapper {
@@ -139,14 +152,14 @@
 }
 
 .search-result-rating-and-reviews-wrapper img {
-  margin-top: 5px;
-  height: 23px;
-  margin-right: 5px;
+  margin-top: 2%;
+  width: 50%;
+  margin-right: 2%;
 }
 
 .search-result-rating-and-reviews-wrapper p {
   font-family: 'helveticaNormal';
-  font-size: 14px;
+  /* font-size: 14px; */
   color: var(--mid-text);
   margin-top: 3px;
 }
@@ -182,4 +195,54 @@
   font-size: 14px;
   color: var(--mid-text);
   margin-top: 20px;
+}
+
+/* Dynamic styling */
+
+@media screen and (min-width: 320px) {
+  .search-result-restaurant-list-container h1 {
+    font-size: calc(13px + 13 * ((100vw - 320px) / 680));
+  } 
+
+  .search-result-restaurant-list-container strong {
+    font-size: calc(10px + 4 * ((100vw - 320px) / 680));
+  }
+
+  .suggestions-list-wrapper,
+  .search-result-rating-and-reviews-wrapper p {
+    font-size: calc(7px + 7 * ((100vw - 320px) / 680));
+  }
+
+  .all-reviews-wrapper {
+    font-size: calc(10px + 6 * ((100vw - 320px) / 680));
+  }
+
+  .search-result-header-wrapper h2,
+  .search-result-header-wrapper a {
+    font-size: calc(10px + 11 * ((100vw - 320px) / 680));
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .search-result-restaurant-list-container h1 { 
+    font-size: 26px;
+  }
+
+  .search-result-restaurant-list-container strong,
+  .suggestions-list-wrapper {
+    font-size: 14px;
+  }
+
+  .all-reviews-wrapper {
+    font-size: 16px;
+  }
+
+  .search-result-header-wrapper h2,
+  .search-result-header-wrapper a {
+    font-size: 21px;
+  }
+
+  .search-result-rating-and-reviews-wrapper p {
+    font-size: 14px;
+  }
 }

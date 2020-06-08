@@ -23,7 +23,7 @@ class SearchResultIndex extends Component {
     window.scrollTo(0, 0);
   }
 
-  // Hides scrolling when modal is mounted
+  // Hides scrolling when modal is mounted 
   componentDidMount() {
     document.body.style.overflow = 'hidden';
   }
