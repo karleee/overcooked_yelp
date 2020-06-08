@@ -63,21 +63,15 @@ const ReviewFirst = () => {
                             </div>
 
                             <div className="three-star-wrapper">
-                              <div className="three-star-popup-wrapper">
-                                <p>A-OK.</p>
-                              </div>
+                              <p>A-OK.</p>
                             </div>
 
                             <div className="four-star-wrapper">
-                              <div className="four-star-popup-wrapper">
-                                <p>Yay! I'm a fan.</p>
-                              </div>
+                              <p>Yay! I'm a fan.</p>
                             </div>
 
                             <div className="five-star-wrapper">
-                              <div className="five-star-popup-wrapper">
-                                <p>Woohoo! As good as it gets!</p>
-                              </div>
+                              <p>Woohoo! As good as it gets!</p>
                             </div>
 
                             <i className="rating-image"></i>

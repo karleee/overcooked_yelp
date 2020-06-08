@@ -138,6 +138,8 @@
 
 .restaurant-text-rating-wrapper a {
   position: absolute;
+  display: flex;
+  flex-direction: row;
   top: 0;
   left: 0;
   width: 100%;
@@ -155,9 +157,7 @@
 /* Rating hovering images */
 
 .one-star-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 20%;
   height: 100%;
   opacity: 0;
@@ -165,9 +165,7 @@
 }
 
 .two-star-wrapper {
-  position: absolute;
-  top: 0;
-  left: 20%;
+  position: relative;
   width: 20%;
   height: 100%;
   opacity: 0;
@@ -175,30 +173,27 @@
 }
 
 .three-star-wrapper {
-  position: absolute;
-  top: -45%;
-  left: 41%;
-  width: 30px;
-  height: 30px;
-  background: transparent;
+  position: relative;
+  width: 20%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
 }
 
 .four-star-wrapper {
-  position: absolute;
-  top: -45%;
-  left: 55.5%;
-  width: 30px;
-  height: 30px;
-  background: transparent;
+  position: relative;
+  width: 20%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
 }
 
 .five-star-wrapper {
-  position: absolute;
-  top: -45%;
-  left: 82%;
-  width: 30px;
-  height: 30px;
-  background: transparent;
+  position: relative;
+  width: 20%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
 }
 
 .one-star-wrapper:hover,
@@ -230,21 +225,15 @@
   content: url(/images/restaurant_detail/ratings/five.png);
 }
 
-/* .one-star-wrapper:hover > .one-star-popup-wrapper,
-.two-star-wrapper:hover > .two-star-popup-wrapper,
-.three-star-wrapper:hover > .three-star-popup-wrapper,
-.four-star-wrapper:hover > .four-star-popup-wrapper,
-.five-star-wrapper:hover > .five-star-popup-wrapper {
-  display: block;
-} */
-
 .one-star-wrapper p,
-.two-star-wrapper p {
-  /* display: none; */
+.two-star-wrapper p,
+.three-star-wrapper p,
+.four-star-wrapper p,
+.five-star-wrapper p {
   display: inline-block;
   position: absolute;
   top: -170%;
-  left: -170%;
+  left: -30%;
   white-space: nowrap;
   font-family: 'helveticaBold';
   font-size: 12px;
@@ -254,93 +243,12 @@
   padding: 25%;
   border-radius: 5px;
 }
-
-/* .two-star-popup-wrapper {
-  display: none;
-  position: absolute;
-  top: -140%;
-  left: -240%;
-} */
-
-/* .three-star-popup-wrapper {
-  display: none;
-  position: absolute;
-  top: -140%;
-  left: -50%;
-} */
-
-/* .four-star-popup-wrapper {
-  display: none;
-  position: relative;
-  top: -140%;
-  left: -66%;
-} */
-
-/* .five-star-popup-wrapper {
-  display: none;
-  position: relative;
-  top: -140%;
-  left: -250%;
-} */
-
-.one-star-wrapper p,
-.two-star-popup-wrapper p,
-.three-star-popup-wrapper p,
-.four-star-popup-wrapper p,
-.five-star-popup-wrapper p {
-  /* display: inline-block;
-  white-space: nowrap;
-  font-family: 'helveticaBold';
-  font-size: 12px;
-  color: white;
-  background: rgba(0, 0, 0, 0.8);
-  box-sizing: border-box;
-  padding: 25%;
-  border-radius: 5px; */
-}
-
-/* .two-star-popup-wrapper p {
-  font-family: 'helveticaBold';
-  font-size: 12px;
-  color: white;
-  background: rgba(0, 0, 0, 0.8);
-  width: 163px;
-  padding: 7px;
-  border-radius: 5px;
-} */
-
-/* .three-star-popup-wrapper p {
-  font-family: 'helveticaBold';
-  font-size: 12px;
-  color: white;
-  background: rgba(0, 0, 0, 0.8);
-  width: 35px;
-  padding: 7px;
-  border-radius: 5px;
-} */
-
-/* .four-star-popup-wrapper p {
-  font-family: 'helveticaBold';
-  font-size: 12px;
-  color: white;
-  background: rgba(0, 0, 0, 0.8);
-  width: 80px;
-  padding: 7px;
-  border-radius: 5px;
-} */
-
-/* .five-star-popup-wrapper p {
-  font-family: 'helveticaBold';
-  font-size: 12px;
-  color: white;
-  background: rgba(0, 0, 0, 0.8);
-  width: 160px;
-  padding: 7px;
-  border-radius: 5px;
-} */
 
 .one-star-wrapper::after,
-.two-star-wrapper::after {
+.two-star-wrapper::after,
+.three-star-wrapper::after,
+.four-star-wrapper::after,
+.five-star-wrapper::after {
   position: absolute;
   top: -42.5%;
   left: 25%;
@@ -350,54 +258,6 @@
   border-top: solid 0.5em rgba(0, 0, 0, 0.8);
   border-left: solid 0.5em transparent;
   border-right: solid 0.5em transparent;
-}
-
-/* .two-star-wrapper::after {
-  content: '';
-  position: absolute;
-  top: -42.5%;
-  left: 25%;
-  width: 0;
-  height: 0;
-  border-top: solid 7px rgba(0, 0, 0, 0.8);
-  border-left: solid 7px transparent;
-  border-right: solid 7px transparent;
-} */
-
-.three-star-popup-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 45%;
-  width: 0;
-  height: 0;
-  border-top: solid 7px rgba(0, 0, 0, 0.8);
-  border-left: solid 7px transparent;
-  border-right: solid 7px transparent;
-}
-
-.four-star-popup-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 120%;
-  width: 0;
-  height: 0;
-  border-top: solid 7px rgba(0, 0, 0, 0.8);
-  border-left: solid 7px transparent;
-  border-right: solid 7px transparent;
-}
-
-.five-star-popup-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 275%;
-  width: 0;
-  height: 0;
-  border-top: solid 7px rgba(0, 0, 0, 0.8);
-  border-left: solid 7px transparent;
-  border-right: solid 7px transparent;
 }
 
 /* Dynamic styling */
