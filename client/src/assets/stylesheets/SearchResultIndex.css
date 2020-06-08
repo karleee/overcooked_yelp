@@ -83,8 +83,8 @@
 
 .search-result-thumbnail-wrapper {
   position: relative;
-  width: 15em;
-  height: 13em;
+  width: 35%;
+  padding-top: 30%;
   overflow: hidden;
   border-radius: 5px;
 }
@@ -99,7 +99,6 @@
 .search-result-meta {
   display: flex;
   flex-direction: row;
-  /* background: red; */
   justify-content: space-between;
 }
 
