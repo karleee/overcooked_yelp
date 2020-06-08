@@ -57,9 +57,6 @@
 }
 
 .restaurants-list-wrapper li {
-  /* position: relative;
-  width: 100%;
-  padding-top: 50%; */
   border: 1px solid var(--light-border-color);  
   border-radius: 5px;
   box-sizing: border-box;
@@ -85,19 +82,9 @@
 }
 
 .search-result-thumbnail-wrapper {
-  /* width: 200px; */
-  /* height: 200px; */
-  /* min-width: 200px; */
-  /* min-height: 200px; */
   position: relative;
-  /* width: 20em; */
-  /* padding-top: 20em; */
   width: 15em;
   height: 13em;
-  /* width: 35%;
-  padding-top: 25%; */
-  /* background: green; */
-  /* height: 100%; */
   overflow: hidden;
   border-radius: 5px;
 }
@@ -112,6 +99,7 @@
 .search-result-meta {
   display: flex;
   flex-direction: row;
+  /* background: red; */
   justify-content: space-between;
 }
 
@@ -159,9 +147,8 @@
 
 .search-result-rating-and-reviews-wrapper p {
   font-family: 'helveticaNormal';
-  /* font-size: 14px; */
   color: var(--mid-text);
-  margin-top: 3px;
+  margin-top: 3%;
 }
 
 .search-result-price-category-wrapper {
@@ -169,9 +156,8 @@
   flex-direction: row;
   align-items: center;
   font-family: 'helveticaNormal';
-  font-size: 14px;
   color: var(--mid-text);
-  margin-top: 5px;
+  margin-top: 3%;
 }
 
 .search-result-price-category-wrapper p:first-of-type,
@@ -180,19 +166,19 @@
 }
 
 .search-result-price-and-category-dot-wrapper {
-  padding: 0 5px;
+  padding: 0 2%;
 }
 
 .search-result-meta-secondary {
+  display: inline-block;
+  white-space: nowrap;
   font-family: 'helveticaNormal';
-  font-size: 12px;
   color: var(--mid-text);
   text-align: right;
 }
 
 .search-result-review-wrapper {
   font-family: 'helveticaNormal';
-  font-size: 14px;
   color: var(--mid-text);
   margin-top: 20px;
 }
@@ -209,7 +195,9 @@
   }
 
   .suggestions-list-wrapper,
-  .search-result-rating-and-reviews-wrapper p {
+  .search-result-rating-and-reviews-wrapper p,
+  .search-result-price-category-wrapper,
+  .search-result-review-wrapper  {
     font-size: calc(7px + 7 * ((100vw - 320px) / 680));
   }
 
@@ -220,6 +208,10 @@
   .search-result-header-wrapper h2,
   .search-result-header-wrapper a {
     font-size: calc(10px + 11 * ((100vw - 320px) / 680));
+  }
+
+  .search-result-meta-secondary {
+    font-size: calc(5px + 7 * ((100vw - 320px) / 680));
   }
 }
 
@@ -242,7 +234,23 @@
     font-size: 21px;
   }
 
-  .search-result-rating-and-reviews-wrapper p {
+  .search-result-rating-and-reviews-wrapper p,
+  .search-result-price-category-wrapper,
+  .search-result-review-wrapper {
     font-size: 14px;
+  }
+
+  .search-result-meta-secondary {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 1120px) { 
+  .search-result-restaurant-list-container {
+    width: 100%;
+  }
+
+  .search-result-map-container {
+    display: none;
   }
 }
