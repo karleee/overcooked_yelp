@@ -55,15 +55,11 @@ const ReviewFirst = () => {
                         <div className="restaurant-text-rating-wrapper">
                           <Link to={`/restaurants/${restaurant._id}/reviews/edit`}>
                             <div className="one-star-wrapper">
-                              <div className="one-star-popup-wrapper">
-                                <p>Eek! Methinks not.</p>
-                              </div>
+                              <p>Eek! Methinks not.</p>
                             </div>
 
                             <div className="two-star-wrapper">
-                              <div className="two-star-popup-wrapper">
-                                <p>Meh. I've experienced better.</p>
-                              </div>
+                              <p>Meh. I've experienced better.</p>
                             </div>
 
                             <div className="three-star-wrapper">

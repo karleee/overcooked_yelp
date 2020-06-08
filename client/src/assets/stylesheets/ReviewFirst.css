@@ -160,19 +160,18 @@
   left: 0;
   width: 20%;
   height: 100%;
-  background: pink;
-  /* width: 30px;
-  height: 30px;
-  background: transparent; */
+  opacity: 0;
+  z-index: 1;
 }
 
 .two-star-wrapper {
   position: absolute;
-  top: -45%;
+  top: 0;
   left: 20%;
-  width: 30px;
-  height: 30px;
-  background: transparent;
+  width: 20%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
 }
 
 .three-star-wrapper {
@@ -207,6 +206,7 @@
 .three-star-wrapper:hover,
 .four-star-wrapper:hover,
 .five-star-wrapper:hover {
+  opacity: 1;
   cursor: pointer;
 }
 
@@ -230,60 +230,76 @@
   content: url(/images/restaurant_detail/ratings/five.png);
 }
 
-.one-star-wrapper:hover > .one-star-popup-wrapper,
+/* .one-star-wrapper:hover > .one-star-popup-wrapper,
 .two-star-wrapper:hover > .two-star-popup-wrapper,
 .three-star-wrapper:hover > .three-star-popup-wrapper,
 .four-star-wrapper:hover > .four-star-popup-wrapper,
 .five-star-wrapper:hover > .five-star-popup-wrapper {
   display: block;
-}
+} */
 
-.one-star-popup-wrapper {
-  display: none;
+.one-star-wrapper p,
+.two-star-wrapper p {
+  /* display: none; */
+  display: inline-block;
   position: absolute;
-  top: -140%;
-  left: -150%;
-}
-
-.two-star-popup-wrapper {
-  display: none;
-  position: absolute;
-  top: -140%;
-  left: -240%;
-}
-
-.three-star-popup-wrapper {
-  display: none;
-  position: absolute;
-  top: -140%;
-  left: -50%;
-}
-
-.four-star-popup-wrapper {
-  display: none;
-  position: relative;
-  top: -140%;
-  left: -66%;
-}
-
-.five-star-popup-wrapper {
-  display: none;
-  position: relative;
-  top: -140%;
-  left: -250%;
-}
-
-.one-star-popup-wrapper p {
+  top: -170%;
+  left: -170%;
+  white-space: nowrap;
   font-family: 'helveticaBold';
   font-size: 12px;
   color: white;
   background: rgba(0, 0, 0, 0.8);
-  width: 105px;
-  padding: 7px;
+  box-sizing: border-box;
+  padding: 25%;
   border-radius: 5px;
 }
 
-.two-star-popup-wrapper p {
+/* .two-star-popup-wrapper {
+  display: none;
+  position: absolute;
+  top: -140%;
+  left: -240%;
+} */
+
+/* .three-star-popup-wrapper {
+  display: none;
+  position: absolute;
+  top: -140%;
+  left: -50%;
+} */
+
+/* .four-star-popup-wrapper {
+  display: none;
+  position: relative;
+  top: -140%;
+  left: -66%;
+} */
+
+/* .five-star-popup-wrapper {
+  display: none;
+  position: relative;
+  top: -140%;
+  left: -250%;
+} */
+
+.one-star-wrapper p,
+.two-star-popup-wrapper p,
+.three-star-popup-wrapper p,
+.four-star-popup-wrapper p,
+.five-star-popup-wrapper p {
+  /* display: inline-block;
+  white-space: nowrap;
+  font-family: 'helveticaBold';
+  font-size: 12px;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  padding: 25%;
+  border-radius: 5px; */
+}
+
+/* .two-star-popup-wrapper p {
   font-family: 'helveticaBold';
   font-size: 12px;
   color: white;
@@ -291,9 +307,9 @@
   width: 163px;
   padding: 7px;
   border-radius: 5px;
-}
+} */
 
-.three-star-popup-wrapper p {
+/* .three-star-popup-wrapper p {
   font-family: 'helveticaBold';
   font-size: 12px;
   color: white;
@@ -301,9 +317,9 @@
   width: 35px;
   padding: 7px;
   border-radius: 5px;
-}
+} */
 
-.four-star-popup-wrapper p {
+/* .four-star-popup-wrapper p {
   font-family: 'helveticaBold';
   font-size: 12px;
   color: white;
@@ -311,9 +327,9 @@
   width: 80px;
   padding: 7px;
   border-radius: 5px;
-}
+} */
 
-.five-star-popup-wrapper p {
+/* .five-star-popup-wrapper p {
   font-family: 'helveticaBold';
   font-size: 12px;
   color: white;
@@ -321,31 +337,32 @@
   width: 160px;
   padding: 7px;
   border-radius: 5px;
+} */
+
+.one-star-wrapper::after,
+.two-star-wrapper::after {
+  position: absolute;
+  top: -42.5%;
+  left: 25%;
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: solid 0.5em rgba(0, 0, 0, 0.8);
+  border-left: solid 0.5em transparent;
+  border-right: solid 0.5em transparent;
 }
 
-.one-star-popup-wrapper::after {
+/* .two-star-wrapper::after {
   content: '';
   position: absolute;
-  top: 100%;
-  left: 45%;
+  top: -42.5%;
+  left: 25%;
   width: 0;
   height: 0;
   border-top: solid 7px rgba(0, 0, 0, 0.8);
   border-left: solid 7px transparent;
   border-right: solid 7px transparent;
-}
-
-.two-star-popup-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 45%;
-  width: 0;
-  height: 0;
-  border-top: solid 7px rgba(0, 0, 0, 0.8);
-  border-left: solid 7px transparent;
-  border-right: solid 7px transparent;
-}
+} */
 
 .three-star-popup-wrapper::after {
   content: '';
