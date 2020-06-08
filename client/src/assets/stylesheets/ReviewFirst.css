@@ -66,7 +66,6 @@
 
 .first-review-businesses-wrapper h2 {
   font-family: 'helveticaBold';
-  font-size: 21px;
   color: var(--red);
 }
 
@@ -379,6 +378,10 @@
   .banner-text-wrapper p {
     font-size: calc(5px + 11 * ((100vw - 320px) / 680));
   }
+
+  .first-review-businesses-wrapper h2 {
+    font-size: calc(12px + 9 * ((100vw - 320px) / 680));
+  }
 }
 
 @media screen and (min-width: 1000px) {
@@ -393,5 +396,9 @@
 
   .banner-text-wrapper p {
     font-size: 16px;
+  }
+
+  .first-review-businesses-wrapper h2 {
+    font-size: 21px;
   }
 }
