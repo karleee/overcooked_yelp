@@ -40,7 +40,7 @@ class LoginForm extends React.Component {
   update(field) {
     return e => {
       this.setState({ [field]: e.target.value });
-      this.setState({ errorMessage: '' });
+      this.setState({ errorMessage: '' }); 
     }
   }
 
@@ -87,7 +87,7 @@ class LoginForm extends React.Component {
         update={(client, data) => this.updateCache(client, data)}
       >
         {LoginUser => (
-          <div className="login content-container"> 
+          <div className="login page-container"> 
             <div className="login navbar-container">
                 <svg>
                   <Link to='/'>
@@ -96,12 +96,10 @@ class LoginForm extends React.Component {
                 </svg>
             </div> 
 
-            <div className="login credentials-error-container">
-              {errorMessage.includes('credentials') ? <p>{error}</p> : ''}
-            </div>
+            {errorMessage.includes('credentials') ? <div className="login credentials-error-container"><p>{error}</p></div> : ''}
 
-            <div className="login body-container">
-              <div className="login main-form-container">
+            <div className="login content-container">
+              <div className="login form-container">
                 <div className="login header-container">
                   <h1>Log In to Morsel</h1>
 
@@ -114,63 +112,57 @@ class LoginForm extends React.Component {
                   <p className="or-separator-wrapper">or</p> 
                 </div>
 
-                <div className="login form-container">
-                  <form onSubmit={this.performMutation(LoginUser, {email, password})}>
-                    <div className="login email-input">
-                      <input
-                        value={email}
-                        onChange={this.update("email")}
-                        placeholder="Email"
-                      />
+                <form onSubmit={this.performMutation(LoginUser, {email, password})}>
+                  <div className="login email-container">
+                    <input
+                      value={email}
+                      onChange={this.update("email")}
+                      placeholder="Email"
+                    />
 
-                      {errorMessage.includes('Email') ? 
-                        <div className='login error-container'>
-                          <div className="error text-wrapper">
-                            <div className="error-icon-wrapper">
-                              <img src="/images/session/error_icon.png" alt="Error" /> 
-                            </div>
-                            <p>{error}</p>
-                          </div>
+                    {errorMessage.includes('Email') ? 
+                      <div className='login error-container'>
+                        <div className="error text-wrapper">
+                          <img src="/images/session/error_icon.png" alt="Error" /> 
+                          <p>{error}</p>
+                        </div>
               
-                          <div className="errors triangle-wrapper">
-                            <div className="errors inner-triangle-wrapper"></div>
+                        <div className="errors triangle-wrapper">
+                          <div className="errors inner-triangle-wrapper"></div>
+                        </div>
+                      </div> : ''}
+                  </div>
+
+                  <div className="login password-container">
+                    <input
+                      value={password}
+                      onChange={this.update("password")}
+                      type="password"
+                      placeholder="Password"
+                    />
+
+                    {errorMessage.includes('Password') ? 
+                      <div className="login error-container">
+                        <div className="error text-wrapper">
+                          <div className="error-icon-wrapper">
+                            <img src="/images/session/error_icon.png" alt="Error" />
                           </div>
-                        </div> : ''}
-                    </div>
+                          <p>{error}</p> 
+                        </div>
 
-                    <div className="login password-input">
-                      <input
-                        value={password}
-                        onChange={this.update("password")}
-                        type="password"
-                        placeholder="Password"
-                      />
+                        <div className="errors triangle-wrapper">
+                          <div className="errors inner-triangle-wrapper"></div>
+                        </div>
+                      </div> : ''}
+                  </div>
 
-                      {errorMessage.includes('Password') ? 
-                        <div className="login error-container">
-                          <div className="error text-wrapper">
-                            <div className="error-icon-wrapper">
-                              <img src="/images/session/error_icon.png" alt="Error" />
-                            </div>
-                            <p>{error}</p> 
-                          </div>
+                  <button type="submit">Log In</button>
 
-                          <div className="errors triangle-wrapper">
-                            <div className="errors inner-triangle-wrapper"></div>
-                          </div>
-                        </div> : ''}
-                    </div>
-
-                    <button type="submit">Log In</button>
-
-                    <small>New to Morsel? <Link to='/signup'>Sign Up</Link></small>
-                  </form>
-                </div>
+                  <small>New to Morsel? <Link to='/signup'>Sign Up</Link></small>
+                </form>
               </div>
 
-              <div className="login image-container">
-                <img src="/images/session/login_image.png" alt="Log in splash thumbnail" />
-              </div>
+              <img src="/images/session/login_image.png" alt="Log in splash thumbnail" />
             </div>
           </div>
         )}

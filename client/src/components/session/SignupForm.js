@@ -33,13 +33,8 @@ class RegisterForm extends React.Component {
     });
   }
 
-  // componentDidMount() {
-  //   this._isMounted = true;
-  // }
-
   componentWillUnmount() {
     this.setState({ errorMessage: '' });
-    // this._isMounted = false;
   }
 
   update(field) {
@@ -118,7 +113,7 @@ class RegisterForm extends React.Component {
                   <text x="50%" y="50%">morsel</text>
                 </Link>
               </svg>
-            </div> 
+            </div>  
 
             {errorMessage.includes('credentials') ? <div className="signup credentials-error-container"><p>{error}</p></div> : ''}
 
