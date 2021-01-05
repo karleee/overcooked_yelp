@@ -13,7 +13,7 @@
     "apollo-link-error": "^1.1.12",
     "apollo-link-http": "^1.5.16",
     "graphql-iso-date": "^3.6.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "graphql-tag": "^2.10.3",
     "react": "^16.13.0",
     "react-apollo": "^3.1.3",
